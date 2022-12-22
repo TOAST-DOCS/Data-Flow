@@ -1,4 +1,4 @@
-# 노드 유형
+## 노드 유형
 
 * 노드 유형은 손쉽게 플로우를 작성할 수 있게 선정의된 템플릿입니다.
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
@@ -79,11 +79,11 @@
     * 플로우 실행이 시작된 날의 03시의 DSL 표현
         * =\> \{\{ executionTime \| startOf: DAY \| addTime: 3\, HOUR \}\}
 
-# Source
+## Source
 
 * 플로우로 데이터를 인입할 엔드포인트를 정의하는 노드 유형입니다.
 
-## Source 노드의 공통 설정
+### Source 노드의 공통 설정
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
@@ -93,7 +93,7 @@
 | 태그 | - | array of string | 각 메시지에 주어진 값의 태그를 추가합니다. |  |
 | 필드 추가 | - | hash | 커스텀 필드를 추가할 수 있습니다.<br>`%{[depth1_field]}`로 각 필드의 값을 가져와 필드를 추가할 수 있습니다. |  |
 
-## 필드 추가 예제
+### 필드 추가 예제
 
 ``` json
 {
@@ -101,7 +101,7 @@
 }
 ```
 
-## (NHN Cloud) Log & Crash Search
+## Source > (NHN Cloud) Log & Crash Search
 
 ### 노드 설명
 
@@ -141,7 +141,7 @@
 {"log":"&", "Crash": "Search", "Result": "Data"}
 ```
 
-## (NHN Cloud) CloudTrail
+## Source > (NHN Cloud) CloudTrail
 
 ### 노드 설명
 
@@ -178,11 +178,11 @@
 {"log":"CloudTrail", "Result": "Data"}
 ```
 
-# Filter
+### Filter
 
 * 인입된 데이터를 어떻게 처리할지 정의하는 노드 유형입니다.
 
-## Filter 노드의 공통 설정
+### Filter 노드의 공통 설정
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
@@ -193,7 +193,7 @@
 | 필드 삭제 | - | array of string | 각 메시지의 필드를 삭제합니다. |  |
 | 필드 추가 | - | hash | 커스텀 필드를 추가할 수 있습니다.<br>`%{[depth1_field]}`로 각 필드의 값을 가져와 필드를 추가할 수 있습니다. |  |
 
-## Cipher
+## Filter > Cipher
 
 ### 노드 설명
 
@@ -273,18 +273,18 @@
 }
 ```
 
-# Sink
+## Sink
 
 * Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 노드 유형입니다.
 
-## Sink 노드의 공통 설정
+### Sink 노드의 공통 설정
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | 측정 항목 활성화 | true | boolean | 노드의 메트릭을 수집합니다.<br>속성값이 true일 경우 모니터링 탭에서 노드의 이벤트 메트릭 정보를 확인할 수 있습니다. |  |
 | 아이디 | - | string | 노드의 아이디를 설정합니다.<br>이 속성에 정의된 값으로 차트보드에 노드 이름을 표기합니다. |  |
 
-## (NHN Cloud) Object Storage
+## Sink > (NHN Cloud) Object Storage
 
 ### 노드 설명
 
@@ -401,7 +401,7 @@
 2022-11-21T07:49:20.000Z f207c24a122e %{message}
 ```
 
-## (Amazon) S3
+## Sink > (Amazon) S3
 
 ### 노드 설명
 
@@ -461,7 +461,7 @@
 }
 ```
 
-## Kafka
+## Sink > (Apache) Kafka
 
 ### 노드 설명
 
@@ -544,7 +544,7 @@
 2022-11-21T07:49:20.000Z e5ef7ece9bb0 %{message}
 ```
 
-# Branch
+## Branch
 
 * 인입된 데이터의 값에 따라 흐름 분기를 정의하는 노드 유형입니다.
 
