@@ -1,4 +1,4 @@
-## Data & Analytics > DataFlow > 노드 유형 가이드
+## Data & Analytics > DataFlow > 노드 설정 가이드
 
 * 노드 유형은 손쉽게 플로우를 작성할 수 있게 선정의된 템플릿입니다.
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
