@@ -1,4 +1,4 @@
-# Data & Analytics > DataFlow > Console Guide
+## Data & Analytics > DataFlow > Console Guide
 
 DataFlow can be used in the following order:
 
@@ -13,26 +13,26 @@ DataFlow can be used in the following order:
     * Execute a flow.
     * Check log information to verify that the flow has run successfully.
 
-# Management
+## Management
 
 Page that queries and manages the flow metadata information. 
 Click **Data & Analytics > DataFlow > Management**.
 
 ![management_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_main.png)
 
-# Search
+## Search
 
 Search for flows with given criteria.
 
 * Searches for flows that contain search items in the name.
 
-## Filter
+### Filter
 
 Searches flows with given conditions.
 
 * Provides filtering options based on the flow status values.
 
-## Flow List
+### Flow List
 
 Display query results of flows in a table form.
 
@@ -43,7 +43,7 @@ Display query results of flows in a table form.
 * Once queried flows need to be refreshed to update Query results.
 * You can view 12 flows per page and move pages with the previous, next buttons.
 
-## Create Flow 
+### Create Flow 
 
 Create metadata to define flows.
 
@@ -51,7 +51,7 @@ Create metadata to define flows.
 * Flow names can overlap with other flows.
 * You can specify Flow Template to easily load flows of features users wants.
 
-## Change Flow
+### Change Flow
 
 Modify metadata of flows.
 
@@ -59,7 +59,7 @@ Modify metadata of flows.
 * Flow templates cannot be specified.
 * Changing flows are possible even when the flow is running.
 
-## Copy Flow
+### Copy Flow
 
 Create new metadata with existing flow definitions.
 
@@ -71,7 +71,7 @@ Create new metadata with existing flow definitions.
 * If Scheduler copies the registered flow, the copied flow does not register the Scheduler.
 * Copied flow is completely separate from an existing flow.
 
-## Delete Flow
+### Delete Flow
 
 Delete flow metadata
 
@@ -79,7 +79,7 @@ Delete flow metadata
 * Deleted flow cannot be recovered again.
 * Running flow cannot be deleted.  
 
-## Learn More 
+### Learn More 
 
 Control the action of starting or stopping flows.
 
@@ -90,14 +90,14 @@ Control the action of starting or stopping flows.
 * You cannot start a flow if it has never been saved even once.
 * A flow cannot be started the same as the flow initiated by the user, even if the flow is already being run by Scheduler.
 
-# See Flow in Details 
+## See Flow in Details 
 
 Detail page that checks the details of selected flow. 
 Go to **Data & Analytics > DataFlow > Management > Click one of the flows**. 
 You can adjust the screen ratio by moving the boundary between the flow list area and the flow detail view area. 
 You can also adjust the screen proportion to specified percentage by using Resize Area button located in the upper right corner of Flow detail view area.
 
-## Basic Information 
+### Basic Information 
 
 Displays detailed flow metadata.
 
@@ -107,18 +107,18 @@ Displays detailed flow metadata.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
 * Display the total running time at the time of the most recent run.
 
-## Basic Information - View Logs
+### Basic Information - View Logs
 
 * You can check Log information for current running flow directly through the View Logs.
 * You can view logs for the recent 15 minutes.
 
-## Basic Information - Scheduling
+### Basic Information - Scheduling
 
 * Scheduling feature allows you to schedule flow execution.
 * If a flow is already running when the start time registered with Scheduler has arrived, the execution by Scheduler fails.
 * **Currently, only the Scheduled Execution feature is supported. Additional features will be supported in the future.**
 
-## Flow Information
+### Flow Information
 
 Define a flow logic.
 
@@ -160,7 +160,7 @@ Define a flow logic.
         * Saved flows can be requested to start.
         * When saving, you can enter the commit name to record changes made.
 
-## Modification History
+### Modification History
 
 Displays the history of flow modification.
 
@@ -170,7 +170,7 @@ Displays the history of flow modification.
 * Display the commit name entered during Save/Temporarily Save.
 * Display how the method was saved at the time, whether it was saved/temporarily saved.
 
-## Execution History
+### Execution History
 
 Display history of the request to start/end flow.
 
@@ -181,7 +181,7 @@ Display history of the request to start/end flow.
 * Displays the state of flow due to the requested behavior.
 * If it is a running flow, new window allows to view detailed flow status information.
 
-# Monitoring 
+## Monitoring 
 
 Display Monitoring information for running flow or node. 
 Click **Data & Analytics > DataFlow > Monitoring**. 
@@ -190,7 +190,7 @@ Also you can adjust screen proportion to the specified percentage by using the R
 
 ![monitoring.png](http://static.toastoven.net/prod_dataflow/console_user_guide/monitoring.png)
 
-## Flow List
+### Flow List
 
 Display a list of flows that can be monitored.
 
@@ -199,7 +199,7 @@ Display a list of flows that can be monitored.
 * By collapsing the list, you can expand the detailed page for monitoring.
 * You can also check Monitoring information of deleted flows through the View button.
 
-## Flow Screen Area
+### Flow Screen Area
 
 Area that displays the appearance of flow.
 
@@ -207,7 +207,7 @@ Area that displays the appearance of flow.
 * You can select a node to view monitoring information specific to the respective node.
 * You can modify the flow screen to position overall graph as desired.
 
-## Monitoring Area
+### Monitoring Area
 
 It is area to display the monitoring chart.
 
@@ -230,20 +230,20 @@ It is area to display the monitoring chart.
     * Chart
         * You can zoom the Chart zoom-in/zoom-out by specifying the chart range.
 
-# Template
+## Template
 
 It is a page that queries, creates, and modifies the template metadata information. 
 Click **Data & Analytics>DataFlow> Templates**.
 
 ![template_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_main.png)
 
-## Search
+### Search
 
 Searche templates based on the given criteria.
 
 * If Search by template name, it searches for templates that contain search terms in their names.
 
-## Query Templates
+### Query Templates
 
 Display Query result template in a table form.
 
@@ -253,7 +253,7 @@ Display Query result template in a table form.
 * For once queried templates, you have to click Refresh to update query results.
 * You can query 12 templates per page and navigate through the Previous and Next buttons.
 
-## Create Templates
+### Create Templates
 
 Create metadata to define a template.
 
@@ -262,14 +262,14 @@ Create metadata to define a template.
 * Flow templates cannot be specified.
 * Created templates can be found in the node type list when defining flows or template logics.
 
-## Change Templates
+### Change Templates
 
 Modify metadata in the template.
 
 * Modify the existing template name and description to be reflected in the template metadata.
 * Flow templates cannot be specified.
 
-## Copy Templates
+### Copy Templates
 
 Create new metadata with existing template definitions.
 
@@ -277,14 +277,14 @@ Create new metadata with existing template definitions.
 * Copy the flow logic of the existing template as it is.
 * Copied template is completely separate template from the existing template.
 
-## Delete Templates
+### Delete Templates
 
 Delete template metadata
 
 * Completely delete template metadata
 * Deleted template cannot be recovered. 
 
-# See Templates in Details
+## See Templates in Details
 
 Detailed page that displays information in detail of Selected Flow.  
 Go to **Data & Analytics > DataFlow > Templates > and Click one of the template**
@@ -293,7 +293,7 @@ Also you can adjust the screen proportion to the specified percentage by using t
 
 ![template_detail.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_detail.png)
 
-## Template Information
+### Template Information
 
 Define template logics
 

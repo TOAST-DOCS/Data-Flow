@@ -1,4 +1,4 @@
-# Node Type
+## Node Type
 
 * Node types are pre-defined templates for easy flow creation.
 * Types of node types are Source, Filter, Branch, and Sink.
@@ -79,7 +79,7 @@
     * DSL expression at 03:00 hour on the day the flow started
         * => {{ executionTime | startOf: DAY | addTime: 3, HOUR }}
 
-# Source
+## Source
 
 * Node type that defines an endpoint that imports data to the flow.
 
@@ -178,7 +178,7 @@
 {"log":"CloudTrail", "Result": "Data"}
 ```
 
-# Filter
+## Filter
 
 * Node type that defines how to handle imported data.
 
@@ -273,7 +273,7 @@
 }
 ```
 
-# Sink
+## Sink
 
 * Type of node that defines an endpoint to load data that has completed filter operation.
 
@@ -544,7 +544,7 @@
 2022-11-21T07:49:20.000Z e5ef7ece9bb0 %{message}
 ```
 
-# Branch
+## Branch
 
 * Node type that defines flow Quarter in accordance with imported data value.
 
