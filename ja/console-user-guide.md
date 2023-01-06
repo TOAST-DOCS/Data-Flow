@@ -18,7 +18,7 @@ DataFlowは、次の順序で使用できます。
 フローメタデータ情報を照会、管理するページです。
 **Data & Analytics > DataFlow > 管理**をクリックします。
 
-![management_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_main.png)
+![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main.png)
 
 ## 検索
 
@@ -101,7 +101,7 @@ DataFlowは、次の順序で使用できます。
 
 詳細なフローメタデータを表示します。
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_basicinfo.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo.png)
 
 * フロー作成時に入力した名前と説明情報を表示します。
 * フロー作成日とコンストラクタ名をはじめ、最近の修正日/修正者、最近の実行日/実行者情報を表示します。
@@ -122,7 +122,7 @@ DataFlowは、次の順序で使用できます。
 
 フローロジックを定義します。
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_detail.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail.png)
 
 * フロー設定からノードタイプまたはテンプレートからフローコンポーネントを呼び出してフローを定義します。
     * 折りたたみおよび展開アイコンをクリックしてフロー画面を拡張または縮小できます。
@@ -164,7 +164,7 @@ DataFlowは、次の順序で使用できます。
 
 フローを修正した履歴を表示します。
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_flowhistory.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory.png)
 
 * 修正した日付とユーザー情報を表示します。
 * 保存/一時保存時に入力したコミット名を表示します。
@@ -174,7 +174,7 @@ DataFlowは、次の順序で使用できます。
 
 フロー開始/終了リクエストした履歴を表示します。
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_actionhistory.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory.png)
 
 * 実行した日付とユーザー情報を表示します。
 * リクエストした動作を表示します。
@@ -188,7 +188,7 @@ DataFlowは、次の順序で使用できます。
 フロー画面領域とモニタリング領域の境界を動かして画面比率を調整できます。
 またモニタリング領域の右上にある領域サイズ調節アイコンをクリックして、指定された画面比率に調整できます。
 
-![monitoring.png](http://static.toastoven.net/prod_dataflow/console_user_guide/monitoring.png)
+![monitoring.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/monitoring.png)
 
 ### フローリスト
 
@@ -235,7 +235,7 @@ DataFlowは、次の順序で使用できます。
 テンプレートメタデータ情報を照会、作成および修正するページです。
 **Data & Analytics > DataFlow > テンプレート**をクリックします。
 
-![template_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_main.png)
+![template_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_main.png)
 
 ### 検索
 
@@ -291,7 +291,7 @@ DataFlowは、次の順序で使用できます。
 テンプレートリスト領域とテンプレート詳細表示領域の境界を動かして画面比率を調整できます。
 またテンプレート詳細表示領域の右上にある領域サイズ調節アイコンをクリックして、指定された画面比率に調整できます。
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_detail.png)
 
 ### テンプレート情報
 

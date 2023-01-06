@@ -2,7 +2,7 @@
 
 ### 플로우 생성
 
-![chapter1.png](http://static.toastoven.net/prod_dataflow/tutorial/chapter1.png)
+![chapter1.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter1.png)
 
 ① **플로우 생성**을 클릭합니다.
 ② **플로우 이름**을 입력합니다.
@@ -11,7 +11,7 @@
 
 ### Log & Crash Search 노드 정의
 
-![chapter2.png](http://static.toastoven.net/prod_dataflow/tutorial/chapter2.png)
+![chapter2.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter2.png)
 
 위 항에서 생성한 플로우를 선택한 뒤 아래와 같이 설정합니다.
 
@@ -20,7 +20,7 @@
 
 ### Cipher 노드 정의
 
-![chapter3.png](http://static.toastoven.net/prod_dataflow/tutorial/chapter3.png)
+![chapter3.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter3.png)
 
 Cipher 노드를 정의하려면 **Cipher_2** 노드를 클릭한 뒤 아래와 같이 설정합니다.
 
@@ -30,7 +30,7 @@ Cipher 노드를 정의하려면 **Cipher_2** 노드를 클릭한 뒤 아래와 
 
 ### Object Storage 노드 정의와 플로우 저장
 
-![chapter4.png](http://static.toastoven.net/prod_dataflow/tutorial/chapter4.png)
+![chapter4.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter4.png)
 
 Object Storage 노드를 정의하려면 **Object Storage_3** 노드를 클릭한 뒤 아래와 같이 설정합니다.
 
@@ -41,7 +41,7 @@ Object Storage 노드를 정의하려면 **Object Storage_3** 노드를 클릭�
 
 ### 플로우 실행
 
-![chapter5.png](http://static.toastoven.net/prod_dataflow/tutorial/chapter5.png)
+![chapter5.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter5.png)
 
 ① 플로우를 선택합니다.
 ② 더 보기 아이콘을 클릭해 메뉴를 펼칩니다.
@@ -49,7 +49,7 @@ Object Storage 노드를 정의하려면 **Object Storage_3** 노드를 클릭�
 
 ### 실행 이후 작업
 
-![chapter6.png](http://static.toastoven.net/prod_dataflow/tutorial/chapter6.png)
+![chapter6.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter6.png)
 
 ① 플로우를 시작하고 1~2분 경과 뒤에 **새로 고침**을 클릭합니다.
 ② **실행 상태**가 초록색으로 변경됩니다.

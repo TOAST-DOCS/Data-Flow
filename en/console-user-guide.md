@@ -18,7 +18,7 @@ DataFlow can be used in the following order:
 Page that queries and manages the flow metadata information. 
 Click **Data & Analytics > DataFlow > Management**.
 
-![management_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_main.png)
+![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main.png)
 
 ## Search
 
@@ -101,7 +101,7 @@ You can also adjust the screen proportion to specified percentage by using Resiz
 
 Displays detailed flow metadata.
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_basicinfo.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo.png)
 
 * Display the name and description information entered when creating a flow.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
@@ -122,7 +122,7 @@ Displays detailed flow metadata.
 
 Define a flow logic.
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_detail.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail.png)
 
 * Define a flow by importing flow components from Node type or Template from flow settings.
     * The Collapse/Expand button allows to zoom-in/zoom-out the flow screen.
@@ -164,7 +164,7 @@ Define a flow logic.
 
 Displays the history of flow modification.
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_flowhistory.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory.png)
 
 * Display the date and user information that has been modified.
 * Display the commit name entered during Save/Temporarily Save.
@@ -174,7 +174,7 @@ Displays the history of flow modification.
 
 Display history of the request to start/end flow.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_actionhistory.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory.png)
 
 * Display the date of execution and user information.
 * Displays the requested behavior.
@@ -188,7 +188,7 @@ Click **Data & Analytics > DataFlow > Monitoring**.
 You can adjust the screen ratio by moving boundaries between flow screen area and monitoring area. 
 Also you can adjust screen proportion to the specified percentage by using the Resize Area button located in upper right corner of the Monitoring area.
 
-![monitoring.png](http://static.toastoven.net/prod_dataflow/console_user_guide/monitoring.png)
+![monitoring.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/monitoring.png)
 
 ### Flow List
 
@@ -235,7 +235,7 @@ It is area to display the monitoring chart.
 It is a page that queries, creates, and modifies the template metadata information. 
 Click **Data & Analytics>DataFlow> Templates**.
 
-![template_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_main.png)
+![template_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_main.png)
 
 ### Search
 
@@ -291,7 +291,7 @@ Go to **Data & Analytics > DataFlow > Templates > and Click one of the template*
 You can adjust the screen ratio by moving boundaries between the template list area and See Templates in Details. 
 Also you can adjust the screen proportion to the specified percentage by using the Resize Area button located in upper right corner of See Templates in Details.
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_detail.png)
 
 ### Template Information
 
