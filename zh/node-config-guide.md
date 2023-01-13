@@ -1,4 +1,4 @@
-## Node Type
+## Data & Analytics > DataFlow > Node Type Guide
 
 * Node types are pre-defined templates for easy flow creation.
 * Types of node types are Source, Filter, Branch, and Sink.
