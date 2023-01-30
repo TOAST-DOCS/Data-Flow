@@ -1,4 +1,4 @@
-## ノードタイプ
+## Data & Analytics > DataFlow > ノードタイプガイド
 
 * ノードタイプは、手軽にフローを作成できるように先定義されたテンプレートです。
 * ノードタイプの種類はSource、Filter、Branch、Sinkです。

@@ -18,7 +18,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 플로우 메타데이터 정보를 조회하고 관리하는 페이지입니다.
 **Data & Analytics > DataFlow > 관리**를 클릭합니다.
 
-![management_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_main.png)
+![management_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_main.png)
 
 ## 검색
 
@@ -101,7 +101,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 상세한 플로우 메타데이터를 표시합니다.
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_basicinfo.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo.png)
 
 * 플로우 생성 시 입력한 이름과 설명 정보를 표시합니다.
 * 플로우 생성 날짜와 생성자 이름을 비롯한 최근 수정일/수정자, 최근 실행일/실행자 정보를 표시합니다.
@@ -122,7 +122,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우 로직을 정의합니다.
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_detail.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_detail.png)
 
 * 플로우 설정으로부터 노드 유형이나 템플릿으로부터 플로우 구성 요소를 불러와 플로우를 정의합니다.
     * 접기 및 펼치기 아이콘을 클릭해 플로우 화면을 확장하거나 축소할 수 있습니다.
@@ -164,7 +164,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우를 수정한 이력을 표시합니다.
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_flowhistory.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_flowhistory.png)
 
 * 수정한 날짜와 사용자 정보를 표시합니다.
 * 저장/임시 저장 시 입력한 커밋명을 표시합니다.
@@ -174,7 +174,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우 시작/종료 요청한 이력을 표시합니다.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/console_user_guide/management_actionhistory.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory.png)
 
 * 실행한 날짜와 사용자 정보를 표시합니다.
 * 요청한 동작을 표시합니다.
@@ -188,7 +188,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 플로우 화면 영역과 모니터링 영역 경계를 움직여 화면 비율을 조정할 수 있습니다.
 또한 모니터링 영역의 오른쪽 상단에 위치한 영역 크기 조절 아이콘을 클릭해 지정된 화면 비율로 조정할 수 있습니다.
 
-![monitoring.png](http://static.toastoven.net/prod_dataflow/console_user_guide/monitoring.png)
+![monitoring.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/monitoring.png)
 
 ### 플로우 목록
 
@@ -235,7 +235,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 템플릿 메타데이터 정보를 조회하고 생성 및 수정하는 페이지입니다.
 **Data & Analytics > DataFlow > 템플릿**을 클릭합니다.
 
-![template_main.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_main.png)
+![template_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_main.png)
 
 ### 검색
 
@@ -291,7 +291,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 템플릿 목록 영역과 템플릿 상세 보기 영역 경계를 움직여 화면 비율을 조정할 수 있습니다.
 또한 템플릿 상세 보기 영역의 오른쪽 상단에 위치한 영역 크기 조절 아이콘을 클릭해 지정된 화면 비율로 조정할 수 있습니다.
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail.png)
 
 ### 템플릿 정보
 
