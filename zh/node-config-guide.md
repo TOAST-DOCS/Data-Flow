@@ -117,8 +117,12 @@
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
 | Appkey | - | string | Enter the app key for Log&Crash Search. |  |
-| Query Start time | - | string | Enter the start time of Log Query. | [Note](#dsl) |
-| Log End time | - | string | Enter the completed time of log query. |  |
+| Query Start time | - | string | Enter the start time of log query. | [Note](#dsl) |
+| Query End time | - | string | Enter the end time of log query. |  |
+
+* Set the query start and end time
+    * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
+
 
 ### Message imported by codec
 
@@ -156,6 +160,9 @@
 | Appkey | - | string | Enter the app key for CloudTrail. |  |
 | Query Start time | - | string | Enter the start time of data Query. | [Note](#dsl) |
 | Log End time | - | string | Enter the end time of data Query. |  |
+
+* Set the query start and end time
+    * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
 
 ### Message imported by codec
 

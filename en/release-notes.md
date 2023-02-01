@@ -1,4 +1,11 @@
-### 2022.12.27
+### January 6, 2023
+
+#### Bug Fixes
+
+* Fixed an issue where the first button click after adding a node in the flow edit screen does not work.
+* Fixed an issue where a field is not added when the cipher node is configured to add fields.
+
+### December 27, 2022
 
 #### Release of a New Service
 
