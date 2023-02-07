@@ -43,6 +43,22 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 한번 조회된 플로우는 **새로 고침**을 눌러야 조회 결과를 갱신합니다.
 * 한 페이지당 12개의 플로우를 조회하며, **이전** 및 **다음**을 클릭해 페이지를 이동할 수 있습니다.
 
+#### 플로우 상태 정보
+
+| 플로우 실행 상태                                         | 설명 |
+|---------------------------------------------------| --- |
+| <span style="color:black">START\_REQUESTED</span> | 플로우 실행 요청 |
+| <span style="color:#880808">START\_FAILED</span>  | 플로우 실행 요청 실패 |
+| <span style="color:#00ffff">STARTING</span>       | 플로우 실행 요청이 성공적으로 전달되어 리소스(Quota)를 확보하는 상태 |
+| <span style="color:orange">QUOTA\_EXCEEDED</span> | 플로우가 실행 가능한 리소스(Quota)를 초과하여 플로우 실행이 실패한 상태 |
+| <span style="color:#088f8f">PREPARING</span>      | 플로우 실행 준비 상태 |
+| <span style="color:#aaff00">RUNNING</span>        | 플로우가 성공적으로 실행하는 상태 |
+| <span style="color:red">ERROR</span>              | 플로우 동작 중 에러 발생 |
+| <span style="color:red">UNKNOWN</span>            | 이유를 알 수 없는 에러 |
+| <span style="color:black">STOP\_REQUESTED</span>  | 플로우 종료 요청 |
+| <span style="color:#880808">STOP\_FAILED</span>   | 플로우 종료 명령 전달 실패 |
+| <span style="color:#ee4b2b">STOPPED</span>        | 플로우 종료 성공 |
+
 ### 플로우 생성
 
 플로우를 정의할 메타데이터를 생성합니다.
