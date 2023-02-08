@@ -47,17 +47,17 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 | 플로우 실행 상태                                         | 설명 |
 |---------------------------------------------------| --- |
-| <span style="color:black">START\_REQUESTED</span> | 플로우 실행 요청 |
-| <span style="color:#880808">START\_FAILED</span>  | 플로우 실행 요청 실패 |
-| <span style="color:#00ffff">STARTING</span>       | 플로우 실행 요청이 성공적으로 전달되어 리소스(Quota)를 확보하는 상태 |
-| <span style="color:orange">QUOTA\_EXCEEDED</span> | 플로우가 실행 가능한 리소스(Quota)를 초과하여 플로우 실행이 실패한 상태 |
-| <span style="color:#088f8f">PREPARING</span>      | 플로우 실행 준비 상태 |
-| <span style="color:#aaff00">RUNNING</span>        | 플로우가 성공적으로 실행하는 상태 |
-| <span style="color:red">ERROR</span>              | 플로우 동작 중 에러 발생 |
-| <span style="color:red">UNKNOWN</span>            | 이유를 알 수 없는 에러 |
-| <span style="color:black">STOP\_REQUESTED</span>  | 플로우 종료 요청 |
-| <span style="color:#880808">STOP\_FAILED</span>   | 플로우 종료 명령 전달 실패 |
-| <span style="color:#ee4b2b">STOPPED</span>        | 플로우 종료 성공 |
+| <span style="color:black">START\_REQUESTED</span> | 플로우 실행이 요청되었습니다. |
+| <span style="color:#880808">START\_FAILED</span>  | 플로우 실행 요청에 실패했습니다. |
+| <span style="color:#00ffff">STARTING</span>       | 플로우 실행을 위한 리소스를 파악하는 중입니다. |
+| <span style="color:orange">QUOTA\_EXCEEDED</span> | 플로우 실행을 위한 리소스가 부족해 실행에 실패했습니다. |
+| <span style="color:#088f8f">PREPARING</span>      | 플로우 실행 준비가 완료되었습니다. |
+| <span style="color:#aaff00">RUNNING</span>        | 플로우가 실행 중입니다. |
+| <span style="color:red">ERROR</span>              | 플로우 실행 과정 중 통신 장애나 인증 불가 등으로 인해 에러가 발생했습니다. 지속적으로 <b>ERROR</b>가 발생할 경우 고객센터로 문의해주시기 바랍니다. |
+| <span style="color:red">UNKNOWN</span>            | 플로우 실행 과정에서 알 수 없는 원인으로 인해 에러가 발생했습니다. 지속적으로 <b>UNKNOWN</b>이 발생할 경우 고객센터로 문의해주시기 바랍니다. |
+| <span style="color:black">STOP\_REQUESTED</span>  | 플로우 종료가 요청되었습니다. |
+| <span style="color:#880808">STOP\_FAILED</span>   | 플로우 종료 요청에 실패했습니다. |
+| <span style="color:#ee4b2b">STOPPED</span>        | 플로우가 종료되었습니다. |
 
 ### 플로우 생성
 
