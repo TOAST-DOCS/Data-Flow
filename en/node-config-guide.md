@@ -88,10 +88,10 @@
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
 | Type | - | string | Create `type` field with the value given in each message. |  |
-| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br>If Property value is true, you can check the event metric information for node in the Monitoring tab. |  |
-| ID | - | string | Sets Node ID<br>Mark the Node name on the chart board with values defined in this property. |  |
+| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br/>If Property value is true, you can check the event metric information for node in the Monitoring tab. |  |
+| ID | - | string | Sets Node ID<br/>Mark the Node name on the chart board with values defined in this property. |  |
 | Tag | - | array of string | Add the tag of given value to each message. |  |
-| Add Field | - | Hash | You can add a custom field<br>You can add fields by calling in the value of each field with `%{[depth1_field]}`. |  |
+| Add Field | - | Hash | You can add a custom field<br/>You can add fields by calling in the value of each field with `%{[depth1_field]}`. |  |
 
 ## Example of adding fields
 
@@ -184,6 +184,219 @@
 ``` js
 {"log":"CloudTrail", "Result": "Data"}
 ```
+## Source > (NHN Cloud) OBS
+
+### Node Description
+
+* Node that receives data from Object Storage of NHN Cloud.
+* Based on the object creation time, data is read from the object created the earliest.
+
+### Property Description 
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| Bucket | - | string | Enter a bucket name to read data. |  |
+| Region | - | string | Enter region information configured in the storage. |  |
+| Secret Key | - | string | Enter the credential secret key issued by S3. |  |
+| Access key | - | string | Enter the credential access key issued by S3. |  |
+| List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
+| New file checked or not | - | boolean | If the property value is true, the newly added object is also read. |  |
+| Prefix | - | string | Enter a prefix of an object to read. |  |
+| Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
+| Delete | false | boolean | If the property value is true, delete the object read. |  |
+
+### Message imported by codec
+
+#### Unselected or plain
+
+``` js
+{
+    "message":"{\\\"S3\\\":\\\"Storage\\\", \\\"Read\\\": \\\"Object\\\", \\\"Result\\\": \\\"Data\\\"}"
+}
+```
+
+#### json
+
+``` js
+{"S3":"Storage", "Read": "Object", "Result": "Data"}
+```
+
+## Source > (Amazon) S3
+
+### Node Description
+
+* Node for uploading data to Amazon S3.
+* Based on the object creation time, data is read from the object created the earliest.
+
+### Property Description 
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| Endpoint | - | string | Enter endpoint for S3 storage. | Only HTTP and HTTPS URL types can be entered. |
+| Bucket | - | string | Enter a bucket name to read data. |  |
+| Region | - | string | Enter region information configured in the storage. |  |
+| Session token | - | string | Enter AWS session token. |  |
+| Secret Key | - | string | Enter the credential secret key issued by S3. |  |
+| Access key | - | string | Enter the credential access key issued by S3. |  |
+| List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
+| Meta information included or not | - | boolean | Determines whether to include the metadata of S3 objects as keys. | (Last modified time, Content-Type, etc.) |
+| Prefix | - | string | Enter a prefix of an object to read. |  |
+| Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
+| Additional settings | - | hash | Enter additional settings to use when connecting to the S3 server. | See the following link for a full list of available settings.<br/>https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html<br/>Example)<br/>{<br/>"force_path_style": true<br/>} |
+
+### Message imported by codec
+
+#### Unselected or plain
+
+``` js
+{
+    "message":"{\\\"S3\\\":\\\"Storage\\\", \\\"Read\\\": \\\"Object\\\", \\\"Result\\\": \\\"Data\\\"}"
+}
+```
+
+#### json
+
+``` js
+{"S3":"Storage", "Read": "Object", "Result": "Data"}
+```
+
+## Source > (Apache) Kafka
+
+### Node Description
+
+* Node that receives data from Kafka.
+
+### Property Description 
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| Broker server list | localhost:9092 | string | Enter the Kafka broker server. Separate multiple servers with commas ( , ). | [bootstrap.servers](https://kafka.apache.org/documentation/#consumerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| Consumer group ID | dataflow | string | Enter an ID that identifies the Kafka Consumer Group. | [group.id](https://kafka.apache.org/documentation/#consumerconfigs_group.id) |
+| Internal topic excluded or not | true | boolean |  | [exclude.internal.topics](https://kafka.apache.org/documentation/#consumerconfigs_exclude.internal.topics)<br/>Exclude internal topics such as `__consumer_offsets` from recipients. |
+| Topic pattern | - | string | Enter a Kafka topic patter to receive messages. | ex) `*-messages` |
+| Client ID | dataflow | string | Enter an ID to identify Kafka Consumer. | [client.id](https://kafka.apache.org/documentation/#consumerconfigs_client.id) |
+| Partition allocation policy | - | string | Determines how Kafka assigns partitions to consumer groups when receiving messages. | [partition.assignment.strategy](https://kafka.apache.org/documentation/#consumerconfigs_partition.assignment.strategy)<br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
+| Offset settings | none | enum | Enter  | [auto.offset.reset](https://kafka.apache.org/documentation/#consumerconfigs_auto.offset.reset)<br/>All of the settings below preserve the existing offset if the consumer group already exists.<br/>none: Return an error when there is no consumer group.<br/>earliest: Initialize to the partition’s oldest offset if there is no consumer group.<br/>latest: Initialize to the partition’s most recent offset if there is no consumer group. |
+| Offset commit cycle | 5000 | number | Enter a cycle to update the consumer group offset. | [auto.commit.internal.ms](https://kafka.apache.org/documentation/#consumerconfigs_auto.commit.interval.ms) |
+| Offset auto commit or not | true | boolean |  | [enable.auto.commit](https://kafka.apache.org/documentation/#consumerconfigs_enable.auto.commit) |
+| Key deserialization type | org.apache.kafka.common.serialization.StringDeserializer | string | Enter how to serialize the keys of incoming messages. | [key.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_key.deserializer) |
+| Message deserialization type | org.apache.kafka.common.serialization.StringDeserializer | string | Enter how to serialize the values of incoming messages. | [value.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_value.deserializer) |
+| Metadata created or not | false | boolean | If the property value is true, creates a metadata field for the message. You need to combine filter node types to utilize metadata fields (see the guide below). | fields to be created are as follows.<br/>topic: Topic that receives message<br/>consumer_group: Consumer group ID used to receive messages<br/>partition: Topic partition number that receives messages<br/>offset: Partition offset that receives messages<br/>key: ByteBuffer that includes message keys |
+| Minimum Fetch size | - | number | Enter the minimum size of data to be imported in one fetch request. | [fetch.min.bytes](https://kafka.apache.org/documentation/#consumerconfigs_fetch.min.bytes) |
+| Transfer buffer size | - | number | Enter size (byte) of TCP send buffer used to transfer data.  | [send.buffer.bytes](https://kafka.apache.org/documentation/#consumerconfigs_send.buffer.bytes) |
+| Retry request cycle | 100 | number | Enter the retry cycle (ms) when a transfer request fails. | [retry.backoff.ms](https://kafka.apache.org/documentation/#consumerconfigs_retry.backoff.ms) |
+| Cyclic redundancy check | true | enum | Check the message CRC. | [check.crcs](https://kafka.apache.org/documentation/#consumerconfigs_check.crcs) |
+| Server reconnection cycle | 50 | number | Enter a retry cycle when connecting to broker server fails. | [reconnect.backoff.ms](https://kafka.apache.org/documentation/#consumerconfigs_reconnect.backoff.ms) |
+| Poll timeout | 100 | number | Enter the timeout (ms) for requests to fetch new messages from the topic. |  |
+| Maximum fetch size per partition | - | number | Enter the maximum size to be imported in one fetch request per partition. | [max.partition.fetch.bytes](https://kafka.apache.org/documentation/#consumerconfigs_max.partition.fetch.bytes) |
+| Server request timeout | 30000 | number | Enter the timeout (ms) for sent request. | [request.timeout.ms](https://kafka.apache.org/documentation/#consumerconfigs_request.timeout.ms) |
+| TCP receive buffer size | - | number | Enter the size in bytes of the TCP receive buffer used to read data. | [receive.buffer.bytes](https://kafka.apache.org/documentation/#consumerconfigs_receive.buffer.bytes) |
+| session_timeout_ms | - | number | Enter a session timeout (ms) of consumer.<br/>If a consumer fails to send a heartbeat within that time, it is excluded from the consumer group. | [session.timeout.ms](https://kafka.apache.org/documentation/#consumerconfigs_session.timeout.ms) |
+| Maximum poll message count | - | number | Enter the maximum number of messages to retrieve in one poll request. | [max.poll.records](https://kafka.apache.org/documentation/#consumerconfigs_max.poll.records) |
+| Maximum poll cycle | - | number | Enter the maximum cycle (ms) between poll requests. | [max.poll.interval.ms](https://kafka.apache.org/documentation/#consumerconfigs_max.poll.interval.ms) |
+| Maximum Fetch size | - | number | Enter the maximum size to be imported in one fetch request. | [fetch.max.bytes](https://kafka.apache.org/documentation/#consumerconfigs_fetch.max.bytes) |
+| Maximum Fetch wait time | - | number | Enter the wait time (ms) to send a fetch request when data is not gathered as much as the minimum fetch size setting. | [fetch.max.wait.ms](https://kafka.apache.org/documentation/#consumerconfigs_fetch.max.wait.ms) |
+| Consumer health check cycle | - | number | Enter a cycle of consumer sending heartbeat. | [heartbeat.interval.ms](https://kafka.apache.org/documentation/#consumerconfigs_heartbeat.interval.ms) |
+| Metadata update cycle | - | number | Enter the cycle (ms) to update the partition, broker server status, etc. | [metadata.max.age.ms](https://kafka.apache.org/documentation/#producerconfigs_metadata.max.age.ms) |
+| IDLE timeout | - | number | Enter the wait time (ms) to close a connection without data transmission. | [connections.max.idle.ms](https://kafka.apache.org/documentation/#consumerconfigs_connections.max.idle.ms) |
+
+### Metadata Field Usage
+
+* When the metadata creation is enabled, metadata is created but is not displayed in plugins such as Filter and Sink unless you input data into normal fields.
+* Message examples after Kafka plugin when the setting is enabled
+    ``` js
+    {
+    // normal fields
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "kafka topic message..."
+
+    // metadata field
+    // Cannot be used until user input data into normal fields
+    // "[@metadata][kafka][topic]": "my-topic"
+    // "[@metadata][kafka][consumer_group]": "my_consumer_group"
+    // "[@metadata][kafka][partition]": "1"
+    // "[@metadata][kafka][offset]": "123"
+    // "[@metadata][kafka][key]": "my_key"
+    // "[@metadata][kafka][timestamp]": "-1"
+}
+        ```
+
+* There is an option to add fields in this Kafka Source plug-in, but adding fields cannot be performed at the same time as data is imported.
+* Add as a general field through the additional field options among the common settings of any Filter plug-in.
+    * Example of field additional options
+        ```js
+        {
+    "kafka_topic": "%{[@metadata][kafka][topic]}"
+    "kafka_consumer_group": "%{[@metadata][kafka][consumer_group]}"
+    "kafka_partition": "%{[@metadata][kafka][partition]}"
+    "kafka_offset": "%{[@metadata][kafka][offset]}"
+    "kafka_key": "%{[@metadata][kafka][key]}"
+    "kafka_timestamp": "%{[@metadata][kafka][timestamp]}"
+}
+                ```
+    * Message examples after alter (additional field option) plugin
+        ``` js
+        {
+    // normal field
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "kafka topic message..."
+    "kafka_topic": "my-topic"
+    "kafka_consumer_group": "my_consumer_group"
+    "kafka_partition": "1"
+    "kafka_offset": "123"
+    "kafka_key": "my_key"
+    "kafka_timestamp": "-1"
+
+    // metadata field
+    // "[@metadata][kafka][topic]": "my-topic"
+    // "[@metadata][kafka][consumer_group]": "my_consumer_group"
+    // "[@metadata][kafka][partition]": "1"
+    // "[@metadata][kafka][offset]": "123"
+    // "[@metadata][kafka][key]": "my_key"
+    // "[@metadata][kafka][timestamp]": "-1"
+}
+                ```
+        
+### plain codec examples
+
+#### Input message
+
+```js
+{
+    "hello": "world!",
+    "hey": "foo"
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "{\"hello\":\"world\",\"hey\":\"foo\"}"
+}
+```
+
+### json codec examples
+
+#### Input messages
+
+```js
+{
+    "hello": "world!",
+    "hey": "foo"
+}
+```
+
+#### Output message
+
+```js
+{
+    "hello": "world!",
+    "hey": "foo"
+}
+```
 
 ## Filter
 
@@ -193,12 +406,12 @@
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br>If Property value is true, you can check the event metric information for node in the Monitoring tab. |  |
-| ID | - | string | Sets Node ID<br>Mark node name on chart board with values defined in this property. |  |
+| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br/>If Property value is true, you can check the event metric information for node in the Monitoring tab. |  |
+| ID | - | string | Sets Node ID<br/>Mark node name on chart board with values defined in this property. |  |
 | Add Tag | - | array of string | Add Tag of each message |  |
 | Delete Tag | - | array of string | Delete Tag that was given to each message |  |
 | Delete Field | - | array of string | Delete Field of each message  |  |
-| Add Field | - | Hash | You can add a custom field<br>You can add fields by calling in the value of each Field with `%{[depth1_field]}`. |  |
+| Add Field | - | Hash | You can add a custom field<br/>You can add fields by calling in the value of each Field with `%{[depth1_field]}`. |  |
 
 ## Cipher
 
