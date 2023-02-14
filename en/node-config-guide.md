@@ -492,6 +492,192 @@
     "message": "oZA6CHd4OwjPuS+MW0ydCU9NqbPQHGbPf4rll2ELzB8y5pyhxF6UhWZq5fxrt0/e" 
 }
 ```
+## Filter > (Logstash) Grok
+
+### Node Description
+
+* Node that parses a string according to a set rule and stores it in each set field.
+
+### Property Description 
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| Match | - | hash | Enter the information of the string to be parsed. |  |
+| Pattern definition | - | hash | Enter a custom pattern as a regular expression for the rule of tokens to be parsed. | Check the link below for system defined patterns.<br/>http://grokdebug.herokuapp.com/patterns |
+| Failure tag | - | array of strings | Enter the tag name to define if string parsing fails. |  |
+| Timeout | 30000 | numeric | Enter the amount of time to wait for string parsing. |  |
+| Overwrite | - | array of strings | When writing a value to a designated field after parsing, if a value is already defined in the field, enter the field names to be overwritten. |  |
+| Store only values with specified names | true | boolean | If the property value is true, do not store unnamed parting results. |  |
+| Capture empty string | false | boolean | If the property value is true, store empty strings in fields. |  |
+| Close or not when match | true | boolean | If the property value is true, the grok match result will terminate the plugin. |  |
+
+### Grok parsing examples
+
+#### Condition
+
+* Match => `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} [%{HTTPDATE:timestamp}] "%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:response} %{NUMBER:bytes}" }`
+* Pattern definition => `{ "HYPHEN": "-*" }`
+
+#### Input messages
+
+```js
+{
+    "message": "127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \\\"GET /apache_pb.gif HTTP/1.0\\\" 200 2326"
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \\\"GET /apache_pb.gif HTTP/1.0\\\" 200 2326",
+    "timestamp": "10/Oct/2000:13:55:36 -0700",
+    "clientip": "127.0.0.1",
+    "verb": "GET",
+    "httpversion": "1.0",
+    "response": "200",
+    "bytes": "2326",
+    "request": "/apache_pb.gif"
+}
+```
+
+## Filter > CSV
+
+### Node Description
+
+* Node that parses a message in CSV format and stores it in a field.
+
+### Property Description 
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| Field to save | - | string | Enter the field name to save the CSV parsing result. |  |
+| Quote | " | string | Enter the character that divides the column fields. |  |
+| First line ignored or not | false | boolean | If the property value is true, the column name entered in the first row of the read data is ignored. |  |
+| Column | - | array of strings | Enter the column name. |  |
+| Separator | , | string | Enter a string to separate columns. |  |
+| Source field | message | string | Enter the field name to parse CSV. |  |
+| Schema | - | hash | Enter the name and data type of each column in the form of a dictionary. | Register separately from the fields defined in the column.<br/>The data type is basically a string, and if you need to convert to another data type, use the schema setting.<br/>Possible data types are as follows.<br/>integer, float, date, date_time, boolean |
+
+### Examples of CSV parsing without data type
+
+#### Condition
+
+* Source field => `message`
+* Column => `["one", "two", "t hree"]`
+
+#### Input messages
+
+```js
+{
+    "message": "hey,foo,\\\"bar baz\\\""
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "hey,foo,\"bar baz\"",
+    "one": "hey",
+    "t hree": "bar baz",
+    "two": "foo"
+}
+```
+
+### Examples of CSV parsing without data type
+
+#### Condition
+
+* Source field => `message`
+* Column => `["one", "two", "t hree"]`
+
+#### Input messages
+
+```js
+{
+    "message": "hey,foo,\\\"bar baz\\\""
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "hey,foo,\"bar baz\"",
+    "one": "hey",
+    "t hree": "bar baz",
+    "two": "foo"
+}
+```
+
+### Examples of CSV parsing that requires data type conversion
+
+#### Condition
+
+* Source field => `message`
+* Column => `["one", "two", "t hree"]`
+* Schema =>`{"two": "integer", "t hree": "boolean"}`
+
+#### Input messages
+
+```js
+{
+    "message": "\\\"wow hello world!\\\", 2, false"
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "\\\"wow hello world!\\\", 2, false",
+    "one": "wow hello world!",
+    "t hree": false,
+    "two": 2
+}
+```
+
+## Filter > JSON
+
+### Node Description
+
+* Node that parses a JSON string and stores it in a specified field.
+
+### Property Description 
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| Source field | message | string | Enter a field name to parse JSON strings. |  |
+| Field to save | - | string | Enter the field name to save the JSON parsing result.<br/>If no property value is specified, the result is stored in the root field. |  |
+
+### JSON 
+
+#### Condition
+
+* Source field => `message`
+* Field to store => `json_parsed_messsage`
+
+#### Input messages
+
+```js
+{
+    "message": "{\\\"json\\\": \\\"parse\\\", \\\"example\\\": \\\"string\\\"}"
+}
+```
+
+#### Output message
+
+```js
+{
+    "json_parsed_message": {
+        "json": "parse",
+        "example": "string"
+    },
+    "message": "uuid test message"
+}
+```
+
 
 ## Sink
 
@@ -501,8 +687,8 @@
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br>If property value is true, you can check the event metric information for node in the monitoring tab. |  |
-| ID | - | string | Sets Node ID<br>Mark node name on the chart board with values defined in this property. |  |
+| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br/>If property value is true, you can check the event metric information for node in the monitoring tab. |  |
+| ID | - | string | Sets Node ID<br/>Mark node name on the chart board with values defined in this property. |  |
 
 ## (NHN Cloud) Object Storage
 
@@ -521,7 +707,7 @@
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
-| File Rotation Policy | size_and_time | enum | Determines file creation rules. | size_and_time – Use file size and time to decide<br>size – Use file size to decide <br>Time – Use time to decide |
+| File Rotation Policy | size_and_time | enum | Determines file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
 | Standard time | 15 | number | Set the time to be the basis for file splitting.   | Set if file rotation policy is size_and_time or time |
 | File size | 5242880 | number | Set the size to be the basis for file splitting.   | Set when file rotation policy is size_and_time or size |
 | ACL | private | enum | Enter ACL policy to set when file is uploaded. |  |
@@ -639,7 +825,7 @@
 | Prefix | - | string | Enter Prefix before the name when uploading files. |  |
 | Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
-| File Rotation Policy | size_and_time | enum | Determine file creation rules. | size_and_time – Use file size and time to decide<br>size – Use file size to decide <br>Time – Use time to decide |
+| File Rotation Policy | size_and_time | enum | Determine file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
 | Standard time | 15 | number | Set the time to be the basis for file splitting.   | Set when the file rotation policy is size_and_time or time |
 | File size | 5242880 | number | Set the size to be the basis for file splitting.   | Set when the file rotation policy is size_and_time or size |
 | ACL | private | enum | Enter ACL policy to set when file is uploaded. |  |
@@ -692,10 +878,10 @@
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
 | Topic | - | string | Type the name of Kafka topic to which want to send message. |  |
-| Broker Server List | localhost:9092 | string | Enter Kafka Broker server. Separate multiple servers with commas (`, `). | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| Broker Server List | localhost:9092 | string | Enter Kafka Broker server. Separate multiple servers with commas (`, `). | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
 | Client ID | dataflow | string | Enter ID that identifies Kafka Producer. | [client.id](https://kafka.apache.org/documentation/#producerconfigs_client.id) |
 | Message Serialization Type | org.apache.kafka.common.serialization.StringSerializer | string | Enter how to serialize message value to send. | [value.serializer](https://kafka.apache.org/documentation/#producerconfigs_value.serializer) |
-| Compression type | none | enum | Enter how to compress data to send. | [compression.type](https://kafka.apache.org/documentation/#topicconfigs_compression.type)<br>Select out of none, gzip, snappy, lz4 |
+| Compression type | none | enum | Enter how to compress data to send. | [compression.type](https://kafka.apache.org/documentation/#topicconfigs_compression.type)<br/>Select out of none, gzip, snappy, lz4 |
 | Key Serialization Type | org.apache.kafka.common.serialization.StringSerializer | string | Enter how to serialize message key to send. | [key.serializer](https://kafka.apache.org/documentation/#producerconfigs_key.serializer) |
 | Meta data upload cycle | 300000 | number | Enter the interval (ms) at which want to update partition, broker server status, etc. | [metadata.max.age.ms](https://kafka.apache.org/documentation/#producerconfigs_metadata.max.age.ms) |
 | Maximum Request Size | 1048576 | number | Enter maximum size (byte) per transfer request. | [max.request.size](https://kafka.apache.org/documentation/#producerconfigs_max.request.size) |
@@ -707,9 +893,9 @@
 | Server Request Timeout | 40000 | number | Enter timeout (ms) for Transfer Request. | [request.timeout.ms](https://kafka.apache.org/documentation/#producerconfigs_request.timeout.ms) |
 | Meta data Query Timeout |  | number |  | [https://kafka.apache.org/documentation/#upgrade_1100_notable](https://kafka.apache.org/documentation/#upgrade_1100_notable) |
 | Transfer Buffer Size | 131072 | number | Enter size (byte) of TCP send buffer used to transfer data. | [send.buffer.bytes](https://kafka.apache.org/documentation/#producerconfigs_send.buffer.bytes) |
-| Ack Property  | 1 | enum | Enter settings to verify that messages have been received from Broker server. | [acks](https://kafka.apache.org/documentation/#producerconfigs_acks)<br>0 - Does not check if 6543eyu0=message is received.<br>1 - Leader of topic responds that the message was received without waiting for follower to copy data.<br>all - Leader of topic waits for follower to copy the data before responding that they have received the message. |
+| Ack Property  | 1 | enum | Enter settings to verify that messages have been received from Broker server. | [acks](https://kafka.apache.org/documentation/#producerconfigs_acks)<br/>0 - Does not check if 6543eyu0=message is received.<br/>1 - Leader of topic responds that the message was received without waiting for follower to copy data.<br/>all - Leader of topic waits for follower to copy the data before responding that they have received the message. |
 | Request Reconnection Cycle | 100 | number | Enter the interval (ms) to retry when transfer request fails. | [retry.backoff.ms](https://kafka.apache.org/documentation/#producerconfigs_retry.backoff.ms) |
-| Retry times | - | number | Enter the maximum times (ms) to retry when transfer request fails. | [retries](https://kafka.apache.org/documentation/#producerconfigs_retries)<br>Retrying exceeding the set value may result in data loss. |
+| Retry times | - | number | Enter the maximum times (ms) to retry when transfer request fails. | [retries](https://kafka.apache.org/documentation/#producerconfigs_retries)<br/>Retrying exceeding the set value may result in data loss. |
 
 ### Json Codec Output example exercise
 
