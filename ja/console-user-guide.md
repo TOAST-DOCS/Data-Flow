@@ -43,6 +43,22 @@ DataFlowは、次の順序で使用できます。
 * 一度照会したフローは**更新**を押すと照会結果を更新します。
 * 1ページ当り12個のフローを照会し、**前へ**および**次へ**をクリックしてページを移動できます。
 
+#### フロー状態情報
+
+| フロー実行状態                                       | 説明 |
+|---------------------------------------------------| --- |
+| <span style="color:black">START\_REQUESTED</span> | フロー実行がリクエストされました。 |
+| <span style="color:#880808">START\_FAILED</span>  | フロー実行リクエストに失敗しました。 |
+| <span style="color:#00ffff">STARTING</span>       | フロー実行のためのリソースを把握中です。 |
+| <span style="color:orange">QUOTA\_EXCEEDED</span> | フロー実行のためのリソースが足りないため実行に失敗しました。 |
+| <span style="color:#088f8f">PREPARING</span>      | フロー実行準備が完了しました。 |
+| <span style="color:#aaff00">RUNNING</span>        | フローが実行中です。 |
+| <span style="color:red">ERROR</span>              | フロー実行プロセスで通信障害または認証不可などによりエラーが発生しました。継続的に<b>ERROR</b>が発生する場合はサポートにお問い合わせください。 |
+| <span style="color:red">UNKNOWN</span>            | フロー実行プロセスで原因不明のエラーが発生しました。継続的に<b>UNKNOWN</b>が発生する場合はサポートにお問い合わせください。 |
+| <span style="color:black">STOP\_REQUESTED</span>  | フロー終了がリクエストされました。 |
+| <span style="color:#880808">STOP\_FAILED</span>   | フロー終了リクエストに失敗しました。 |
+| <span style="color:#ee4b2b">STOPPED</span>        | フローが終了しました。 |
+
 ### フローの作成
 
 フローを定義するメタデータを作成します。
