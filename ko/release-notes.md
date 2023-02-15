@@ -1,4 +1,4 @@
-## Data & Analytics > DataFlow > Release Notes
+## Data & Analytics > DataFlow > 릴리스 노트
 
 ### 2023. 02. 28.
 
