@@ -184,7 +184,7 @@
 {"log":"CloudTrail", "Result": "Data"}
 ```
 
-## Source > (NHN CLoud) OBS
+## Source > (NHN Cloud) OBS
 
 ### ノードの説明
 
