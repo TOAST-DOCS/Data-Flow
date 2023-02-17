@@ -184,7 +184,7 @@
 {"log":"CloudTrail", "Result": "Data"}
 ```
 
-## Source > (NHN Cloud) OBS
+## Source > (NHN Cloud) Object Storage
 
 ### 노드 설명
 
