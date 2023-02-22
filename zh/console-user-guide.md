@@ -43,6 +43,22 @@ Display query results of flows in a table form.
 * Once queried flows need to be refreshed to update Query results.
 * You can view 12 flows per page and move pages with the previous, next buttons.
 
+#### Flow Status Information
+
+| Flow execution status                                         | Description |
+|---------------------------------------------------| --- |
+| <span style="color:black">START_REQUESTED</span> | Flow execution requested. |
+| <span style="color:#880808">START_FAILED</span>  | Failed to request flow execution. |
+| <span style="color:#00ffff">STARTING</span>       | Identifying resources for flow execution. |
+| <span style="color:orange">QUOTA_EXCEEDED</span> | Failed to execute the flow due to insufficient resources. |
+| <span style="color:#088f8f">PREPARING</span>      | Ready to execute the flow. |
+| <span style="color:#aaff00">RUNNING</span>        | Flow is running. |
+| <span style="color:red">ERROR</span>              | An error occurred during flow execution due to communication failure or authentication failure. If <b>ERROR</b> continues to occur, contact the Customer Center. |
+| <span style="color:red">UNKNOWN</span>            | An error occurred for unknown reasons during the execution of the flow. If UNKNOWN continues to occur, contact the Customer Center. |
+| <span style="color:black">STOP_REQUESTED</span>  | Flow stop requested. |
+| <span style="color:#880808">STOP_FAILED</span>   | Failed to request flow stop. |
+| <span style="color:#ee4b2b">STOPPED</span>        | Flow is stopped. |
+
 ### Create Flow 
 
 Create metadata to define flows.

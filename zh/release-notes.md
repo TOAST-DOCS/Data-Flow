@@ -1,4 +1,25 @@
-### 2022.12.27
+## Data & Analytics > DataFlow > Release Notes
+
+### February 28, 2023
+
+#### Feature Updates
+
+* Added new nodes
+    * Source
+        * Added a feature to import data from NHN Cloud Object Storage node.
+        * Added a feature to import data through Amazon S3 interface.
+        * Added a feature to import data through Apache Kafka.
+    * Filter
+        * Added a feature to preprocess data in various ways by adding grok, json, csv nodes.
+
+### January 6, 2023
+
+#### Bug Fixes
+
+* Fixed an issue where the first button click after adding a node in the flow edit screen does not work.
+* Fixed an issue where a field is not added when the cipher node is configured to add fields.
+
+### December 27, 2022
 
 #### Release of a New Service
 
