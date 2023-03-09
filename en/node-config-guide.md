@@ -25,39 +25,39 @@
     * Returns the start time of time zone defined by `unit` from the given time.
     * **Calculate based on Korean time.**
     * ex) {{ executionTime | startOf: MINUTE }}
-    * ex) {{ 2022-11-04T13:31:28Z | startOf: MINUTE }}
+    * ex) {{ "2022-11-04T13:31:28Z" | startOf: MINUTE }}
         * => 2022-11-04T13:31:00Z
-    * ex) {{ 2022-11-04T13:31:28Z | startOf: HOUR }}
+    * ex) {{ "2022-11-04T13:31:28Z" | startOf: HOUR }}
         * => 2022-11-04T13:00:00Z
-    * ex) {{ 2022-11-04T13:31:28Z | startOf: DAY }}
+    * ex) {{ "2022-11-04T13:31:28Z" | startOf: DAY }}
         * => 2022-11-04T00:00:00Z
-    * ex) {{ 2022-11-04T13:31:28Z | startOf: MONTH }}
+    * ex) {{ "2022-11-04T13:31:28Z" | startOf: MONTH }}
         * => 2022-11-01T00:00:00Z
-    * ex) {{ 2022-11-04T13:31:28Z | startOf: YEAR }}
+    * ex) {{ "2022-11-04T13:31:28Z" | startOf: YEAR }}
         * => 2022-01-01T00:00:00Z
 * `{{ time | endOf: unit }}`
     * Returns the last time of time zone defined by `unit` from the given time.
     * **Calculate based on Korean time.**
     * ex) {{ executionTime | endOf: MINUTE }}
-    * ex) {{ 2022-11-04T13:31:28Z | endOf: MINUTE }}
+    * ex) {{ "2022-11-04T13:31:28Z" | endOf: MINUTE }}
         * => 2022-11-04T13:31:59.999999999Z
-    * ex) {{ 2022-11-04T13:31:28Z | endOf: HOUR }}
+    * ex) {{ "2022-11-04T13:31:28Z" | endOf: HOUR }}
         * => 2022-11-04T13:59:59.999999999Z
-    * ex) {{ 2022-11-04T13:31:28Z | endOf: DAY }}
+    * ex) {{ "2022-11-04T13:31:28Z" | endOf: DAY }}
         * => 2022-11-04T23:59:59.999999999Z
-    * ex) {{ 2022-11-04T13:31:28Z | endOf: MONTH }}
+    * ex) {{ "2022-11-04T13:31:28Z" | endOf: MONTH }}
         * => 2022-11-30T23:59:59.999999999Z
-    * ex) {{ 2022-11-04T13:31:28Z | endOf: YEAR }}
+    * ex) {{ "2022-11-04T13:31:28Z" | endOf: YEAR }}
         * => 2022-12-31T23:59:59.999999999Z
 * `{{ time | subTime: delta, unit }}`
     * Returns the time subtracted by `delta` in the time zone defined by `unit` from the given time.
     * ex) {{ executionTime | subTime: 10, MINUTE }}
-    * ex) {{ 2022-11-04T13:31:28Z | subTime: 10, MINUTE }}
+    * ex) {{ "2022-11-04T13:31:28Z" | subTime: 10, MINUTE }}
         * => 2022-11-04T13:21:28Z
 * `{{ time | addTime: delta, unit }}`
     * Returns the time added by `delta` in the time zone defined by `unit` from the given time.
     * ex) {{ executionTime | addTime: 10, MINUTE }}
-    * ex) {{ 2022-11-04T13:31:28Z | addTime: 10, MINUTE }}
+    * ex) {{ "2022-11-04T13:31:28Z" | addTime: 10, MINUTE }}
         * => 2022-11-04T13:41:28Z
 * `{{ time | format: formatStr }}`
     * Returns the given time in the form `formatStr`.
@@ -73,7 +73,7 @@
         * ss
         * s
     * ex) {{ executionTime | format: 'yyyy' }}
-    * ex) {{ 2022-11-04T13:31:28Z | format: 'yyyy' }}
+    * ex) {{ "2022-11-04T13:31:28Z" | format: 'yyyy' }}
         * => 2022
 * nested filter example
     * DSL expression at 03:00 hour on the day the flow started
