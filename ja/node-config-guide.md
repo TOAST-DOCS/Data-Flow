@@ -513,8 +513,8 @@
 
 #### 条件
 
-* Match => `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
-* パターン定義=> `{ "HYPHEN": "-*" }`
+* Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
+* パターン定義 → `{ "HYPHEN": "-*" }`
 
 #### 入力メッセージ
 
@@ -561,8 +561,8 @@
 
 #### 条件
 
-* ソースフィールド=> `message`
-* カラム=> `["one", "two", "t hree"]`
+* ソースフィールド → `message`
+* カラム → `["one", "two", "t hree"]`
 
 #### 入力メッセージ
 
@@ -587,8 +587,8 @@
 
 #### 条件
 
-* ソースフィールド=> `message`
-* カラム=> `["one", "two", "t hree"]`
+* ソースフィールド → `message`
+* カラム → `["one", "two", "t hree"]`
 
 #### 入力メッセージ
 
@@ -613,9 +613,9 @@
 
 #### 条件
 
-* ソースフィールド=> `message`
-* カラム=> `["one", "two", "t hree"]`
-* スキーマ=> `{"two": "integer", "t hree": "boolean"}`
+* ソースフィールド → `message`
+* カラム → `["one", "two", "t hree"]`
+* スキーマ → `{"two": "integer", "t hree": "boolean"}`
 
 #### 入力メッセージ
 
@@ -653,8 +653,8 @@
 
 #### 条件
 
-* ソースフィールド=> `message`
-* 保存するフィールド=> `json_parsed_messsage`
+* ソースフィールド → `message`
+* 保存するフィールド → `json_parsed_messsage`
 
 #### 入力メッセージ
 

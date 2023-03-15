@@ -516,8 +516,8 @@
 
 #### 조건
 
-* Match => `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
-* 패턴 정의 => `{ "HYPHEN": "-*" }`
+* Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
+* 패턴 정의 → `{ "HYPHEN": "-*" }`
 
 #### 입력 메시지
 
@@ -564,8 +564,8 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 칼럼 => `["one", "two", "t hree"]`
+* 소스 필드 → `message`
+* 칼럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -590,8 +590,8 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 칼럼 => `["one", "two", "t hree"]`
+* 소스 필드 → `message`
+* 칼럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -616,9 +616,9 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 칼럼 => `["one", "two", "t hree"]`
-* 스키마 => `{"two": "integer", "t hree": "boolean"}`
+* 소스 필드 → `message`
+* 칼럼 → `["one", "two", "t hree"]`
+* 스키마 → `{"two": "integer", "t hree": "boolean"}`
 
 #### 입력 메시지
 
@@ -656,8 +656,8 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 저장할 필드 => `json_parsed_messsage`
+* 소스 필드 → `message`
+* 저장할 필드 → `json_parsed_messsage`
 
 #### 입력 메시지
 
@@ -676,6 +676,278 @@
         "example": "string"
     },
     "message": "uuid test message"
+}
+```
+
+## Filter > (Logstash) Grok
+
+### 노드 설명
+
+* 문자열을 정해진 규칙에 맞게 파싱하여 각 설정된 필드에 저장하는 노드입니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| Match | - | json | 파싱할 문자열의 정보를 입력합니다. |  |
+| 패턴 정의 | - | json | 파싱할 토큰의 규칙의 사용자 정의 패턴을 정규표현식으로 입력합니다. | 시스템 정의 패턴은 아래 링크를 확인하십시오.<br/>http://grokdebug.herokuapp.com/patterns |
+| 실패 태그 | - | array of strings | 문자열 파싱에 실패할 경우 정의할 태그명을 입력합니다. |  |
+| 타임아웃 | 30000 | numeric | 문자열 파싱이 될 때까지 기다리는 시간을 입력합니다. |  |
+| 덮어쓰기 | - | array of strings | 파싱 후 지정된 필드에 값을 쓸 때 해당 필드에 이미 값이 정의되어 있을 경우 덮어쓸 필드명들을 입력합니다. |  |
+| 이름이 지정된 값만 저장 | - | boolean | 이름이 지정되지 않은 파싱 결과를 저장할지 여부를 선택합니다. |  |
+| 빈 문자열 캡처 | - | boolean | 빈 문자열도 필드에 저장할지 여부를 선택합니다. |  |
+
+### Grok 파싱 예제
+
+#### 조건
+
+* Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
+* 패턴 정의 → `{ "HYPHEN": "-*" }`
+
+#### 입력 메시지
+
+```js
+{
+    "message": "127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \\\"GET /apache_pb.gif HTTP/1.0\\\" 200 2326"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "message": "127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \\\"GET /apache_pb.gif HTTP/1.0\\\" 200 2326",
+    "timestamp": "10/Oct/2000:13:55:36 -0700",
+    "clientip": "127.0.0.1",
+    "verb": "GET",
+    "httpversion": "1.0",
+    "response": "200",
+    "bytes": "2326",
+    "request": "/apache_pb.gif"
+}
+```
+
+## Filter > Date
+
+### 노드 설명
+
+* Date 문자열을 파싱하여 timestamp 형태로 저장하는 노드입니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| Match | - | array of strings | 문자열을 가져오기 위한 필드명과 포맷을 입력합니다. |  |
+| 저장할 필드 | - | string | Date 문자열 파싱 결과를 저장할 필드명을 입력합니다. |  |
+| 실패 태그 | - | array of strings | Date 문자열 파싱에 실패했을 경우 정의할 태그명을 입력합니다. |  |
+| 시간대 | - | string | 날짜의 시간대를 입력합니다. |  |
+
+### Date 문자열 파싱 예제
+
+#### 조건
+
+* Match → `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* 저장할 필드 → `time`
+* 시간대 → `Asia/Seoul`
+
+#### 입력 메시지
+
+```js
+{
+    "message": "2017-03-16T17:40:00"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "message": "2017-03-16T17:40:00",
+    "time": 2022-04-04T09:08:01.222Z
+}
+```
+
+## Filter > UUID
+
+### 노드 설명
+
+* UUID를 생성하여 필드에 저장하는 노드입니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| UUID 저장 필드 | - | string | UUID 생성 결과값을 저장할 필드명을 입력합니다. |  |
+| 덮어쓰기 | - | boolean | 지정된 필드명에 값이 존재할 경우 이를 덮어쓸지 여부를 선택합니다. |  |
+
+### UUID 생성 예제
+
+#### 조건
+
+* UUID 저장 필드 → `userId`
+
+#### 입력 메시지
+
+```js
+{
+    "message": "uuid test message"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "userId": "70186b1e-bdec-43d6-8086-ed0481b59370",
+    "message": "uuid test message"
+}
+```
+
+## Filter > Split
+
+### 노드 설명
+
+* 하나의 메시지를 여러 메시지로 분할하는 노드입니다.
+* 설정에 따라 파싱한 결과를 바탕으로 메시지를 분할합니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| 소스 필드 | - | string | 메시지를 분리할 필드명을 입력합니다. |  |
+| 저장할 필드 | - | string | 분리된 메시지를 저장할 필드명을 입력합니다. |  |
+| 구분자 | `\n` | string |  |  |
+
+### 기본 메시지 분할 예제
+
+#### 조건
+
+* 소스 필드 → `message`
+
+#### 입력 메시지
+
+```js
+{
+    "message": [
+        {"number": 1},
+        {"number": 2}
+    ]
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "message": [
+        {"number": 1},
+        {"number": 2}
+    ],
+    "number": 1
+}
+```
+```js
+{
+    "message": [
+        {"number": 1},
+        {"number": 2}
+    ],
+    "number": 2
+}
+```
+
+### 문자열 파싱 후 분할 예제
+
+#### 조건
+
+* 소스 필드 → `message`
+* 구분자 → `,`
+
+#### 입력 메시지
+
+```js
+{
+    "message": "1,2"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "message": "1"
+}
+```
+```js
+{
+    "message": "2"
+}
+```
+
+### 문자열 파싱 후 다른 필드로 분할 예제
+
+#### 조건
+
+* 소스 필드 → `message`
+* 저장할 필드 → `target`
+* 구분자 → `,`
+
+#### 입력 메시지
+
+```js
+{
+    "message": "1,2"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "message": "1,2",
+    "target": "1"
+}
+```
+```js
+{
+    "message": "1,2",
+    "target": "2"
+}
+```
+
+## Filter > Truncate
+
+### 노드 설명
+
+* JSON 문자열을 파싱하여 지정된 필드에 저장하는 노드입니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| Byte 길이 | - | number | 문자열을 표현할 최대 byte 길이를 입력합니다. |  |
+| 소스 필드 | - | string | truncate 대상 필드명을 입력합니다. |  |
+
+### JSON 파싱 예제
+
+#### 조건
+
+* Byte 길이 → 10
+* 소스 필드 → `message`
+
+#### 입력 메시지
+
+```js
+{
+    "message": "이 메시지는 너무 깁니다."
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "message": "이 메세"
 }
 ```
 
