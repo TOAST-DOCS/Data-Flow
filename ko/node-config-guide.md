@@ -516,8 +516,8 @@
 
 #### 조건
 
-* Match => `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
-* 패턴 정의 => `{ "HYPHEN": "-*" }`
+* Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
+* 패턴 정의 → `{ "HYPHEN": "-*" }`
 
 #### 입력 메시지
 
@@ -564,8 +564,8 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 칼럼 => `["one", "two", "t hree"]`
+* 소스 필드 → `message`
+* 칼럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -590,8 +590,8 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 칼럼 => `["one", "two", "t hree"]`
+* 소스 필드 → `message`
+* 칼럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -616,9 +616,9 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 칼럼 => `["one", "two", "t hree"]`
-* 스키마 => `{"two": "integer", "t hree": "boolean"}`
+* 소스 필드 → `message`
+* 칼럼 → `["one", "two", "t hree"]`
+* 스키마 → `{"two": "integer", "t hree": "boolean"}`
 
 #### 입력 메시지
 
@@ -656,8 +656,8 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 저장할 필드 => `json_parsed_messsage`
+* 소스 필드 → `message`
+* 저장할 필드 → `json_parsed_messsage`
 
 #### 입력 메시지
 
@@ -701,8 +701,8 @@
 
 #### 조건
 
-* Match => `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
-* 패턴 정의 => `{ "HYPHEN": "-*" }`
+* Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
+* 패턴 정의 → `{ "HYPHEN": "-*" }`
 
 #### 입력 메시지
 
@@ -746,9 +746,9 @@
 
 #### 조건
 
-* Match => `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
-* 저장할 필드 => `time`
-* 시간대 => `Asia/Seoul`
+* Match → `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* 저장할 필드 → `time`
+* 시간대 → `Asia/Seoul`
 
 #### 입력 메시지
 
@@ -784,7 +784,7 @@
 
 #### 조건
 
-* UUID 저장 필드 => `userId`
+* UUID 저장 필드 → `userId`
 
 #### 입력 메시지
 
@@ -822,7 +822,7 @@
 
 #### 조건
 
-* 소스 필드 => `message`
+* 소스 필드 → `message`
 
 #### 입력 메시지
 
@@ -860,8 +860,8 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 구분자 => `,`
+* 소스 필드 → `message`
+* 구분자 → `,`
 
 #### 입력 메시지
 
@@ -888,9 +888,9 @@
 
 #### 조건
 
-* 소스 필드 => `message`
-* 저장할 필드 => `target`
-* 구분자 => `,`
+* 소스 필드 → `message`
+* 저장할 필드 → `target`
+* 구분자 → `,`
 
 #### 입력 메시지
 
@@ -932,8 +932,8 @@
 
 #### 조건
 
-* Byte 길이 => 10
-* 소스 필드 => `message`
+* Byte 길이 → 10
+* 소스 필드 → `message`
 
 #### 입력 메시지
 
