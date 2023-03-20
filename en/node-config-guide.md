@@ -697,7 +697,7 @@
 | Store only values with specified names | - | boolean | Select whether to store unnamed parsing results. |  |
 | Capture empty string | - | boolean | Select whether to store empty strings in fields. |  |
 
-### Grok parsing examples
+### Grok Parsing Examples
 
 #### Condition
 
@@ -742,7 +742,7 @@
 | Failure tag | - | array of strings | Enter the tag name to define if data string parsing fails. |  |
 | Time zone | - | string | Enter the time zone for the date. |  |
 
-### Examples of Date string parsing
+### Examples of Date String Parsing
 
 #### Condition
 
@@ -780,7 +780,7 @@
 | Field to store UUID | - | string | Enter a field name to store UUID creation result. |  |
 | Overwrite | - | boolean | Select whether to overwrite the value if it exists in the specified field name. |  |
 
-### Example of UUID creation
+### Example of UUID Creation
 
 #### Condition
 
@@ -818,7 +818,7 @@
 | Field to be stored | - | string | Enter a field name to store separated messages. |  |
 | Separator | `\n` | string |  |  |
 
-### Example of default message split
+### Example of Default Message Split
 
 #### Condition
 
@@ -856,7 +856,7 @@
 }
 ```
 
-### Example of split after string parsing
+### Example of Split after String Parsing
 
 #### Condition
 
@@ -884,7 +884,7 @@
 }
 ```
 
-### Example of string parsing and splitting it into different fields
+### Example of String Parsing and Splitting Into Different Fields
 
 #### Condition
 
@@ -928,7 +928,7 @@
 | Byte length | - | number | Enter the maximum byte length to represent a string. |  |
 | Source field | - | string | Enter a field name for truncate. |  |
 
-### JSON parsing example
+### JSON Parsing Example
 
 #### Condition
 
