@@ -1,5 +1,19 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### March 28, 2023
+
+#### Feature Updates
+
+* Added new nodes
+    * Filter
+        * Added various data processing methods such as Alter, Date, UUID, Split, and Truncate.
+* Added a flow usage exposure feature
+    * Added a feature to check flow usage from the console in real time.
+
+#### Bug Fixes
+
+* Fixed a bug where flow usage begins to appear before entering the PREPARING stage.
+
 ### February 28, 2023
 
 #### Feature Updates
