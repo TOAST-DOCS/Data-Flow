@@ -77,7 +77,7 @@
         * → 2022
 * nested filter 예제
     * 플로우 실행이 시작된 날의 03시의 DSL 표현
-        * =\> \{\{ executionTime \| startOf: DAY \| addTime: 3\, HOUR \}\}
+        * → \{\{ executionTime \| startOf: DAY \| addTime: 3\, HOUR \}\}
 
 ## Source
 
