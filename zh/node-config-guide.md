@@ -26,39 +26,39 @@
     * **Calculate based on Korean time.**
     * ex) {{ executionTime | startOf: MINUTE }}
     * ex) {{ "2022-11-04T13:31:28Z" | startOf: MINUTE }}
-        * => 2022-11-04T13:31:00Z
+        * → 2022-11-04T13:31:00Z
     * ex) {{ "2022-11-04T13:31:28Z" | startOf: HOUR }}
-        * => 2022-11-04T13:00:00Z
+        * → 2022-11-04T13:00:00Z
     * ex) {{ "2022-11-04T13:31:28Z" | startOf: DAY }}
-        * => 2022-11-04T00:00:00Z
+        * → 2022-11-04T00:00:00Z
     * ex) {{ "2022-11-04T13:31:28Z" | startOf: MONTH }}
-        * => 2022-11-01T00:00:00Z
+        * → 2022-11-01T00:00:00Z
     * ex) {{ "2022-11-04T13:31:28Z" | startOf: YEAR }}
-        * => 2022-01-01T00:00:00Z
+        * → 2022-01-01T00:00:00Z
 * `{{ time | endOf: unit }}`
     * Returns the last time of time zone defined by `unit` from the given time.
     * **Calculate based on Korean time.**
     * ex) {{ executionTime | endOf: MINUTE }}
     * ex) {{ "2022-11-04T13:31:28Z" | endOf: MINUTE }}
-        * => 2022-11-04T13:31:59.999999999Z
+        * → 2022-11-04T13:31:59.999999999Z
     * ex) {{ "2022-11-04T13:31:28Z" | endOf: HOUR }}
-        * => 2022-11-04T13:59:59.999999999Z
+        * → 2022-11-04T13:59:59.999999999Z
     * ex) {{ "2022-11-04T13:31:28Z" | endOf: DAY }}
-        * => 2022-11-04T23:59:59.999999999Z
+        * → 2022-11-04T23:59:59.999999999Z
     * ex) {{ "2022-11-04T13:31:28Z" | endOf: MONTH }}
-        * => 2022-11-30T23:59:59.999999999Z
+        * → 2022-11-30T23:59:59.999999999Z
     * ex) {{ "2022-11-04T13:31:28Z" | endOf: YEAR }}
-        * => 2022-12-31T23:59:59.999999999Z
+        * → 2022-12-31T23:59:59.999999999Z
 * `{{ time | subTime: delta, unit }}`
     * Returns the time subtracted by `delta` in the time zone defined by `unit` from the given time.
     * ex) {{ executionTime | subTime: 10, MINUTE }}
     * ex) {{ "2022-11-04T13:31:28Z" | subTime: 10, MINUTE }}
-        * => 2022-11-04T13:21:28Z
+        * → 2022-11-04T13:21:28Z
 * `{{ time | addTime: delta, unit }}`
     * Returns the time added by `delta` in the time zone defined by `unit` from the given time.
     * ex) {{ executionTime | addTime: 10, MINUTE }}
     * ex) {{ "2022-11-04T13:31:28Z" | addTime: 10, MINUTE }}
-        * => 2022-11-04T13:41:28Z
+        * → 2022-11-04T13:41:28Z
 * `{{ time | format: formatStr }}`
     * Returns the given time in the form `formatStr`.
         * ios8601
@@ -74,10 +74,10 @@
         * s
     * ex) {{ executionTime | format: 'yyyy' }}
     * ex) {{ "2022-11-04T13:31:28Z" | format: 'yyyy' }}
-        * => 2022
+        * → 2022
 * nested filter example
     * DSL expression at 03:00 hour on the day the flow started
-        * => {{ executionTime | startOf: DAY | addTime: 3, HOUR }}
+        * → {{ executionTime | startOf: DAY | addTime: 3, HOUR }}
 
 ## Source
 
@@ -439,13 +439,13 @@
 
 #### condition
 
-* mode => `encrypt`
-* Appkey => `SKM appkey`
-* Key ID => `SKM Symmetric key ID`
-* Key Version => `1`
-* IV Random Length => `16`
-* Source Field => message
-* Field to be  stored => encrypted_message
+* mode → `encrypt`
+* Appkey → `SKM appkey`
+* Key ID → `SKM Symmetric key ID`
+* Key Version → `1`
+* IV Random Length → `16`
+* Source Field → message
+* Field to be  stored → encrypted_message
 
 #### Input message
 
@@ -468,13 +468,13 @@
 
 #### condition
 
-* mode => `decrypt`
-* Appkey => `SKM appkey`
-* Key ID => `SKM Symmetric key ID`
-* Key Version => `1`
-* IV Random Length => `16`
-* Source Field => message
-* Field to be  stored => decrypted_message
+* mode → `decrypt`
+* Appkey → `SKM appkey`
+* Key ID → `SKM Symmetric key ID`
+* Key Version → `1`
+* IV Random Length → `16`
+* Source Field → message
+* Field to be  stored → decrypted_message
 
 #### Input message
 
@@ -516,8 +516,8 @@
 
 #### Condition
 
-* Match => `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} [%{HTTPDATE:timestamp}] "%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:response} %{NUMBER:bytes}" }`
-* Pattern definition => `{ "HYPHEN": "-*" }`
+* Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} [%{HTTPDATE:timestamp}] "%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:response} %{NUMBER:bytes}" }`
+* Pattern definition → `{ "HYPHEN": "-*" }`
 
 #### Input messages
 
@@ -564,8 +564,8 @@
 
 #### Condition
 
-* Source field => `message`
-* Column => `["one", "two", "t hree"]`
+* Source field → `message`
+* Column → `["one", "two", "t hree"]`
 
 #### Input messages
 
@@ -590,8 +590,8 @@
 
 #### Condition
 
-* Source field => `message`
-* Column => `["one", "two", "t hree"]`
+* Source field → `message`
+* Column → `["one", "two", "t hree"]`
 
 #### Input messages
 
@@ -616,9 +616,9 @@
 
 #### Condition
 
-* Source field => `message`
-* Column => `["one", "two", "t hree"]`
-* Schema =>`{"two": "integer", "t hree": "boolean"}`
+* Source field → `message`
+* Column → `["one", "two", "t hree"]`
+* Schema →`{"two": "integer", "t hree": "boolean"}`
 
 #### Input messages
 
@@ -656,8 +656,8 @@
 
 #### Condition
 
-* Source field => `message`
-* Field to store => `json_parsed_messsage`
+* Source field → `message`
+* Field to store → `json_parsed_messsage`
 
 #### Input messages
 
@@ -679,6 +679,277 @@
 }
 ```
 
+## Filter > (Logstash) Grok
+
+### Node Description
+
+* This is a node that parses a string according to defined rules and stores it in each set field.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Others |
+| --- | --- | --- | --- | --- |
+| Match | - | json | Enter the information of the string to be parsed. |  |
+| Pattern definition | - | json | Enter a custom pattern as a regular expression for the rule of tokens to be parsed. | Check the link below for system defined patterns.<br/>http://grokdebug.herokuapp.com/patterns |
+| Failure tag | - | array of strings | Enter the tag name to define if string parsing fails. |  |
+| Timeout | 30000 | numeric | Enter the amount of time to wait for string parsing. |  |
+| Overwrite | - | array of strings | When writing a value to a designated field after parsing, if a value is already defined in the field, enter the field names to be overwritten. |  |
+| Store only values with specified names | - | boolean | Select whether to store unnamed parsing results. |  |
+| Capture empty string | - | boolean | Select whether to store empty strings in fields. |  |
+
+### Grok Parsing Examples
+
+#### Condition
+
+* Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} [%{HTTPDATE:timestamp}] "%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}" %{NUMBER:response} %{NUMBER:bytes}" }`
+* Pattern definition → `{ "HYPHEN": "-*" }`
+
+#### Input message
+
+```js
+{
+    "message": "127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \\\"GET /apache_pb.gif HTTP/1.0\\\" 200 2326"
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "127.0.0.1 - frank [10/Oct/2000:13:55:36 -0700] \\\"GET /apache_pb.gif HTTP/1.0\\\" 200 2326",
+    "timestamp": "10/Oct/2000:13:55:36 -0700",
+    "clientip": "127.0.0.1",
+    "verb": "GET",
+    "httpversion": "1.0",
+    "response": "200",
+    "bytes": "2326",
+    "request": "/apache_pb.gif"
+}
+```
+
+## Filter > Date
+
+### Node Description
+
+* A node that parses a data string and stores it in timestamp format.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Others |
+| --- | --- | --- | --- | --- |
+| Match | - | array of strings | Enter a field name and format to get strings. |  |
+| Field to be stored | - | string | Enter a field name to store the result of parsing data strings. |  |
+| Failure tag | - | array of strings | Enter the tag name to define if data string parsing fails. |  |
+| Time zone | - | string | Enter the time zone for the date. |  |
+
+### Examples of Date String Parsing
+
+#### Condition
+
+* Match → `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* Field to be stored → `time`
+* Time zone → `Asia/Seoul`
+
+#### Input message
+
+```js
+{
+    "message": "2017-03-16T17:40:00"
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "2017-03-16T17:40:00",
+    "time": 2022-04-04T09:08:01.222Z
+}
+```
+
+## Filter > UUID
+
+### Node Description
+
+* A node that creates UUIDs and stores them in a field.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Others |
+| --- | --- | --- | --- | --- |
+| Field to store UUID | - | string | Enter a field name to store UUID creation result. |  |
+| Overwrite | - | boolean | Select whether to overwrite the value if it exists in the specified field name. |  |
+
+### Example of UUID Creation
+
+#### Condition
+
+* Field to store UUID → `userId`
+
+#### Input message
+
+```js
+{
+    "message": "uuid test message"
+}
+```
+
+#### Output message
+
+```js
+{
+    "userId": "70186b1e-bdec-43d6-8086-ed0481b59370",
+    "message": "uuid test message"
+}
+```
+
+## Filter > Split
+
+### Node Description
+
+* A node that splits a single message into multiple messages.
+* Splits the message based on the result of parsing according to the settings.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Others |
+| --- | --- | --- | --- | --- |
+| Source field | - | string | Enter a field name to separate messages. |  |
+| Field to be stored | - | string | Enter a field name to store separated messages. |  |
+| Separator | `\n` | string |  |  |
+
+### Example of Default Message Split
+
+#### Condition
+
+* Source field → `message`
+
+#### Input message
+
+```js
+{
+    "message": [
+        {"number": 1},
+        {"number": 2}
+    ]
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": [
+        {"number": 1},
+        {"number": 2}
+    ],
+    "number": 1
+}
+```
+```js
+{
+    "message": [
+        {"number": 1},
+        {"number": 2}
+    ],
+    "number": 2
+}
+```
+
+### Example of Split after String Parsing
+
+#### Condition
+
+* Source field → `message`
+* Separator → `,`
+
+#### Input message
+
+```js
+{
+    "message": "1,2"
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "1"
+}
+```
+```js
+{
+    "message": "2"
+}
+```
+
+### Example of String Parsing and Splitting Into Different Fields
+
+#### Condition
+
+* Source field → `message`
+* Field to be stored → `target`
+* Separator → `,`
+
+#### Input message
+
+```js
+{
+    "message": "1,2"
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "1,2",
+    "target": "1"
+}
+```
+```js
+{
+    "message": "1,2",
+    "target": "2"
+}
+```
+
+## Filter > Truncate
+
+### Node Description
+
+* A node that parses JSON strings and stores it in a specified field.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Others |
+| --- | --- | --- | --- | --- |
+| Byte length | - | number | Enter the maximum byte length to represent a string. |  |
+| Source field | - | string | Enter a field name for truncate. |  |
+
+### JSON Parsing Example
+
+#### Condition
+
+* Byte length → 10
+* Source field → `message`
+
+#### Input message
+
+```js
+{
+    "message": "This message is too long."
+}
+```
+
+#### Output message
+
+```js
+{
+    "message": "This messa"
+    }
+```
 
 ## Sink
 
@@ -718,10 +989,10 @@
 
 #### condition
 
-* Region => `KR1`
-* Bucket => `obs-test-container`
-* Access Key => `******`
-* Secret Key => `******`
+* Region → `KR1`
+* Bucket → `obs-test-container`
+* Access Key → `******`
+* Secret Key → `******`
 
 #### Input message
 
@@ -747,10 +1018,10 @@
 
 #### condition
 
-* Region => `KR1`
-* Bucket => `obs-test-container`
-* Access Key => `******`
-* Secret Key => `******`
+* Region → `KR1`
+* Bucket → `obs-test-container`
+* Access Key → `******`
+* Secret Key → `******`
 
 #### Input message
 
@@ -780,10 +1051,10 @@
 
 #### condition
 
-* Region => `KR1`
-* Bucket => `obs-test-container`
-* Access Key => `******`
-* Secret Key => `******`
+* Region → `KR1`
+* Bucket → `obs-test-container`
+* Access Key → `******`
+* Secret Key → `******`
 
 #### Input message
 
@@ -844,7 +1115,7 @@
 
 ``` js
 { 
-    follow_redirects => true 
+    follow_redirects → true 
 }
 ```
 
@@ -854,7 +1125,7 @@
 
 ``` js
 { 
-    retry_limit => 5 
+    retry_limit → 5 
 }
 ```
 
@@ -864,7 +1135,7 @@
 
 ``` js
 { 
-    force_path_style => true 
+    force_path_style → true 
 }
 ```
 
@@ -971,7 +1242,7 @@
 
 #### condition
 
-* conditional sentence => `[logLevel] == "ERROR"`
+* conditional sentence → `[logLevel] == "ERROR"`
 
 #### Pass message
 
@@ -993,7 +1264,7 @@
 
 #### condition
 
-* conditional sentence => `[response][status] == 200`
+* conditional sentence → `[response][status] == 200`
 
 #### Passed message
 
