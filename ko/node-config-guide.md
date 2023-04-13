@@ -398,7 +398,7 @@
 }
 ```
 
-### Filter
+## Filter
 
 * 인입된 데이터를 어떻게 처리할지 정의하는 노드 유형입니다.
 
@@ -412,6 +412,89 @@
 | 태그 삭제 | - | array of string | 각 메시지에 주어진 태그를 삭제합니다. |  |
 | 필드 삭제 | - | array of string | 각 메시지의 필드를 삭제합니다. |  |
 | 필드 추가 | - | hash | 커스텀 필드를 추가할 수 있습니다.<br/>`%{[depth1_field]}`로 각 필드의 값을 가져와 필드를 추가할 수 있습니다. |  |
+
+## Filter > Alter
+
+### 노드 설명
+
+* 메시지 필드 값을 다른 값으로 변경합니다.
+* 최상위 필드만 변경할 수 있습니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| 필드 덮어쓰기 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 다른 필드의 값을 주어진 값으로 수정합니다. |  |
+| 필드 변경 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 해당 필드의 값을 주어진 값으로 수정합니다. |  |
+| Coalesce | - | array of strings | 하나의 필드에 뒤이어 오는 필드 중 처음으로 null이 아닌 값을 할당합니다. |  |
+
+### 필드 덮어쓰기 예제
+
+#### 조건
+
+* 필드 덮어쓰기 → `["logType", "ERROR", "isBillingTarget", "false"]`
+
+#### 입력 메시지
+
+```js
+{
+    "logType": "ERROR"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "logType": "ERROR",
+    "isBillingTarget": "false"
+}
+```
+
+### 필드 변경 예제
+
+#### 조건
+
+* 필드 변경 → `["reason", "CONNECTION_TIMEOUT", "MONGODB_CONNECTION_TIMEOUT"]`
+
+#### 입력 메시지
+
+```js
+{
+    "reason": "CONNECTION_TIMEOUT"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "reason": "MONGODB_CONNECTION_TIMEOUT"
+}
+```
+
+### Coalesce 예제
+
+#### 조건
+
+* Coalesce → `["reason", "%{webClientReason}", "%{mongoReason}", "%{redisReason}"]`
+
+#### 입력 메시지
+
+```js
+{
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "reason": "COLLECTION_NOT_FOUND",
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
 
 ## Filter > Cipher
 
