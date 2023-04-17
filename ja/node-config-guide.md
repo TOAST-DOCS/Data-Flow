@@ -410,6 +410,89 @@
 | フィールドの削除 | - | array of string | 各メッセージのフィールドを削除します。 |  |
 | フィールド追加 | - | hash | カスタムフィールドを追加できます。<br/>`%{[depth1_field]}`で各フィールドの値を取得してフィールドを追加できます。 |  |
 
+## Filter > Alter
+
+### ノード説明
+
+* メッセージフィールドの値を別の値に変更します。
+* 最上位フィールドのみ変更できます。
+
+### プロパティの説明
+
+| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| フィールドの上書き | - | array of strings | フィールド値を与えられた値と比較して同じ場合、他のフィールドの値を与えられた値に修正します。 |  |
+| フィールドの変更 | - | array of strings | フィールドの値を与えられた値と比較して同じ場合、そのフィールドの値を指定された値に修正します。 |  |
+| Coalesce | - | array of strings | 1つのフィールドに続くフィールドのうち、最初にnullではない値を割り当てます。 |  |
+
+### フィールドの上書き例
+
+#### 条件
+
+* フィールドの上書き→ `["logType", "ERROR", "isBillingTarget", "false"]`
+
+#### 入力メッセージ
+
+```js
+{
+    "logType": "ERROR"
+}
+```
+
+#### 出力メッセージ
+
+```js
+{
+    "logType": "ERROR",
+    "isBillingTarget": "false"
+}
+```
+
+### フィールドの変更例
+
+#### 条件
+
+* フィールドの変更→ `["reason", "CONNECTION_TIMEOUT", "MONGODB_CONNECTION_TIMEOUT"]`
+
+#### 入力メッセージ
+
+```js
+{
+    "reason": "CONNECTION_TIMEOUT"
+}
+```
+
+#### 出力メッセージ
+
+```js
+{
+    "reason": "MONGODB_CONNECTION_TIMEOUT"
+}
+```
+
+### Coalesce例
+
+#### 条件
+
+* Coalesce → `["reason", "%{webClientReason}", "%{mongoReason}", "%{redisReason}"]`
+
+#### 入力メッセージ
+
+```js
+{
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
+
+#### 出力メッセージ
+
+```js
+{
+    "reason": "COLLECTION_NOT_FOUND",
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
+
 ## Cipher
 
 ### ノードの説明
