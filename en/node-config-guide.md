@@ -428,7 +428,7 @@
 | Modify Field | - | array of strings | Compare the field value to a given value, if they are equal, modify the field value to the given value. |  |
 | Coalesce | - | array of strings | Assign a non-null value to the first of the fields that follow one field. |  |
 
-### Example of Overwriting Fields
+### Example of Overwrite Field
 
 #### Condition
 
@@ -451,7 +451,7 @@
 }
 ```
 
-### Example of Modifying Fields
+### Example of Modify Field
 
 #### Condition
 
