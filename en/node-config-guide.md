@@ -413,7 +413,90 @@
 | Delete Field | - | array of string | Delete Field of each message  |  |
 | Add Field | - | Hash | You can add a custom field<br/>You can add fields by calling in the value of each Field with `%{[depth1_field]}`. |  |
 
-## Cipher
+## Filter > Alter
+
+### Node Description
+
+* Node that changes message field values to another values.
+* You can only change the top-level fields.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Others |
+| --- | --- | --- | --- | --- |
+| Overwrite Field | - | array of strings | Compare the field value to a given value, if they are equal, modify other field value to the given value.|  |
+| Modify Field | - | array of strings | Compare the field value to a given value, if they are equal, modify the field value to the given value. |  |
+| Coalesce | - | array of strings | Assign a non-null value to the first of the fields that follow one field. |  |
+
+### Example of Overwrite Field
+
+#### Condition
+
+* Overwrite Field → `["logType", "ERROR", "isBillingTarget", "false"]`
+
+#### Input message
+
+```js
+{
+    "logType": "ERROR"
+}
+```
+
+#### Output message
+
+```js
+{
+    "logType": "ERROR",
+    "isBillingTarget": "false"
+}
+```
+
+### Example of Modify Field
+
+#### Condition
+
+* Modify Field → `["reason", "CONNECTION_TIMEOUT", "MONGODB_CONNECTION_TIMEOUT"]`
+
+#### Input message
+
+```js
+{
+    "reason": "CONNECTION_TIMEOUT"
+}
+```
+
+#### Output message
+
+```js
+{
+    "reason": "MONGODB_CONNECTION_TIMEOUT"
+}
+```
+
+### Coalesce Example
+
+#### Condition
+
+* Coalesce → `["reason", "%{webClientReason}", "%{mongoReason}", "%{redisReason}"]`
+
+#### Input message
+
+```js
+{
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
+
+#### Output message
+
+```js
+{
+    "reason": "COLLECTION_NOT_FOUND",
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
+
+## Filter > Cipher
 
 ### Node Description
 
