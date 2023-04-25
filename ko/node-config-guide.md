@@ -304,60 +304,60 @@
 
 * `메타데이터 생성 여부` 설정 활성화 시 메타데이터 필드가 생성되나, 별도로 일반 필드로 주입하는 작업을 거치지 않는다면 Filter, Sink 등 플러그인에서 노출하지 않습니다.
 * 설정 활성화 시 Kafka 플러그인 이후의 메시지 예시
-    ``` js
-    {
-        // 일반 필드
-        "@version": "1",
-        "@timestamp": "2022-04-11T00:01:23Z"
-        "message": "kafka 토픽 메시지..."
+```js
+{
+    // 일반 필드
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "kafka 토픽 메시지..."
 
-        // 메타데이터 필드
-        // 사용자가 일반 필드로 주입하기 전까지 활용할 수 없음
-        // "[@metadata][kafka][topic]": "my-topic"
-        // "[@metadata][kafka][consumer_group]": "my_consumer_group"
-        // "[@metadata][kafka][partition]": "1"
-        // "[@metadata][kafka][offset]": "123"
-        // "[@metadata][kafka][key]": "my_key"
-        // "[@metadata][kafka][timestamp]": "-1"
-    }
-    ```
+    // 메타데이터 필드
+    // 사용자가 일반 필드로 주입하기 전까지 활용할 수 없음
+    // "[@metadata][kafka][topic]": "my-topic"
+    // "[@metadata][kafka][consumer_group]": "my_consumer_group"
+    // "[@metadata][kafka][partition]": "1"
+    // "[@metadata][kafka][offset]": "123"
+    // "[@metadata][kafka][key]": "my_key"
+    // "[@metadata][kafka][timestamp]": "-1"
+}
+```
 
 * 본 Kafka Source 플러그인에 필드 추가 옵션이 존재하지만 데이터 인입과 동시에 필드 추가 작업을 수행하지 못합니다.
-* **임의의 Filter 플러그인**의 공통 설정 중 필드 추가 옵션을 통해 일반 필드로 추가합니다.
-    * 필드 추가 옵션 예시
-        ```js
-        {
-            "kafka_topic": "%{[@metadata][kafka][topic]}"
-            "kafka_consumer_group": "%{[@metadata][kafka][consumer_group]}"
-            "kafka_partition": "%{[@metadata][kafka][partition]}"
-            "kafka_offset": "%{[@metadata][kafka][offset]}"
-            "kafka_key": "%{[@metadata][kafka][key]}"
-            "kafka_timestamp": "%{[@metadata][kafka][timestamp]}"
-        }
-        ```
-    * alter(필드 추가 옵션) 플러그인 이후의 메시지 예시
-        ``` js
-        {
-            // 일반 필드
-            "@version": "1",
-            "@timestamp": "2022-04-11T00:01:23Z"
-            "message": "kafka 토픽 메시지..."
-            "kafka_topic": "my-topic"
-            "kafka_consumer_group": "my_consumer_group"
-            "kafka_partition": "1"
-            "kafka_offset": "123"
-            "kafka_key": "my_key"
-            "kafka_timestamp": "-1"
+* 임의의 Filter 플러그인의 공통 설정 중 필드 추가 옵션을 통해 일반 필드로 추가합니다.
+* 필드 추가 옵션 예시
+```js
+{
+    "kafka_topic": "%{[@metadata][kafka][topic]}"
+    "kafka_consumer_group": "%{[@metadata][kafka][consumer_group]}"
+    "kafka_partition": "%{[@metadata][kafka][partition]}"
+    "kafka_offset": "%{[@metadata][kafka][offset]}"
+    "kafka_key": "%{[@metadata][kafka][key]}"
+    "kafka_timestamp": "%{[@metadata][kafka][timestamp]}"
+}
+```
+* alter(필드 추가 옵션) 플러그인 이후의 메시지 예시
+```js
+{
+    // 일반 필드
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "kafka 토픽 메시지..."
+    "kafka_topic": "my-topic"
+    "kafka_consumer_group": "my_consumer_group"
+    "kafka_partition": "1"
+    "kafka_offset": "123"
+    "kafka_key": "my_key"
+    "kafka_timestamp": "-1"
 
-            // 메타데이터 필드
-            // "[@metadata][kafka][topic]": "my-topic"
-            // "[@metadata][kafka][consumer_group]": "my_consumer_group"
-            // "[@metadata][kafka][partition]": "1"
-            // "[@metadata][kafka][offset]": "123"
-            // "[@metadata][kafka][key]": "my_key"
-            // "[@metadata][kafka][timestamp]": "-1"
-        }
-        ```
+    // 메타데이터 필드
+    // "[@metadata][kafka][topic]": "my-topic"
+    // "[@metadata][kafka][consumer_group]": "my_consumer_group"
+    // "[@metadata][kafka][partition]": "1"
+    // "[@metadata][kafka][offset]": "123"
+    // "[@metadata][kafka][key]": "my_key"
+    // "[@metadata][kafka][timestamp]": "-1"
+}
+```
         
 ### plain 코덱 예제
 
@@ -398,7 +398,7 @@
 }
 ```
 
-### Filter
+## Filter
 
 * 인입된 데이터를 어떻게 처리할지 정의하는 노드 유형입니다.
 
@@ -412,6 +412,89 @@
 | 태그 삭제 | - | array of string | 각 메시지에 주어진 태그를 삭제합니다. |  |
 | 필드 삭제 | - | array of string | 각 메시지의 필드를 삭제합니다. |  |
 | 필드 추가 | - | hash | 커스텀 필드를 추가할 수 있습니다.<br/>`%{[depth1_field]}`로 각 필드의 값을 가져와 필드를 추가할 수 있습니다. |  |
+
+## Filter > Alter
+
+### 노드 설명
+
+* 메시지 필드 값을 다른 값으로 변경합니다.
+* 최상위 필드만 변경할 수 있습니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| 필드 덮어쓰기 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 다른 필드의 값을 주어진 값으로 수정합니다. |  |
+| 필드 변경 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 해당 필드의 값을 주어진 값으로 수정합니다. |  |
+| Coalesce | - | array of strings | 하나의 필드에 뒤이어 오는 필드 중 처음으로 null이 아닌 값을 할당합니다. |  |
+
+### 필드 덮어쓰기 예제
+
+#### 조건
+
+* 필드 덮어쓰기 → `["logType", "ERROR", "isBillingTarget", "false"]`
+
+#### 입력 메시지
+
+```js
+{
+    "logType": "ERROR"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "logType": "ERROR",
+    "isBillingTarget": "false"
+}
+```
+
+### 필드 변경 예제
+
+#### 조건
+
+* 필드 변경 → `["reason", "CONNECTION_TIMEOUT", "MONGODB_CONNECTION_TIMEOUT"]`
+
+#### 입력 메시지
+
+```js
+{
+    "reason": "CONNECTION_TIMEOUT"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "reason": "MONGODB_CONNECTION_TIMEOUT"
+}
+```
+
+### Coalesce 예제
+
+#### 조건
+
+* Coalesce → `["reason", "%{webClientReason}", "%{mongoReason}", "%{redisReason}"]`
+
+#### 입력 메시지
+
+```js
+{
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
+
+#### 출력 메시지
+
+```js
+{
+    "reason": "COLLECTION_NOT_FOUND",
+    "mongoReason": "COLLECTION_NOT_FOUND"
+}
+```
 
 ## Filter > Cipher
 
