@@ -304,7 +304,7 @@
 
 * `メタデータを作成するかどうか`設定を有効にするとメタデータフィールドが作成されますが、別途一般フィールドに注入する作業を行っていなければFilter、Sinkなどのプラグインで表示しません。
 * 設定を有効にした時のKafkaプラグイン以降のメッセージ例
-    ``` js
+    ```js
     {
         // 一般フィールド
         "@version": "1",
@@ -322,7 +322,7 @@
     ```
 
 * Kafka Sourceプラグインにフィールド追加オプションが存在しますが、データの取り込みと同時にフィールド追加作業を行えません。
-* **任意のFilterプラグイン**の共通設定にあるフィールド追加オプションを利用して一般フィールドとして追加します。
+* 任意のFilterプラグインの共通設定にあるフィールド追加オプションを利用して一般フィールドとして追加します。
     * フィールド追加オプションの例
         ```js
         {
@@ -335,27 +335,27 @@
         }
         ```
     * alter(フィールド追加オプション)プラグイン以降のメッセージ例
-        ``` js
-        {
-            // 一般フィールド
-            "@version": "1",
-            "@timestamp": "2022-04-11T00:01:23Z"
-            "message": "kafkaトピックメッセージ。.."
-            "kafka_topic": "my-topic"
-            "kafka_consumer_group": "my_consumer_group"
-            "kafka_partition": "1"
-            "kafka_offset": "123"
-            "kafka_key": "my_key"
-            "kafka_timestamp": "-1"
-            // メタデータフィールド
-            // "[@metadata][kafka][topic]": "my-topic"
-            // "[@metadata][kafka][consumer_group]": "my_consumer_group"
-            // "[@metadata][kafka][partition]": "1"
-            // "[@metadata][kafka][offset]": "123"
-            // "[@metadata][kafka][key]": "my_key"
-            // "[@metadata][kafka][timestamp]": "-1"
-        }
-        ```
+```js
+{
+    // 一般フィールド
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "kafkaトピックメッセージ。.."
+    "kafka_topic": "my-topic"
+    "kafka_consumer_group": "my_consumer_group"
+    "kafka_partition": "1"
+    "kafka_offset": "123"
+    "kafka_key": "my_key"
+    "kafka_timestamp": "-1"
+    // メタデータフィールド
+    // "[@metadata][kafka][topic]": "my-topic"
+    // "[@metadata][kafka][consumer_group]": "my_consumer_group"
+    // "[@metadata][kafka][partition]": "1"
+    // "[@metadata][kafka][offset]": "123"
+    // "[@metadata][kafka][key]": "my_key"
+    // "[@metadata][kafka][timestamp]": "-1"
+}
+```
 
 ### plainコーデック例
 
