@@ -123,10 +123,14 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 플로우 생성 날짜와 생성자 이름을 비롯한 최근 수정일/수정자, 최근 실행일/실행자 정보를 표시합니다.
 * 가장 최근에 실행할 당시의 총 실행 시간을 표시합니다.
 
-### 기본 정보 - 로그 보기
+### 기본 정보 - 최근 로그
 
 * 로그 보기를 통해 현재 실행 중인 플로우의 로그 정보를 직접 확인할 수 있습니다.
 * 최근 15분의 로그를 확인할 수 있습니다.
+
+### 기본 정보 - 전체 로그
+![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_lncs_query.png)
+* Log & Crash Search를 연동한 경우 Log & Crash Search에서 플로우 로그를 조회하기 위한 Lucene Query를 복사할 수 있습니다.
 
 ### 기본 정보 - 스케줄링
 
@@ -334,3 +338,38 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     * 저장
         * 플로우를 미완성 형태로 저장할 수 있습니다.
         * 저장한 템플릿은 노드 유형의 템플릿 카테고리에서 불러올 수 있습니다.
+## 설정
+서비스에 필요한 설정을 관리하기 위한 페이지입니다.
+**Data & Analytics > DataFlow > 설정**을 클릭합니다.
+
+### Log & Crash Search 설정
+사용자의 플로우 로그를 사용자가 설정한 Log & Crash Search로 연동하는 기능입니다.
+Log & Crash Search 서비스에 로그를 저장하려면, Log & Crash 서비스를 활성화해야 하며 별도 이용 요금이 부과됩니다.
+`Log & Crash Search 저장 설정`을 클릭합니다.
+![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
+![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
+![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
+![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
+* 설정 항목
+  * 사용 여부
+    * Log & Crash Search 연동 여부를 설정할 수 있습니다.
+  * 앱키
+    * 로그를 저장할 Log & Crash Search 앱키를 입력합니다.
+  * 로그 레벨
+    * 저장할 로그 레벨을 입력합니다.
+      * INFO
+        * INFO, WARN, ERROR, FATAL 로그를 저장합니다.
+      * WARN
+        * WARN, ERROR, FATAL 로그를 저장합니다.
+      * ERROR
+        * ERROR, FATAL 로그를 저장합니다.
+* 로그 필드
+
+|             이름 |                              설명 |
+|---------------|--------------------------------|
+|       logLevel | 로그 레벨(INFO, WARN, ERROR, FATAL) |
+|      logSource |                          `Flow` |
+|           host |                      `DataFlow` |
+|         appkey |                 DataFlow 서비스 앱키 |
+|         flowId |                          플로우 id |
+| flowInstanceId |                     플로우 인스턴스 id |
