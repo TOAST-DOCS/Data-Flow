@@ -51,13 +51,13 @@
         * → 2022-12-31T23:59:59.999999999Z
 * `{{ time | subTime: delta, unit }}`
     * 与えられた時間から`unit`で定義された時間帯の`delta`だけ引いた時間を返します。
-    * ex\) \{\{ executionTime \| subTime: 10\, MINUTE \}\}
-    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| subTime: 10\, MINUTE \}\}
+    * ex\) \{\{ executionTime \| subTime: 10, MINUTE \}\}
+    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| subTime: 10, MINUTE \}\}
         * → 2022-11-04T13:21:28Z
 * `{{ time | addTime: delta, unit }}`
     * 与えられた時間から`unit`で定義された時間帯の`delta`だけ足した時間を返します。
-    * ex\) \{\{ executionTime \| addTime: 10\, MINUTE \}\}
-    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| addTime: 10\, MINUTE \}\}
+    * ex\) \{\{ executionTime \| addTime: 10, MINUTE \}\}
+    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| addTime: 10, MINUTE \}\}
         * → 2022-11-04T13:41:28Z
 * `{{ time | format: formatStr }}`
     * 与えられた時間を`formatStr`形式で返します。
