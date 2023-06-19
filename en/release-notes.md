@@ -1,5 +1,15 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### June 27, 2023
+
+#### Feature Updates
+* Added a feature to enable Log & Crash Search
+  * Added a feature to save flow logs in Log & Crash Search.
+
+#### Bug Fixes
+* Modified the activation timing of the View Log button
+  * Modified the activation timing of the View Log button to the PREPARING stage.
+
 ### March 28, 2023
 
 #### Feature Updates
