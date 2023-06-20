@@ -123,10 +123,14 @@ Displays detailed flow metadata.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
 * Display the total running time at the time of the most recent run.
 
-### Basic Information - View Logs
+### Basic Information - Recent Logs
 
-* You can check Log information for current running flow directly through the View Logs.
+* You can check Log information for current running flow directly through the Recent Logs.
 * You can view logs for the recent 15 minutes.
+
+### Basic Information - All Logs
+![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_lncs_query.png)
+* When you enable Log & Crash Search, you can copy Lucene Query to view flow logs from Log & Crash Search.
 
 ### Basic Information - Scheduling
 
@@ -334,3 +338,39 @@ Define template logics
     * Save
         * You can save a flow in incomplete form.
         * Saved templates can be loaded from the template category in the node type.
+## Settings
+Manage the settings for the service.
+Go to **Data & Analytics > DataFlow > Settings**.
+
+### Log & Crash Search Settings
+
+The feature to integrate your flow logs with Log & Crash Search you set.
+To store logs in the Log & Crash Search service, you must enable the Log & Crash Search service, which is available at an additional cost.
+Click `Log & Crash Search Save Settings`.
+![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
+![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
+![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
+![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
+* Settings Items
+  * Enabled or Not
+    * Enable Log & Crash Search or not.
+  * Appkey
+    * Enter Log & Crash Search appkeys to store logs.
+  * Log Level
+    * Enter a log level to store.
+      * INFO
+        * Saves INFO, WARN, ERROR, and FATAL logs.
+      * WARN
+        * Saves WARN, ERROR, and FATAL logs. 
+      * ERROR
+        * Saves ERROR and FATAL logs.
+* Log Field
+
+|             Name |                              Description |
+|---------------|--------------------------------|
+|       logLevel | Log level (INFO, WARN, ERROR, FATAL) |
+|      logSource |                          `Flow` |
+|           host |                      `DataFlow` |
+|         appkey |                 DataFlow service appkey |
+|         flowId |                          Flow ID |
+| flowInstanceId |                     Flow Instance ID |

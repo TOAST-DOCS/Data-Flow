@@ -51,13 +51,13 @@
         * → 2022-12-31T23:59:59.999999999Z
 * `{{ time | subTime: delta, unit }}`
     * 주어진 시간으로부터 `unit`으로 정의된 시간대의 `delta`만큼 뺀 시간을 리턴합니다.
-    * ex\) \{\{ executionTime \| subTime: 10\, MINUTE \}\}
-    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| subTime: 10\, MINUTE \}\}
+    * ex\) \{\{ executionTime \| subTime: 10, MINUTE \}\}
+    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| subTime: 10, MINUTE \}\}
         * → 2022-11-04T13:21:28Z
 * `{{ time | addTime: delta, unit }}`
     * 주어진 시간으로부터 `unit`으로 정의된 시간대의 `delta`만큼 더한 시간을 리턴합니다.
-    * ex\) \{\{ executionTime \| addTime: 10\, MINUTE \}\}
-    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| addTime: 10\, MINUTE \}\}
+    * ex\) \{\{ executionTime \| addTime: 10, MINUTE \}\}
+    * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| addTime: 10, MINUTE \}\}
         * → 2022-11-04T13:41:28Z
 * `{{ time | format: formatStr }}`
     * 주어진 시간을 `formatStr` 형태로 리턴합니다.

@@ -16,4 +16,4 @@
 * You can create flows that transform data imported from original data source through filters and passes it to the desired data source.
 * Drag & Drop and easy setup make it easy to set flow logics.
 * Supports easy integration with other products NHN Cloud services.
-* Scheduling feature allows you to run and terminate Flows at desired time.
+* Scheduling feature allows you to run flows at a desired time.
