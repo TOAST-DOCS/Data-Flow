@@ -123,10 +123,14 @@ DataFlowは、次の順序で使用できます。
 * フロー作成日とコンストラクタ名をはじめ、最近の修正日/修正者、最近の実行日/実行者情報を表示します。
 * 直近に実行した時の総実行時間を表示します。
 
-### 基本情報 - ログ表示
+### 基本情報 - 最近のログ
 
-* ログ表示により現在実行中のフローのログ情報を直接確認できます。
+* 最近のログから現在実行中のフローのログ情報を直接確認できます。
 * 過去15分のログを確認できます。
+
+### 基本情報 - 全体ログ
+![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_lncs_query.png)
+* Log & Crash Searchを連動した場合、Log & Crash Searchでフローログを照会するためのLucene Queryをコピーできます。
 
 ### 基本情報 - スケジューリング
 
@@ -334,3 +338,38 @@ DataFlowは、次の順序で使用できます。
     * 保存
         * フローを未完成の形で保存できます。
         * 保存したテンプレートはノードタイプのテンプレートカテゴリーから読み込むことができます。
+## 設定
+サービスに必要な設定を管理するためのページです。
+**Data & Analytics > DataFlow > 設定**をクリックします。
+
+### Log & Crash Search設定
+ユーザーのフローログをユーザーが設定したLog & Crash Searchと連動する機能です。
+Log & Crash Searchサービスにログを保存するには、Log & Crash Searchサービスを有効にする必要があり、別途利用料金が発生します。
+Log & Crash Search保存設定」をクリックします。
+![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
+![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
+![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
+![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
+* 設定項目
+  * 使用の有無
+    * Log & Crash Search連動の有無を設定できます。
+  * アプリケーションキー
+    * ログを保存するLog & Crash Searchアプリケーションキーを入力します。
+  * ログレベル
+    * 保存するログレベルを入力します。
+      * INFO
+        * INFO、WARN、ERROR、FATALログを保存します。
+      * WARN
+        * WARN、ERROR、FATALログを保存します。
+      * ERROR
+        * ERROR、FATALログを保存します。
+* ログフィールド
+
+|           名前 |                            説明 |
+|---------------|--------------------------------|
+|       logLevel | ログレベル(INFO, WARN, ERROR, FATAL) |
+|      logSource |                          `Flow` |
+|           host |                      `DataFlow` |
+|         appkey |                 DataFlowサービスアプリケーションキー |
+|         flowId |                        フローid |
+| flowInstanceId |                   フローインスタンスid |
