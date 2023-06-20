@@ -359,11 +359,11 @@ Click `Log & Crash Search Save Settings`.
   * Log Level
     * Enter a log level to store.
       * INFO
-        * Saves INFO, WARN, ERROR, FATAL logs.
+        * Saves INFO, WARN, ERROR, and FATAL logs.
       * WARN
-        * Saves WARN, ERROR, FATAL logs. 
+        * Saves WARN, ERROR, and FATAL logs. 
       * ERROR
-        * Saves ERROR, FATAL logs.
+        * Saves ERROR and FATAL logs.
 * Log Field
 
 |             Name |                              Description |
