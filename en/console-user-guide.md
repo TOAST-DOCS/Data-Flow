@@ -347,10 +347,12 @@ Go to **Data & Analytics > DataFlow > Settings**.
 The feature to integrate your flow logs with Log & Crash Search you set.
 To store logs in the Log & Crash Search service, you must enable the Log & Crash Search service, which is available at an additional cost.
 Click `Log & Crash Search Save Settings`.
+
 ![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
 ![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
 ![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
 ![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
+
 * Settings Items
   * Enabled or Not
     * Enable Log & Crash Search or not.

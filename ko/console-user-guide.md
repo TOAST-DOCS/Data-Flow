@@ -346,10 +346,12 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 사용자의 플로우 로그를 사용자가 설정한 Log & Crash Search로 연동하는 기능입니다.
 Log & Crash Search 서비스에 로그를 저장하려면 Log & Crash Search 서비스를 활성화해야 하며 별도 이용 요금이 부과됩니다.
 `Log & Crash Search 저장 설정`을 클릭합니다.
+
 ![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
 ![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
 ![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
 ![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
+
 * 설정 항목
   * 사용 여부
     * Log & Crash Search 연동 여부를 설정할 수 있습니다.
