@@ -129,7 +129,7 @@ DataFlowは、次の順序で使用できます。
 * 過去15分のログを確認できます。
 
 ### 基本情報 - 全体ログ
-![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_lncs_query.png)
+![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_lncs_query.png)
 * Log & Crash Searchを連動した場合、Log & Crash Searchでフローログを照会するためのLucene Queryをコピーできます。
 
 ### 基本情報 - スケジューリング
@@ -346,10 +346,12 @@ DataFlowは、次の順序で使用できます。
 ユーザーのフローログをユーザーが設定したLog & Crash Searchと連動する機能です。
 Log & Crash Searchサービスにログを保存するには、Log & Crash Searchサービスを有効にする必要があり、別途利用料金が発生します。
 Log & Crash Search保存設定」をクリックします。
-![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
-![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
-![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
-![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
+
+![settings_lncs.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs.png)
+![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup.png)
+![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_unused.png)
+![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup_log_levels.png)
+
 * 設定項目
   * 使用の有無
     * Log & Crash Search連動の有無を設定できます。
