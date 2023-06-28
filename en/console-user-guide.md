@@ -129,7 +129,7 @@ Displays detailed flow metadata.
 * You can view logs for the recent 15 minutes.
 
 ### Basic Information - All Logs
-![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_lncs_query.png)
+![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_lncs_query.png)
 * When you enable Log & Crash Search, you can copy Lucene Query to view flow logs from Log & Crash Search.
 
 ### Basic Information - Scheduling
@@ -348,10 +348,10 @@ The feature to integrate your flow logs with Log & Crash Search you set.
 To store logs in the Log & Crash Search service, you must enable the Log & Crash Search service, which is available at an additional cost.
 Click `Log & Crash Search Save Settings`.
 
-![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
-![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
-![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
-![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
+![settings_lncs.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs.png)
+![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup.png)
+![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_unused.png)
+![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup_log_levels.png)
 
 * Settings Items
   * Enabled or Not
