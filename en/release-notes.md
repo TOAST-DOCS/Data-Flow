@@ -1,5 +1,11 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### July 25, 2023
+
+#### Bug Fixes
+
+* Modified so that, when a flow fails abnormally during execution, it can resume execution from the last execution point.
+
 ### June 27, 2023
 
 #### Feature Updates
