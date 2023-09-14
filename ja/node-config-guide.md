@@ -1048,8 +1048,8 @@
 ### ノードの説明
 
 * NHN CloudのObject Storageにデータをアップロードするノードです。
-* OBSに作成されるObjectは、次のパスフォーマットに合わせて出力されます。
-    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
+* OBSに作成されるObjectは、基本的に次のパスフォーマットに合わせて出力されます。
+    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### プロパティの説明
 
@@ -1059,6 +1059,11 @@
 | バケット | - | string | バケット名を入力します。 |  |
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
+| Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix時間フィールド | - | string | Prefixに適用する時間フィールドを入力します。 |  |
+| Prefix時間フィールドタイプ | - | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |
+| Prefix時間帯 | - | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
+| Prefix時間適用fallback  | - | string | Prefix時間適用に失敗した場合に代替するPrefixを入力します。 |  |
 | エンコード | none | enum | エンコードするかどうかを入力します。 gzipエンコードを使用できます。 |  |
 | ファイルローテーションポリシー | size\_and\_time | enum | ファイルの作成ルールを決定します。 | size\_and\_time - ファイルのサイズと時間を利用して決定<br/>size - ファイルのサイズを利用して決定<br/>time - 時間を利用して決定 |
 | 基準時刻 | 15 | number | ファイルを分割する基準となる時間を設定します。 | ファイルローテーションポリシーがsize\_and\_timeまたはtimeの場合に設定 |
@@ -1160,6 +1165,79 @@
 2022-11-21T07:49:20.000Z f207c24a122e %{message}
 ```
 
+### Prefix例 - フィールド
+
+#### 条件
+
+* バケット→ `obs-test-container`
+* Prefix → `/dataflow/%{deployment}`
+
+#### 入力メッセージ
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 出力パス
+
+```
+/obs-test-container/dataflow/production/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
+### Prefix例 - 時間
+
+#### 条件
+
+* バケット→ `obs-test-container`
+* Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
+* Prefix時間フィールド→ `logTime`
+* Prefix時間フィールドタイプ→ `ISO8601`
+* Prefix時間帯→ `Asia/Seoul`
+
+#### 入力メッセージ
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 出力パス
+
+```
+/obs-test-container/dataflow/year=2022/month=11/day=21/hour=16/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
+### Prefix例 - 時間適用が失敗した場合
+
+#### 条件
+
+* バケット→ `obs-test-container`
+* Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
+* Prefix時間フィールド→ `logTime`
+* Prefix時間フィールドタイプ→ `TIMESTAMP_SEC`
+* Prefix時間帯→ `Asia/Seoul`
+* Prefix時間適用fallback → `_failure`
+
+#### 入力メッセージ
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 出力パス
+
+```
+/obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
 ## (Amazon) S3
 
 ### ノードの説明
@@ -1175,7 +1253,11 @@
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | 署名バージョン | - | enum | AWSリクエストを署名する時に使用するバージョンを入力します。 |  |
 | セッショントークン | - | string | AWS一時認証情報のためのセッショントークンを入力します。 | [セッショントークンガイド](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
-| Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。 |  |
+| Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix時間フィールド | - | string | Prefixに適用する時間フィールドを入力します。 |  |
+| Prefix時間フィールドタイプ | - | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |
+| Prefix時間帯 | - | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
+| Prefix時間適用fallback  | - | string | Prefix時間適用に失敗した場合に代替するPrefixを入力します。 |  |
 | ストレージクラス | STANDARD | enum | ファイルをアップロードする時に使用するストレージクラスを設定します。 | [ストレージクラスガイド](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | エンコード | none | enum | エンコードするかどうかを入力します。gzipエンコードを使用できます。 |  |
 | ファイルローテーションポリシー | size\_and\_time | enum | ファイルの作成ルールを決定します。 | size\_and\_time - ファイルのサイズと時間を利用して決定<br/>size - ファイルのサイズを利用して決定<br/>time - 時間を利用して決定 |
