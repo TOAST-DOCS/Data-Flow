@@ -1050,8 +1050,8 @@
 ### Node Description
 
 * Node for uploading data to Object Storage in NHN Cloud.
-* Object created on OBS is to be output to the following path format. 
-    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
+* Object created on OBS is output in the following path format by default. 
+    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### Property Description 
 
@@ -1061,6 +1061,11 @@
 | Bucket | - | string | Enter bucket name |  |
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
+| Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix Time Field | - | string | Enter a time field to apply to the prefix. |  |
+| Prefix Time Field Type | - | enum | Enter a time field type to apply to the prefix. |  |
+| Prefix Timezone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
+| Prefix Time Apply fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determines file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
 | Standard time | 15 | number | Set the time to be the basis for file splitting.   | Set if file rotation policy is size_and_time or time |
@@ -1162,6 +1167,79 @@
 2022-11-21T07:49:20.000Z f207c24a122e %{message}
 ```
 
+### Prefix Example - Field
+
+#### Condition
+
+* Bucket → `obs-test-container`
+* Prefix → `/dataflow/%{deployment}`
+
+#### Input Message
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### Output Path
+
+```
+/obs-test-container/dataflow/production/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
+### Prefix Example - Hour
+
+#### Condition
+
+* Bucket → `obs-test-container`
+* Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
+* Prefix Time Field → `logTime`
+* Prefix Time Field Type → `ISO8601`
+* Prefix Timezone → `Asia/Seoul`
+
+#### Input Message
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### Output Path
+
+```
+/obs-test-container/dataflow/year=2022/month=11/day=21/hour=16/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
+### Prefix Example - When failed to apply time
+
+#### Condition
+
+* Bucket → `obs-test-container`
+* Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
+* Prefix Time Field → `logTime`
+* Prefix Time Field Type → `TIMESTAMP_SEC`
+* Prefix Timezone → `Asia/Seoul`
+* Prefix Time Apply fallback → `_failure`
+
+#### Input Message
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### Output Path
+
+```
+/obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
 ## (Amazon) S3
 
 ### Node Description
@@ -1178,6 +1256,11 @@
 | Signature Version | - | enum | Enter the version to use when signing AWS requests. |  |
 | Session Token | - | string | Enter the Session Token for AWS temporary Credentials. | [ Session Token Guide](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
 | Prefix | - | string | Enter Prefix before the name when uploading files. |  |
+| Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix Time Field | - | string | Enter a time field to apply to the prefix. |  |
+| Prefix Time Field Type | - | enum | Enter a time field type to apply to the prefix. |  |
+| Prefix Timezone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
+| Prefix Time Apply fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determine file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
