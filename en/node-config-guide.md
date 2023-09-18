@@ -1064,8 +1064,8 @@
 | Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix Time Field | - | string | Enter a time field to apply to the prefix. |  |
 | Prefix Time Field Type | - | enum | Enter a time field type to apply to the prefix. |  |
-| Prefix Timezone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
-| Prefix Time Apply fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
+| Prefix Time Zone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
+| Prefix Time Application fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determines file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
 | Standard time | 15 | number | Set the time to be the basis for file splitting.   | Set if file rotation policy is size_and_time or time |
@@ -1197,7 +1197,7 @@
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
 * Prefix Time Field → `logTime`
 * Prefix Time Field Type → `ISO8601`
-* Prefix Timezone → `Asia/Seoul`
+* Prefix Time Zone → `Asia/Seoul`
 
 #### Input Message
 ``` json
@@ -1222,8 +1222,8 @@
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
 * Prefix Time Field → `logTime`
 * Prefix Time Field Type → `TIMESTAMP_SEC`
-* Prefix Timezone → `Asia/Seoul`
-* Prefix Time Apply fallback → `_failure`
+* Prefix Time Zone → `Asia/Seoul`
+* Prefix Time Application fallback → `_failure`
 
 #### Input Message
 ``` json
@@ -1259,8 +1259,8 @@
 | Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix Time Field | - | string | Enter a time field to apply to the prefix. |  |
 | Prefix Time Field Type | - | enum | Enter a time field type to apply to the prefix. |  |
-| Prefix Timezone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
-| Prefix Time Apply fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
+| Prefix Time Zone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
+| Prefix Time Application fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determine file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
