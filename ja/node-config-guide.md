@@ -22,7 +22,7 @@
 ### Filter
 
 * `{{ time | startOf: unit }}`
-    * 与えられた時間から`unit`で定義された時間帯の開始時間を返します。
+    * 与えられた時間から`unit`で定義されたタイムゾーンの開始時間を返します。
     * [注意]韓国時間を基準に計算します。
     * ex\) \{\{ executionTime \| startOf: MINUTE \}\}
     * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| startOf: MINUTE \}\}
@@ -36,7 +36,7 @@
     * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| startOf: YEAR \}\}
         * → 2022-01-01T00:00:00Z
 * `{{ time | endOf: unit }}`
-    * 与えられた時間から`unit`で定義された時間帯の最後の時間を返します。
+    * 与えられた時間から`unit`で定義されたタイムゾーンの最後の時間を返します。
     * [注意]韓国時間を基準に計算します。
     * ex\) \{\{ executionTime \| endOf: MINUTE \}\}
     * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| endOf: MINUTE \}\}
@@ -50,12 +50,12 @@
     * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| endOf: YEAR \}\}
         * → 2022-12-31T23:59:59.999999999Z
 * `{{ time | subTime: delta, unit }}`
-    * 与えられた時間から`unit`で定義された時間帯の`delta`だけ引いた時間を返します。
+    * 与えられた時間から`unit`で定義されたタイムゾーンの`delta`だけ引いた時間を返します。
     * ex\) \{\{ executionTime \| subTime: 10, MINUTE \}\}
     * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| subTime: 10, MINUTE \}\}
         * → 2022-11-04T13:21:28Z
 * `{{ time | addTime: delta, unit }}`
-    * 与えられた時間から`unit`で定義された時間帯の`delta`だけ足した時間を返します。
+    * 与えられた時間から`unit`で定義されたタイムゾーンの`delta`だけ足した時間を返します。
     * ex\) \{\{ executionTime \| addTime: 10, MINUTE \}\}
     * ex\) \{\{ "2022\-11\-04T13:31:28Z" \| addTime: 10, MINUTE \}\}
         * → 2022-11-04T13:41:28Z
@@ -821,7 +821,7 @@
 | Match | - | array of strings | 文字列を取得するためのフィールド名とフォーマットを入力します。 |  |
 | 保存するフィールド | - | string | Date文字列解析結果を保存するフィールド名を入力します。 |  |
 | 失敗タグ | - | array of strings | Date文字列の解析に失敗した場合に定義するタグ名を入力します。 |  |
-| 時間帯 | - | string | 日付の時間帯を入力します。 |  |
+| タイムゾーン | - | string | 日付のタイムゾーンを入力します。 |  |
 
 ### Date文字列の解析例
 
@@ -829,7 +829,7 @@
 
 * Match → `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
 * 保存するフィールド → `time`
-* 時間帯 → `Asia/Seoul`
+* タイムゾーン → `Asia/Seoul`
 
 #### 入力メッセージ
 
@@ -1062,7 +1062,7 @@
 | Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | - | string | Prefixに適用する時間フィールドを入力します。 |  |
 | Prefix時間フィールドタイプ | - | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |
-| Prefix時間帯 | - | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
+| Prefixタイムゾーン | - | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
 | Prefix時間適用fallback  | - | string | Prefix時間適用に失敗した場合に代替するPrefixを入力します。 |  |
 | エンコード | none | enum | エンコードするかどうかを入力します。 gzipエンコードを使用できます。 |  |
 | ファイルローテーションポリシー | size\_and\_time | enum | ファイルの作成ルールを決定します。 | size\_and\_time - ファイルのサイズと時間を利用して決定<br/>size - ファイルのサイズを利用して決定<br/>time - 時間を利用して決定 |
@@ -1195,7 +1195,7 @@
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
 * Prefix時間フィールド→ `logTime`
 * Prefix時間フィールドタイプ→ `ISO8601`
-* Prefix時間帯→ `Asia/Seoul`
+* Prefixタイムゾーン→ `Asia/Seoul`
 
 #### 入力メッセージ
 ``` json
@@ -1220,7 +1220,7 @@
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
 * Prefix時間フィールド→ `logTime`
 * Prefix時間フィールドタイプ→ `TIMESTAMP_SEC`
-* Prefix時間帯→ `Asia/Seoul`
+* Prefixタイムゾーン→ `Asia/Seoul`
 * Prefix時間適用fallback → `_failure`
 
 #### 入力メッセージ
@@ -1256,7 +1256,7 @@
 | Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | - | string | Prefixに適用する時間フィールドを入力します。 |  |
 | Prefix時間フィールドタイプ | - | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |
-| Prefix時間帯 | - | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
+| Prefixタイムゾーン | - | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
 | Prefix時間適用fallback  | - | string | Prefix時間適用に失敗した場合に代替するPrefixを入力します。 |  |
 | ストレージクラス | STANDARD | enum | ファイルをアップロードする時に使用するストレージクラスを設定します。 | [ストレージクラスガイド](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | エンコード | none | enum | エンコードするかどうかを入力します。gzipエンコードを使用できます。 |  |
