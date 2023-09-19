@@ -1061,11 +1061,11 @@
 | Bucket | - | string | Enter bucket name |  |
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
-| Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
-| Prefix Time Field | - | string | Enter a time field to apply to the prefix. |  |
-| Prefix Time Field Type | - | enum | Enter a time field type to apply to the prefix. |  |
-| Prefix Time Zone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
-| Prefix Time Application fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
+| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix Time Field | @timestamp | string | Enter a time field to apply to the prefix. |  |
+| Prefix Time Field Type | DATE_FILTER_RESULT | enum | Enter a time field type to apply to the prefix. |  |
+| Prefix Time Zone | UTC | string | Enter a time zone for the Time field to apply to the prefix. |  |
+| Prefix Time Application fallback  | _prefix_datetime_parse_failure | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determines file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
 | Standard time | 15 | number | Set the time to be the basis for file splitting.   | Set if file rotation policy is size_and_time or time |
@@ -1255,12 +1255,11 @@
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Signature Version | - | enum | Enter the version to use when signing AWS requests. |  |
 | Session Token | - | string | Enter the Session Token for AWS temporary Credentials. | [ Session Token Guide](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
-| Prefix | - | string | Enter Prefix before the name when uploading files. |  |
 | Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
-| Prefix Time Field | - | string | Enter a time field to apply to the prefix. |  |
-| Prefix Time Field Type | - | enum | Enter a time field type to apply to the prefix. |  |
-| Prefix Time Zone | - | string | Enter a time zone for the Time field to apply to the prefix. |  |
-| Prefix Time Application fallback  | - | string | Enter a prefix to replace if the prefix time application fails. |  |
+| Prefix Time Field | @timestamp | string | Enter a time field to apply to the prefix. |  |
+| Prefix Time Field Type | DATE_FILTER_RESULT | enum | Enter a time field type to apply to the prefix. |  |
+| Prefix Time Zone | UTC | string | Enter a time zone for the Time field to apply to the prefix. |  |
+| Prefix Time Application fallback  | _prefix_datetime_parse_failure | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determine file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
