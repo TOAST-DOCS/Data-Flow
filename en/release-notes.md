@@ -1,5 +1,15 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### September 26, 2023
+#### Feature Updates
+* Modified to support At Least Once when processing data.
+* Added new options for time format in Prefix Settings for S3 and OBS Sink nodes.
+
+#### Bug Fixes
+* Fixed a bug where the flow would not terminate if an error occurred during the shutdown of the Log & Crash Search node.
+* Fixed a bug where, when copying and running a flow containing a Cipher Filter node, the flow would not work correctly.
+* Fixed a bug where, when an error occurred while terminating a flow, a request to terminate again would fail.
+
 ### July 25, 2023
 
 #### Bug Fixes

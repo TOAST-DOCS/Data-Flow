@@ -1050,8 +1050,8 @@
 ### 노드 설명
 
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
-* OBS에 작성되는 Object는 다음 경로 포맷에 맞게 출력됩니다.
-    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
+* OBS에 작성되는 Object는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
+    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### 속성 설명
 
@@ -1061,6 +1061,11 @@
 | 버킷 | - | string | 버킷 이름을 입력합니다. |  |
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3 API 자격 증명 액세스 키를 입력합니다. |  |
+| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | 파일 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix 시간 필드 | @timestamp | string | Prefix에 적용할 시간 필드를 입력합니다. |  |
+| Prefix 시간 필드 타입 | DATE_FILTER_RESULT | enum | Prefix에 적용할 시간 필드의 타입을 입력합니다. |  |
+| Prefix 시간대 | UTC | string | Prefix에 적용할 시간 필드의 타임 존을 입력합니다. |  |
+| Prefix 시간 적용 fallback  | _prefix_datetime_parse_failure | string | Prefix 시간 적용에 실패한 경우 대체할 Prefix를 입력합니다. |  |
 | 인코딩 | none | enum | 인코딩 여부를 입력합니다. gzip 인코딩을 사용할 수 있습니다. |  |
 | 파일 로테이션 정책 | size\_and\_time | enum | 파일의 생성 규칙을 결정합니다. | size\_and\_time - 파일의 크기와 시간을 이용하여 결정<br/>size - 파일의 크기를 이용하여 결정<br/>time - 시간을 이용하여 결정 |
 | 기준 시각 | 15 | number | 파일을 분할할 기준이 될 시간을 설정합니다. | 파일 로테이션 정책이 size\_and\_time 또는 time인 경우 설정 |
@@ -1162,6 +1167,79 @@
 2022-11-21T07:49:20.000Z f207c24a122e %{message}
 ```
 
+### Prefix 예시 - 필드
+
+#### 조건
+
+* 버킷 → `obs-test-container`
+* Prefix → `/dataflow/%{deployment}`
+
+#### 입력 메시지
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 출력 경로
+
+```
+/obs-test-container/dataflow/production/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
+### Prefix 예시 - 시간
+
+#### 조건
+
+* 버킷 → `obs-test-container`
+* Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
+* Prefix 시간 필드 → `logTime`
+* Prefix 시간 필드 타입 → `ISO8601`
+* Prefix 시간대 → `Asia/Seoul`
+
+#### 입력 메시지
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 출력 경로
+
+```
+/obs-test-container/dataflow/year=2022/month=11/day=21/hour=16/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
+### Prefix 예시 - 시간 적용 실패한 경우
+
+#### 조건
+
+* 버킷 → `obs-test-container`
+* Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
+* Prefix 시간 필드 → `logTime`
+* Prefix 시간 필드 타입 → `TIMESTAMP_SEC`
+* Prefix 시간대 → `Asia/Seoul`
+* Prefix 시간 적용 fallback → `_failure`
+
+#### 입력 메시지
+``` json
+{
+    "deployment": "production",
+    "message": "example",
+    "logTime": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 출력 경로
+
+```
+/obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+```
+
 ## Sink > (Amazon) S3
 
 ### 노드 설명
@@ -1177,7 +1255,11 @@
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 서명 버전 | - | enum | AWS 요청을 서명할 때 사용할 버전을 입력합니다. |  |
 | 세션 토큰 | - | string | AWS 임시 자격 증명을 위한 세션 토큰을 입력합니다. | [세션 토큰 가이드](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
-| Prefix | - | string | 파일 업로드 시 이름 앞에 붙일 접두사를 입력합니다. |  |
+| Prefix | - | string | 파일 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix 시간 필드 | @timestamp | string | Prefix에 적용할 시간 필드를 입력합니다. |  |
+| Prefix 시간 필드 타입 | DATE_FILTER_RESULT | enum | Prefix에 적용할 시간 필드의 타입을 입력합니다. |  |
+| Prefix 시간대 | UTC | string | Prefix에 적용할 시간 필드의 타임 존을 입력합니다. |  |
+| Prefix 시간 적용 fallback  | _prefix_datetime_parse_failure | string | Prefix 시간 적용에 실패한 경우 대체할 Prefix를 입력합니다. |  |
 | 스토리지 클래스 | STANDARD | enum | 파일을 업로드할 때 사용할 스토리지 클래스를 설정합니다. | [스토리지 클래스 가이드](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | 인코딩 | none | enum | 인코딩 여부를 입력합니다. gzip 인코딩을 사용할 수 있습니다. |  |
 | 파일 로테이션 정책 | size\_and\_time | enum | 파일의 생성 규칙을 결정합니다. | size\_and\_time - 파일의 크기와 시간을 이용하여 결정<br/>size - 파일의 크기를 이용하여 결정<br/>time - 시간을 이용하여 결정 |
