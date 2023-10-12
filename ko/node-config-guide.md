@@ -117,6 +117,7 @@
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | Appkey | - | string | Log & Crash Search의 앱키를 입력합니다. |  |
+| SecretKey | - | string | Log & Crash Search의 시크릿키를 입력합니다. |  |
 | 조회 시작 시간 | - | string | 로그 조회의 시작 시간을 입력합니다. | [참고](#dsl) |
 | 조회 종료 시간 | - | string | 로그 조회의 종료 시간을 입력합니다. |  |
 
