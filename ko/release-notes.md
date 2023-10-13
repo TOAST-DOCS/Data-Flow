@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2023. 10. 17.
+#### 기능 추가
+* Log & Crash Search Source 노드에 SecretKey 속성이 추가되었습니다.
+
 ### 2023. 09. 26.
 #### 기능 추가
 * 데이터 처리 시 At Least Once를 지원할 수 있도록 수정했습니다.
