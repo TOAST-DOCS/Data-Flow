@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### October 17, 2023
+#### Added Features
+* Added the SecretKey property to Log & Crash Search Source nodes.
+
 ### September 26, 2023
 #### Feature Updates
 * Modified to support At Least Once when processing data.
