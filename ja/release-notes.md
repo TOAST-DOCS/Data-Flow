@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > リリースノート
 
+### 2023. 10. 17.
+#### 機能追加
+* Log & Crash Search SourceノードにSecretKeyプロパティが追加されました。
+
 ### 2023. 09. 26.
 #### 機能追加
 * データを処理する時にAt Least Onceをサポートできるように修正しました。

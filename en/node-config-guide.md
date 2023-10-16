@@ -117,6 +117,7 @@
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
 | Appkey | - | string | Enter the app key for Log&Crash Search. |  |
+| SecretKey | - | string | Enter the secret key for Log & Crash Search. |  |
 | Query Start time | - | string | Enter the start time of log query. | [Note](#dsl) |
 | Query End time | - | string | Enter the end time of log query. |  |
 
