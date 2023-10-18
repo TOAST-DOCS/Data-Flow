@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2023. 10. 31.
+#### 기능 추가
+* DataFlow 서비스 환경을 초기화하는 동안 일부 기능을 비활성화합니다.
+
 ### 2023. 10. 17.
 #### 기능 추가
 * Log & Crash Search Source 노드에 SecretKey 속성이 추가되었습니다.
