@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2023. 10. 31.
+#### 기능 추가
+* DataFlow 서비스 환경을 초기화하는 과정에서 발생하는 오류 메시지가 사용자 친화적으로 개선되었습니다.
+
 ### 2023. 10. 17.
 #### 기능 추가
 * Log & Crash Search Source 노드에 SecretKey 속성이 추가되었습니다.
