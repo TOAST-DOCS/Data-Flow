@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### October 31, 2023
+#### Added Features
+* Improved the error messages that occur while initializing the DataFlow service environment to be more user-friendly.
+
 ### October 17, 2023
 #### Added Features
 * Added the SecretKey property to Log & Crash Search Source nodes.
