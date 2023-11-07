@@ -146,46 +146,7 @@
 {"log":"&", "Crash": "Search", "Result": "Data"}
 ```
 
-## (NHN Cloud) CloudTrail
-
-### Node Description
-
-* (NHN Cloud) CloudTrail is a node that reads data from CloudTrail.
-* You can set the data query start time for a node. If not set, data is read from the start of the flow.
-* If no end time is entered in the node, data is read in streaming format. If an end time is entered, the data up to the end time is read and the flow ends.
-
-### Property Description 
-
-| Property name | Default value | Data type | Description | Others |
-| --- | --- | --- | --- | --- |
-| Appkey | - | string | Enter the app key for CloudTrail. |  |
-| Query Start time | - | string | Enter the start time of data Query. | [Note](#dsl) |
-| Log End time | - | string | Enter the end time of data Query. |  |
-
-* Set the query start and end time
-    * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
-
-### Message imported by codec
-
-* CloudTrail covers data in the format **JSON** by default.
-    * [Note - CloudTrail API Guide](https://docs.toast.com/ko/CloudTrail/ko/api-guide/)
-* If no codec is selected or Plain, JSON string for CloudTrail data will be included as field called `message`.
-* If you want to use each field in CloudTrail data, we recommend using json Codec.
-
-#### Not selected or Plain
-
-``` js
-{ 
-    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\"}" 
-}
-```
-
-#### json
-
-``` js
-{"log":"CloudTrail", "Result": "Data"}
-```
-## Source > (NHN Cloud) OBS
+## Source > (NHN Cloud) Object Storage
 
 ### Node Description
 
