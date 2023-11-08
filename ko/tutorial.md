@@ -15,7 +15,7 @@
 
 위 항에서 생성한 플로우를 선택한 뒤 아래와 같이 설정합니다.
 
-① **플로우 정보** 탭을 클릭한 뒤 **(NHN Cloud) Log&Crash Search_1** 노드를 클릭합니다.
+① **플로우 정보** 탭을 클릭한 뒤 **(NHN Cloud) Log&Crash Search** 노드를 클릭합니다.
 ② 데이터 소스로 지정할 (NHN Cloud) Log&Crash Search의 **앱키**와 **시크릿키**를 입력합니다.
 
 ### filter success response 노드
@@ -31,7 +31,7 @@
 
 ![chapter3.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter3_v2.png)
 
-Cipher 노드를 정의하려면 **Cipher_2** 노드를 클릭한 뒤 아래와 같이 설정합니다.
+Cipher 노드를 정의하려면 **Cipher** 노드를 클릭한 뒤 아래와 같이 설정합니다.
 
 ① **키 버전**은 사용할 Security Key Manager(SKM) 키 저장소의 대칭 키 버전을 입력합니다. [키 버전 확인하기](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/console-guide/)
 ② **앱키**는 SKM의 앱키를 입력합니다.
@@ -41,7 +41,7 @@ Cipher 노드를 정의하려면 **Cipher_2** 노드를 클릭한 뒤 아래와 
 
 ![chapter4.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter4_v2.png)
 
-Object Storage 노드를 정의하려면 **Object Storage_3** 노드를 클릭한 뒤 아래와 같이 설정합니다.
+Object Storage 노드를 정의하려면 **Object Storage** 노드를 클릭한 뒤 아래와 같이 설정합니다.
 
 ① **버킷**에는 데이터를 저장할 버킷을 입력합니다.
 ② **액세스 키**에는 S3 API 자격 증명 액세스 키를 입력합니다. [액세스 키 발급](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api)
