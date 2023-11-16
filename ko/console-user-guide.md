@@ -345,26 +345,15 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 ### Log & Crash Search 설정
 사용자의 플로우 로그를 사용자가 설정한 Log & Crash Search로 연동하는 기능입니다.
 Log & Crash Search 서비스에 로그를 저장하려면 Log & Crash Search 서비스를 활성화해야 하며 별도 이용 요금이 부과됩니다.
-`Log & Crash Search 저장 설정`을 클릭합니다.
 
-![settings_lncs.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs.png)
-![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup.png)
-![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_unused.png)
-![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_popup_log_levels.png)
 
-* 설정 항목
-  * 사용 여부
-    * Log & Crash Search 연동 여부를 설정할 수 있습니다.
-  * 앱키
-    * 로그를 저장할 Log & Crash Search 앱키를 입력합니다.
-  * 로그 레벨
-    * 저장할 로그 레벨을 입력합니다.
-      * INFO
-        * INFO, WARN, ERROR, FATAL 로그를 저장합니다.
-      * WARN
-        * WARN, ERROR, FATAL 로그를 저장합니다.
-      * ERROR
-        * ERROR, FATAL 로그를 저장합니다.
+![settings_lncs_v2.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_v2.png)
+
+① **Log & Crash Search 저장 설정**을 클릭합니다.
+② 로그를 저장할 Log & Crash Search **Appkey**키와 저장할 **로그 레벨**을 입력합니다.
+③ **저장**을 눌러 설정을 마칩니다.
+④ Log & Crash Search 연동 기능을 사용하기 원치 않을 경우, **삭제**를 눌러 저장 정보를 삭제합니다.
+
 * 로그 필드
 
 |             이름 |                              설명 |
@@ -375,3 +364,9 @@ Log & Crash Search 서비스에 로그를 저장하려면 Log & Crash Search 서
 |         appkey |                 DataFlow 서비스 앱키 |
 |         flowId |                          플로우 id |
 | flowInstanceId |                     플로우 인스턴스 id |
+
+### 유효성 검사 설정
+![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
+
+플로우와 노드의 유효성 검사 사용 여부를 설정할 수 있습니다.
+유효성 검사가 **사용 안함**으로 설정할 경우 플로우 저장 시 노드 유효성 검사를 자동으로 수행하지 않으며, 노드별 유효성 검사 기능을 사용할 수 없습니다.
