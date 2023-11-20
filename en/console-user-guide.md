@@ -346,26 +346,14 @@ Go to **Data & Analytics > DataFlow > Settings**.
 
 The feature to integrate your flow logs with Log & Crash Search you set.
 To store logs in the Log & Crash Search service, you must enable the Log & Crash Search service, which is available at an additional cost.
-Click `Log & Crash Search Save Settings`.
 
-![settings_lncs.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs.png)
-![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup.png)
-![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_unused.png)
-![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup_log_levels.png)
+![settings_lncs_v2.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_v2.png)
 
-* Settings Items
-  * Enabled or Not
-    * Enable Log & Crash Search or not.
-  * Appkey
-    * Enter Log & Crash Search appkeys to store logs.
-  * Log Level
-    * Enter a log level to store.
-      * INFO
-        * Saves INFO, WARN, ERROR, and FATAL logs.
-      * WARN
-        * Saves WARN, ERROR, and FATAL logs. 
-      * ERROR
-        * Saves ERROR and FATAL logs.
+① Click **Log & Crash Search Save Settings**.
+② Enter Log & Crash Search **Appkey** where you want to save the logs and **Log Level** to save.
+③ Click **Save** to complete settings.
+④ If you don't want to use the Log & Crash Search integration feature, click **Delete** to delete the save information.
+
 * Log Field
 
 |             Name |                              Description |
@@ -376,3 +364,9 @@ Click `Log & Crash Search Save Settings`.
 |         appkey |                 DataFlow service appkey |
 |         flowId |                          Flow ID |
 | flowInstanceId |                     Flow Instance ID |
+
+### Validation Settings
+![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
+
+You can set whether to use validation for flows and nodes.
+If Validity Check is set to **Not Use**, node validation is not automatically performed when saving flows, validation for each node is not available.

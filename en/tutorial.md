@@ -2,7 +2,7 @@
 
 ### Create Flow 
 
-![chapter1.png](http://static.toastoven.net/prod_dataflow/en/tutorial/chapter1.png)
+![chapter1.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter1_v2.png)
 
 ① Click **Create Flow**.
 ② Enter **Flow Name**.
@@ -11,12 +11,21 @@
 
 ### Log & Crash Search Node Definition 
 
-![chapter2.png](http://static.toastoven.net/prod_dataflow/en/tutorial/chapter2.png)
+![chapter2.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter2_v2.png)
 
 Click the flow created above and configure the settings as follows.
 
-① Click the **Flow Information** tab and click the **(NHN Cloud) Log&Crash Search_1 node**.
-② Enter the **Appkey** for Log&Crash Search that you want to specify as Data source. [Extract Appkey](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)
+① Click the **Flow Information** tab and click the **(NHN Cloud) Log & Crash Search_1 node**.
+② Enter the **Appkey** and **SecretKey** for (NHN Cloud) Log & Crash Search you want to specify as Data source. [Extract Appkey](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)
+
+### Filter Success Response Node
+
+![chapter2-2.png](http://static.toastoven.net/prod_dataflow/ko/tutorial/chapter2-2_v2.png)
+
+(NHN Cloud) You can filter the data input to the Log&Crash Search Source node with an IF node.
+
+① In the **LNCS to OBS** template, a conditional statement is written to pass the IF node only if the data search result of the Log & Crash Search Source node is normal.
+② If you change True to False, the data search result of the Log&Crash Search Source node will pass the IF node when the search result is `not normal`.
 
 ### Cipher Node Definition
 
