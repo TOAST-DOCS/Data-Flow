@@ -6,11 +6,11 @@
 * Changed to allow you to choose whether or not to use the validation feature.
 
 ### October 31, 2023
-#### Added Features
+#### Feature Updates
 * Improved the error messages that occur while initializing the DataFlow service environment to be more user-friendly.
 
 ### October 17, 2023
-#### Added Features
+#### Feature Updates
 * Added the SecretKey property to Log & Crash Search Source nodes.
 
 ### September 26, 2023
