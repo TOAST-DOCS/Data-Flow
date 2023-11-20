@@ -15,7 +15,7 @@
 
 Click the flow created above and configure the settings as follows.
 
-① Click the **Flow Information** tab and click the **(NHN Cloud) Log & Crash Search_1 node**.
+① Click the **Flow Information** tab and click the **(NHN Cloud) Log&Crash Search**.
 ② Enter the **Appkey** and **SecretKey** for (NHN Cloud) Log & Crash Search you want to specify as Data source. [Extract Appkey](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/console-guide/#appkey)
 
 ### Filter Success Response Node
