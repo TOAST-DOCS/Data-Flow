@@ -345,26 +345,15 @@ DataFlowは、次の順序で使用できます。
 ### Log & Crash Search設定
 ユーザーのフローログをユーザーが設定したLog & Crash Searchと連動する機能です。
 Log & Crash Searchサービスにログを保存するには、Log & Crash Searchサービスを有効にする必要があり、別途利用料金が発生します。
-Log & Crash Search保存設定」をクリックします。
 
-![settings_lncs.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs.png)
-![settings_lncs_popup.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup.png)
-![settings_lncs_unused.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_unused.png)
-![settings_lncs_popup_log_levels.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/settings_lncs_popup_log_levels.png)
 
-* 設定項目
-  * 使用の有無
-    * Log & Crash Search連動の有無を設定できます。
-  * アプリケーションキー
-    * ログを保存するLog & Crash Searchアプリケーションキーを入力します。
-  * ログレベル
-    * 保存するログレベルを入力します。
-      * INFO
-        * INFO、WARN、ERROR、FATALログを保存します。
-      * WARN
-        * WARN、ERROR、FATALログを保存します。
-      * ERROR
-        * ERROR、FATALログを保存します。
+![settings_lncs_v2.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_v2.png)
+
+① **Log & Crash Search保存設定**をクリックします。
+②ログを保存するLog & Crash Search **Appkey**キーと保存する**ログレベル**を入力します。
+③ **保存**を押して設定を完了します。
+④ Log & Crash Search連動機能を使用したくない場合は、**削除**を押して保存情報を削除します。
+
 * ログフィールド
 
 |           名前 |                            説明 |
@@ -375,3 +364,9 @@ Log & Crash Search保存設定」をクリックします。
 |         appkey |                 DataFlowサービスアプリケーションキー |
 |         flowId |                        フローid |
 | flowInstanceId |                   フローインスタンスid |
+
+### 有効性検査設定
+![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
+
+フローとノードの有効性検査を使用するかどうかを設定できます。
+有効性検査を**使用しない**に設定する場合、フロー保存時にノード有効性検査を自動的に行わず、ノードごとの検証機能を使用できません。
