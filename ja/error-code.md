@@ -16,7 +16,7 @@
 | LNCS_SERVICE_UNSTABLE   | Log & Crash Searchサービスが不安定な状態です。サポートにお問い合わせください。                                      |
 | KAFKA_ENDPOINT_INVALID  | Kafka endpointにアクセスできません。                                                               |
 | S3_UNAUTHENTICATED      | S3, Object Storageノードのaccess keyまたはsecret keyが有効ではありません。                              | 
-| S3_ACCESS_DENIED        | S3、Object Storageストレージへのアクセスが拒否されました。 S3、Object Storageノードのaccess keyに付与されたACLをご確認ください。  |
+| S3_ACCESS_DENIED        | S3、 Object Storageストレージへのアクセスが拒否されました。 S3、Object Storageノードのaccess keyに付与されたACLをご確認ください。  |
 | S3_NO_SUCH_BUCKET       | S3, Object Storageストレージにバケットが存在しません。                                                   |
 | S3_SERVICE_ERROR        | S3, Object Storageストレージが不安定な状態です。該当ストレージにお問い合わせください。                                      |
 | ERROR                   | サービス内部エラーまたは定義されていないエラーです。サポートにお問い合わせください。                                               |
