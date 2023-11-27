@@ -145,47 +145,7 @@
 {"log":"&", "Crash": "Search", "Result": "Data"}
 ```
 
-## (NHN Cloud) CloudTrail
-
-### ノードの説明
-
-* (NHN Cloud) CloudTrailはCloudTrailからデータを読み込むノードです。
-* ノードにデータ照会開始時間を設定できます。設定しない場合はフローを開始する時点からデータを読み込みます。
-* ノードに終了時間を入力しない場合は、ストリーミング形式でデータを読み込みます。終了時間を入力すると、終了時間までのデータを読み込み、フローを終了します。
-
-### プロパティの説明
-
-| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
-| --- | --- | --- | --- | --- |
-| Appkey | - | string | CloudTrailのアプリケーションキーを入力します。 |  |
-| 照会開始時間 | - | string | データ照会の開始時間を入力します。 | [参考](#dsl) |
-| 照会終了時間 | - | string | データ照会の終了時間を入力します。 |  |
-
-* 照会開始時間と照会終了時間の設定
-    * 照会終了時間がフロー実行時点より遅い場合でも、フローは照会終了時間まで待機せず、現在照会できるデータのみ照会した後に終了します。
-
-### コーデック別メッセージ取り込み
-
-* CloudTrailは基本的に```JSON```形式のデータを扱っています。
-    * [参考 -CloudTrail APIガイド](https://docs.toast.com/ko/CloudTrail/ko/api-guide/)
-* コーデックを選択しない場合、またはplainの場合は、CloudTrailデータのJSON文字列を`message`というフィールドに含めます。
-* CloudTrailデータの各フィールドを活用したい場合は、jsonコーデックを使用することを推奨します。
-
-#### 未選択またはplain
-
-``` js
-{
-    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\"}"
-}
-```
-
-#### json
-
-``` js
-{"log":"CloudTrail", "Result": "Data"}
-```
-
-## Source > (NHN Cloud) OBS
+## Source > (NHN Cloud) Object Storage
 
 ### ノードの説明
 

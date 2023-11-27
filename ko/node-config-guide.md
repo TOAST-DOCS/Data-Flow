@@ -145,46 +145,6 @@
 {"log":"&", "Crash": "Search", "Result": "Data"}
 ```
 
-## Source > (NHN Cloud) CloudTrail
-
-### 노드 설명
-
-* (NHN Cloud) CloudTrail은 CloudTrail로부터 데이터를 읽어 오는 노드입니다.
-* 노드에 데이터 조회 시작 시간을 설정할 수 있습니다. 설정하지 않으면 플로우를 시작하는 시점부터 데이터를 읽어 옵니다.
-* 노드에 종료 시간을 입력하지 않으면 스트리밍 형식으로 데이터를 읽어 옵니다. 종료 시간을 입력하면 종료 시간까지의 데이터를 읽어 오고 플로우는 종료됩니다.
-
-### 속성 설명
-
-| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
-| --- | --- | --- | --- | --- |
-| Appkey | - | string | CloudTrail의 앱키를 입력합니다. |  |
-| 조회 시작 시간 | - | string | 데이터 조회의 시작 시간을 입력합니다. | [참고](#dsl) |
-| 조회 종료 시간 | - | string | 데이터 조회의 종료 시간을 입력합니다. |  |
-
-* 조회 시작 시간과 조회 종료 시간 설정
-    * 조회 종료 시간이 플로우 실행 시점보다 늦더라도 플로우는 조회 종료 시간까지 대기하지 않고 현재 조회할 수 있는 데이터만 조회한 뒤 종료합니다.
-
-### 코덱별 메시지 인입
-
-* CloudTrail은 기본적으로 ```JSON``` 형식의 데이터를 다루고 있습니다.
-    * [참고 -CloudTrail API 가이드](https://docs.toast.com/ko/CloudTrail/ko/api-guide/)
-* 코덱을 선택하지 않거나 plain인 경우 CloudTrail 데이터에 대한 JSON 문자열을 `message`라는 필드로 포함하게 됩니다.
-* CloudTrail 데이터의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
-
-#### 미선택 혹은 plain
-
-``` js
-{
-    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\"}"
-}
-```
-
-#### json
-
-``` js
-{"log":"CloudTrail", "Result": "Data"}
-```
-
 ## Source > (NHN Cloud) Object Storage
 
 ### 노드 설명
