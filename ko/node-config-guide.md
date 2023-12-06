@@ -359,6 +359,55 @@
 }
 ```
 
+## Source > JDBC
+
+### 노드 설명
+
+* JDBC 는 주어진 주기로 DB 에 쿼리를 실행하여 결과를 가져오는 노드입니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| 사용자 | - | string | DB 의 사용자를 입력합니다. |  |
+| 드라이버 | - | enum | DB 종류를 선택합니다. |  |
+| 연결 문자열 | - | string | DB 연결 정보를 입력합니다. | ex) `jdbc:mysql://my.sql.endpoint:3306/my_db_name` |
+| 비밀번호 | - | string | 사용자의 비밀번호를 입력합니다. |  |
+| 쿼리 | - | string | 메시지를 생성할 쿼리를 작성합니다. |  |
+| 컬럼 소문자화 변환 여부 | true | boolean | 쿼리 결과로 얻는 칼럼명을 소문자화 할지를 결정합니다. | |
+| 쿼리 실행 주기 | `* * * * *` | string | 쿼리의 실행 주기를 cron-like 표현으로 입력합니다. |  |
+| 트래킹 칼럼 | - |  | 추적할 칼럼을 선택합니다. | 선정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 칼럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고 바랍니다. |
+| 트래킹 칼럼 종류 | numeric | string | 추적할 칼럼의 데이터 종류를 선택합니다. | ex) `numeric` or `timestamp` |
+| 시간대 | - | string | timestamp 타입의 컬럼을 human-readable 문자열로 변환할 때 사용하는 시간대를 정의합니다. | ex) `Asia/Seoul` |
+| 페이징 적용 여부 | false | boolean | 쿼리에 페이징을 적용할지를 결정합니다. | 페이징이 적용되면 쿼리가 여러개로 쪼개져서 실행되며, 순서는 보장되지 않습니다. |
+| 페이지 크기 | - | numeric | 페이징이 적용된 쿼리에서, 한 번에 쿼리할 페이지 크기를 결정합니다. |  |
+
+### 쿼리 작성법
+
+* `:sql_last_value` 를 통해 가장 마지막에 실행된 쿼리 결과에서 `트래킹 칼럼`에 해당하는 값을 사용할 수 있습니다. (초기 값은 `트래킹 칼럼 종류`가 `numeric`이라면 `0`, `timestamp`라면 `1970-01-01 00:00:00`)
+
+``` sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value
+```
+
+* 특정 조건을 추가하고 싶다면 조건과 더불어서 `:sql_last_value`를 추가합니다.
+
+```sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by id ASC
+```
+
+### 코덱별 메시지 인입
+
+#### 미선택 혹은 plain
+
+``` js
+{
+    "id": 1,
+    "name": "dataflow",
+    "deleted": false
+}
+```
+
 ## Filter
 
 * 인입된 데이터를 어떻게 처리할지 정의하는 노드 유형입니다.
