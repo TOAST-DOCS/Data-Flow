@@ -109,7 +109,7 @@
 * ノードにログ照会開始時間を設定できます。設しない場合は、フローを開始する時点からログを読み込みます。
 * ノードに終了時間を入力しない場合は、ストリーミング形式でログを読み込みます。終了時間を入力すると終了時間までのログを読み込み、フローを終了します。
 * ```現在、セッションログとクラッシュログはサポートしません。```
-* Log & Crash Searchの[ログ検索API](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1)のトークンに影響を受けます。
+* Log & Crash Searchの[ログ検索API](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/api-guide/#api_1)のトークンに影響を受けます。
   * トークンが足りない場合はLog & Crash Searchにお問い合わせください。
 
 ### プロパティの説明
@@ -127,7 +127,7 @@
 ### コーデック別メッセージ取り込み
 
 * Log & Crash Searchは基本的に```JSON```形式のデータを扱います。
-    * [参考 - Log & Crash Search APIガイド](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/)
+    * [参考 - Log & Crash Search APIガイド](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/api-guide/)
 * コーデックを選択しない場合やplainの場合は、Log & Crash SearchログのJSON文字列を`message`というフィールドに含めます。
 * Log & Crash Searchログの各フィールドを活用したい場合は、jsonコーデックを使用することを推奨します。
 
@@ -144,6 +144,47 @@
 ``` js
 {"log":"&", "Crash": "Search", "Result": "Data"}
 ```
+
+## (NHN Cloud) CloudTrail
+
+### ノードの説明
+
+* (NHN Cloud) CloudTrailはCloudTrailからデータを読み込むノードです。
+* ノードにデータ照会開始時間を設定できます。設定しない場合はフローを開始する時点からデータを読み込みます。
+* ノードに終了時間を入力しない場合は、ストリーミング形式でデータを読み込みます。終了時間を入力すると、終了時間までのデータを読み込み、フローを終了します。
+
+### プロパティの説明
+
+| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| Appkey | - | string | CloudTrailのアプリケーションキーを入力します。 |  |
+| 照会開始時間 | - | string | データ照会の開始時間を入力します。 | [参考](#dsl) |
+| 照会終了時間 | - | string | データ照会の終了時間を入力します。 |  |
+
+* 照会開始時間と照会終了時間の設定
+    * 照会終了時間がフロー実行時点より遅い場合でも、フローは照会終了時間まで待機せず、現在照会できるデータのみ照会した後に終了します。
+
+### コーデック別メッセージ取り込み
+
+* CloudTrailは基本的に```JSON```形式のデータを扱っています。
+    * [参考 -CloudTrail APIガイド](https://docs.nhncloud.com/ja/Governance%20&%20Audit/CloudTrail/ja/api-guide/)
+* コーデックを選択しない場合、またはplainの場合は、CloudTrailデータのJSON文字列を`message`というフィールドに含めます。
+* CloudTrailデータの各フィールドを活用したい場合は、jsonコーデックを使用することを推奨します。
+
+#### 未選択またはplain
+
+``` js
+{
+    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\"}"
+}
+```
+
+#### json
+
+``` js
+{"log":"CloudTrail", "Result": "Data"}
+```
+
 
 ## Source > (NHN Cloud) Object Storage
 
@@ -460,7 +501,7 @@
 
 * メッセージフィールドの値を暗号化または復号するノードです。
 * 暗号化キーはSKMを参照します。
-    * SKMキー登録の詳細については[SKMガイド文書](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/overview/)をご覧ください。
+    * SKMキー登録の詳細については[SKMガイド文書](https://docs.nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/overview/)をご覧ください。
     * ```1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSKMキーリファレンスのみ参照できます。```
 
 ### プロパティの説明
@@ -1016,7 +1057,7 @@
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| リージョン | - | enum | Object Storage商品のリージョンを入力します。 | [OBSリージョンの詳細](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) |
+| リージョン | - | enum | Object Storage商品のリージョンを入力します。 | [OBSリージョンの詳細](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/s3-api-guide/#aws-sdk) |
 | バケット | - | string | バケット名を入力します。 |  |
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
@@ -1213,7 +1254,7 @@
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | 署名バージョン | - | enum | AWSリクエストを署名する時に使用するバージョンを入力します。 |  |
-| セッショントークン | - | string | AWS一時認証情報のためのセッショントークンを入力します。 | [セッショントークンガイド](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
+| セッショントークン | - | string | AWS一時認証情報のためのセッショントークンを入力します。 | [セッショントークンガイド](https://docs.aws.amazon.com/ja_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
 | Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | @timestamp | string | Prefixに適用する時間フィールドを入力します。 |  |
 | Prefix時間フィールドタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |

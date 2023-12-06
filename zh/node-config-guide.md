@@ -109,7 +109,7 @@
 * You can set the log query start time for a node. If not set, the log is read from the start of the flow.
 * If no end time is entered in the node, logs are read in streaming format. If an end time is entered, logs are read up to the end time and the flow ends.
 * ```Currently, session logs and crash logs are not supported.```
-* Affected by tokens from Log&Crash Search's [Log Search API](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1).
+* Affected by tokens from Log&Crash Search's [Log Search API](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/api-guide/#api_1).
   * If you don't have enough tokens, you need to contact Log&Crash Search.
 
 ### Property Description 
@@ -127,7 +127,7 @@
 ### Message imported by codec
 
 * Log&Crash Search covers data in format **JSON** by default.
-    * [Note - Log&Crash Search API Guide](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/)
+    * [Note - Log&Crash Search API Guide](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/api-guide/)
 * If no codec is selected or Plain, JSON string for the Log&Crash Search Log will be included in the field `message`.
 * If you want to use each field in Log&Crash Search log, we recommend using json Codec.
 
@@ -167,7 +167,7 @@
 ### Message imported by codec
 
 * CloudTrail covers data in the format **JSON** by default.
-    * [Note - CloudTrail API Guide](https://docs.toast.com/ko/CloudTrail/ko/api-guide/)
+    * [Note - CloudTrail API Guide](https://docs.nhncloud.com/en/CloudTrail/en/api-guide/)
 * If no codec is selected or Plain, JSON string for CloudTrail data will be included as field called `message`.
 * If you want to use each field in CloudTrail data, we recommend using json Codec.
 
@@ -502,7 +502,7 @@
 
 * Node for decrypting message field values.
 * Encryption key refers to the SKM.
-    * For more information on registering SKM keys, refer to [SKM Guide Document](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/overview/).
+    * For more information on registering SKM keys, refer to [SKM Guide Document](https://docs.nhncloud.com/en/Security/Secure%20Key%20Manager/en/overview/).
     * ```Even if flow contains multiple Cipher Nodes, all Cipher nodes must refer to only one SKM key reference.```
 
 ### Property Description 
@@ -1057,7 +1057,7 @@
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| region | - | enum | Enter the region of Object Storage product | [OBS Region in Detail](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) |
+| region | - | enum | Enter the region of Object Storage product | [OBS Region in Detail](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#aws-sdk) |
 | Bucket | - | string | Enter bucket name |  |
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
@@ -1254,7 +1254,7 @@
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Signature Version | - | enum | Enter the version to use when signing AWS requests. |  |
-| Session Token | - | string | Enter the Session Token for AWS temporary Credentials. | [ Session Token Guide](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
+| Session Token | - | string | Enter the Session Token for AWS temporary Credentials. | [ Session Token Guide](https://docs.aws.amazon.com/en_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
 | Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix Time Field | @timestamp | string | Enter a time field to apply to the prefix. |  |
 | Prefix Time Field Type | DATE_FILTER_RESULT | enum | Enter a time field type to apply to the prefix. |  |
