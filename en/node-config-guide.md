@@ -136,14 +136,14 @@
 
 ``` js
 { 
-    "message":"{\\\"log\\\":\\\"&\\\", \\\"Crash\\\": \\\"Search\\\", \\\"Result\\\": \\\"Data\\\", \\\"@timestamp\\\": \\\"2023-12-06T08:09:24.887Z\\\", \\\"@version\\\": \\\"1\\\"}" 
+    "message":"{\\\"log\\\":\\\"&\\\", \\\"Crash\\\": \\\"Search\\\", \\\"Result\\\": \\\"Data\\\"}" 
 }
 ```
 
 #### json
 
 ``` js
-{"log":"&", "Crash": "Search", "Result": "Data", "@timestamp": "2023-12-06T08:09:24.887Z", "@version":"1"}
+{"log":"&", "Crash": "Search", "Result": "Data"}
 ```
 
 ## (NHN Cloud) CloudTrail
@@ -176,14 +176,14 @@
 
 ``` js
 { 
-    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\"}" 
+    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\", \\\"@timestamp\\\": \\\"2023-12-06T08:09:24.887Z\\\", \\\"@version\\\": \\\"1\\\"}" 
 }
 ```
 
 #### json
 
 ``` js
-{"log":"CloudTrail", "Result": "Data"}
+{"log":"CloudTrail", "Result": "Data", "@timestamp": "2023-12-06T08:09:24.887Z", "@version":"1"}
 ```
 
 ## Source > (NHN Cloud) Object Storage
