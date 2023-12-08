@@ -136,14 +136,14 @@
 
 ``` js
 { 
-    "message":"{\\\"log\\\":\\\"&\\\", \\\"Crash\\\": \\\"Search\\\", \\\"Result\\\": \\\"Data\\\"}" 
+    "message":"{\\\"log\\\":\\\"&\\\", \\\"Crash\\\": \\\"Search\\\", \\\"Result\\\": \\\"Data\\\", \\\"@timestamp\\\": \\\"2023-12-06T08:09:24.887Z\\\", \\\"@version\\\": \\\"1\\\"}" 
 }
 ```
 
 #### json
 
 ``` js
-{"log":"&", "Crash": "Search", "Result": "Data"}
+{"log":"&", "Crash": "Search", "Result": "Data", "@timestamp": "2023-12-06T08:09:24.887Z", "@version":"1"}
 ```
 
 ## (NHN Cloud) CloudTrail
