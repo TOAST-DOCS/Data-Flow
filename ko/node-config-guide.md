@@ -167,7 +167,7 @@
 ### 코덱별 메시지 인입
 
 * CloudTrail은 기본적으로 ```JSON``` 형식의 데이터를 다루고 있습니다.
-    * [참고 -CloudTrail API 가이드](https://docs.nhncloud.com/ko/Governance%20&%20Audit/CloudTrail/ko/api-guide/)
+    * [참고 - CloudTrail API 가이드](https://docs.nhncloud.com/ko/Governance%20&%20Audit/CloudTrail/ko/api-guide/)
 * 코덱을 선택하지 않거나 plain인 경우 CloudTrail 데이터에 대한 JSON 문자열을 `message`라는 필드로 포함하게 됩니다.
 * CloudTrail 데이터의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
@@ -271,10 +271,10 @@
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#consumerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#consumerconfigs_bootstrap.servers)<br/>예) 10.100.1.1:9092,10.100.1.2:9092 |
 | 컨슈머 그룹 아이디 | dataflow | string | Kafka Consumer Group을 식별하는 ID를 입력합니다. | [group.id](https://kafka.apache.org/documentation/#consumerconfigs_group.id) |
 | 내부 토픽 제외 여부 | true | boolean |  | [exclude.internal.topics](https://kafka.apache.org/documentation/#consumerconfigs_exclude.internal.topics)<br/>수신 대상에서 `__consumer_offsets`와 같은 내부 토픽을 제외합니다. |
-| 토픽 패턴 | - | string | 메시지를 수신할 Kafka 토픽 패턴을 입력합니다. | ex) `*-messages` |
+| 토픽 패턴 | - | string | 메시지를 수신할 Kafka 토픽 패턴을 입력합니다. | 예) `*-messages` |
 | 클라이언트 아이디 | dataflow | string | Kafka Consumer를 식별하는 ID를 입력합니다. | [client.id](https://kafka.apache.org/documentation/#consumerconfigs_client.id) |
 | 파티션 할당 정책 | - | string | Kafka에서 메시지 수신 시 컨슈머 그룹에 어떻게 파티션을 할당할지 결정합니다. | [partition.assignment.strategy](https://kafka.apache.org/documentation/#consumerconfigs_partition.assignment.strategy)<br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
 | 오프셋 설정 | none | enum | 컨슈머 그룹의 오프셋을 설정하는 기준을 입력합니다. | [auto.offset.reset](https://kafka.apache.org/documentation/#consumerconfigs_auto.offset.reset)<br/>아래 설정 모두 컨슈머 그룹이 이미 존재하는 경우 기존 오프셋을 유지합니다.<br/>none: 컨슈머 그룹이 없으면 오류를 반환합니다.<br/>earliest: 컨슈머 그룹이 없으면 파티션의 가장 오래된 오프셋으로 초기화합니다.<br/>latest: 컨슈머 그룹이 없으면 파티션의 가장 최근 오프셋으로 초기화합니다. |
@@ -403,28 +403,28 @@
 
 ### 노드 설명
 
-* JDBC 는 주어진 주기로 DB 에 쿼리를 실행하여 결과를 가져오는 노드입니다.
+* JDBC는 주어진 주기로 DB에 쿼리를 실행하여 결과를 가져오는 노드입니다.
 
 ### 속성 설명
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| 사용자 | - | string | DB 의 사용자를 입력합니다. |  |
+| 사용자 | - | string | DB 사용자를 입력합니다. |  |
 | 드라이버 | - | enum | DB 종류를 선택합니다. |  |
-| 연결 문자열 | - | string | DB 연결 정보를 입력합니다. | ex) `jdbc:mysql://my.sql.endpoint:3306/my_db_name` |
-| 비밀번호 | - | string | 사용자의 비밀번호를 입력합니다. |  |
+| 연결 문자열 | - | string | DB 연결 정보를 입력합니다. | 예) `jdbc:mysql://my.sql.endpoint:3306/my_db_name` |
+| 비밀번호 | - | string | 사용자 비밀번호를 입력합니다. |  |
 | 쿼리 | - | string | 메시지를 생성할 쿼리를 작성합니다. |  |
-| 컬럼 소문자화 변환 여부 | true | boolean | 쿼리 결과로 얻는 칼럼명을 소문자화 할지를 결정합니다. | |
+| 컬럼 소문자화 변환 여부 | true | boolean | 쿼리 결과로 얻는 컬럼명을 소문자화할지를 결정합니다. | |
 | 쿼리 실행 주기 | `* * * * *` | string | 쿼리의 실행 주기를 cron-like 표현으로 입력합니다. |  |
-| 트래킹 칼럼 | - |  | 추적할 칼럼을 선택합니다. | 선정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 칼럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고 바랍니다. |
-| 트래킹 칼럼 종류 | numeric | string | 추적할 칼럼의 데이터 종류를 선택합니다. | ex) `numeric` or `timestamp` |
-| 시간대 | - | string | timestamp 타입의 컬럼을 human-readable 문자열로 변환할 때 사용하는 시간대를 정의합니다. | ex) `Asia/Seoul` |
-| 페이징 적용 여부 | false | boolean | 쿼리에 페이징을 적용할지를 결정합니다. | 페이징이 적용되면 쿼리가 여러개로 쪼개져서 실행되며, 순서는 보장되지 않습니다. |
-| 페이지 크기 | - | numeric | 페이징이 적용된 쿼리에서, 한 번에 쿼리할 페이지 크기를 결정합니다. |  |
+| 트래킹 컬럼 | - |  | 추적할 컬럼을 선택합니다. | 사전 정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 컬럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고 바랍니다. |
+| 트래킹 컬럼 종류 | numeric | string | 추적할 컬럼의 데이터 종류를 선택합니다. | 예) `numeric` or `timestamp` |
+| 시간대 | - | string | timestamp 타입의 컬럼을 human-readable 문자열로 변환할 때 사용하는 시간대를 정의합니다. | 예) `Asia/Seoul` |
+| 페이징 적용 여부 | false | boolean | 쿼리에 페이징을 적용할지 여부를 결정합니다. | 페이징이 적용되면 쿼리가 여러 개로 쪼개져서 실행되며, 순서는 보장되지 않습니다. |
+| 페이지 크기 | - | numeric | 페이징이 적용된 쿼리에서, 한 번에 쿼리 할 페이지 크기를 결정합니다. |  |
 
 ### 쿼리 작성법
 
-* `:sql_last_value` 를 통해 가장 마지막에 실행된 쿼리 결과에서 `트래킹 칼럼`에 해당하는 값을 사용할 수 있습니다. (초기 값은 `트래킹 칼럼 종류`가 `numeric`이라면 `0`, `timestamp`라면 `1970-01-01 00:00:00`)
+* `:sql_last_value` 를 통해 가장 마지막에 실행된 쿼리 결과에서 `트래킹 컬럼`에 해당하는 값을 사용할 수 있습니다(초깃값은 `트래킹 컬럼 종류`가 `numeric`이라면 `0`, `timestamp`라면 `1970-01-01 00:00:00`).
 
 ``` sql
 SELECT * FROM MY_TABLE WHERE id > :sql_last_value
@@ -686,19 +686,19 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | 저장할 필드 | - | string | CSV 파싱 결과를 저장할 필드명를 입력합니다. |  |
-| Quote | " | string | 칼럼 필드를 나누는 문자를 입력합니다. |  |
-| 첫 행 무시 여부 | false | boolean | 속성값이 true일 경우 읽은 데이터 중 첫 행에 입력된 칼럼 이름을 무시합니다. |  |
-| 칼럼 | - | array of strings | 칼럼 이름을 입력합니다. |  |
-| 구분자 | , | string | 칼럼을 구분할 문자열을 입력합니다. |  |
+| Quote | " | string | 컬럼 필드를 나누는 문자를 입력합니다. |  |
+| 첫 행 무시 여부 | false | boolean | 속성값이 true일 경우 읽은 데이터 중 첫 행에 입력된 컬럼 이름을 무시합니다. |  |
+| 컬럼 | - | array of strings | 컬럼 이름을 입력합니다. |  |
+| 구분자 | , | string | 컬럼을 구분할 문자열을 입력합니다. |  |
 | 소스 필드 | message | string | CSV 파싱할 필드명을 입력합니다. |  |
-| 스키마 | - | hash | 각 칼럼의 이름과 자료형을 dictionary 형태로 입력합니다. | 칼럼에 정의된 필드와 별개로 등록합니다.<br/>자료형은 기본적으로 string이며, 다른 자료형으로 변환이 필요할 경우 스키마 설정을 활용합니다.<br/>가능한 자료형은 다음과 같습니다.<br/>integer, float, date, date_time, boolean |
+| 스키마 | - | hash | 각 컬럼의 이름과 자료형을 dictionary 형태로 입력합니다. | 컬럼에 정의된 필드와 별개로 등록합니다.<br/>자료형은 기본적으로 string이며, 다른 자료형으로 변환이 필요할 경우 스키마 설정을 활용합니다.<br/>가능한 자료형은 다음과 같습니다.<br/>integer, float, date, date_time, boolean |
 
 ### 자료형 없는 CSV 파싱 예제
 
 #### 조건
 
 * 소스 필드 → `message`
-* 칼럼 → `["one", "two", "t hree"]`
+* 컬럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -724,7 +724,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 #### 조건
 
 * 소스 필드 → `message`
-* 칼럼 → `["one", "two", "t hree"]`
+* 컬럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -750,7 +750,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 #### 조건
 
 * 소스 필드 → `message`
-* 칼럼 → `["one", "two", "t hree"]`
+* 컬럼 → `["one", "two", "t hree"]`
 * 스키마 → `{"two": "integer", "t hree": "boolean"}`
 
 #### 입력 메시지
@@ -1389,7 +1389,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | 토픽 | - | string | 메시지를 전송할 Kafka 토픽 이름을 입력합니다. |  |
-| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br/>예) 10.100.1.1:9092,10.100.1.2:9092 |
 | 클라이언트 아이디 | dataflow | string | Kafka Producer를 식별하는 ID를 입력합니다. | [client.id](https://kafka.apache.org/documentation/#producerconfigs_client.id) |
 | 메시지 직렬화 유형 | org.apache.kafka.common.serialization.StringSerializer | string | 전송하는 메시지의 값을 직렬화할 방법을 입력합니다. | [value.serializer](https://kafka.apache.org/documentation/#producerconfigs_value.serializer) |
 | 압축 유형 | none | enum | 전송하는 데이터를 압축할 방법을 입력합니다. | [compression.type](https://kafka.apache.org/documentation/#topicconfigs_compression.type)<br/>none, gzip, snappy, lz4 중 선택 |
