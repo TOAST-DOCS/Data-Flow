@@ -1,6 +1,6 @@
 ## Data & Analytics > DataFlow > 노드 설정 가이드
 
-* 노드 유형은 손쉽게 플로우를 작성할 수 있게 선정의된 템플릿입니다.
+* 노드 유형은 손쉽게 플로우를 작성할 수 있게 사전 정의된 템플릿입니다.
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
 * Source, Sink 노드 유형은 반드시 테스트를 수행하여 엔드포인트 정보가 유효한지 확인하기를 권장합니다.
 
@@ -1295,7 +1295,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 ### 노드 설명
 
 * NHN Cloud의 Object Storage에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
-* OBS에 작성되는 Object는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
+* OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
