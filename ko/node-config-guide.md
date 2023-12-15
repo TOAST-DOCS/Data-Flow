@@ -1100,7 +1100,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 ### 노드 설명
 
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
-* OBS에 작성되는 Object는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
+* OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### 속성 설명
