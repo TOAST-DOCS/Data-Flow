@@ -1,5 +1,17 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### December 19, 2023
+#### Added Features
+* Added a new node
+    * Source
+        * Added the feature to run queries against the DB to get data.
+    * Sink
+        * Added the feature to store data in Object Storage with the parquet type.
+        * Added the feature to store data in S3 with the parquet type.
+
+#### Bug Fixes
+* Fixed a bug where validation would not turn on properly after creating a flow.
+
 ### November 28, 2023
 #### Feature Updates
 * Added error codes when saving or validating flows.
