@@ -146,6 +146,7 @@
 {"log":"&", "Crash": "Search", "Result": "Data"}
 ```
 
+
 ## (NHN Cloud) CloudTrail
 
 ### Node Description
@@ -397,6 +398,55 @@
 {
     "hello": "world!",
     "hey": "foo"
+}
+```
+
+## Source > JDBC
+
+### Node Description
+
+* JDBC is a node that executes queries to the DB at a given interval to retrieve results.
+* Supports MySQL, MS-SQL, PostgreSQL, MariaDB, and Oracle drivers.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| User | - | string | Enter a DB user. |  |
+| Connection String | - | string | Enter the DB connection information. | Example) `jdbc:mysql://my.sql.endpoint:3306/my_db_name` |
+| Password | - | string | Enter the user password. |  |
+| Query | - | string | Write a query to create a message. |  |
+| Whether to convert columns to lowercase | true | boolean | Determine whether to lowercase the column names you get as a result of the query. | |
+| Query execute frequency | `* * * * *` | string | Enter the execute frequency of the query in a cron-like expression. |  |
+| Tracking Columns | - |  | Select the columns you want to track. | The predefined parameter `:SQL_LAST_VALUE`allows you to use a value corresponding to the column you want to track in the last query result.<br>See how to write a query below. |
+| Tracking column type | array of strings | string | Select the type of data in the column you want to track. | Example) `numeric` or `timestamp` |
+| Time zone | - | string | Define the time zone to use when converting a column of type timestamp to a human-readable string. | Example) `Asia/Seoul` |
+| Whether to apply paging | true | boolean | Determines whether to apply paging to the query. | When paging is applied, the query is split into multiple executions, the order of which is not guaranteed. |
+| Page size | - | array of strings | In a paged query, it determines how many pages to query at once. |  |
+
+### How to write a query
+
+* `:sql_last_valu` allows you to use the value corresponding to `the tracking column`in the result of the last executed query (the default value is `0`, if the `tracking column type`is `numeric`, or `1970-01-01 00:00:00` , if it is `timestamp`).
+
+``` sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value
+```
+
+* If you want to add a specific condition, add `:sql_last_value`in addition to the condition.
+
+```sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by id ASC
+```
+
+### Message imported by codec
+
+#### Unselected or plain
+
+``` js
+{
+    "id": 1,
+    "name": "dataflow",
+    "deleted": false
 }
 ```
 
@@ -1242,7 +1292,20 @@
 /obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
-## (Amazon) S3
+## Sink > (NHN Cloud) Object Storage - Parquet
+
+### Node Description
+
+* This node converts data to parquet type and uploads it to NHN Cloud's Object Storage.
+* Objects written to OBS are output in the following path format by default.
+    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
+* (NHN Cloud) Same as Object Storage node, but some values are changed as below to support parquet type.
+  * Codec fixed to parquet
+  * File rotation policy fixed to size
+    * size is fixed to 128 MB (134,217,728 bytes)
+  * Encoding fixed to none
+
+## Sink > (Amazon) S3
 
 ### Node Description
 
@@ -1306,7 +1369,18 @@
 }
 ```
 
-## Kafka
+## Sink > (Amazon) S3 - Parquet
+
+### Node Description
+
+* This node converts data to the parquet type and uploads it to Amazon S3.
+* (Amazon) S3 node, but some values are changed to support the parquet type, as shown below.
+  * Codec fixed to parquet
+  * File rotation policy fixed to size
+    * size is fixed to 128 MB (134,217,728 bytes)
+  * Encoding fixed to none
+
+## Sink > (Apache) Kafka
 
 ### Node Description
 
