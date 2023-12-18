@@ -109,7 +109,7 @@
 * You can set the log query start time for a node. If not set, the log is read from the start of the flow.
 * If no end time is entered in the node, logs are read in streaming format. If an end time is entered, logs are read up to the end time and the flow ends.
 * ```Currently, session logs and crash logs are not supported.```
-* Affected by tokens from Log&Crash Search's [Log Search API](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1).
+* Affected by tokens from Log&Crash Search's [Log Search API](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/api-guide/#api_1).
   * If you don't have enough tokens, you need to contact Log&Crash Search.
 
 ### Property Description 
@@ -124,11 +124,10 @@
 * Set the query start and end time
     * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
 
-
 ### Message imported by codec
 
 * Log&Crash Search covers data in format **JSON** by default.
-    * [Note - Log&Crash Search API Guide](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/)
+    * [Note - Log&Crash Search API Guide](https://docs.nhncloud.com/en/Data%20&%20Analytics/Log%20&%20Crash%20Search/en/api-guide/)
 * If no codec is selected or Plain, JSON string for the Log&Crash Search Log will be included in the field `message`.
 * If you want to use each field in Log&Crash Search log, we recommend using json Codec.
 
@@ -144,6 +143,46 @@
 
 ``` js
 {"log":"&", "Crash": "Search", "Result": "Data"}
+```
+
+## (NHN Cloud) CloudTrail
+
+### Node Description
+
+* (NHN Cloud) CloudTrail is a node that reads data from CloudTrail.
+* You can set the data query start time for a node. If not set, data is read from the start of the flow.
+* If no end time is entered in the node, data is read in streaming format. If an end time is entered, the data up to the end time is read and the flow ends.
+
+### Property Description 
+
+| Property name | Default value | Data type | Description | Others |
+| --- | --- | --- | --- | --- |
+| Appkey | - | string | Enter the app key for CloudTrail. |  |
+| Query Start time | - | string | Enter the start time of data Query. | [Note](#dsl) |
+| Log End time | - | string | Enter the end time of data Query. |  |
+
+* Set the query start and end time
+    * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
+
+### Message imported by codec
+
+* CloudTrail covers data in the format **JSON** by default.
+    * [Note - CloudTrail API Guide](https://docs.nhncloud.com/en/Governance%20&%20Audit/CloudTrail/en/api-guide/)
+* If no codec is selected or Plain, JSON string for CloudTrail data will be included as field called `message`.
+* If you want to use each field in CloudTrail data, we recommend using json Codec.
+
+#### Not selected or Plain
+
+``` js
+{ 
+    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\", \\\"@timestamp\\\": \\\"2023-12-06T08:09:24.887Z\\\", \\\"@version\\\": \\\"1\\\"}" 
+}
+```
+
+#### json
+
+``` js
+{"log":"CloudTrail", "Result": "Data", "@timestamp": "2023-12-06T08:09:24.887Z", "@version":"1"}
 ```
 
 ## Source > (NHN Cloud) Object Storage
@@ -360,6 +399,55 @@
 }
 ```
 
+## Source > JDBC
+
+### Node Description
+
+* JDBC is a node that executes queries to the DB at a given interval to retrieve results.
+* Supports MySQL, MS-SQL, PostgreSQL, MariaDB, and Oracle drivers.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| User | - | string | Enter a DB user. |  |
+| Connection String | - | string | Enter the DB connection information. | Example) `jdbc:mysql://my.sql.endpoint:3306/my_db_name` |
+| Password | - | string | Enter the user password. |  |
+| Query | - | string | Write a query to create a message. |  |
+| Whether to convert columns to lowercase | true | boolean | Determine whether to lowercase the column names you get as a result of the query. | |
+| Query execute frequency | `* * * * *` | string | Enter the execute frequency of the query in a cron-like expression. |  |
+| Tracking Columns | - |  | Select the columns you want to track. | The predefined parameter `:SQL_LAST_VALUE`allows you to use a value corresponding to the column you want to track in the last query result.<br>See how to write a query below. |
+| Tracking column type | array of strings | string | Select the type of data in the column you want to track. | Example) `numeric` or `timestamp` |
+| Time zone | - | string | Define the time zone to use when converting a column of type timestamp to a human-readable string. | Example) `Asia/Seoul` |
+| Whether to apply paging | true | boolean | Determines whether to apply paging to the query. | When paging is applied, the query is split into multiple executions, the order of which is not guaranteed. |
+| Page size | - | array of strings | In a paged query, it determines how many pages to query at once. |  |
+
+### How to write a query
+
+* `:sql_last_valu` allows you to use the value corresponding to `the tracking column`in the result of the last executed query (the default value is `0`, if the `tracking column type`is `numeric`, or `1970-01-01 00:00:00` , if it is `timestamp`).
+
+``` sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value
+```
+
+* If you want to add a specific condition, add `:sql_last_value`in addition to the condition.
+
+```sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by id ASC
+```
+
+### Message imported by codec
+
+#### Unselected or plain
+
+``` js
+{
+    "id": 1,
+    "name": "dataflow",
+    "deleted": false
+}
+```
+
 ## Filter
 
 * Node type that defines how to handle imported data.
@@ -464,7 +552,7 @@
 
 * Node for decrypting message field values.
 * Encryption key refers to the SKM.
-    * For more information on registering SKM keys, refer to [SKM Guide Document](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/overview/).
+    * For more information on registering SKM keys, refer to [SKM Guide Document](https://docs.nhncloud.com/en/Security/Secure%20Key%20Manager/en/overview/).
     * ```Even if flow contains multiple Cipher Nodes, all Cipher nodes must refer to only one SKM key reference.```
 
 ### Property Description 
@@ -1019,7 +1107,7 @@
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| region | - | enum | Enter the region of Object Storage product | [OBS Region in Detail](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) |
+| region | - | enum | Enter the region of Object Storage product | [OBS Region in Detail](https://docs.nhncloud.com/en/Storage/Object%20Storage/en/s3-api-guide/#aws-sdk) |
 | Bucket | - | string | Enter bucket name |  |
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
@@ -1202,7 +1290,20 @@
 /obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
-## (Amazon) S3
+## Sink > (NHN Cloud) Object Storage - Parquet
+
+### Node Description
+
+* This node converts data to parquet type and uploads it to NHN Cloud's Object Storage.
+* Objects written to OBS are output in the following path format by default.
+    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
+* (NHN Cloud) Same as Object Storage node, but some values are changed as below to support parquet type.
+  * Codec fixed to parquet
+  * File rotation policy fixed to size
+    * size is fixed to 128 MB (134,217,728 bytes)
+  * Encoding fixed to none
+
+## Sink > (Amazon) S3
 
 ### Node Description
 
@@ -1216,7 +1317,7 @@
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Signature Version | - | enum | Enter the version to use when signing AWS requests. |  |
-| Session Token | - | string | Enter the Session Token for AWS temporary Credentials. | [ Session Token Guide](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
+| Session Token | - | string | Enter the Session Token for AWS temporary Credentials. | [ Session Token Guide](https://docs.aws.amazon.com/en_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
 | Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix Time Field | @timestamp | string | Enter a time field to apply to the prefix. |  |
 | Prefix Time Field Type | DATE_FILTER_RESULT | enum | Enter a time field type to apply to the prefix. |  |
@@ -1256,7 +1357,7 @@
 }
 ```
 
-#### force_path_style
+#### force\_path\_style
 
 * For `true`, the URL must be path-style, not virtual-hosted-style. [Reference](https://docs.amazonaws.cn/en_us/AmazonS3/latest/userguide/VirtualHosting.html)
 
@@ -1266,7 +1367,18 @@
 }
 ```
 
-## Kafka
+## Sink > (Amazon) S3 - Parquet
+
+### Node Description
+
+* This node converts data to the parquet type and uploads it to Amazon S3.
+* (Amazon) S3 node, but some values are changed to support the parquet type, as shown below.
+  * Codec fixed to parquet
+  * File rotation policy fixed to size
+    * size is fixed to 128 MB (134,217,728 bytes)
+  * Encoding fixed to none
+
+## Sink > (Apache) Kafka
 
 ### Node Description
 

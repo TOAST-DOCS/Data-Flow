@@ -1,6 +1,6 @@
 ## Data & Analytics > DataFlow > ノードタイプガイド
 
-* ノードタイプは、手軽にフローを作成できるように先定義されたテンプレートです。
+* ノードタイプは、手軽にフローを作成できるように事前に定義されたテンプレートです。
 * ノードタイプの種類はSource、Filter、Branch、Sinkです。
 * Source、Sinkノードタイプは、必ずテストを行ってエンドポイント情報が有効であることを確認することを推奨します。
 
@@ -109,7 +109,7 @@
 * ノードにログ照会開始時間を設定できます。設しない場合は、フローを開始する時点からログを読み込みます。
 * ノードに終了時間を入力しない場合は、ストリーミング形式でログを読み込みます。終了時間を入力すると終了時間までのログを読み込み、フローを終了します。
 * ```現在、セッションログとクラッシュログはサポートしません。```
-* Log & Crash Searchの[ログ検索API](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1)のトークンに影響を受けます。
+* Log & Crash Searchの[ログ検索API](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/api-guide/#api_1)のトークンに影響を受けます。
   * トークンが足りない場合はLog & Crash Searchにお問い合わせください。
 
 ### プロパティの説明
@@ -127,7 +127,7 @@
 ### コーデック別メッセージ取り込み
 
 * Log & Crash Searchは基本的に```JSON```形式のデータを扱います。
-    * [参考 - Log & Crash Search APIガイド](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/)
+    * [参考 - Log & Crash Search APIガイド](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/api-guide/)
 * コーデックを選択しない場合やplainの場合は、Log & Crash SearchログのJSON文字列を`message`というフィールドに含めます。
 * Log & Crash Searchログの各フィールドを活用したい場合は、jsonコーデックを使用することを推奨します。
 
@@ -144,6 +144,47 @@
 ``` js
 {"log":"&", "Crash": "Search", "Result": "Data"}
 ```
+
+## (NHN Cloud) CloudTrail
+
+### ノードの説明
+
+* (NHN Cloud) CloudTrailはCloudTrailからデータを読み込むノードです。
+* ノードにデータ照会開始時間を設定できます。設定しない場合はフローを開始する時点からデータを読み込みます。
+* ノードに終了時間を入力しない場合は、ストリーミング形式でデータを読み込みます。終了時間を入力すると、終了時間までのデータを読み込み、フローを終了します。
+
+### プロパティの説明
+
+| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| Appkey | - | string | CloudTrailのアプリケーションキーを入力します。 |  |
+| 照会開始時間 | - | string | データ照会の開始時間を入力します。 | [参考](#dsl) |
+| 照会終了時間 | - | string | データ照会の終了時間を入力します。 |  |
+
+* 照会開始時間と照会終了時間の設定
+    * 照会終了時間がフロー実行時点より遅い場合でも、フローは照会終了時間まで待機せず、現在照会できるデータのみ照会した後に終了します。
+
+### コーデック別メッセージ取り込み
+
+* CloudTrailは基本的に```JSON```形式のデータを扱っています。
+    * [参考 -CloudTrail APIガイド](https://docs.nhncloud.com/ja/Governance%20&%20Audit/CloudTrail/ja/api-guide/)
+* コーデックを選択しない場合、またはplainの場合は、CloudTrailデータのJSON文字列を`message`というフィールドに含めます。
+* CloudTrailデータの各フィールドを活用したい場合は、jsonコーデックを使用することを推奨します。
+
+#### 未選択またはplain
+
+``` js
+{
+    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\", \\\"@timestamp\\\": \\\"2023-12-06T08:09:24.887Z\\\", \\\"@version\\\": \\\"1\\\"}"
+}
+```
+
+#### json
+
+``` js
+{"log":"CloudTrail", "Result": "Data"}
+```
+
 
 ## Source > (NHN Cloud) Object Storage
 
@@ -231,10 +272,10 @@
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| ブローカーサーバーリスト | localhost:9092 | string | Kafkaブローカーサーバーを入力します。サーバーが複数台の場合はコンマ(`,`)で区切ります。 | [bootstrap.servers](https://kafka.apache.org/documentation/#consumerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| ブローカーサーバーリスト | localhost:9092 | string | Kafkaブローカーサーバーを入力します。サーバーが複数台の場合はコンマ(`,`)で区切ります。 | [bootstrap.servers](https://kafka.apache.org/documentation/#consumerconfigs_bootstrap.servers)<br/>例) 10.100.1.1:9092,10.100.1.2:9092 |
 | コンシューマーグループID | dataflow | string | Kafka Consumer Groupを識別するIDを入力します。 | [group.id](https://kafka.apache.org/documentation/#consumerconfigs_group.id) |
 | 内部トピックを除外するかどうか | true | boolean |  | [exclude.internal.topics](https://kafka.apache.org/documentation/#consumerconfigs_exclude.internal.topics)<br/>受信対象から`__consumer_offsets`などの内部トピックを除外します。 |
-| トピックパターン | - | string | メッセージを受信するKafkaトピックパターンを入力します。 | ex) `*-messages` |
+| トピックパターン | - | string | メッセージを受信するKafkaトピックパターンを入力します。 | 例) `*-messages` |
 | クライアントID | dataflow | string | Kafka Consumerを識別するIDを入力します。 | [client.id](https://kafka.apache.org/documentation/#consumerconfigs_client.id) |
 | パーティション割り当てポリシー | - | string | Kafkaからメッセージを受信した時にコンシューマーグループにどのようにパーティションを割り当てるかを決定します。 | [partition.assignment.strategy](https://kafka.apache.org/documentation/#consumerconfigs_partition.assignment.strategy)<br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
 | オフセット設定 | none | enum | コンシューマーグループのオフセットを設定する基準を入力します。 | [auto.offset.reset](https://kafka.apache.org/documentation/#consumerconfigs_auto.offset.reset)<br/>以下の設定はすべて、コンシューマーグループがすでに存在する場合は既存オフセットを維持します。<br/>none：コンシューマーグループがない場合はエラーを返します。<br/>earliest：コンシューマーグループがない場合はパーティションの最も古いオフセットで初期化します。<br/>latest：コンシューマーグループがない場合はパーティションの最も新しいオフセットで初期化します。 |
@@ -357,6 +398,55 @@
 }
 ```
 
+## Source > JDBC
+
+### ノードの説明
+
+* JDBCは与えられた周期でDBにクエリを実行して結果を取得するノードです。
+* MySQL, MS-SQL, PostgreSQL, MariaDB, Oracleドライバーをサポートします。
+
+### プロパティ説明
+
+| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| ユーザー | - | string | DBユーザーを入力します。 |  |
+| 接続文字列 | - | string | DB接続情報を入力します。 | 例) `jdbc:mysql://my.sql.endpoint:3306/my_db_name` |
+| パスワード | - | string | ユーザーパスワードを入力します。 |  |
+| クエリ | - | string | メッセージを作成するクエリを作成します。 |  |
+| カラム小文字化変換を行うかどうか | true | boolean | クエリ結果で得られるカラム名を小文字化するかどうかを決定します。 | |
+| クエリ実行周期 | `* * * * *` | string | クエリの実行周期をcron-like表現で入力します。 |  |
+| トラッキングカラム | - |  | 追跡するカラムを選択します。 | 事前定義されたパラメータ`:sql_last_value`で、最後のクエリ結果で追跡するカラムに該当する値を使用できます。<br>以下のクエリ作成方法を参考にしてください。 |
+| トラッキングカラム種類 | numeric | string | 追跡するカラムのデータ種類を選択します。 | 例) `numeric` or `timestamp` |
+| タイムゾーン | - | string | timestampタイプのカラムをhuman-readable文字列に変換する際に使用するタイムゾーンを定義します。 | 例) `Asia/Seoul` |
+| ページングを適用するかどうか | false | boolean | クエリにページングを適用するかどうかを決定します。 | ページングが適用されると、クエリが複数に分割されて実行され、順序は保証されません。 |
+| ページサイズ | - | numeric | ページングが適用されたクエリで、一度にクエリするページサイズを決定します。 |  |
+
+### クエリの作成方法
+
+* `:sql_last_value`を使って最後に実行されたクエリの結果で`トラッキングカラム`に該当する値を使うことができます(初期値は`トラッキングカラムの種類`が`numeric`なら`0`, `timestamp`なら`1970-01-01 00:00:00`)。
+
+``` sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value
+```
+
+* 特定の条件を追加したい場合は、条件と一緒に`:sql_last_value`を追加します。
+
+```sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by id ASC
+```
+
+### コーデック別メッセージ入力
+
+#### 未選択またはplain
+
+``` js
+{
+    "id": 1,
+    "name": "dataflow",
+    "deleted": false
+}
+```
+
 ## Filter
 * 取り込まれたデータをどのように処理するかを定義するノードタイプです。
 
@@ -460,7 +550,7 @@
 
 * メッセージフィールドの値を暗号化または復号するノードです。
 * 暗号化キーはSKMを参照します。
-    * SKMキー登録の詳細については[SKMガイド文書](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/overview/)をご覧ください。
+    * SKMキー登録の詳細については[SKMガイド文書](https://docs.nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/overview/)をご覧ください。
     * ```1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSKMキーリファレンスのみ参照できます。```
 
 ### プロパティの説明
@@ -1009,14 +1099,14 @@
 ### ノードの説明
 
 * NHN CloudのObject Storageにデータをアップロードするノードです。
-* OBSに作成されるObjectは、基本的に次のパスフォーマットに合わせて出力されます。
+* OBSに作成されるオブジェクトは、基本的に次のパスフォーマットに合わせて出力されます。
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### プロパティの説明
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| リージョン | - | enum | Object Storage商品のリージョンを入力します。 | [OBSリージョンの詳細](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) |
+| リージョン | - | enum | Object Storage商品のリージョンを入力します。 | [OBSリージョンの詳細](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/s3-api-guide/#aws-sdk) |
 | バケット | - | string | バケット名を入力します。 |  |
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
@@ -1199,6 +1289,19 @@
 /obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
+## Sink > (NHN Cloud) Object Storage - Parquet
+
+### ノード説明
+
+* NHN CloudのObject Storageにデータをparquetタイプに変換してアップロードするノードです。
+* OBSに作成されるオブジェクトは基本的に次のパス形式に合わせて出力されます。
+    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
+* (NHN Cloud) Object Storageノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
+  * コーデックがparquetに固定
+  * ファイルローテーションポリシーがsizeに固定
+    * sizeは128MB(134,217,728 byte)に固定
+  * エンコードはnoneに固定
+
 ## (Amazon) S3
 
 ### ノードの説明
@@ -1213,7 +1316,7 @@
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | 署名バージョン | - | enum | AWSリクエストを署名する時に使用するバージョンを入力します。 |  |
-| セッショントークン | - | string | AWS一時認証情報のためのセッショントークンを入力します。 | [セッショントークンガイド](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
+| セッショントークン | - | string | AWS一時認証情報のためのセッショントークンを入力します。 | [セッショントークンガイド](https://docs.aws.amazon.com/ja_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
 | Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | @timestamp | string | Prefixに適用する時間フィールドを入力します。 |  |
 | Prefix時間フィールドタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |
@@ -1263,6 +1366,17 @@
 }
 ```
 
+## Sink > (Amazon) S3 - Parquet
+
+### ノードの説明
+
+* データをparquetタイプに変換してAmazon S3にアップロードするノードです。
+* (Amazon) S3ノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
+  * コーデックがparquetに固定
+  * ファイルローテーションポリシーがsizeに固定
+    * sizeは128MB(134,217,728 byte)に固定
+  * エンコードはnoneに固定
+
 ## Kafka
 
 ### ノードの説明
@@ -1274,7 +1388,7 @@
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
 | トピック | - | string | メッセージを転送するKafkaトピック名を入力します。 |  |
-| ブローカーサーバーリスト | localhost:9092 | string | Kafkaブローカーサーバーを入力します。サーバーが複数の場合はコンマ(`,`)で区切ります。 | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| ブローカーサーバーリスト | localhost:9092 | string | Kafkaブローカーサーバーを入力します。サーバーが複数の場合はコンマ(`,`)で区切ります。 | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br/>例) 10.100.1.1:9092,10.100.1.2:9092 |
 | クライアントID | dataflow | string | Kafka Producerを識別するIDを入力します。 | [client.id](https://kafka.apache.org/documentation/#producerconfigs_client.id) |
 | メッセージシリアライズタイプ | org.apache.kafka.common.serialization.StringSerializer | string | 転送するメッセージの値をシリアライズする方法を入力します。 | [value.serializer](https://kafka.apache.org/documentation/#producerconfigs_value.serializer) |
 | 圧縮タイプ | none | enum | 転送するデータを圧縮する方法を入力します。 | [compression.type](https://kafka.apache.org/documentation/#topicconfigs_compression.type)<br/>none、gzip、snappy、lz4から選択 |

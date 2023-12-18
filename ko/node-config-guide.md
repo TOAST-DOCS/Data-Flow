@@ -1,6 +1,6 @@
 ## Data & Analytics > DataFlow > 노드 설정 가이드
 
-* 노드 유형은 손쉽게 플로우를 작성할 수 있게 선정의된 템플릿입니다.
+* 노드 유형은 손쉽게 플로우를 작성할 수 있게 사전 정의된 템플릿입니다.
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
 * Source, Sink 노드 유형은 반드시 테스트를 수행하여 엔드포인트 정보가 유효한지 확인하기를 권장합니다.
 
@@ -109,7 +109,7 @@
 * 노드에 로그 조회 시작 시간을 설정할 수 있습니다. 설정하지 않으면 플로우를 시작하는 시점부터 로그를 읽어 옵니다.
 * 노드에 종료 시간을 입력하지 않으면 스트리밍 형식으로 로그를 읽어 옵니다. 종료 시간을 입력하면 종료 시간까지의 로그를 읽어 오고 플로우는 종료됩니다.
 * ```현재 세션 로그와 크래시 로그는 지원하지 않습니다.```
-* Log & Crash Search의 [로그 검색 API](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1)의 토큰에 영향을 받습니다.
+* Log & Crash Search의 [로그 검색 API](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1)의 토큰에 영향을 받습니다.
   * 토큰이 부족할 경우 Log & Crash Search로 문의하십시오.
 
 ### 속성 설명
@@ -127,7 +127,7 @@
 ### 코덱별 메시지 인입
 
 * Log & Crash Search는 기본적으로 ```JSON``` 형식의 데이터를 다룹니다.
-    * [참고 - Log & Crash Search API 가이드](https://docs.toast.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/)
+    * [참고 - Log & Crash Search API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/)
 * 코덱을 선택하지 않거나 plain인 경우 Log & Crash Search 로그에 대한 JSON 문자열을 `message`라는 필드로 포함하게 됩니다.
 * Log & Crash Search 로그의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
@@ -143,6 +143,46 @@
 
 ``` js
 {"log":"&", "Crash": "Search", "Result": "Data"}
+```
+
+## Source > (NHN Cloud) CloudTrail
+
+### 노드 설명
+
+* (NHN Cloud) CloudTrail은 CloudTrail로부터 데이터를 읽어 오는 노드입니다.
+* 노드에 데이터 조회 시작 시간을 설정할 수 있습니다. 설정하지 않으면 플로우를 시작하는 시점부터 데이터를 읽어 옵니다.
+* 노드에 종료 시간을 입력하지 않으면 스트리밍 형식으로 데이터를 읽어 옵니다. 종료 시간을 입력하면 종료 시간까지의 데이터를 읽어 오고 플로우는 종료됩니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| Appkey | - | string | CloudTrail의 앱키를 입력합니다. |  |
+| 조회 시작 시간 | - | string | 데이터 조회의 시작 시간을 입력합니다. | [참고](#dsl) |
+| 조회 종료 시간 | - | string | 데이터 조회의 종료 시간을 입력합니다. |  |
+
+* 조회 시작 시간과 조회 종료 시간 설정
+    * 조회 종료 시간이 플로우 실행 시점보다 늦더라도 플로우는 조회 종료 시간까지 대기하지 않고 현재 조회할 수 있는 데이터만 조회한 뒤 종료합니다.
+
+### 코덱별 메시지 인입
+
+* CloudTrail은 기본적으로 ```JSON``` 형식의 데이터를 다루고 있습니다.
+    * [참고 - CloudTrail API 가이드](https://docs.nhncloud.com/ko/Governance%20&%20Audit/CloudTrail/ko/api-guide/)
+* 코덱을 선택하지 않거나 plain인 경우 CloudTrail 데이터에 대한 JSON 문자열을 `message`라는 필드로 포함하게 됩니다.
+* CloudTrail 데이터의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
+
+#### 미선택 혹은 plain
+
+``` js
+{
+    "message":"{\\\"log\\\":\\\"CloudTrail\\\", \\\"Result\\\": \\\"Data\\\", \\\"@timestamp\\\": \\\"2023-12-06T08:09:24.887Z\\\", \\\"@version\\\": \\\"1\\\"}"
+}
+```
+
+#### json
+
+``` js
+{"log":"CloudTrail", "Result": "Data", "@timestamp": "2023-12-06T08:09:24.887Z", "@version":"1"}
 ```
 
 ## Source > (NHN Cloud) Object Storage
@@ -231,10 +271,10 @@
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#consumerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#consumerconfigs_bootstrap.servers)<br/>예) 10.100.1.1:9092,10.100.1.2:9092 |
 | 컨슈머 그룹 아이디 | dataflow | string | Kafka Consumer Group을 식별하는 ID를 입력합니다. | [group.id](https://kafka.apache.org/documentation/#consumerconfigs_group.id) |
 | 내부 토픽 제외 여부 | true | boolean |  | [exclude.internal.topics](https://kafka.apache.org/documentation/#consumerconfigs_exclude.internal.topics)<br/>수신 대상에서 `__consumer_offsets`와 같은 내부 토픽을 제외합니다. |
-| 토픽 패턴 | - | string | 메시지를 수신할 Kafka 토픽 패턴을 입력합니다. | ex) `*-messages` |
+| 토픽 패턴 | - | string | 메시지를 수신할 Kafka 토픽 패턴을 입력합니다. | 예) `*-messages` |
 | 클라이언트 아이디 | dataflow | string | Kafka Consumer를 식별하는 ID를 입력합니다. | [client.id](https://kafka.apache.org/documentation/#consumerconfigs_client.id) |
 | 파티션 할당 정책 | - | string | Kafka에서 메시지 수신 시 컨슈머 그룹에 어떻게 파티션을 할당할지 결정합니다. | [partition.assignment.strategy](https://kafka.apache.org/documentation/#consumerconfigs_partition.assignment.strategy)<br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
 | 오프셋 설정 | none | enum | 컨슈머 그룹의 오프셋을 설정하는 기준을 입력합니다. | [auto.offset.reset](https://kafka.apache.org/documentation/#consumerconfigs_auto.offset.reset)<br/>아래 설정 모두 컨슈머 그룹이 이미 존재하는 경우 기존 오프셋을 유지합니다.<br/>none: 컨슈머 그룹이 없으면 오류를 반환합니다.<br/>earliest: 컨슈머 그룹이 없으면 파티션의 가장 오래된 오프셋으로 초기화합니다.<br/>latest: 컨슈머 그룹이 없으면 파티션의 가장 최근 오프셋으로 초기화합니다. |
@@ -359,6 +399,55 @@
 }
 ```
 
+## Source > JDBC
+
+### 노드 설명
+
+* JDBC는 주어진 주기로 DB에 쿼리를 실행하여 결과를 가져오는 노드입니다.
+* MySQL, MS-SQL, PostgreSQL, MariaDB, Oracle 드라이버를 지원합니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| 사용자 | - | string | DB 사용자를 입력합니다. |  |
+| 연결 문자열 | - | string | DB 연결 정보를 입력합니다. | 예) `jdbc:mysql://my.sql.endpoint:3306/my_db_name` |
+| 비밀번호 | - | string | 사용자 비밀번호를 입력합니다. |  |
+| 쿼리 | - | string | 메시지를 생성할 쿼리를 작성합니다. |  |
+| 컬럼 소문자화 변환 여부 | true | boolean | 쿼리 결과로 얻는 컬럼명을 소문자화할지를 결정합니다. | |
+| 쿼리 실행 주기 | `* * * * *` | string | 쿼리의 실행 주기를 cron-like 표현으로 입력합니다. |  |
+| 트래킹 컬럼 | - |  | 추적할 컬럼을 선택합니다. | 사전 정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 컬럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고 바랍니다. |
+| 트래킹 컬럼 종류 | numeric | string | 추적할 컬럼의 데이터 종류를 선택합니다. | 예) `numeric` or `timestamp` |
+| 시간대 | - | string | timestamp 타입의 컬럼을 human-readable 문자열로 변환할 때 사용하는 시간대를 정의합니다. | 예) `Asia/Seoul` |
+| 페이징 적용 여부 | false | boolean | 쿼리에 페이징을 적용할지 여부를 결정합니다. | 페이징이 적용되면 쿼리가 여러 개로 쪼개져서 실행되며, 순서는 보장되지 않습니다. |
+| 페이지 크기 | - | numeric | 페이징이 적용된 쿼리에서, 한 번에 쿼리 할 페이지 크기를 결정합니다. |  |
+
+### 쿼리 작성법
+
+* `:sql_last_value` 를 통해 가장 마지막에 실행된 쿼리 결과에서 `트래킹 컬럼`에 해당하는 값을 사용할 수 있습니다(초깃값은 `트래킹 컬럼 종류`가 `numeric`이라면 `0`, `timestamp`라면 `1970-01-01 00:00:00`).
+
+``` sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value
+```
+
+* 특정 조건을 추가하고 싶다면 조건과 더불어서 `:sql_last_value`를 추가합니다.
+
+```sql
+SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by id ASC
+```
+
+### 코덱별 메시지 인입
+
+#### 미선택 혹은 plain
+
+``` js
+{
+    "id": 1,
+    "name": "dataflow",
+    "deleted": false
+}
+```
+
 ## Filter
 
 * 인입된 데이터를 어떻게 처리할지 정의하는 노드 유형입니다.
@@ -463,7 +552,7 @@
 
 * 메시지 필드 값을 암복호화하는 노드입니다.
 * 암호화 키는 SKM을 참조합니다.
-    * SKM 키 등록에 대한 자세한 내용은 [SKM 가이드 문서](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하십시오.
+    * SKM 키 등록에 대한 자세한 내용은 [SKM 가이드 문서](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하십시오.
     * ```한 플로우에 여러 Cipher 노드가 포함되더라도 모든 Cipher 노드는 반드시 하나의 SKM 키 레퍼런스만 참조할 수 있습니다.```
 
 ### 속성 설명
@@ -597,19 +686,19 @@
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | 저장할 필드 | - | string | CSV 파싱 결과를 저장할 필드명를 입력합니다. |  |
-| Quote | " | string | 칼럼 필드를 나누는 문자를 입력합니다. |  |
-| 첫 행 무시 여부 | false | boolean | 속성값이 true일 경우 읽은 데이터 중 첫 행에 입력된 칼럼 이름을 무시합니다. |  |
-| 칼럼 | - | array of strings | 칼럼 이름을 입력합니다. |  |
-| 구분자 | , | string | 칼럼을 구분할 문자열을 입력합니다. |  |
+| Quote | " | string | 컬럼 필드를 나누는 문자를 입력합니다. |  |
+| 첫 행 무시 여부 | false | boolean | 속성값이 true일 경우 읽은 데이터 중 첫 행에 입력된 컬럼 이름을 무시합니다. |  |
+| 컬럼 | - | array of strings | 컬럼 이름을 입력합니다. |  |
+| 구분자 | , | string | 컬럼을 구분할 문자열을 입력합니다. |  |
 | 소스 필드 | message | string | CSV 파싱할 필드명을 입력합니다. |  |
-| 스키마 | - | hash | 각 칼럼의 이름과 자료형을 dictionary 형태로 입력합니다. | 칼럼에 정의된 필드와 별개로 등록합니다.<br/>자료형은 기본적으로 string이며, 다른 자료형으로 변환이 필요할 경우 스키마 설정을 활용합니다.<br/>가능한 자료형은 다음과 같습니다.<br/>integer, float, date, date_time, boolean |
+| 스키마 | - | hash | 각 컬럼의 이름과 자료형을 dictionary 형태로 입력합니다. | 컬럼에 정의된 필드와 별개로 등록합니다.<br/>자료형은 기본적으로 string이며, 다른 자료형으로 변환이 필요할 경우 스키마 설정을 활용합니다.<br/>가능한 자료형은 다음과 같습니다.<br/>integer, float, date, date_time, boolean |
 
 ### 자료형 없는 CSV 파싱 예제
 
 #### 조건
 
 * 소스 필드 → `message`
-* 칼럼 → `["one", "two", "t hree"]`
+* 컬럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -635,7 +724,7 @@
 #### 조건
 
 * 소스 필드 → `message`
-* 칼럼 → `["one", "two", "t hree"]`
+* 컬럼 → `["one", "two", "t hree"]`
 
 #### 입력 메시지
 
@@ -661,7 +750,7 @@
 #### 조건
 
 * 소스 필드 → `message`
-* 칼럼 → `["one", "two", "t hree"]`
+* 컬럼 → `["one", "two", "t hree"]`
 * 스키마 → `{"two": "integer", "t hree": "boolean"}`
 
 #### 입력 메시지
@@ -1011,14 +1100,14 @@
 ### 노드 설명
 
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
-* OBS에 작성되는 Object는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
+* OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### 속성 설명
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| 리전 | - | enum | Object Storage 상품의 리전을 입력합니다. | [OBS 리전 상세](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) |
+| 리전 | - | enum | Object Storage 상품의 리전을 입력합니다. | [OBS 리전 상세](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) |
 | 버킷 | - | string | 버킷 이름을 입력합니다. |  |
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3 API 자격 증명 액세스 키를 입력합니다. |  |
@@ -1201,6 +1290,19 @@
 /obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
+## Sink > (NHN Cloud) Object Storage - Parquet
+
+### 노드 설명
+
+* NHN Cloud의 Object Storage에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
+* OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
+    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
+* (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
+  * 코덱이 parquet으로 고정
+  * 파일 로테이션 정책이 size로 고정
+    * size는 128MB(134,217,728 byte)로 고정
+  * 인코딩은 none으로 고정
+
 ## Sink > (Amazon) S3
 
 ### 노드 설명
@@ -1265,6 +1367,17 @@
 }
 ```
 
+## Sink > (Amazon) S3 - Parquet
+
+### 노드 설명
+
+* Amazon S3에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
+* (Amazon) S3 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
+  * 코덱이 parquet으로 고정
+  * 파일 로테이션 정책이 size로 고정
+    * size는 128MB(134,217,728 byte)로 고정
+  * 인코딩은 none으로 고정
+
 ## Sink > (Apache) Kafka
 
 ### 노드 설명
@@ -1276,7 +1389,7 @@
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | 토픽 | - | string | 메시지를 전송할 Kafka 토픽 이름을 입력합니다. |  |
-| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br/>ex) 10.100.1.1:9092,10.100.1.2:9092 |
+| 브로커 서버 목록 | localhost:9092 | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [bootstrap.servers](https://kafka.apache.org/documentation/#producerconfigs_bootstrap.servers)<br/>예) 10.100.1.1:9092,10.100.1.2:9092 |
 | 클라이언트 아이디 | dataflow | string | Kafka Producer를 식별하는 ID를 입력합니다. | [client.id](https://kafka.apache.org/documentation/#producerconfigs_client.id) |
 | 메시지 직렬화 유형 | org.apache.kafka.common.serialization.StringSerializer | string | 전송하는 메시지의 값을 직렬화할 방법을 입력합니다. | [value.serializer](https://kafka.apache.org/documentation/#producerconfigs_value.serializer) |
 | 압축 유형 | none | enum | 전송하는 데이터를 압축할 방법을 입력합니다. | [compression.type](https://kafka.apache.org/documentation/#topicconfigs_compression.type)<br/>none, gzip, snappy, lz4 중 선택 |
