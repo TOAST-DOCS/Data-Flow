@@ -19,5 +19,6 @@
 | S3_ACCESS_DENIED        | S3, Object Storage 저장소에 접근이 거부되었습니다. S3, Object Storage 노드의 access key에 부여된 ACL을 확인하십시오. |
 | S3_NO_SUCH_BUCKET       | S3, Object Storage 저장소에 버킷이 존재하지 않습니다.                                                   |
 | S3_SERVICE_ERROR        | S3, Object Storage 저장소가 불안정한 상태입니다. 해당 저장소로 문의하십시오.                                      |
-| JDBC_CONNECT_FAILED     | JDBC 연결이 실패했습니다.                                      |
+| JDBC_CONNECT_FAILED     | JDBC 연결이 실패했습니다.                                                                           |
+| JDBC_UNSUPPORTED_DRIVER | 지원하지 않는 JDBC 드라이버입니다.                                                                       |
 | ERROR                   | 서비스 내부 오류 또는 정의되지 않은 오류입니다. 고객 센터로 문의하십시오.                                               |
