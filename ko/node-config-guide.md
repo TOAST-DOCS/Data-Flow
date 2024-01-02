@@ -1300,8 +1300,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
   * 파일 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 파일 크기 : 128MB(134,217,728 byte)
-    * 기준 시각 : 60분
+    * 파일 크기: 128MB(134,217,728 byte)
+    * 기준 시각: 60분
   * 인코딩은 none으로 고정
 
 ## Sink > (Amazon) S3
@@ -1376,8 +1376,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * (Amazon) S3 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
   * 파일 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 파일 크기 : 128MB(134,217,728 byte)
-    * 기준 시각 : 60분
+    * 파일 크기: 128MB(134,217,728 byte)
+    * 기준 시각: 60분
   * 인코딩은 none으로 고정
 
 ## Sink > (Apache) Kafka
