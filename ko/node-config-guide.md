@@ -201,10 +201,69 @@
 | 비밀 키 | - | string | S3가 발급한 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | - | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
-| 새로운 파일 체크 여부 | - | boolean | 속성값이 true일 경우 새로 추가되는 오브젝트도 함께 읽어 옵니다. |  |
+| 메타정보 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 | 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
+
+### 메타데이터 필드 사용법
+
+* `메타데이터 생성 여부` 설정 활성화 시 메타데이터 필드가 생성되나, 별도로 일반 필드로 주입하는 작업을 거치지 않는다면 Sink 플러그인에서 노출하지 않습니다.
+* 설정 활성화 시 (NHN Cloud) Object Storage 플러그인 이후의 메시지 예시
+```js
+{
+    // 일반 필드
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "파일 내용..."
+
+    // 메타데이터 필드
+    // 사용자가 일반 필드로 주입하기 전까지 Sink 플러그인에 노출할 수 없음
+    // "[@metadata][s3][last_modified]": 2024-01-05T01:35:50.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+}
+```
+
+* 본 (NHN Cloud) Object Storage Source 플러그인에 필드 추가 옵션이 존재하지만 데이터 인입과 동시에 필드 추가 작업을 수행하지 못합니다.
+* 임의의 Filter 플러그인의 공통 설정 중 필드 추가 옵션을 통해 일반 필드로 추가합니다.
+* 필드 추가 옵션 예시
+```js
+{
+    "last_modified": "%{[@metadata][s3][last_modified]}"
+    "content_length": "%{[@metadata][s3][content_length]}"
+    "key": "%{[@metadata][s3][key]}"
+    "content_type": "%{[@metadata][s3][content_type]}"
+    "metadata": "%{[@metadata][s3][metadata]}"
+    "etag": "%{[@metadata][s3][etag]}"
+}
+```
+
+* alter(필드 추가 옵션) 플러그인 이후의 메시지 예시
+```js
+{
+    // 일반 필드
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "파일 내용..."
+    "last_modified": 2024-01-05T01:35:50.000Z
+    "content_length": 220
+    "key": "{filename}"
+    "content_type": "text/plain"
+    "metadata": {}
+    "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
+
+    // 메타데이터 필드
+    // "[@metadata][s3][last_modified]": 2024-01-05T01:35:50.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][metadata]": {}
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+}
+```
 
 ### 코덱별 메시지 인입
 
@@ -240,10 +299,75 @@
 | 비밀 키 | - | string | S3가 발급한 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | - | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
-| 메타정보 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. | (마지막 수정 시간, Content-Type 등) |
+| 메타정보 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>server_side_encryption: 서버 측 암호화 알고리즘<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
+| 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
 | 추가 설정 | - | hash | S3 서버와 연결할 때 사용할 추가적인 설정을 입력합니다. | 사용 가능한 설정의 전체 목록은 다음 링크를 참조하십시오.<br/>https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html<br/>예)<br/>{<br/>"force\_path\_style": true<br/>} |
+
+### 메타데이터 필드 사용법
+
+* `메타데이터 생성 여부` 설정 활성화 시 메타데이터 필드가 생성되나, 별도로 일반 필드로 주입하는 작업을 거치지 않는다면 Sink 플러그인에서 노출하지 않습니다.
+* 설정 활성화 시 (Amazon) S3 플러그인 이후의 메시지 예시
+```js
+{
+    // 일반 필드
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "파일 내용..."
+
+    // 메타데이터 필드
+    // 사용자가 일반 필드로 주입하기 전까지 Sink 플러그인에 노출할 수 없음
+    // "[@metadata][s3][server_side_encryption]": "AES256"
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][last_modified]": 2024-01-05T02:27:26.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][metadata]": {}
+}
+```
+
+* 본 (Amazon) S3 Source 플러그인에 필드 추가 옵션이 존재하지만 데이터 인입과 동시에 필드 추가 작업을 수행하지 못합니다.
+* 임의의 Filter 플러그인의 공통 설정 중 필드 추가 옵션을 통해 일반 필드로 추가합니다.
+* 필드 추가 옵션 예시
+```js
+{
+    "server_side_encryption": "%{[@metadata][s3][server_side_encryption]}"
+    "etag": "%{[@metadata][s3][etag]}"
+    "content_type": "%{[@metadata][s3][content_type]}"
+    "key": "%{[@metadata][s3][key]}"
+    "last_modified": "%{[@metadata][s3][last_modified]}"
+    "content_length": "%{[@metadata][s3][content_length]}"
+    "metadata": "%{[@metadata][s3][metadata]}"
+}
+```
+
+* alter(필드 추가 옵션) 플러그인 이후의 메시지 예시
+```js
+{
+    // 일반 필드
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "파일 내용..."
+    "server_side_encryption": "AES256"
+    "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    "content_type": "text/plain"
+    "key": "{filename}"
+    "last_modified": 2024-01-05T01:35:50.000Z
+    "content_length": 220
+    "metadata": {}
+
+    // 메타데이터 필드
+    // "[@metadata][s3][server_side_encryption]": "AES256"
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][last_modified]": 2024-01-05T02:27:26.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][metadata]": {}
+}
+```
 
 ### 코덱별 메시지 인입
 
@@ -282,7 +406,7 @@
 | 오프셋 자동 커밋 여부 | true | boolean |  | [enable.auto.commit](https://kafka.apache.org/documentation/#consumerconfigs_enable.auto.commit) |
 | 키 역직렬화 유형 | org.apache.kafka.common.serialization.StringDeserializer | string | 수신하는 메시지의 키를 직렬화할 방법을 입력합니다. | [key.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_key.deserializer) |
 | 메시지 역직렬화 유형 | org.apache.kafka.common.serialization.StringDeserializer | string | 수신하는 메시지의 값을 직렬화할 방법을 입력합니다. | [value.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_value.deserializer) |
-| 메타데이터 생성 여부 | false | boolean | 속성값이 true일 경우 메시지에 대한 메타데이터 필드를 생성합니다. 메타데이터 필드를 활용하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>topic: 메시지를 수신한 토픽<br/>consumer\_group: 메시지를 수신하는 데 사용한 컨슈머 그룹 아이디<br/>partition: 메시지를 수신한 토픽의 파티션 번호<br/>offset: 메시지를 수신한 파티션의 오프셋<br/>key: 메시지 키를 포함하는 ByteBuffer |
+| 메타데이터 생성 여부 | false | boolean | 속성값이 true일 경우 메시지에 대한 메타데이터 필드를 생성합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>topic: 메시지를 수신한 토픽<br/>consumer\_group: 메시지를 수신하는 데 사용한 컨슈머 그룹 아이디<br/>partition: 메시지를 수신한 토픽의 파티션 번호<br/>offset: 메시지를 수신한 파티션의 오프셋<br/>key: 메시지 키를 포함하는 ByteBuffer |
 | Fetch 최소 크기 | - | number | 한 번의 fetch 요청으로 가져올 데이터의 최소 크기를 입력합니다. | [fetch.min.bytes](https://kafka.apache.org/documentation/#consumerconfigs_fetch.min.bytes) |
 | 전송 버퍼 크기 | - | number | 데이터를 전송하는 데 사용하는 TCP send 버퍼의 크기(byte)를 입력합니다. | [send.buffer.bytes](https://kafka.apache.org/documentation/#consumerconfigs_send.buffer.bytes) |
 | 재시도 요청 주기 | 100 | number | 전송 요청이 실패했을 때 재시도할 주기(ms)를 입력합니다. | [retry.backoff.ms](https://kafka.apache.org/documentation/#consumerconfigs_retry.backoff.ms) |
@@ -303,7 +427,7 @@
 
 ### 메타데이터 필드 사용법
 
-* `메타데이터 생성 여부` 설정 활성화 시 메타데이터 필드가 생성되나, 별도로 일반 필드로 주입하는 작업을 거치지 않는다면 Filter, Sink 등 플러그인에서 노출하지 않습니다.
+* `메타데이터 생성 여부` 설정 활성화 시 메타데이터 필드가 생성되나, 별도로 일반 필드로 주입하는 작업을 거치지 않는다면 Sink 플러그인에서 노출하지 않습니다.
 * 설정 활성화 시 Kafka 플러그인 이후의 메시지 예시
 ```js
 {
@@ -313,7 +437,7 @@
     "message": "kafka 토픽 메시지..."
 
     // 메타데이터 필드
-    // 사용자가 일반 필드로 주입하기 전까지 활용할 수 없음
+    // 사용자가 일반 필드로 주입하기 전까지 Sink 플러그인에 노출할 수 없음
     // "[@metadata][kafka][topic]": "my-topic"
     // "[@metadata][kafka][consumer_group]": "my_consumer_group"
     // "[@metadata][kafka][partition]": "1"
