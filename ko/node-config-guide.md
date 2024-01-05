@@ -201,7 +201,7 @@
 | 비밀 키 | - | string | S3가 발급한 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | - | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
-| 메타정보 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>etag: etag |
+| 메타정보 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>metadata: 메타데이터<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 | 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
@@ -223,6 +223,7 @@
     // "[@metadata][s3][content_length]": 220
     // "[@metadata][s3][key]": "{filename}"
     // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][metadata]": {}
     // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
 }
 ```
@@ -299,7 +300,7 @@
 | 비밀 키 | - | string | S3가 발급한 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | - | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
-| 메타정보 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>server_side_encryption: 서버 측 암호화 알고리즘<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>etag: etag |
+| 메타정보 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>server_side_encryption: 서버 측 암호화 알고리즘<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>metadata: 메타데이터<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 | 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
