@@ -202,10 +202,70 @@
 | 秘密鍵 | - | string | S3が発行した認証情報秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3が発行した認証情報アクセスキーを入力します。 |  |
 | リスト更新周期 | - | number | バケットに含まれるオブジェクトリスト更新周期を入力します。 |  |
-| 新しいファイルをチェックするかどうか | - | boolean | プロパティ値がtrueの場合、新しく追加されるオブジェクトも一緒に読み込みます。 |  |
+| メタデータを含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。メタデータフィールドをSinkプラグインに公開するためには、filterノードタイプを組み合わせる必要があります(下のガイドを参照)。 | 作成されるフィールドは次のとおりです。<br/>last_modified:ファイルが最後に修正された時間<br/>content_length:ファイルサイズ<br/>key:ファイル名<br/>content_type:ファイル形式<br/>metadata:メタデータ<br/>etag: etag |
 | Prefix | - | string | 読み込むオブジェクトのプレフィックスを入力します。 |  |
 | 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
 | 削除 | false | boolean | プロパティ値がtrueの場合、読み込みが完了したオブジェクトを削除します。 |  |
+
+### メタデータフィールドの使用方法
+
+* `メタデータを作成するかどうか`設定を有効にすると、メタデータフィールドが作成されますが、別途一般フィールドに注入する作業を行わない限り、Sinkプラグインで表示されません。
+* 設定有効化時(NHN Cloud) Object Storageプラグイン後のメッセージ例
+```js
+{
+    // 一般フィールド
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "ファイル内容..."
+
+    // メタデータフィールド
+    // ユーザーが一般フィールドとして注入するまでSinkプラグインに表示できない。
+    // "[@metadata][s3][last_modified]": 2024-01-05T01:35:50.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][metadata]": {}
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+}
+```
+
+* 本(NHN Cloud) Object Storage Sourceプラグインにフィールド追加オプションが存在しますが、データ入力と同時にフィールド追加作業を行うことができません。
+* 任意のFilterプラグインの共通設定の中のフィールド追加オプションで一般フィールドとして追加します。
+* フィールド追加オプションの例
+```js
+{
+    "last_modified": "%{[@metadata][s3][last_modified]}"
+    "content_length": "%{[@metadata][s3][content_length]}"
+    "key": "%{[@metadata][s3][key]}"
+    "content_type": "%{[@metadata][s3][content_type]}"
+    "metadata": "%{[@metadata][s3][metadata]}"
+    "etag": "%{[@metadata][s3][etag]}"
+}
+```
+
+* alter(フィールド追加オプション)プラグイン後のメッセージ例
+```js
+{
+    // 一般フィールド
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message"： "ファイル内容..."
+    "last_modified": 2024-01-05T01:35:50.000Z
+    "content_length": 220
+    "key": "{filename}"
+    "content_type": "text/plain"
+    "metadata": {}
+    "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
+
+    // メタデータフィールド
+    // "[@metadata][s3][last_modified]": 2024-01-05T01:35:50.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][metadata]": {}
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+}
+```
 
 ### コーデック別のメッセージの取り込み
 
@@ -241,10 +301,75 @@
 | 秘密鍵 | - | string | S3が発行した認証情報秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3が発行した認証情報アクセスキーを入力します。 |  |
 | リスト更新周期 | - | number | バケットに含まれるオブジェクトリスト更新周期を入力します。 |  |
-| メタ情報を含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。 | (最後の修正時間、 Content-Typeなど) |
+| メタデータを含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。メタデータフィールドをSinkプラグインに表示するにはfilterノードタイプを組み合わせる必要があります(下のガイドを参照)。 | 作成されるフィールドは次のとおりです。<br/>server_side_encryption:サーバー側の暗号化アルゴリズム<br/>last_modified:ファイルが最後に修正された時間<br/>content_length:ファイルサイズ<br/>key:ファイル名<br/>content_type:ファイル形式<br/>metadata:メタデータ<br/>etag: etag |
 | Prefix | - | string | 読み込むオブジェクトのプレフィックスを入力します。 |  |
 | 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
+| 削除 | false | boolean | プロパティ値がtrueの場合、読み終わったオブジェクトを削除します。 |  |
 | 追加設定 | - | hash | S3サーバーと接続する時に使用する追加設定を入力します。 | 使用可能な設定の全リストは次のリンクをご覧ください。<br/>https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html<br/>例)<br/>{<br/>"force\_path\_style": true<br/>} |
+
+### メタデータフィールドの使い方
+
+* `メタデータを生成するかどうか`設定を有効にすると、メタデータフィールドが生成されますが、別途、一般フィールドに注入する作業を行わなければ、Sinkプラグインで公開しません。
+* 設定有効化時、(Amazon) S3プラグイン後のメッセージ例
+```js
+{
+    // 一般フィールド
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message"： "ファイル内容..."
+
+    // メタデータフィールド
+    // ユーザーが一般フィールドとして注入するまではSinkプラグインに公開することができません。
+    // "[@metadata][s3][server_side_encryption]": "AES256"
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][last_modified]": 2024-01-05T02:27:26.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][metadata]": {}
+}
+```
+
+* 本(Amazon) S3 Sourceプラグインにフィールド追加オプションが存在しますが、データ 力と同時にフィールド追加作業ができません。
+* 任意のFilterプラグインの共通設定中のフィールド追加オプションで一般フィールドとして追加します。
+* フィールド追加オプション例
+```js
+{
+    "server_side_encryption": "%{[@metadata][s3][server_side_encryption]}"
+    "etag": "%{[@metadata][s3][etag]}"
+    "content_type": "%{[@metadata][s3][content_type]}"
+    "key": "%{[@metadata][s3][key]}"
+    "last_modified": "%{[@metadata][s3][last_modified]}"
+    "content_length": "%{[@metadata][s3][content_length]}"
+    "metadata": "%{[@metadata][s3][metadata]}"
+}
+```
+
+* alter(フィールド追加オプション)プラグイン後のメッセージ例
+```js
+{
+    // 一般フィールド
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message"： "ファイル内容..."
+    "server_side_encryption": "AES256"
+    "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    "content_type": "text/plain"
+    "key": "{filename}"
+    "last_modified": 2024-01-05T01:35:50.000Z
+    "content_length": 220
+    "metadata": {}
+
+    // メタデータフィールド
+    // "[@metadata][s3][server_side_encryption]": "AES256"
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][last_modified]": 2024-01-05T02:27:26.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][metadata]": {}
+}
+```
 
 ### コーデック別のメッセージの取り込み
 
@@ -283,7 +408,7 @@
 | オフセット自動コミットするかどうか | true | boolean |  | [enable.auto.commit](https://kafka.apache.org/documentation/#consumerconfigs_enable.auto.commit) |
 | キー逆シリアル化タイプ | org.apache.kafka.common.serialization.StringDeserializer | string | 受信するメッセージのキーをシリアライズする方法を入力します。 | [key.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_key.deserializer) |
 | メッセージ逆シリアル化タイプ | org.apache.kafka.common.serialization.StringDeserializer | string | 受信するメッセージの値をシリアライズする方法を入力します。 | [value.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_value.deserializer) |
-| メタデータを作成するかどうか | false | boolean | プロパティ値がtrueの場合、メッセージのメタデータフィールドを作成します。メタデータフィールドを活用するにはfilterノードタイプを組み合わせる必要があります(下のガイド参照)。 | 作成されるフィールドは次のとおりです。<br/>topic：メッセージを受信したトピック<br/>consumer\_group：メッセージを受信するために使用したコンシューマーグループID<br/>partition：メッセージを受信したトピックのパーティション番号<br/>offset：メッセージを受信したパーティションのオフセット<br/>key：メッセージキーを含むByteBuffer |
+| メタデータを作成するかどうか | false | boolean | プロパティ値がtrueの場合、メッセージのメタデータフィールドを作成します。メタデータフィールドをSinkプラグインに表示するためにはfilterノードタイプを組み合わせる必要があります(下のガイド参照)。 | 作成されるフィールドは次のとおりです。<br/>topic：メッセージを受信したトピック<br/>consumer\_group：メッセージを受信するために使用したコンシューマーグループID<br/>partition：メッセージを受信したトピックのパーティション番号<br/>offset：メッセージを受信したパーティションのオフセット<br/>key：メッセージキーを含むByteBuffer |
 | Fetch最小サイズ | - | number | 1回のfetchリクエストで取得するデータの最小サイズを入力します。 | [fetch.min.bytes](https://kafka.apache.org/documentation/#consumerconfigs_fetch.min.bytes) |
 | 転送バッファサイズ | - | number | データの転送に使用するTCP sendバッファのサイズ(byte)を入力します。 | [send.buffer.bytes](https://kafka.apache.org/documentation/#consumerconfigs_send.buffer.bytes) |
 | 再試行リクエスト周期 | 100 | number | 転送リクエストが失敗した時に再試行する周期(ms)を入力します。 | [retry.backoff.ms](https://kafka.apache.org/documentation/#consumerconfigs_retry.backoff.ms) |
@@ -304,7 +429,7 @@
 
 ### メタデータフィールドの使用方法
 
-* `メタデータを作成するかどうか`設定を有効にするとメタデータフィールドが作成されますが、別途一般フィールドに注入する作業を行っていなければFilter、Sinkなどのプラグインで表示しません。
+* `メタデータを生成するかどうか`設定を有効にすると、メタデータフィールドが生成されますが、別途一般フィールドに注入する作業を行わない限り、Sinkプラグインで公開しません。
 * 設定を有効にした時のKafkaプラグイン以降のメッセージ例
     ```js
     {
@@ -313,7 +438,7 @@
         "@timestamp": "2022-04-11T00:01:23Z"
         "message": "kafkaトピックメッセージ。.."
         // メタデータフィールド
-        // ユーザーが一般フィールドに注入するまで活用不可
+    // ユーザーが一般フィールドにインジェクションするまでSinkプラグインに公開できない
         // "[@metadata][kafka][topic]": "my-topic"
         // "[@metadata][kafka][consumer_group]": "my_consumer_group"
         // "[@metadata][kafka][partition]": "1"
