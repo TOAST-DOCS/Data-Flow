@@ -438,7 +438,7 @@
         "@timestamp": "2022-04-11T00:01:23Z"
         "message": "kafkaトピックメッセージ。.."
         // メタデータフィールド
-    // ユーザーが一般フィールドにインジェクションするまでSinkプラグインに公開できない
+        // ユーザーが一般フィールドにインジェクションするまでSinkプラグインに公開できない
         // "[@metadata][kafka][topic]": "my-topic"
         // "[@metadata][kafka][consumer_group]": "my_consumer_group"
         // "[@metadata][kafka][partition]": "1"
