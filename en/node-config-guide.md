@@ -1299,8 +1299,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Same as Object Storage node, but some values are changed as below to support parquet type.
   * Codec fixed to parquet
-  * File rotation policy fixed to size
-    * size is fixed to 128 MB (134,217,728 bytes)
+  * When the file rotation policy is not entered, the default policy is applied as follows.
+    * File size: 128 MB (134,217,728 bytes)
+    * Base time: 60 min
   * Encoding fixed to none
 
 ## Sink > (Amazon) S3
@@ -1374,8 +1375,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * This node converts data to the parquet type and uploads it to Amazon S3.
 * (Amazon) S3 node, but some values are changed to support the parquet type, as shown below.
   * Codec fixed to parquet
-  * File rotation policy fixed to size
-    * size is fixed to 128 MB (134,217,728 bytes)
+* When the file rotation policy is not entered, the default policy is applied as follows.
+    * File size: 128 MB (134,217,728 bytes)
+    * Base time: 60 min
   * Encoding fixed to none
 
 ## Sink > (Apache) Kafka
