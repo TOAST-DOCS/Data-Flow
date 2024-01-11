@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### January 23, 2024
+#### Feature Updates
+* Fixed a bug where validation would not turn on unless creating the first flow.
+
 ### December 19, 2023
 #### Added Features
 * Added a new node
