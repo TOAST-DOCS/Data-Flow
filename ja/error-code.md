@@ -19,4 +19,6 @@
 | S3_ACCESS_DENIED        | S3、 Object Storageストレージへのアクセスが拒否されました。 S3、Object Storageノードのaccess keyに付与されたACLをご確認ください。  |
 | S3_NO_SUCH_BUCKET       | S3, Object Storageストレージにバケットが存在しません。                                                   |
 | S3_SERVICE_ERROR        | S3, Object Storageストレージが不安定な状態です。該当ストレージにお問い合わせください。                                      |
+| JDBC_CONNECT_FAILED     | JDBC接続が失敗しました。                                                                           |
+| JDBC_UNSUPPORTED_DRIVER | サポートしないJDBCドライバーです。                                                                       |
 | ERROR                   | サービス内部エラーまたは定義されていないエラーです。サポートにお問い合わせください。                                               |

@@ -1423,8 +1423,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Object Storageノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
   * コーデックがparquetに固定
-  * ファイルローテーションポリシーがsizeに固定
-    * sizeは128MB(134,217,728 byte)に固定
+  * ファイルローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
+    * ファイルサイズ: 128MB(134,217,728 byte)
+    * 基準時刻: 60分
   * エンコードはnoneに固定
 
 ## (Amazon) S3
@@ -1498,8 +1499,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * データをparquetタイプに変換してAmazon S3にアップロードするノードです。
 * (Amazon) S3ノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
   * コーデックがparquetに固定
-  * ファイルローテーションポリシーがsizeに固定
-    * sizeは128MB(134,217,728 byte)に固定
+  * ファイルローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
+    * ファイルサイズ: 128MB(134,217,728 byte)
+    * 基準時刻: 60分
   * エンコードはnoneに固定
 
 ## Kafka
