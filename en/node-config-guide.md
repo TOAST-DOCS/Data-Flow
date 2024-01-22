@@ -201,14 +201,14 @@
 | Secret Key | - | string | Enter the credential secret key issued by S3. |  |
 | Access key | - | string | Enter the credential access key issued by S3. |  |
 | List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
-| Meta information included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
+| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
 | Prefix | - | string | Enter a prefix of an object to read. |  |
 | Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
 | Delete | false | boolean | If the property value is true, delete the object read. |  |
 
 ### Metadata Field Usage
 
-* When `Metadata created or not` is enabled, the metadata field is created, but is not exposed by the Sink plugin without injecting it as a regular field.
+* When `Metadata included or not` is enabled, the metadata field is created, but is not exposed by the Sink plugin without injecting it as a regular field.
 * Example message after (NHN Cloud) Object Storage plugin when activating settings
 ```js
 }
@@ -300,7 +300,7 @@
 | Secret Key | - | string | Enter the credential secret key issued by S3. |  |
 | Access key | - | string | Enter the credential access key issued by S3. |  |
 | List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
-| Meta information included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
+| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
 | Prefix | - | string | Enter a prefix of an object to read. |  |
 | Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
 | Delete | false | boolean | If the property value is true, delete the object read. |  |
