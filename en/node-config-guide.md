@@ -308,7 +308,7 @@
 
 ### Metadata Field Usage
 
-* When `Metadata created or not` is enabled, the metadata field is created, but is not exposed by the Sink plugin without injecting it as a regular field.
+* When `Metadata included or not` is enabled, the metadata field is created, but is not exposed by the Sink plugin without injecting it as a regular field.
 * Example message after (Amazon) S3 plugin when activating settings
 ```js
 {
