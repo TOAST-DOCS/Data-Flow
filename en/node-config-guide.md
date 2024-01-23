@@ -201,10 +201,70 @@
 | Secret Key | - | string | Enter the credential secret key issued by S3. |  |
 | Access key | - | string | Enter the credential access key issued by S3. |  |
 | List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
-| New file checked or not | - | boolean | If the property value is true, the newly added object is also read. |  |
+| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
 | Prefix | - | string | Enter a prefix of an object to read. |  |
 | Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
 | Delete | false | boolean | If the property value is true, delete the object read. |  |
+
+### Metadata Field Usage
+
+* When `Metadata included or not` is enabled, the metadata field is created, but is not exposed by the Sink plugin without injecting it as a regular field.
+* Example message after (NHN Cloud) Object Storage plugin when activating settings
+```js
+}
+    // General field
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "File contents..."
+
+    // Metadata fields
+    // Cannot be exposed to the Sink plugin until the user injects it as a regular field
+    // "[@metadata][s3][last_modified]": 2024-01-05T01:35:50.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][metadata]": {}
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+}
+```
+
+* Although the option to add fields exists in this (NHN Cloud) Object Storage Source plugin, it fails to add fields simultaneously with data import.
+* Add it as a regular field via the Add field option in the common settings of any Filter plugin.
+* Example of field additional options
+```js
+{
+    "last_modified": "%{[@metadata][s3][last_modified]}"
+    "content_length": "%{[@metadata][s3][content_length]}"
+    "key": "%{[@metadata][s3][key]}"
+    "content_type": "%{[@metadata][s3][content_type]}"
+    "metadata": "%{[@metadata][s3][metadata]}"
+    "etag": "%{[@metadata][s3][etag]}"
+}
+```
+
+* Example message after the alter (add field option) plugin
+```js
+}
+    // General field
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "File contents..."
+    "last_modified": 2024-01-05T01:35:50.000Z
+    "content_length": 220
+    "key": "{filename}"
+    "content_type": "text/plain"
+    "metadata": {}
+    "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
+
+    // Metadata field
+    // "[@metadata][s3][last_modified]": 2024-01-05T01:35:50.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][metadata]": {}
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+}
+```
 
 ### Message imported by codec
 
@@ -240,10 +300,75 @@
 | Secret Key | - | string | Enter the credential secret key issued by S3. |  |
 | Access key | - | string | Enter the credential access key issued by S3. |  |
 | List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
-| Meta information included or not | - | boolean | Determines whether to include the metadata of S3 objects as keys. | (Last modified time, Content-Type, etc.) |
+| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
 | Prefix | - | string | Enter a prefix of an object to read. |  |
 | Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
+| Delete | false | boolean | If the property value is true, delete the object read. |  |
 | Additional settings | - | hash | Enter additional settings to use when connecting to the S3 server. | See the following link for a full list of available settings.<br/>https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html<br/>Example)<br/>{<br/>"force_path_style": true<br/>} |
+
+### Metadata Field Usage
+
+* When `Metadata included or not` is enabled, the metadata field is created, but is not exposed by the Sink plugin without injecting it as a regular field.
+* Example message after (Amazon) S3 plugin when activating settings
+```js
+{
+    // General field
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "파일 내용..."
+
+    // Metadata fields
+    // Cannot be exposed to the Sink plugin until the user injects it as a regular field
+    // "[@metadata][s3][server_side_encryption]": "AES256"
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][last_modified]": 2024-01-05T02:27:26.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][metadata]": {}
+}
+```
+
+* The option to add fields exists in this (Amazon) S3 Source plugin, but it fails to do so at the same time as the data is being imported.
+* Add it as a regular field via the Add field option in the common settings of any Filter plugin.
+* Example of field additional options
+```js
+{
+    "server_side_encryption": "%{[@metadata][s3][server_side_encryption]}"
+    "etag": "%{[@metadata][s3][etag]}"
+    "content_type": "%{[@metadata][s3][content_type]}"
+    "key": "%{[@metadata][s3][key]}"
+    "last_modified": "%{[@metadata][s3][last_modified]}"
+    "content_length": "%{[@metadata][s3][content_length]}"
+    "metadata": "%{[@metadata][s3][metadata]}"
+}
+```
+
+* Example message after the alter (add field option) plugin
+```js
+{
+    // General field
+    "@version": "1",
+    "@timestamp": "2022-04-11T00:01:23Z"
+    "message": "파일 내용..."
+    "server_side_encryption": "AES256"
+    "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    "content_type": "text/plain"
+    "key": "{filename}"
+    "last_modified": 2024-01-05T01:35:50.000Z
+    "content_length": 220
+    "metadata": {}
+
+    // Metadata field
+    // "[@metadata][s3][server_side_encryption]": "AES256"
+    // "[@metadata][s3][etag]": "\"56ad65461e0abb907465bacf6e4f96cf\""
+    // "[@metadata][s3][content_type]": "text/plain"
+    // "[@metadata][s3][key]": "{filename}"
+    // "[@metadata][s3][last_modified]": 2024-01-05T02:27:26.000Z
+    // "[@metadata][s3][content_length]": 220
+    // "[@metadata][s3][metadata]": {}
+}
+```
 
 ### Message imported by codec
 
@@ -282,7 +407,7 @@
 | Offset auto commit or not | true | boolean |  | [enable.auto.commit](https://kafka.apache.org/documentation/#consumerconfigs_enable.auto.commit) |
 | Key deserialization type | org.apache.kafka.common.serialization.StringDeserializer | string | Enter how to serialize the keys of incoming messages. | [key.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_key.deserializer) |
 | Message deserialization type | org.apache.kafka.common.serialization.StringDeserializer | string | Enter how to serialize the values of incoming messages. | [value.deserializer](https://kafka.apache.org/documentation/#consumerconfigs_value.deserializer) |
-| Metadata created or not | false | boolean | If the property value is true, creates a metadata field for the message. You need to combine filter node types to utilize metadata fields (see the guide below). | fields to be created are as follows.<br/>topic: Topic that receives message<br/>consumer_group: Consumer group ID used to receive messages<br/>partition: Topic partition number that receives messages<br/>offset: Partition offset that receives messages<br/>key: ByteBuffer that includes message keys |
+| Metadata created or not | false | boolean | If the property value is true, creates a metadata field for the message. You need to combine filter node types to expose metadata fields to the Sink plugin (see the guide below). | fields to be created are as follows.<br/>topic: Topic that receives message<br/>consumer_group: Consumer group ID used to receive messages<br/>partition: Topic partition number that receives messages<br/>offset: Partition offset that receives messages<br/>key: ByteBuffer that includes message keys |
 | Minimum Fetch size | - | number | Enter the minimum size of data to be imported in one fetch request. | [fetch.min.bytes](https://kafka.apache.org/documentation/#consumerconfigs_fetch.min.bytes) |
 | Transfer buffer size | - | number | Enter size (byte) of TCP send buffer used to transfer data.  | [send.buffer.bytes](https://kafka.apache.org/documentation/#consumerconfigs_send.buffer.bytes) |
 | Retry request cycle | 100 | number | Enter the retry cycle (ms) when a transfer request fails. | [retry.backoff.ms](https://kafka.apache.org/documentation/#consumerconfigs_retry.backoff.ms) |
@@ -303,7 +428,7 @@
 
 ### Metadata Field Usage
 
-* When the metadata creation is enabled, metadata is created but is not displayed in plugins such as Filter and Sink unless you input data into normal fields.
+* When `Metadata created or not` is enabled, the metadata field is created, but is not exposed by the Sink plugin without injecting it as a regular field.
 * Message examples after Kafka plugin when the setting is enabled
 ```js
 {
@@ -313,7 +438,7 @@
     "message": "kafka topic message..."
 
     // metadata field
-    // Cannot be used until user input data into normal fields
+    // Cannot be exposed to the Sink plugin until user input data into normal fields
     // "[@metadata][kafka][topic]": "my-topic"
     // "[@metadata][kafka][consumer_group]": "my_consumer_group"
     // "[@metadata][kafka][partition]": "1"
@@ -1299,8 +1424,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Same as Object Storage node, but some values are changed as below to support parquet type.
   * Codec fixed to parquet
-  * File rotation policy fixed to size
-    * size is fixed to 128 MB (134,217,728 bytes)
+  * When the file rotation policy is not entered, the default policy is applied as follows.
+    * File size: 128 MB (134,217,728 bytes)
+    * Base time: 60 min
   * Encoding fixed to none
 
 ## Sink > (Amazon) S3
@@ -1374,8 +1500,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * This node converts data to the parquet type and uploads it to Amazon S3.
 * (Amazon) S3 node, but some values are changed to support the parquet type, as shown below.
   * Codec fixed to parquet
-  * File rotation policy fixed to size
-    * size is fixed to 128 MB (134,217,728 bytes)
+* When the file rotation policy is not entered, the default policy is applied as follows.
+    * File size: 128 MB (134,217,728 bytes)
+    * Base time: 60 min
   * Encoding fixed to none
 
 ## Sink > (Apache) Kafka
