@@ -1425,7 +1425,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
   * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 오브젝트 크기: 128MB(134,217,728 byte)
+    * 기준 오브젝트 크기: 128MB(134,217,728 byte)
     * 기준 시각: 60분
   * 인코딩은 none으로 고정
 
@@ -1500,8 +1500,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * Amazon S3에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
 * (Amazon) S3 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
-  * 1 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 오브젝트 크기: 128MB(134,217,728 byte)
+  * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
+    * 기준 오브젝트 크기: 128MB(134,217,728 byte)
     * 기준 시각: 60분
   * 인코딩은 none으로 고정
 
