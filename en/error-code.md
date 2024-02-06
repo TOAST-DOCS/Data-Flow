@@ -19,4 +19,6 @@
 | S3_ACCESS_DENIED        | Access to the S3, Object Storage store is denied. Check the ACL granted to the access key on the S3, Object Storage node. |
 | S3_NO_SUCH_BUCKET       | The bucket does not exist in the S3, Object Storage store.                                                   |
 | S3_SERVICE_ERROR        | The S3, Object Storage store is in an unstable state. Please contact the store.                                      |
+| JDBC_CONNECT_FAILED     | JDBC connection fails.                                                                           |
+| JDBC_UNSUPPORTED_DRIVER | Unsupported JDBC driver.                                                                       |
 | ERROR                   | Service internal error or undefined error. Please contact the Customer Center.                                               |
