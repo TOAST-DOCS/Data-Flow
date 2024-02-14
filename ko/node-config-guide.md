@@ -201,7 +201,7 @@
 | 비밀 키 | - | string | S3가 발급한 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | - | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
-| 메타데이터 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>metadata: 메타데이터<br/>etag: etag |
+| 메타데이터 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>last_modified: 오브젝트가 마지막으로 수정된 시간<br/>content_length: 오브젝트 크기<br/>key: 오브젝트 이름<br/>content_type: 오브젝트 형식<br/>metadata: 메타데이터<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 | 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
@@ -215,7 +215,7 @@
     // 일반 필드
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "파일 내용..."
+    "message": "오브젝트 내용..."
 
     // 메타데이터 필드
     // 사용자가 일반 필드로 주입하기 전까지 Sink 플러그인에 노출할 수 없음
@@ -248,7 +248,7 @@
     // 일반 필드
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "파일 내용..."
+    "message": "오브젝트 내용..."
     "last_modified": 2024-01-05T01:35:50.000Z
     "content_length": 220
     "key": "{filename}"
@@ -300,7 +300,7 @@
 | 비밀 키 | - | string | S3가 발급한 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | - | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
-| 메타데이터 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>server_side_encryption: 서버 측 암호화 알고리즘<br/>last_modified: 파일이 마지막으로 수정된 시간<br/>content_length: 파일 크기<br/>key: 파일 이름<br/>content_type: 파일 형식<br/>metadata: 메타데이터<br/>etag: etag |
+| 메타데이터 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>server_side_encryption: 서버 측 암호화 알고리즘<br/>last_modified: 오브젝트가 마지막으로 수정된 시간<br/>content_length: 오브젝트 크기<br/>key: 오브젝트 이름<br/>content_type: 오브젝트 형식<br/>metadata: 메타데이터<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 | 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
@@ -315,7 +315,7 @@
     // 일반 필드
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "파일 내용..."
+    "message": "오브젝트 내용..."
 
     // 메타데이터 필드
     // 사용자가 일반 필드로 주입하기 전까지 Sink 플러그인에 노출할 수 없음
@@ -350,7 +350,7 @@
     // 일반 필드
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "파일 내용..."
+    "message": "오브젝트 내용..."
     "server_side_encryption": "AES256"
     "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
     "content_type": "text/plain"
@@ -1236,17 +1236,17 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 버킷 | - | string | 버킷 이름을 입력합니다. |  |
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3 API 자격 증명 액세스 키를 입력합니다. |  |
-| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | 파일 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | 오브젝트 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix 시간 필드 | @timestamp | string | Prefix에 적용할 시간 필드를 입력합니다. |  |
 | Prefix 시간 필드 타입 | DATE_FILTER_RESULT | enum | Prefix에 적용할 시간 필드의 타입을 입력합니다. |  |
 | Prefix 시간대 | UTC | string | Prefix에 적용할 시간 필드의 타임 존을 입력합니다. |  |
 | Prefix 시간 적용 fallback  | _prefix_datetime_parse_failure | string | Prefix 시간 적용에 실패한 경우 대체할 Prefix를 입력합니다. |  |
 | 인코딩 | none | enum | 인코딩 여부를 입력합니다. gzip 인코딩을 사용할 수 있습니다. |  |
-| 파일 로테이션 정책 | size\_and\_time | enum | 파일의 생성 규칙을 결정합니다. | size\_and\_time - 파일의 크기와 시간을 이용하여 결정<br/>size - 파일의 크기를 이용하여 결정<br/>time - 시간을 이용하여 결정 |
-| 기준 시각 | 15 | number | 파일을 분할할 기준이 될 시간을 설정합니다. | 파일 로테이션 정책이 size\_and\_time 또는 time인 경우 설정 |
-| 파일 크기 | 5242880 | number | 파일을 분할할 기준이 될 크기를 설정합니다. | 파일 로테이션 정책이 size\_and\_time 또는 size인 경우 설정 |
-| ACL | private | enum | 파일을 업로드할 때 설정할 ACL 정책을 입력합니다. | 
-| 스토리지 클래스 | STANDARD | enum | 파일을 업로드할 때 사용할 스토리지 클래스를 설정합니다. | [스토리지 클래스 가이드l](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
+| 오브젝트 로테이션 정책 | size\_and\_time | enum | 오브젝트의 생성 규칙을 결정합니다. | size\_and\_time: 오브젝트의 크기와 시간을 이용하여 결정<br/>size: 오브젝트의 크기를 이용하여 결정<br/>time: 시간을 이용하여 결정 |
+| 기준 시각 | 15 | number | 오브젝트를 분할할 기준이 될 시간을 설정합니다. | 오브젝트 로테이션 정책이 size\_and\_time 또는 time인 경우 설정 |
+| 기준 오브젝트 크기 | 5242880 | number | 오브젝트를 분할할 기준이 될 크기를 설정합니다. | 오브젝트 로테이션 정책이 size\_and\_time 또는 size인 경우 설정 |
+| ACL | private | enum | 오브젝트를 업로드할 때 설정할 ACL 정책을 입력합니다. |
+| 스토리지 클래스 | STANDARD | enum | 오브젝트를 업로드할 때 사용할 스토리지 클래스를 설정합니다. | [스토리지 클래스 가이드](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 
 ### json 코덱 출력 예제
 
@@ -1424,8 +1424,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
-  * 파일 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 파일 크기: 128MB(134,217,728 byte)
+  * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
+    * 기준 오브젝트 크기: 128MB(134,217,728 byte)
     * 기준 시각: 60분
   * 인코딩은 none으로 고정
 
@@ -1444,17 +1444,17 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 서명 버전 | - | enum | AWS 요청을 서명할 때 사용할 버전을 입력합니다. |  |
 | 세션 토큰 | - | string | AWS 임시 자격 증명을 위한 세션 토큰을 입력합니다. | [세션 토큰 가이드](https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
-| Prefix | - | string | 파일 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | - | string | 오브젝트 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix 시간 필드 | @timestamp | string | Prefix에 적용할 시간 필드를 입력합니다. |  |
 | Prefix 시간 필드 타입 | DATE_FILTER_RESULT | enum | Prefix에 적용할 시간 필드의 타입을 입력합니다. |  |
 | Prefix 시간대 | UTC | string | Prefix에 적용할 시간 필드의 타임 존을 입력합니다. |  |
 | Prefix 시간 적용 fallback  | _prefix_datetime_parse_failure | string | Prefix 시간 적용에 실패한 경우 대체할 Prefix를 입력합니다. |  |
-| 스토리지 클래스 | STANDARD | enum | 파일을 업로드할 때 사용할 스토리지 클래스를 설정합니다. | [스토리지 클래스 가이드](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
+| 스토리지 클래스 | STANDARD | enum | 오브젝트를 업로드할 때 사용할 스토리지 클래스를 설정합니다. | [스토리지 클래스 가이드](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | 인코딩 | none | enum | 인코딩 여부를 입력합니다. gzip 인코딩을 사용할 수 있습니다. |  |
-| 파일 로테이션 정책 | size\_and\_time | enum | 파일의 생성 규칙을 결정합니다. | size\_and\_time - 파일의 크기와 시간을 이용하여 결정<br/>size - 파일의 크기를 이용하여 결정<br/>time - 시간을 이용하여 결정 |
-| 기준 시각 | 15 | number | 파일을 분할할 기준이 될 시간을 설정합니다. | 파일 로테이션 정책이 size\_and\_time 또는 time인 경우 설정 |
-| 파일 크기 | 5242880 | number | 파일을 분할할 기준이 될 크기를 설정합니다. | 파일 로테이션 정책이 size\_and\_time 또는 size인 경우 설정 |
-| ACL | private | enum | 파일을 업로드했을 때 설정할 ACL 정책을 입력합니다. |  |
+| 오브젝트 로테이션 정책 | size\_and\_time | enum | 오브젝트의 생성 규칙을 결정합니다. | size\_and\_time: 오브젝트의 크기와 시간을 이용하여 결정<br/>size: 오브젝트의 크기를 이용하여 결정<br/>time: 시간을 이용하여 결정 |
+| 기준 시각 | 15 | number | 오브젝트를 분할할 기준이 될 시간을 설정합니다. | 오브젝트 로테이션 정책이 size\_and\_time 또는 time인 경우 설정 |
+| 기준 오브젝트 크기 | 5242880 | number | 오브젝트를 분할할 기준이 될 크기를 설정합니다. | 오브젝트 로테이션 정책이 size\_and\_time 또는 size인 경우 설정 |
+| ACL | private | enum | 오브젝트를 업로드했을 때 설정할 ACL 정책을 입력합니다. |  |
 | 추가 설정 | { } | hash | S3에 연결하기 위한 추가 설정을 입력합니다. | [가이드](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html) |
 
 ### 출력 예제
@@ -1500,8 +1500,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * Amazon S3에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
 * (Amazon) S3 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
-  * 파일 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 파일 크기: 128MB(134,217,728 byte)
+  * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
+    * 기준 오브젝트 크기: 128MB(134,217,728 byte)
     * 기준 시각: 60분
   * 인코딩은 none으로 고정
 
