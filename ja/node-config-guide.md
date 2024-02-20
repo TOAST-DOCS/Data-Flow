@@ -202,7 +202,7 @@
 | 秘密鍵 | - | string | S3が発行した認証情報秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3が発行した認証情報アクセスキーを入力します。 |  |
 | リスト更新周期 | - | number | バケットに含まれるオブジェクトリスト更新周期を入力します。 |  |
-| メタデータを含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。メタデータフィールドをSinkプラグインに公開するためには、filterノードタイプを組み合わせる必要があります(下のガイドを参照)。 | 作成されるフィールドは次のとおりです。<br/>last_modified:ファイルが最後に修正された時間<br/>content_length:ファイルサイズ<br/>key:ファイル名<br/>content_type:ファイル形式<br/>metadata:メタデータ<br/>etag: etag |
+| メタデータを含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。メタデータフィールドをSinkプラグインに公開するためには、filterノードタイプを組み合わせる必要があります(下のガイドを参照)。 | 作成されるフィールドは次のとおりです。<br/>last_modified:オブジェクトが最後に修正された時間<br/>content_length:オブジェクトサイズ<br/>key:オブジェクト名<br/>content_type:オブジェクト形式<br/>metadata:メタデータ<br/>etag: etag |
 | Prefix | - | string | 読み込むオブジェクトのプレフィックスを入力します。 |  |
 | 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
 | 削除 | false | boolean | プロパティ値がtrueの場合、読み込みが完了したオブジェクトを削除します。 |  |
@@ -216,7 +216,7 @@
     // 一般フィールド
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "ファイル内容..."
+    "message": "オブジェクト内容..."
 
     // メタデータフィールド
     // ユーザーが一般フィールドとして注入するまでSinkプラグインに表示できない。
@@ -249,7 +249,7 @@
     // 一般フィールド
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message"： "ファイル内容..."
+    "message": "オブジェクト内容..."
     "last_modified": 2024-01-05T01:35:50.000Z
     "content_length": 220
     "key": "{filename}"
@@ -301,7 +301,7 @@
 | 秘密鍵 | - | string | S3が発行した認証情報秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3が発行した認証情報アクセスキーを入力します。 |  |
 | リスト更新周期 | - | number | バケットに含まれるオブジェクトリスト更新周期を入力します。 |  |
-| メタデータを含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。メタデータフィールドをSinkプラグインに表示するにはfilterノードタイプを組み合わせる必要があります(下のガイドを参照)。 | 作成されるフィールドは次のとおりです。<br/>server_side_encryption:サーバー側の暗号化アルゴリズム<br/>last_modified:ファイルが最後に修正された時間<br/>content_length:ファイルサイズ<br/>key:ファイル名<br/>content_type:ファイル形式<br/>metadata:メタデータ<br/>etag: etag |
+| メタデータを含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。メタデータフィールドをSinkプラグインに表示するにはfilterノードタイプを組み合わせる必要があります(下のガイドを参照)。 | 作成されるフィールドは次のとおりです。<br/>server_side_encryption:サーバー側の暗号化アルゴリズム<br/>last_modified:オブジェクトが最後に修正された時間<br/>content_length:オブジェクトサイズ<br/>key:オブジェクト名<br/>content_type:オブジェクト形式<br/>metadata:メタデータ<br/>etag: etag |
 | Prefix | - | string | 読み込むオブジェクトのプレフィックスを入力します。 |  |
 | 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
 | 削除 | false | boolean | プロパティ値がtrueの場合、読み終わったオブジェクトを削除します。 |  |
@@ -316,7 +316,7 @@
     // 一般フィールド
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message"： "ファイル内容..."
+    "message": "オブジェクト内容..."
 
     // メタデータフィールド
     // ユーザーが一般フィールドとして注入するまではSinkプラグインに公開することができません。
@@ -351,7 +351,7 @@
     // 一般フィールド
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message"： "ファイル内容..."
+    "message": "オブジェクト内容..."
     "server_side_encryption": "AES256"
     "etag": "\"56ad65461e0abb907465bacf6e4f96cf\""
     "content_type": "text/plain"
@@ -1235,17 +1235,17 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | バケット | - | string | バケット名を入力します。 |  |
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
-| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | オブジェクトをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | @timestamp | string | Prefixに適用する時間フィールドを入力します。 |  |
 | Prefix時間フィールドタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |
 | Prefixタイムゾーン | UTC | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
 | Prefix時間適用fallback  | _prefix_datetime_parse_failure | string | Prefix時間適用に失敗した場合に代替するPrefixを入力します。 |  |
 | エンコード | none | enum | エンコードするかどうかを入力します。 gzipエンコードを使用できます。 |  |
-| ファイルローテーションポリシー | size\_and\_time | enum | ファイルの作成ルールを決定します。 | size\_and\_time - ファイルのサイズと時間を利用して決定<br/>size - ファイルのサイズを利用して決定<br/>time - 時間を利用して決定 |
-| 基準時刻 | 15 | number | ファイルを分割する基準となる時間を設定します。 | ファイルローテーションポリシーがsize\_and\_timeまたはtimeの場合に設定 |
-| ファイルサイズ | 5242880 | number | ファイルを分割する基準となるサイズを設定します。 | ファイルローテーションポリシーがsize\_and\_timeまたはsizeの場合に設定 |
-| ACL | private | enum | ファイルをアップロードする時に設定するACLポリシーを入力します。 | 
-| ストレージクラス | STANDARD | enum | ファイルをアップロードする時に使用するストレージクラスを設定します。 | [ストレージクラスガイドl](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
+| オブジェクトローテーションポリシー | size\_and\_time | enum | オブジェクトの作成ルールを決定します。 | size\_and\_time:オブジェクトのサイズと時間を利用して決定<br/>size:オブジェクトのサイズを利用して決定<br/>time:時間を利用して決定 |
+| 基準時刻 | 15 | number | オブジェクトを分割する基準となる時間を設定します。 | オブジェクトローテーションポリシーがsize\_and\_timeまたはtimeの場合に設定 |
+| 基準オブジェクトサイズ | 5242880 | number | オブジェクトを分割する基準となるサイズを設定します。 | オブジェクトローテーションポリシーがsize\_and\_timeまたはsizeの場合に設定 |
+| ACL | private | enum | オブジェクトをアップロードする時に設定するACLポリシーを入力します。 | 
+| ストレージクラス | STANDARD | enum | オブジェクトをアップロードする時に使用するストレージクラスを設定します。 | [ストレージクラスガイドl](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 
 ### jsonコーデックの出力例
 
@@ -1423,8 +1423,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Object Storageノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
   * コーデックがparquetに固定
-  * ファイルローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
-    * ファイルサイズ: 128MB(134,217,728 byte)
+  * オブジェクトローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
+    * オブジェクトサイズ: 128MB(134,217,728 byte)
     * 基準時刻: 60分
   * エンコードはnoneに固定
 
@@ -1443,17 +1443,17 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | 署名バージョン | - | enum | AWSリクエストを署名する時に使用するバージョンを入力します。 |  |
 | セッショントークン | - | string | AWS一時認証情報のためのセッショントークンを入力します。 | [セッショントークンガイド](https://docs.aws.amazon.com/ja_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
-| Prefix | - | string | ファイルをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | - | string | オブジェクトをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | @timestamp | string | Prefixに適用する時間フィールドを入力します。 |  |
 | Prefix時間フィールドタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 |  |
 | Prefixタイムゾーン | UTC | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
 | Prefix時間適用fallback  | _prefix_datetime_parse_failure | string | Prefix時間適用に失敗した場合に代替するPrefixを入力します。 |  |
-| ストレージクラス | STANDARD | enum | ファイルをアップロードする時に使用するストレージクラスを設定します。 | [ストレージクラスガイド](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
+| ストレージクラス | STANDARD | enum | オブジェクトをアップロードする時に使用するストレージクラスを設定します。 | [ストレージクラスガイド](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | エンコード | none | enum | エンコードするかどうかを入力します。gzipエンコードを使用できます。 |  |
-| ファイルローテーションポリシー | size\_and\_time | enum | ファイルの作成ルールを決定します。 | size\_and\_time - ファイルのサイズと時間を利用して決定<br/>size - ファイルのサイズを利用して決定<br/>time - 時間を利用して決定 |
-| 基準時刻 | 15 | number | ファイルを分割する基準となる時間を設定します。 | ファイルローテーションポリシーがsize\_and\_timeまたはtimeの場合に設定 |
-| ファイルサイズ | 5242880 | number | ファイルを分割する基準となるサイズを設定します。 | ファイルローテーションポリシーがsize\_and\_timeまたはsizeの場合に設定 |
-| ACL | private | enum | ファイルをアップロードする時に設定するACLポリシーを入力します。 |  |
+| オブジェクトローテーションポリシー | size\_and\_time | enum | オブジェクトの作成ルールを決定します。 | size\_and\_time:オブジェクトのサイズと時間を利用して決定<br/>size:オブジェクトのサイズを利用して決定<br/>time:時間を利用して決定 |
+| 基準時刻 | 15 | number | オブジェクトを分割する基準となる時間を設定します。 | オブジェクトローテーションポリシーがsize\_and\_timeまたはtimeの場合に設定 |
+| 基準オブジェクトサイズ | 5242880 | number | オブジェクトを分割する基準となるサイズを設定します。 | オブジェクトローテーションポリシーがsize\_and\_timeまたはsizeの場合に設定 |
+| ACL | private | enum | オブジェクトをアップロードする時に設定するACLポリシーを入力します。 |  |
 | 追加設定 | { } | hash | S3に接続するための追加設定を入力します。 | [ガイド](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html) |
 
 ### 出力例
@@ -1499,8 +1499,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * データをparquetタイプに変換してAmazon S3にアップロードするノードです。
 * (Amazon) S3ノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
   * コーデックがparquetに固定
-  * ファイルローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
-    * ファイルサイズ: 128MB(134,217,728 byte)
+  * オブジェクトローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
+    * 基準オブジェクトサイズ: 128MB(134,217,728 byte)
     * 基準時刻: 60分
   * エンコードはnoneに固定
 
