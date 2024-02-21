@@ -1243,7 +1243,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Prefix Time Application fallback  | _prefix_datetime_parse_failure | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | Object Rotation Policy | size_and_time | enum | Determines object creation rules. | size_and_time – Use object size and time to decide<br/>size – Use object size to decide <br/>Time – Use time to decide |
-| Standard time | 15 | number | Set the time to be the basis for object splitting.   | Set if object rotation policy is size_and_time or time |
+| Reference Time | 15 | number | Set the time to be the basis for object splitting.   | Set if object rotation policy is size_and_time or time |
 | Object size | 5242880 | number | Set the size to be the basis for object splitting.   | Set when object rotation policy is size_and_time or size |
 | ACL | private | enum | Enter ACL policy to set when object is uploaded. |  |
 | Storage Class | STANDARD | enum | Set Storage Class when object is uploaded. | [ Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
@@ -1452,7 +1452,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Storage Class | STANDARD | enum | Set Storage Class when object is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | Object Rotation Policy | size_and_time | enum | Determine object creation rules. | size_and_time – Use object size and time to decide<br/>size – Use object size to decide <br/>Time – Use time to decide |
-| Standard time | 15 | number | Set the time to be the basis for object splitting.   | Set when the object rotation policy is size_and_time or time |
+| Reference Time | 15 | number | Set the time to be the basis for object splitting.   | Set when the object rotation policy is size_and_time or time |
 | Object size | 5242880 | number | Set the size to be the basis for object splitting.   | Set when the object rotation policy is size_and_time or size |
 | ACL | private | enum | Enter ACL policy to set when object is uploaded. |  |
 | Additional Settings | { } | Hash | Enter additional settings to connect to S3. | [Guide](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html) |
