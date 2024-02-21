@@ -2,6 +2,7 @@
 
 | 오류 코드                   | 설명                                                                                       |
 |-------------------------|------------------------------------------------------------------------------------------|
+| SERVICE_INITIALIZING    | 사용자 환경을 초기화하고 있습니다. 3분 후 다시 시도하세요.                                                       |  
 | FLOW_GRAPH_DISCONNECTED | 플로우가 그래프가 끊어져 있습니다.                                                                      |  
 | FLOW_GRAPH_CYCLE        | 플로우에 정의된 노드의 연결선(흐름)은 이전 노드로 되돌아갈 수 없습니다.                                                |
 | FLOW_NODE_DUPLICATED    | 플로우에 중복된 node ID가 있습니다.                                                                  |
@@ -19,6 +20,6 @@
 | S3_ACCESS_DENIED        | S3, Object Storage 저장소에 접근이 거부되었습니다. S3, Object Storage 노드의 access key에 부여된 ACL을 확인하십시오. |
 | S3_NO_SUCH_BUCKET       | S3, Object Storage 저장소에 버킷이 존재하지 않습니다.                                                   |
 | S3_SERVICE_ERROR        | S3, Object Storage 저장소가 불안정한 상태입니다. 해당 저장소로 문의하십시오.                                      |
-| JDBC_CONNECT_FAILED     | JDBC 연결이 실패했습니다.                                                                           |
-| JDBC_UNSUPPORTED_DRIVER | 지원하지 않는 JDBC 드라이버입니다.                                                                       |
+| JDBC_CONNECT_FAILED     | JDBC 연결이 실패했습니다.                                                                         |
+| JDBC_UNSUPPORTED_DRIVER | 지원하지 않는 JDBC 드라이버입니다.                                                                    |
 | ERROR                   | 서비스 내부 오류 또는 정의되지 않은 오류입니다. 고객 센터로 문의하십시오.                                               |
