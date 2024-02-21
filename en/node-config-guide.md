@@ -1243,7 +1243,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Prefix Time Application fallback  | _prefix_datetime_parse_failure | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determines file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
-| Standard time | 15 | number | Set the time to be the basis for file splitting.   | Set if file rotation policy is size_and_time or time |
+| Reference Time | 15 | number | Set the time to be the basis for file splitting.   | Set if file rotation policy is size_and_time or time |
 | File size | 5242880 | number | Set the size to be the basis for file splitting.   | Set when file rotation policy is size_and_time or size |
 | ACL | private | enum | Enter ACL policy to set when file is uploaded. |  |
 | Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [ Storage Class Guidel](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
@@ -1452,7 +1452,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
 | File Rotation Policy | size_and_time | enum | Determine file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
-| Standard time | 15 | number | Set the time to be the basis for file splitting.   | Set when the file rotation policy is size_and_time or time |
+| Reference Time | 15 | number | Set the time to be the basis for file splitting.   | Set when the file rotation policy is size_and_time or time |
 | File size | 5242880 | number | Set the size to be the basis for file splitting.   | Set when the file rotation policy is size_and_time or size |
 | ACL | private | enum | Enter ACL policy to set when file is uploaded. |  |
 | Additional Settings | { } | Hash | Enter additional settings to connect to S3. | [Guide](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html) |
