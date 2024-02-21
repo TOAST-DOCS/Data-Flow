@@ -201,7 +201,7 @@
 | Secret Key | - | string | Enter the credential secret key issued by S3. |  |
 | Access key | - | string | Enter the credential access key issued by S3. |  |
 | List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
-| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
+| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the object was modified<br/>content_length: Object size<br/>key: Object name<br/>content_type: Object type<br/>metadata: Metadata<br/>etag: etag |
 | Prefix | - | string | Enter a prefix of an object to read. |  |
 | Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
 | Delete | false | boolean | If the property value is true, delete the object read. |  |
@@ -215,7 +215,7 @@
     // General field
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "File contents..."
+    "message": "Object contents..."
 
     // Metadata fields
     // Cannot be exposed to the Sink plugin until the user injects it as a regular field
@@ -248,7 +248,7 @@
     // General field
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "File contents..."
+    "message": "Object contents..."
     "last_modified": 2024-01-05T01:35:50.000Z
     "content_length": 220
     "key": "{filename}"
@@ -300,7 +300,7 @@
 | Secret Key | - | string | Enter the credential secret key issued by S3. |  |
 | Access key | - | string | Enter the credential access key issued by S3. |  |
 | List update cycle | - | number | Enter the object list update cycle included in the bucket. |  |
-| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the file was modified<br/>content_length: File size<br/>key: File name<br/>content_type: File type<br/>metadata: Metadata<br/>etag: etag |
+| Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the object was modified<br/>content_length: Object size<br/>key: Object name<br/>content_type: Object type<br/>metadata: Metadata<br/>etag: etag |
 | Prefix | - | string | Enter a prefix of an object to read. |  |
 | Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
 | Delete | false | boolean | If the property value is true, delete the object read. |  |
@@ -315,7 +315,7 @@
     // General field
     "@version": "1",
     "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "파일 내용..."
+    "message": "Object contents..."
 
     // Metadata fields
     // Cannot be exposed to the Sink plugin until the user injects it as a regular field
@@ -1236,17 +1236,17 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Bucket | - | string | Enter bucket name |  |
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Access Key | - | string | Enter S3 API Credential Access Key. |  |
-| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | Enter a prefix to prefix the name when uploading the object.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix Time Field | @timestamp | string | Enter a time field to apply to the prefix. |  |
 | Prefix Time Field Type | DATE_FILTER_RESULT | enum | Enter a time field type to apply to the prefix. |  |
 | Prefix Time Zone | UTC | string | Enter a time zone for the Time field to apply to the prefix. |  |
 | Prefix Time Application fallback  | _prefix_datetime_parse_failure | string | Enter a prefix to replace if the prefix time application fails. |  |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
-| File Rotation Policy | size_and_time | enum | Determines file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
-| Reference Time | 15 | number | Set the time to be the basis for file splitting.   | Set if file rotation policy is size_and_time or time |
-| File size | 5242880 | number | Set the size to be the basis for file splitting.   | Set when file rotation policy is size_and_time or size |
-| ACL | private | enum | Enter ACL policy to set when file is uploaded. |  |
-| Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [ Storage Class Guidel](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
+| Object Rotation Policy | size_and_time | enum | Determines object creation rules. | size_and_time – Use object size and time to decide<br/>size – Use object size to decide <br/>Time – Use time to decide |
+| Reference Time | 15 | number | Set the time to be the basis for object splitting.   | Set if object rotation policy is size_and_time or time |
+| Object size | 5242880 | number | Set the size to be the basis for object splitting.   | Set when object rotation policy is size_and_time or size |
+| ACL | private | enum | Enter ACL policy to set when object is uploaded. |  |
+| Storage Class | STANDARD | enum | Set Storage Class when object is uploaded. | [ Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 
 ### Json Codec Output example exercise
 
@@ -1424,8 +1424,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Same as Object Storage node, but some values are changed as below to support parquet type.
   * Codec fixed to parquet
-  * When the file rotation policy is not entered, the default policy is applied as follows.
-    * File size: 128 MB (134,217,728 bytes)
+  * When the object rotation policy is not entered, the default policy is applied as follows.
+    * Object size: 128 MB (134,217,728 bytes)
     * Base time: 60 min
   * Encoding fixed to none
 
@@ -1444,17 +1444,17 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Secret Key | - | string | Enter S3 API Credential Secret Key. |  |
 | Signature Version | - | enum | Enter the version to use when signing AWS requests. |  |
 | Session Token | - | string | Enter the Session Token for AWS temporary Credentials. | [ Session Token Guide](https://docs.aws.amazon.com/en_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
-| Prefix | - | string | Enter a prefix to prefix the name when uploading the file.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | - | string | Enter a prefix to prefix the name when uploading the object.<br/>You can enter a field or time format. | [Available Time Format](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix Time Field | @timestamp | string | Enter a time field to apply to the prefix. |  |
 | Prefix Time Field Type | DATE_FILTER_RESULT | enum | Enter a time field type to apply to the prefix. |  |
 | Prefix Time Zone | UTC | string | Enter a time zone for the Time field to apply to the prefix. |  |
 | Prefix Time Application fallback  | _prefix_datetime_parse_failure | string | Enter a prefix to replace if the prefix time application fails. |  |
-| Storage Class | STANDARD | enum | Set Storage Class when file is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
+| Storage Class | STANDARD | enum | Set Storage Class when object is uploaded. | [Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 | Encoding | none | enum | Enter whether to encode or not . gzip encoding is available. |  |
-| File Rotation Policy | size_and_time | enum | Determine file creation rules. | size_and_time – Use file size and time to decide<br/>size – Use file size to decide <br/>Time – Use time to decide |
-| Reference Time | 15 | number | Set the time to be the basis for file splitting.   | Set when the file rotation policy is size_and_time or time |
-| File size | 5242880 | number | Set the size to be the basis for file splitting.   | Set when the file rotation policy is size_and_time or size |
-| ACL | private | enum | Enter ACL policy to set when file is uploaded. |  |
+| Object Rotation Policy | size_and_time | enum | Determine object creation rules. | size_and_time – Use object size and time to decide<br/>size – Use object size to decide <br/>Time – Use time to decide |
+| Reference Time | 15 | number | Set the time to be the basis for object splitting.   | Set when the object rotation policy is size_and_time or time |
+| Object size | 5242880 | number | Set the size to be the basis for object splitting.   | Set when the object rotation policy is size_and_time or size |
+| ACL | private | enum | Enter ACL policy to set when object is uploaded. |  |
 | Additional Settings | { } | Hash | Enter additional settings to connect to S3. | [Guide](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html) |
 
 ### Output example exercise
@@ -1500,8 +1500,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * This node converts data to the parquet type and uploads it to Amazon S3.
 * (Amazon) S3 node, but some values are changed to support the parquet type, as shown below.
   * Codec fixed to parquet
-* When the file rotation policy is not entered, the default policy is applied as follows.
-    * File size: 128 MB (134,217,728 bytes)
+* When the object rotation policy is not entered, the default policy is applied as follows.
+    * Object size: 128 MB (134,217,728 bytes)
     * Base time: 60 min
   * Encoding fixed to none
 
