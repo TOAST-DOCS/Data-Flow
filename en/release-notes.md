@@ -1,5 +1,18 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### February 27, 2024
+#### Feature Updates
+* Changed the words "file" and "object" in the descriptions of S3 and OBS nodes to "object".
+* Fixed loading UI to appear on flow save, start, stop, and validation requests.
+* Made the order of node setup more natural.
+
+#### Bug Fixes
+* Fixed an issue where saving flows with S3, OBS Sink nodes would intermittently leave temporary objects for testing during validation.
+* Fixed an issue where deleting a flow would not delete the scheduling stored in that flow.
+* Fixed an issue where, when creating a flow immediately after activating a project, the flow would fail to run.
+* Fixed an issue where, when looking up monitoring for a long period of time, the lookup would fail.
+* Fixed an issue where the execution state of a validation feature would go from "Activating" to "Active" faster than it should.
+
 ### January 23, 2024
 #### Feature Updates
 * Fixed a bug where validation would not turn on unless creating the first flow.
