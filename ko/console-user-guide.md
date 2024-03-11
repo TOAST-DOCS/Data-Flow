@@ -47,15 +47,15 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 | 플로우 실행 상태                                         | 설명 |
 |---------------------------------------------------| --- |
-| <span style="color:#880808">START\_FAILED</span>  | 플로우 실행 요청에 실패했습니다. |
-| <span style="color:#00ffff">STARTING</span>       | 플로우 실행을 위한 리소스를 확보하는 중입니다. |
-| <span style="color:orange">QUOTA\_EXCEEDED</span> | 플로우 실행을 위한 리소스가 부족해 실행에 실패했습니다. |
-| <span style="color:#088f8f">PREPARING</span>      | 플로우 실행 준비가 완료되었습니다. |
-| <span style="color:#aaff00">RUNNING</span>        | 플로우가 실행 중입니다. |
-| <span style="color:red">ERROR</span>              | 플로우 실행 과정에서 통신 장애나 인증 불가 등으로 인해 오류가 발생했습니다. 지속적으로 <b>ERROR</b>가 발생할 경우 고객 센터로 문의하십시오. |
-| <span style="color:red">UNKNOWN</span>            | 플로우 실행 과정에서 알 수 없는 원인으로 인해 오류가 발생했습니다. 지속적으로 <b>UNKNOWN</b>이 발생할 경우 고객 센터로 문의하십시오. |
-| <span style="color:#880808">STOP\_FAILED</span>   | 플로우 종료 요청에 실패했습니다. |
-| <span style="color:#ee4b2b">STOPPED</span>        | 플로우가 종료되었습니다. |
+| START\_FAILED  | 플로우 실행 요청에 실패했습니다. |
+| STARTING       | 플로우 실행을 위한 리소스를 확보하는 중입니다. |
+| QUOTA\_EXCEEDED | 플로우 실행을 위한 리소스가 부족해 실행에 실패했습니다. |
+| PREPARING      | 플로우 실행 준비가 완료되었습니다. |
+| RUNNING        | 플로우가 실행 중입니다. |
+| ERROR              | 플로우 실행 과정에서 통신 장애나 인증 불가 등으로 인해 오류가 발생했습니다. 지속적으로 <b>ERROR</b>가 발생할 경우 고객 센터로 문의하십시오. |
+| UNKNOWN            | 플로우 실행 과정에서 알 수 없는 원인으로 인해 오류가 발생했습니다. 지속적으로 <b>UNKNOWN</b>이 발생할 경우 고객 센터로 문의하십시오. |
+| STOP\_FAILED   | 플로우 종료 요청에 실패했습니다. |
+| STOPPED        | 플로우가 종료되었습니다. |
 
 ### 플로우 생성
 
