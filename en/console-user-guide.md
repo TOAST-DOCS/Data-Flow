@@ -169,7 +169,7 @@ Define a flow logic.
     * Initialize
         * Scale adjusted by 1 time through scaling adjustment.
     * Adjust Screen
-        * Adjust the scale and center the screen so that the Flow is visible on one screen.
+        * Adjust the scale and center the screen so that the flow is visible on one screen.
     * Align Node
         * Arrange the arrangement of flows so that the each step is well visible.
         * Adjust the scale and center the screen so that the Flow is visible on one screen.
@@ -326,8 +326,8 @@ Define template logics
 * Define a template by importing flow components from the node type or template from Template Settings.
     * The **Collapse** and **Expand** button allows you to zoom-in/zoom-out the template screen.
 * Adjust the template screen to define a template and change graph configuration.
-    * Unlike flows, templates are free to store unfinished flows.
-* Scaling adjustment and initializing, screen adjustment, and node alignment allow to adjust a flow so that it is visible on screen.
+    * Unlike flows, templates can freely save unfinished flows.
+* Scaling adjustment and initializing, screen adjustment, and node alignment allow to adjust a flow so that it is visible on the screen.
     * Adjust Scale
         * Scale the screen on which the flow graph is displayed.
         * Support scaling from 0.5 times to 2 times.
