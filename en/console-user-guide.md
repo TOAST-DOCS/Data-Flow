@@ -2,25 +2,25 @@
 
 DataFlow can be used in the following order:
 
-* Activate Service
-    * Create a project first.
-    * Select a project you want.
-    * Enable DataFlow.
+* Enable Service
+    1. See [Project management] (https://docs.toast.com/en/TOAST/en/console-guide/# _14) to create a project.
+    2. Select the desired project.
+    3. Refer to the [Project Services Activation Guide] (https://docs.toast.com/en/TOAST/en/console-guide/#_18) to activate DataFlow.
 * Execute Flow
-    * Create a flow by adding appropriate name and description.
-    * Add the required nodes and enter setting values to define how each node behaves.
-    * Node connection completes flows by determining the order of node operation.
-    * Execute a flow.
-    * Check log information to verify that the flow has run successfully.
+    1. Create a flow by entering a name and description.
+    2. Add the nodes you need, and enter settings to define how each node behaves.
+    3. Node connections determine the order of nodes' actions to complete the flow.
+    4. Execute the file.
+    5. Verify that the flow ran successfully by checking the log information.
 
 ## Management
 
-Page that queries and manages the flow metadata information. 
+Page that queries and manages the flow metadata information.
 Click **Data & Analytics > DataFlow > Management**.
 
 ![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main.png)
 
-## Search
+### Search
 
 Search for flows with given criteria.
 
@@ -45,21 +45,19 @@ Display query results of flows in a table form.
 
 #### Flow Status Information
 
-| Flow execution status                                         | Description |
+| Flow Running Status                                         | Description |
 |---------------------------------------------------| --- |
-| <span style="color:black">START_REQUESTED</span> | Flow execution requested. |
-| <span style="color:#880808">START_FAILED</span>  | Failed to request flow execution. |
-| <span style="color:#00ffff">STARTING</span>       | Identifying resources for flow execution. |
-| <span style="color:orange">QUOTA_EXCEEDED</span> | Failed to execute the flow due to insufficient resources. |
-| <span style="color:#088f8f">PREPARING</span>      | Ready to execute the flow. |
-| <span style="color:#aaff00">RUNNING</span>        | Flow is running. |
-| <span style="color:red">ERROR</span>              | An error occurred during flow execution due to communication failure or authentication failure. If <b>ERROR</b> continues to occur, contact the Customer Center. |
-| <span style="color:red">UNKNOWN</span>            | An error occurred for unknown reasons during the execution of the flow. If UNKNOWN continues to occur, contact the Customer Center. |
-| <span style="color:black">STOP_REQUESTED</span>  | Flow stop requested. |
-| <span style="color:#880808">STOP_FAILED</span>   | Failed to request flow stop. |
-| <span style="color:#ee4b2b">STOPPED</span>        | Flow is stopped. |
+| START_FAILED  | Failed to request flow running. |
+| STARTING       | Freeing up resources to run the flow. |
+| QUOTA_EXCEEDED | Failed to run the flow due to insufficient resources. |
+| PREPARING      | Ready to run the flow. |
+| RUNNING        | Flow is running. |
+| ERROR              | An error occurred during flow running due to communication failure or authentication failure. If <b>ERROR</b> continues to occur, contact the Customer Center. |
+| UNKNOWN            | An error occurred for unknown reasons during the running of the flow. If UNKNOWN continues to occur, contact the Customer Center. |
+| STOP_FAILED   | Failed to request flow stop. |
+| STOPPED        | Flow is stopped. |
 
-### Create Flow 
+### Create Flow
 
 Create metadata to define flows.
 
@@ -93,27 +91,36 @@ Delete flow metadata
 
 * Completely delete flow metadata
 * Deleted flow cannot be recovered again.
-* Running flow cannot be deleted.  
+* Running flow cannot be deleted.
 
-### Learn More 
+### More - Start a flow
+Start a flow that is stopped.
 
-Control the action of starting or stopping flows.
-
-* Allows to start flows in the stopped state.
-* You can stop a flow that is ready to run or is running by forwarding start request.
 * Each flow can run only one at a time.
 * Temporarily saved flow starts with the version that was last saved.
+* You cannot start a flow that has never been saved, only drafted.
 * You cannot start a flow if it has never been saved even once.
 * A flow cannot be started the same as the flow initiated by the user, even if the flow is already being run by Scheduler.
 
-## See Flow in Details 
+### More - End a flow
+* You can end flows that are preparing to run, running, or draining.
+* End flows without processing any remaining events.
 
-Detail page that checks the details of selected flow. 
-Go to **Data & Analytics > DataFlow > Management > Click one of the flows**. 
-You can adjust the screen ratio by moving the boundary between the flow list area and the flow detail view area. 
+### More - End after flow draining
+* You can end a running flow after draining it.
+* Draining means processing the remaining events in the flow.
+* If the timeout time is exceeded, the draining will end without finishing.
+* If the draining ends with timeouts remaining, exit immediately.
+* A flow that is draining can be terminated directly via End Flow.
+
+## See Flow in Details
+
+Detail page that checks the details of selected flow.
+Go to **Data & Analytics > DataFlow > Management > Click one of the flows**.
+You can adjust the screen ratio by moving the boundary between the flow list area and the flow detail view area.
 You can also adjust the screen proportion to specified percentage by using Resize Area button located in the upper right corner of Flow detail view area.
 
-### Basic Information 
+### Basic Information
 
 Displays detailed flow metadata.
 
@@ -160,15 +167,15 @@ Define a flow logic.
         * Scale the screen on which the flow graph is displayed.
         * Support scaling from 0.5 times to 2 times.
     * Initialize
-        * Scale adjusted by 1 time through scaling adjustment. 
+        * Scale adjusted by 1 time through scaling adjustment.
     * Adjust Screen
-        * Adjust the scale and center the screen so that the flow is visible on one screen.
+        * Adjust the scale and center the screen so that the Flow is visible on one screen.
     * Align Node
         * Arrange the arrangement of flows so that the each step is well visible.
         * Adjust the scale and center the screen so that the Flow is visible on one screen.
-* You can cancel/save/temporarily save the edited flow definition. 
+* You can cancel/save/temporarily save the edited flow definition.
     * Cancel
-        * Return the edited flow definition to the last saved/temporarily saved. 
+        * Return the edited flow definition to the last saved/temporarily saved.
     * Save Temporarily
         * Provide features to store flows in incomplete form.
         * Temporarily saved flows cannot be started.
@@ -201,11 +208,11 @@ Display history of the request to start/end flow.
 * Displays the state of flow due to the requested behavior.
 * If it is a running flow, new window allows to view detailed flow status information.
 
-## Monitoring 
+## Monitoring
 
-Display Monitoring information for running flow or node. 
-Click **Data & Analytics > DataFlow > Monitoring**. 
-You can adjust the screen ratio by moving boundaries between flow screen area and monitoring area. 
+Display Monitoring information for running flow or node.
+Click **Data & Analytics > DataFlow > Monitoring**.
+You can adjust the screen ratio by moving boundaries between flow screen area and monitoring area.
 Also you can adjust screen proportion to the specified percentage by using the Resize Area button located in upper right corner of the Monitoring area.
 
 ![monitoring.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/monitoring.png)
@@ -237,7 +244,7 @@ It is area to display the monitoring chart.
         * Scale the screen on which the flow graph is displayed.
         * Support the scaling from 0.5 times to 2 times.
     * Initialize
-        * The scale is adjusted by 1 time through scaling adjustment. 
+        * The scale is adjusted by 1 time through scaling adjustment.
 * Select Chart Period
     * Adjust Overall Period
         * The button toggle allows you to synchronize Chart zoom-in/zoom-out actions to all Charts.
@@ -252,7 +259,7 @@ It is area to display the monitoring chart.
 
 ## Template
 
-It is a page that queries, creates, and modifies the template metadata information. 
+It is a page that queries, creates, and modifies the template metadata information.
 Click **Data & Analytics>DataFlow> Templates**.
 
 ![template_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_main.png)
@@ -302,16 +309,15 @@ Create new metadata with existing template definitions.
 Delete template metadata
 
 * Completely delete template metadata
-* Deleted template cannot be recovered. 
+* Deleted template cannot be recovered.
 
 ## See Templates in Details
 
-Detailed page that displays information in detail of Selected Flow.  
 Go to **Data & Analytics > DataFlow > Templates > and Click one of the template**
-You can adjust the screen ratio by moving boundaries between the template list area and See Templates in Details. 
+You can adjust the screen ratio by moving boundaries between the template list area and See Templates in Details.
 Also you can adjust the screen proportion to the specified percentage by using the Resize Area button located in upper right corner of See Templates in Details.
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail.png)
 
 ### Template Information
 
@@ -319,14 +325,14 @@ Define template logics
 
 * Define a template by importing flow components from the node type or template from Template Settings.
     * The Collapse/Expand button allows you to zoom-in/zoom-out the template screen.
-* Adjust the template screen to define a template and change graph configuration.
-    * Unlike flows, templates can freely save unfinished flows.
-* Scaling adjustment and initializing, screen adjustment, and node alignment allow to adjust a flow so that it is visible on the screen.
+* The Collapse/Expand button allows you to zoom-in/zoom-out the template screen.
+    * Unlike flows, templates are free to store unfinished flows.
+* Scaling adjustment and initializing, screen adjustment, and node alignment allow to adjust a flow so that it is visible on screen.
     * Adjust Scale
         * Scale the screen on which the flow graph is displayed.
         * Support scaling from 0.5 times to 2 times.
     * Initialize
-        * Scales adjusted by 1 time through scaling adjustment. 
+        * Scales adjusted by 1 time through scaling adjustment.
     * Adjust Screen
         * Adjust the scale and center the screen so that the flow is visible on one screen.
     * Align Node
@@ -337,15 +343,15 @@ Define template logics
         * Returns the edited template definition to the state it was in when it was last saved/saved temporarily.
     * Save
         * You can save a flow in incomplete form.
-        * Saved templates can be loaded from the template category in the node type.
+        * Saved templates can be recalled from the Template category of the node type.
 ## Settings
-Manage the settings for the service.
-Go to **Data & Analytics > DataFlow > Settings**.
+This is the page for managing the settings required for the service.
+Click**Data & Analytics > DataFlow > Settings**.
 
-### Log & Crash Search Settings
-
+### Log & Crash Search settings
 The feature to integrate your flow logs with Log & Crash Search you set.
 To store logs in the Log & Crash Search service, you must enable the Log & Crash Search service, which is available at an additional cost.
+
 
 ![settings_lncs_v2.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_lncs_v2.png)
 
@@ -361,12 +367,12 @@ To store logs in the Log & Crash Search service, you must enable the Log & Crash
 |       logLevel | Log level (INFO, WARN, ERROR, FATAL) |
 |      logSource |                          `Flow` |
 |           host |                      `DataFlow` |
-|         appkey |                 DataFlow service appkey |
-|         flowId |                          Flow ID |
-| flowInstanceId |                     Flow Instance ID |
+|         appkey |                 DataFlow Service AppKey |
+|         flowId |                          flowId |
+| flowInstanceId |                     Flow instance ID |
 
 ### Validation Settings
 ![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
 
-You can set whether to use validation for flows and nodes.
-If Validity Check is set to **Not Use**, node validation is not automatically performed when saving flows, validation for each node is not available.
+You can set whether validation is enabled for flows and nodes.
+When validation is **disabled**, node validation is not automatically performed when saving flows, and the per-node validation feature is not available.
