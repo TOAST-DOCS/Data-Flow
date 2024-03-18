@@ -317,15 +317,15 @@ Go to **Data & Analytics > DataFlow > Templates > and Click one of the template*
 You can adjust the screen ratio by moving boundaries between the template list area and See Templates in Details.
 Also you can adjust the screen proportion to the specified percentage by using the Resize Area button located in upper right corner of See Templates in Details.
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_detail.png)
 
 ### Template Information
 
 Define template logics
 
 * Define a template by importing flow components from the node type or template from Template Settings.
-    * The Collapse/Expand button allows you to zoom-in/zoom-out the template screen.
-* The Collapse/Expand button allows you to zoom-in/zoom-out the template screen.
+    * The **Collapse** and **Expand** button allows you to zoom-in/zoom-out the template screen.
+* Adjust the template screen to define a template and change graph configuration.
     * Unlike flows, templates are free to store unfinished flows.
 * Scaling adjustment and initializing, screen adjustment, and node alignment allow to adjust a flow so that it is visible on screen.
     * Adjust Scale
@@ -343,10 +343,10 @@ Define template logics
         * Returns the edited template definition to the state it was in when it was last saved/saved temporarily.
     * Save
         * You can save a flow in incomplete form.
-        * Saved templates can be recalled from the Template category of the node type.
+        * Saved templates can be loaded from the template category in the node type.
 ## Settings
-This is the page for managing the settings required for the service.
-Click**Data & Analytics > DataFlow > Settings**.
+Manage the settings for the service.
+Go to **Data & Analytics > DataFlow > Settings**.
 
 ### Log & Crash Search settings
 The feature to integrate your flow logs with Log & Crash Search you set.
@@ -367,12 +367,12 @@ To store logs in the Log & Crash Search service, you must enable the Log & Crash
 |       logLevel | Log level (INFO, WARN, ERROR, FATAL) |
 |      logSource |                          `Flow` |
 |           host |                      `DataFlow` |
-|         appkey |                 DataFlow Service AppKey |
-|         flowId |                          flowId |
-| flowInstanceId |                     Flow instance ID |
+|         appkey |                 DataFlow service appkey |
+|         flowId |                          Flow ID |
+| flowInstanceId |                     Flow Instance ID |
 
 ### Validation Settings
 ![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
 
-You can set whether validation is enabled for flows and nodes.
-When validation is **disabled**, node validation is not automatically performed when saving flows, and the per-node validation feature is not available.
+You can set whether to use validation for flows and nodes.
+If Validity Check is set to **Not Use**, node validation is not automatically performed when saving flows, validation for each node is not available.
