@@ -1226,7 +1226,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
 * OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
-    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
+    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### 속성 설명
 
@@ -1236,7 +1236,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 버킷 | - | string | 버킷 이름을 입력합니다. |  |
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3 API 자격 증명 액세스 키를 입력합니다. |  |
-| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | 오브젝트 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | /year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | 오브젝트 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix 시간 필드 | @timestamp | string | Prefix에 적용할 시간 필드를 입력합니다. |  |
 | Prefix 시간 필드 타입 | DATE_FILTER_RESULT | enum | Prefix에 적용할 시간 필드의 타입을 입력합니다. |  |
 | Prefix 시간대 | UTC | string | Prefix에 적용할 시간 필드의 타임 존을 입력합니다. |  |
@@ -1268,7 +1268,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 경로
 
 ```
-/obs-test-container/2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
+/obs-test-container/year=2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
 ```
 
 * 출력 메시지
@@ -1301,7 +1301,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 경로
 
 ```
-/obs-test-container/2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
+/obs-test-container/year=2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
 ```
 
 * 출력 메시지
@@ -1333,7 +1333,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 경로
 
 ```
-/obs-test-container/2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+/obs-test-container/year=2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
 * 출력 메시지
@@ -1421,7 +1421,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * NHN Cloud의 Object Storage에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
 * OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
-    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
+    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
   * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
