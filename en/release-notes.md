@@ -1,5 +1,12 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### March 26, 2024
+#### Added Features
+* Added the feature to end after flow draining
+    * Added the feature to end a flow after draining that processes all remaining events in the flow.
+    * A flow that is draining can be ended directly via End Flow.
+    * If the draining ends within the timeout, or if the timeout is exceeded during draining, the flow will end at that point.
+
 ### February 27, 2024
 #### Feature Updates
 * Changed the words "file" and "object" in the descriptions of S3 and OBS nodes to "object".
