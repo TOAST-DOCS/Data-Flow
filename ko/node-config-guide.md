@@ -1433,7 +1433,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| parquet 압축 코덱 | - | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Amazon) S3
 
@@ -1515,7 +1515,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| parquet 압축 코덱 | - | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Apache) Kafka
 
