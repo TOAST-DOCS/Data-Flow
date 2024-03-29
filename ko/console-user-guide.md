@@ -63,9 +63,9 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     * RUNNING
     * ERROR
     * STOPPED
-* 수신 대상
+* 기본 수신 대상
     * 사용 중인 DataFlow 서비스가 활성화된 프로젝트의 **DataFlow ADMIN** 역할을 가진 멤버
-    
+
 
 ### 플로우 생성
 
