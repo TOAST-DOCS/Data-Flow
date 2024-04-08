@@ -120,9 +120,12 @@
 | SecretKey | - | string | Enter the secret key for Log & Crash Search. |  |
 | Query Start time | - | string | Enter the start time of log query. | [Note](#dsl) |
 | Query End time | - | string | Enter the end time of log query. |  |
+| Number of retries | - | number | Enter the maximum number of times to retry when a log query fails. |  |
 
 * Set the query start and end time
     * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
+* Set the number of retries
+    * If the number of retries fails, no more log queries are attempted, and the flow ends.
 
 ### Message imported by codec
 
@@ -160,9 +163,12 @@
 | Appkey | - | string | Enter the app key for CloudTrail. |  |
 | Query Start time | - | string | Enter the start time of data Query. | [Note](#dsl) |
 | Log End time | - | string | Enter the end time of data Query. |  |
+| Number of retries | - | number | Enter the maximum number of times to retry when data query fails. |  |
 
 * Set the query start and end time
     * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
+* Set the number of retries
+    * If the number of retries fails, no more data queries are attempted, and the flow ends.
 
 ### Message imported by codec
 
@@ -204,7 +210,7 @@
 | Metadata included or not | - | boolean | Determine whether to include metadata from the S3 object as a key. In order to expose metadata fields to the Sink plugin, you need to combine filter node types (see guide below). | fields to be created are as follows.<br/>last_modified: The last time the object was modified<br/>content_length: Object size<br/>key: Object name<br/>content_type: Object type<br/>metadata: Metadata<br/>etag: etag |
 | Prefix | - | string | Enter a prefix of an object to read. |  |
 | Key pattern to exclude | - | string | Enter the pattern of an object not to be read. |  |
-| Delete | false | boolean | If the property value is true, delete the object read. |  |
+| Delete processed objects  | false | boolean | If the property value is true, delete the object read. |  |
 
 ### Metadata Field Usage
 
@@ -1429,6 +1435,13 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * Base time: 60 min
   * Encoding fixed to none
 
+### Property Description
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| parquet compression codec | SNAPPY | enum |  
+Enter the compression codec to use when converting PARQUET files. | [Reference](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+
 ## Sink > (Amazon) S3
 
 ### Node Description
@@ -1504,6 +1517,13 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * Object size: 128 MB (134,217,728 bytes)
     * Base time: 60 min
   * Encoding fixed to none
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| parquet compression codec | SNAPPY | enum |  
+Enter the compression codec to use when converting PARQUET files. | [Reference](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Apache) Kafka
 

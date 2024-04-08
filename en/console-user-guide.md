@@ -57,6 +57,16 @@ Display query results of flows in a table form.
 | STOP_FAILED   | Failed to request flow stop. |
 | STOPPED        | Flow is stopped. |
 
+#### Flow Status Change Notifications
+* You can be notified via email when the flow status is changed to a status set for notifications
+* Flow status for notifications
+    * RUNNING
+    * ERROR
+    * STOPPED
+* Default recipients
+    * A member with the **DataFlow ADMIN** role in the project where the **DataFlow** service you are using is enabled.
+
+
 ### Create Flow
 
 Create metadata to define flows.
