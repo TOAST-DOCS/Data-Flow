@@ -1,5 +1,12 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### April 23, 2024
+#### Added Features
+* Added the flow status change notifications feature
+
+#### Bug Fixes
+* Fixed an issue where, when querying flow monitoring with many nodes, the query fails.
+
 ### March 26, 2024
 #### Added Features
 * Added the feature to end after flow draining
