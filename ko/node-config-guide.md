@@ -120,9 +120,12 @@
 | SecretKey | - | string | Log & Crash Search의 시크릿키를 입력합니다. |  |
 | 조회 시작 시간 | - | string | 로그 조회의 시작 시간을 입력합니다. | [참고](#dsl) |
 | 조회 종료 시간 | - | string | 로그 조회의 종료 시간을 입력합니다. |  |
+| 재시도 횟수 | - | number | 로그 조회가 실패했을 때 재시도할 최대 횟수를 입력합니다. |  |
 
 * 조회 시작 시간과 조회 종료 시간 설정
     * 조회 종료 시간이 플로우 실행 시점보다 늦더라도 플로우는 조회 종료 시간까지 대기하지 않고 현재 조회할 수 있는 데이터만 조회한 뒤 종료합니다.
+* 재시도 횟수 설정
+    * 재시도 횟수만큼 실패하면 더 이상 로그 조회를 시도하지 않고, 플로우는 종료됩니다.
 
 ### 코덱별 메시지 인입
 
@@ -160,9 +163,12 @@
 | Appkey | - | string | CloudTrail의 앱키를 입력합니다. |  |
 | 조회 시작 시간 | - | string | 데이터 조회의 시작 시간을 입력합니다. | [참고](#dsl) |
 | 조회 종료 시간 | - | string | 데이터 조회의 종료 시간을 입력합니다. |  |
+| 재시도 횟수 | - | number | 데이터 조회가 실패했을 때 재시도할 최대 횟수를 입력합니다. |  |
 
 * 조회 시작 시간과 조회 종료 시간 설정
     * 조회 종료 시간이 플로우 실행 시점보다 늦더라도 플로우는 조회 종료 시간까지 대기하지 않고 현재 조회할 수 있는 데이터만 조회한 뒤 종료합니다.
+* 재시도 횟수 설정
+    * 재시도 횟수만큼 실패하면 더 이상 데이터 조회를 시도하지 않고, 플로우는 종료됩니다.
 
 ### 코덱별 메시지 인입
 
@@ -204,7 +210,7 @@
 | 메타데이터 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>last_modified: 오브젝트가 마지막으로 수정된 시간<br/>content_length: 오브젝트 크기<br/>key: 오브젝트 이름<br/>content_type: 오브젝트 형식<br/>metadata: 메타데이터<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
-| 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
+| 처리 완료 오브젝트 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
 
 ### 메타데이터 필드 사용법
 
@@ -303,7 +309,7 @@
 | 메타데이터 포함 여부 | - | boolean | S3 오브젝트의 메타데이터를 키로 포함할지 여부를 결정합니다. 메타데이터 필드를 Sink 플러그인에 노출하기 위해서는 filter 노드 유형을 조합해야 합니다(하단 가이드 참조). | 생성되는 필드는 다음과 같습니다.<br/>server_side_encryption: 서버 측 암호화 알고리즘<br/>last_modified: 오브젝트가 마지막으로 수정된 시간<br/>content_length: 오브젝트 크기<br/>key: 오브젝트 이름<br/>content_type: 오브젝트 형식<br/>metadata: 메타데이터<br/>etag: etag |
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
-| 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
+| 처리 완료 오브젝트 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
 | 추가 설정 | - | hash | S3 서버와 연결할 때 사용할 추가적인 설정을 입력합니다. | 사용 가능한 설정의 전체 목록은 다음 링크를 참조하십시오.<br/>https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html<br/>예)<br/>{<br/>"force\_path\_style": true<br/>} |
 
 ### 메타데이터 필드 사용법
@@ -1226,7 +1232,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
 * OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
-    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
+    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.txt`
 
 ### 속성 설명
 
@@ -1236,7 +1242,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 버킷 | - | string | 버킷 이름을 입력합니다. |  |
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3 API 자격 증명 액세스 키를 입력합니다. |  |
-| Prefix | /%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | 오브젝트 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| Prefix | /year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | 오브젝트 업로드 시 이름 앞에 붙일 접두사를 입력합니다.<br/>필드 또는 시간 형식을 입력할 수 있습니다. | [사용 가능한 시간 형식](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix 시간 필드 | @timestamp | string | Prefix에 적용할 시간 필드를 입력합니다. |  |
 | Prefix 시간 필드 타입 | DATE_FILTER_RESULT | enum | Prefix에 적용할 시간 필드의 타입을 입력합니다. |  |
 | Prefix 시간대 | UTC | string | Prefix에 적용할 시간 필드의 타임 존을 입력합니다. |  |
@@ -1268,7 +1274,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 경로
 
 ```
-/obs-test-container/2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
+/obs-test-container/year=2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
 ```
 
 * 출력 메시지
@@ -1301,7 +1307,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 경로
 
 ```
-/obs-test-container/2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
+/obs-test-container/year=2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T07.49.part0.txt
 ```
 
 * 출력 메시지
@@ -1333,7 +1339,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 경로
 
 ```
-/obs-test-container/2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+/obs-test-container/year=2022/month=11/day=21/hour=07/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
 * 출력 메시지
@@ -1421,13 +1427,19 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * NHN Cloud의 Object Storage에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
 * OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
-    * `/{container_name}/{yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
+    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
   * 코덱이 parquet으로 고정
   * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
     * 기준 오브젝트 크기: 128MB(134,217,728 byte)
     * 기준 시각: 60분
   * 인코딩은 none으로 고정
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Amazon) S3
 
@@ -1504,6 +1516,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * 기준 오브젝트 크기: 128MB(134,217,728 byte)
     * 기준 시각: 60분
   * 인코딩은 none으로 고정
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Apache) Kafka
 
