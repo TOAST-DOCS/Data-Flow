@@ -1251,8 +1251,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Object Rotation Policy | size_and_time | enum | Determines object creation rules. | size_and_time – Use object size and time to decide<br/>size – Use object size to decide <br/>Time – Use time to decide |
 | Reference Time | 15 | number | Set the time to be the basis for object splitting.   | Set if object rotation policy is size_and_time or time |
 | Object size | 5242880 | number | Set the size to be the basis for object splitting.   | Set when object rotation policy is size_and_time or size |
-| ACL | private | enum | Enter ACL policy to set when object is uploaded. |  |
-| Storage Class | STANDARD | enum | Set Storage Class when object is uploaded. | [ Storage Class Guide](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 
 ### Json Codec Output example exercise
 
