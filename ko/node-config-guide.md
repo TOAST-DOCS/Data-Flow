@@ -1248,8 +1248,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 오브젝트 로테이션 정책 | size\_and\_time | enum | 오브젝트의 생성 규칙을 결정합니다. | size\_and\_time: 오브젝트의 크기와 시간을 이용하여 결정<br/>size: 오브젝트의 크기를 이용하여 결정<br/>time: 시간을 이용하여 결정 |
 | 기준 시각 | 15 | number | 오브젝트를 분할할 기준이 될 시간을 설정합니다. | 오브젝트 로테이션 정책이 size\_and\_time 또는 time인 경우 설정 |
 | 기준 오브젝트 크기 | 5242880 | number | 오브젝트를 분할할 기준이 될 크기를 설정합니다. | 오브젝트 로테이션 정책이 size\_and\_time 또는 size인 경우 설정 |
-| ACL | private | enum | 오브젝트를 업로드할 때 설정할 ACL 정책을 입력합니다. |
-| 스토리지 클래스 | STANDARD | enum | 오브젝트를 업로드할 때 사용할 스토리지 클래스를 설정합니다. | [스토리지 클래스 가이드](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 
 ### json 코덱 출력 예제
 

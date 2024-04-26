@@ -1247,8 +1247,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | オブジェクトローテーションポリシー | size\_and\_time | enum | オブジェクトの作成ルールを決定します。 | size\_and\_time:オブジェクトのサイズと時間を利用して決定<br/>size:オブジェクトのサイズを利用して決定<br/>time:時間を利用して決定 |
 | 基準時刻 | 15 | number | オブジェクトを分割する基準となる時間を設定します。 | オブジェクトローテーションポリシーがsize\_and\_timeまたはtimeの場合に設定 |
 | 基準オブジェクトサイズ | 5242880 | number | オブジェクトを分割する基準となるサイズを設定します。 | オブジェクトローテーションポリシーがsize\_and\_timeまたはsizeの場合に設定 |
-| ACL | private | enum | オブジェクトをアップロードする時に設定するACLポリシーを入力します。 | 
-| ストレージクラス | STANDARD | enum | オブジェクトをアップロードする時に使用するストレージクラスを設定します。 | [ストレージクラスガイドl](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html) |
 
 ### jsonコーデックの出力例
 
