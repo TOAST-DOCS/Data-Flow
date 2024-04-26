@@ -88,7 +88,6 @@
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
 | Type | - | string | Create `type` field with the value given in each message. |  |
-| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br/>If Property value is true, you can check the event metric information for node in the Monitoring tab. |  |
 | ID | - | string | Sets Node ID<br/>Mark the Node name on the chart board with values defined in this property. |  |
 | Tag | - | array of string | Add the tag of given value to each message. |  |
 | Add Field | - | Hash | You can add a custom field<br/>You can add fields by calling in the value of each field with `%{[depth1_field]}`. |  |
@@ -587,7 +586,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br/>If Property value is true, you can check the event metric information for node in the Monitoring tab. |  |
 | ID | - | string | Sets Node ID<br/>Mark node name on chart board with values defined in this property. |  |
 | Add Tag | - | array of string | Add Tag of each message |  |
 | Delete Tag | - | array of string | Delete Tag that was given to each message |  |
@@ -1223,7 +1221,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Activate Measurement Items  | true | boolean | Collect metrics for nodes.<br/>If property value is true, you can check the event metric information for node in the monitoring tab. |  |
 | ID | - | string | Sets Node ID<br/>Mark node name on the chart board with values defined in this property. |  |
 
 ## (NHN Cloud) Object Storage
