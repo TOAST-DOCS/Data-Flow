@@ -1000,6 +1000,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | Match | - | array of strings | 문자열을 가져오기 위한 필드명과 포맷을 입력합니다. |  |
+| Locale | - | Date 문자열 분석을 위해 사용할 Locale을 입력합니다. | ex) en, en-US, ko-kr |
 | 저장할 필드 | - | string | Date 문자열 파싱 결과를 저장할 필드명을 입력합니다. |  |
 | 실패 태그 | - | array of strings | Date 문자열 파싱에 실패했을 경우 정의할 태그명을 입력합니다. |  |
 | 시간대 | - | string | 날짜의 시간대를 입력합니다. |  |
