@@ -546,11 +546,11 @@
 | Query | - | string | Write a query to create a message. |  |
 | Whether to convert columns to lowercase | true | boolean | Determine whether to lowercase the column names you get as a result of the query. | |
 | Query execute frequency | `* * * * *` | string | Enter the execute frequency of the query in a cron-like expression. |  |
-| Tracking Columns | - |  | Select the columns you want to track. | The predefined parameter `:SQL_LAST_VALUE`allows you to use a value corresponding to the column you want to track in the last query result.<br>See how to write a query below. |
+| Tracking Columns | - | string | Select the columns you want to track. | The predefined parameter `:SQL_LAST_VALUE`allows you to use a value corresponding to the column you want to track in the last query result.<br>See how to write a query below. |
 | Tracking column type | array of strings | string | Select the type of data in the column you want to track. | Example) `numeric` or `timestamp` |
 | Time zone | - | string | Define the time zone to use when converting a column of type timestamp to a human-readable string. | Example) `Asia/Seoul` |
 | Whether to apply paging | true | boolean | Determines whether to apply paging to the query. | When paging is applied, the query is split into multiple executions, the order of which is not guaranteed. |
-| Page size | - | array of strings | In a paged query, it determines how many pages to query at once. |  |
+| Page size | - | number | In a paged query, it determines how many pages to query at once. |  |
 
 ### How to write a query
 
@@ -692,8 +692,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Appkey | - | string | Enter SKM app key that saves the key for encryption/decryption. |  |
 | Key ID | - | string | Enter SKM ID that saves the key for encryption/decryption. |  |
 | Key Version | - | string | Enter SKM key version that saves the key for encryption/decryption. |  |
-| Encryption/decryption key length | 16 | positive integer | Enter encryption/decryption key length |  |
-| IV Random Length | - | positive number | Enter random bytes length of Initial Vector.  |  |
+| Encryption/decryption key length | 16 | number | Enter encryption/decryption key length |  |
+| IV Random Length | - | number | Enter random bytes length of Initial Vector.  |  |
 | Source Field | - | string | Enter Field name for encryption/decryption. |  |
 | Field to be stored | - | string | Enter Field name to save encryption/decryption result. |  |
 
@@ -768,7 +768,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Match | - | hash | Enter the information of the string to be parsed. |  |
 | Pattern definition | - | hash | Enter a custom pattern as a regular expression for the rule of tokens to be parsed. | Check the link below for system defined patterns.<br/>http://grokdebug.herokuapp.com/patterns |
 | Failure tag | - | array of strings | Enter the tag name to define if string parsing fails. |  |
-| Timeout | 30000 | numeric | Enter the amount of time to wait for string parsing. |  |
+| Timeout | 30000 | number | Enter the amount of time to wait for string parsing. |  |
 | Overwrite | - | array of strings | When writing a value to a designated field after parsing, if a value is already defined in the field, enter the field names to be overwritten. |  |
 | Store only values with specified names | true | boolean | If the property value is true, do not store unnamed parting results. |  |
 | Capture empty string | false | boolean | If the property value is true, store empty strings in fields. |  |
@@ -954,7 +954,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Match | - | json | Enter the information of the string to be parsed. |  |
 | Pattern definition | - | json | Enter a custom pattern as a regular expression for the rule of tokens to be parsed. | Check the link below for system defined patterns.<br/>http://grokdebug.herokuapp.com/patterns |
 | Failure tag | - | array of strings | Enter the tag name to define if string parsing fails. |  |
-| Timeout | 30000 | numeric | Enter the amount of time to wait for string parsing. |  |
+| Timeout | 30000 | number | Enter the amount of time to wait for string parsing. |  |
 | Overwrite | - | array of strings | When writing a value to a designated field after parsing, if a value is already defined in the field, enter the field names to be overwritten. |  |
 | Store only values with specified names | - | boolean | Select whether to store unnamed parsing results. |  |
 | Capture empty string | - | boolean | Select whether to store empty strings in fields. |  |

@@ -79,6 +79,28 @@
     * 플로우 실행이 시작된 날의 03시의 DSL 표현
         * → \{\{ executionTime \| startOf: DAY \| addTime: 3\, HOUR \}\}
 
+## 자료형 별 입력 방법
+### string
+* 문자열을 입력합니다.
+
+### number
+* 0 이상의 숫자를 입력합니다.
+* 입력창 오른쪽의 화살표를 이용해 값을 1씩 조절할 수 있습니다.
+
+### boolean
+* 드롭다운 메뉴에서 `TRUE` 혹은 `FALSE`를 선택합니다.
+
+### enum
+* 드롭다운 메뉴에서 항목을 선택합니다.
+
+### array of string
+* 배열에 들어갈 문자열을 하나씩 입력합니다.
+* 문자열 입력 후 `+` 버튼을 클릭하면 배열에 문자열이 삽입됩니다.
+* ex) `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`를 입력하고자 하는 경우 `message`, `yyyy-MM-dd HH:mm:ssZ`, `ISO8601`의 순서로 배열에 문자열을 삽입합니다.
+
+### hash
+* json 형식의 문자열을 입력합니다.
+
 ## Source
 
 * 플로우로 데이터를 인입할 엔드포인트를 정의하는 노드 유형입니다.
@@ -546,11 +568,11 @@
 | 쿼리 | - | string | 메시지를 생성할 쿼리를 작성합니다. |  |
 | 컬럼 소문자화 변환 여부 | true | boolean | 쿼리 결과로 얻는 컬럼명을 소문자화할지를 결정합니다. | |
 | 쿼리 실행 주기 | `* * * * *` | string | 쿼리의 실행 주기를 cron-like 표현으로 입력합니다. |  |
-| 트래킹 컬럼 | - |  | 추적할 컬럼을 선택합니다. | 사전 정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 컬럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고 바랍니다. |
+| 트래킹 컬럼 | - | string | 추적할 컬럼을 선택합니다. | 사전 정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 컬럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고 바랍니다. |
 | 트래킹 컬럼 종류 | numeric | string | 추적할 컬럼의 데이터 종류를 선택합니다. | 예) `numeric` or `timestamp` |
 | 시간대 | - | string | timestamp 타입의 컬럼을 human-readable 문자열로 변환할 때 사용하는 시간대를 정의합니다. | 예) `Asia/Seoul` |
 | 페이징 적용 여부 | false | boolean | 쿼리에 페이징을 적용할지 여부를 결정합니다. | 페이징이 적용되면 쿼리가 여러 개로 쪼개져서 실행되며, 순서는 보장되지 않습니다. |
-| 페이지 크기 | - | numeric | 페이징이 적용된 쿼리에서, 한 번에 쿼리 할 페이지 크기를 결정합니다. |  |
+| 페이지 크기 | - | number | 페이징이 적용된 쿼리에서, 한 번에 쿼리 할 페이지 크기를 결정합니다. |  |
 
 ### 쿼리 작성법
 
@@ -692,8 +714,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 앱키 | - | string | 암/복호화에 사용할 키를 저장한 SKM 앱키를 입력합니다. |  |
 | 키 ID | - | string | 암/복호화에 사용할 키를 저장한 SKM 키 ID를 입력합니다. |  |
 | 키 버전 | - | string | 암/복호화에 사용할 키를 저장한 SKM 키 버전을 입력합니다. |  |
-| 암/복호화 키 길이 | 16 | positive integer | 암/복호화 키의 길이를 입력합니다. |  |
-| IV 랜덤 길이 | - | positive number | Initial Vector의 random bytes 길이를 입력합니다. |  |
+| 암/복호화 키 길이 | 16 | number | 암/복호화 키의 길이를 입력합니다. |  |
+| IV 랜덤 길이 | - | number | Initial Vector의 random bytes 길이를 입력합니다. |  |
 | 소스 필드 | - | string | 암/복호화할 필드명을 입력합니다. |  |
 | 저장할 필드 | - | string | 암/복호화 결과를 저장할 필드명을 입력합니다. |  |
 
@@ -768,7 +790,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Match | - | hash | 파싱할 문자열의 정보를 입력합니다. |  |
 | 패턴 정의 | - | hash | 파싱할 토큰의 규칙의 사용자 정의 패턴을 정규표현식으로 입력합니다. | 시스템 정의 패턴은 아래 링크를 확인하십시오.<br/>http://grokdebug.herokuapp.com/patterns |
 | 실패 태그 | - | array of strings | 문자열 파싱에 실패할 경우 정의할 태그명을 입력합니다. |  |
-| 타임아웃 | 30000 | numeric | 문자열 파싱이 될 때까지 기다리는 시간을 입력합니다. |  |
+| 타임아웃 | 30000 | number | 문자열 파싱이 될 때까지 기다리는 시간을 입력합니다. |  |
 | 덮어쓰기 | - | array of strings | 파싱 후 지정된 필드에 값을 쓸 때 해당 필드에 이미 값이 정의되어 있을 경우 덮어쓸 필드명들을 입력합니다. |  |
 | 이름이 지정된 값만 저장 | true | boolean | 속성값이 true일 경우 이름이 지정되지 않은 파싱 결과를 저장하지 않습니다. |  |
 | 빈 문자열 캡처 | false | boolean | 속성값이 true일 경우 빈 문자열도 필드에 저장합니다. |  |
@@ -954,7 +976,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Match | - | json | 파싱할 문자열의 정보를 입력합니다. |  |
 | 패턴 정의 | - | json | 파싱할 토큰의 규칙의 사용자 정의 패턴을 정규표현식으로 입력합니다. | 시스템 정의 패턴은 아래 링크를 확인하십시오.<br/>http://grokdebug.herokuapp.com/patterns |
 | 실패 태그 | - | array of strings | 문자열 파싱에 실패할 경우 정의할 태그명을 입력합니다. |  |
-| 타임아웃 | 30000 | numeric | 문자열 파싱이 될 때까지 기다리는 시간을 입력합니다. |  |
+| 타임아웃 | 30000 | number | 문자열 파싱이 될 때까지 기다리는 시간을 입력합니다. |  |
 | 덮어쓰기 | - | array of strings | 파싱 후 지정된 필드에 값을 쓸 때 해당 필드에 이미 값이 정의되어 있을 경우 덮어쓸 필드명들을 입력합니다. |  |
 | 이름이 지정된 값만 저장 | - | boolean | 이름이 지정되지 않은 파싱 결과를 저장할지 여부를 선택합니다. |  |
 | 빈 문자열 캡처 | - | boolean | 빈 문자열도 필드에 저장할지 여부를 선택합니다. |  |
