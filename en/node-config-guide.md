@@ -89,7 +89,7 @@
 | --- | --- | --- | --- | --- |
 | Type | - | string | Create `type` field with the value given in each message. |  |
 | ID | - | string | Sets Node ID<br/>Mark the Node name on the chart board with values defined in this property. |  |
-| Tag | - | array of string | Add the tag of given value to each message. |  |
+| Tag | - | array of strings | Add the tag of given value to each message. |  |
 | Add Field | - | Hash | You can add a custom field<br/>You can add fields by calling in the value of each field with `%{[depth1_field]}`. |  |
 
 ## Example of adding fields
@@ -587,9 +587,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
 | ID | - | string | Sets Node ID<br/>Mark node name on chart board with values defined in this property. |  |
-| Add Tag | - | array of string | Add Tag of each message |  |
-| Delete Tag | - | array of string | Delete Tag that was given to each message |  |
-| Delete Field | - | array of string | Delete Field of each message  |  |
+| Add Tag | - | array of strings | Add Tag of each message |  |
+| Delete Tag | - | array of strings | Delete Tag that was given to each message |  |
+| Delete Field | - | array of strings | Delete Field of each message  |  |
 | Add Field | - | Hash | You can add a custom field<br/>You can add fields by calling in the value of each Field with `%{[depth1_field]}`. |  |
 
 ## Filter > Alter
