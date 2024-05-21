@@ -96,7 +96,7 @@
 ### array of strings
 * Enter the strings that will go into the array one by one.
 * After entering the string, click `+` to insert the string into the array.
-* ex) If you want to enter `["message" , "yyyy-MM-dd` `HH` `:mm:ssZ", "` `ISO8601` `"]`, insert the string into the array in the following order: `message`, `yyyy-MM-dd HH:mm:ssZ`, `ISO8601`.
+* ex) If you want to enter `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`, insert the string into the array in the following order: `message`, `yyyy-MM-dd HH:mm:ssZ`, `ISO8601`.
 
 ### Hash
 * Enter a string in JSON format.
