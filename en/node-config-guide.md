@@ -79,6 +79,28 @@
     * DSL expression at 03:00 hour on the day the flow started
         * → {{ executionTime | startOf: DAY | addTime: 3, HOUR }}
 
+## Input by Data Type
+### string
+* Enter a string.
+
+### number
+* Enter a number greater or equal to 0.
+* Use the arrow to the right of the input box to adjust the value by 1.
+
+### boolean
+* Select `TRUE` or `FALSE` from the drop-down menu.
+
+### enum
+* Select an item from the drop-down menu.
+
+### array of strings
+* Enter the strings that will go into the array one by one.
+* After entering the string, click `+` to insert the string into the array.
+* ex) If you want to enter `["message" , "yyyy-MM-dd` `HH` `:mm:ssZ", "` `ISO8601` `"]`, insert the string into the array in the following order: `message`, `yyyy-MM-dd HH:mm:ssZ`, `ISO8601`.
+
+### Hash
+* Enter a string in JSON format.
+
 ## Source
 
 * Node type that defines an endpoint that imports data to the flow.
@@ -999,7 +1021,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Match | - | array of strings | Enter a field name and format to get strings. |  |
+| Match | - | array of strings | Enter a field name and format to get strings. | The pre-defined formats are as follows.<br/>ISO8601, UNIX, UNIX_MS, TAI64N |
+| Locale | - | Enter a locale to use for string analysis. | ex) en, en-US, ko-kr |
 | Field to be stored | - | string | Enter a field name to store the result of parsing data strings. |  |
 | Failure tag | - | array of strings | Enter the tag name to define if data string parsing fails. |  |
 | Time zone | - | string | Enter the time zone for the date. |  |

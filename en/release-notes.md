@@ -1,5 +1,22 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### May 28, 2024
+#### Feature Updates
+* Deleted some settings.
+  * Common > Enable Metrics
+  * Filter Node Common > Periodic Flush
+  * (NHN Cloud) Object Storage > ACL
+  * (NHN Cloud) Object Storage > Storage Class
+  * (NHN Cloud) Object Storage - Parquet > ACL
+  * (NHN Cloud) Object Storage - Parquet > Storage Class
+* Made modifications so that, when monitoring for periods longer than 7 days, data would be more precise.
+
+#### Bug Fixes
+* Fixed the revision history of unsubscribed users to appear as "UNKNOWN USER" instead of blank.
+* Fixed validation of Object Storage, S3 nodes to expose "S3_NO_SUCH_BUCKET" instead of "ERROR" if an invalid bucket name is entered.
+* Fixed an issue where node names were different on the flow setup screen and the monitoring screen.
+* Fixed an issue where state change notifications were not being sent for flows run via scheduling.
+
 ### April 23, 2024
 #### Added Features
 * Added the flow status change notifications feature
