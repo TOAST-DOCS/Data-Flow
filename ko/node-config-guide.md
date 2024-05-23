@@ -3,6 +3,8 @@
 * 노드 유형은 손쉽게 플로우를 작성할 수 있게 사전 정의된 템플릿입니다.
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
 * Source, Sink 노드 유형은 반드시 테스트를 수행하여 엔드포인트 정보가 유효한지 확인하기를 권장합니다.
+* 접근 제어가 설정된 데이터 소스 연결 시에는 DataFlow IP 고정 기능을 사용해야 합니다.
+  * DataFlow IP 고정 기능을 사용하려면 고객 센터로 문의하십시오.
 
 ## Domain Specific Language(DSL) 정의
 

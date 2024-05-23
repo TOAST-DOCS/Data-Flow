@@ -3,6 +3,8 @@
 * Node types are pre-defined templates for easy flow creation.
 * Types of node types are Source, Filter, Branch, and Sink.
 * It is recommended that Source, Sink Node type have to be tested to ensure that Endpoint information is valid.
+* You must use the DataFlow IP fixation feature when connecting to data sources with access control enabled.
+  * To enable the DataFlow IP fixation feature, contact the Customer Center.
 
 ## Domain Specific Language(DSL) Definition 
 
