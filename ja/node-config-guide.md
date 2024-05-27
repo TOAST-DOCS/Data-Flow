@@ -81,6 +81,28 @@
     * フローの実行が始まった日の03時のDSL表現
         * → \{\{ executionTime \| startOf: DAY \| addTime: 3\, HOUR \}\}
 
+## データ型別入力方法
+### string
+* 文字列を入力します。
+
+### number
+* 0以上の数字を入力します。
+* 入力ウィンドウの右側の矢印を利用して値を1ずつ調整できます。
+
+### boolean
+* ドロップダウンメニューから`TRUE`または`FALSE`を選択します。
+
+### enum
+* ドロップダウンメニューから項目を選択します。
+
+### array of strings
+* 配列に入る文字列を一つずつ入力します。
+* 文字列入力後、`+`ボタンをクリックすると、配列に文字列が挿入されます。
+* ex) `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`を入力したい場合、`message`, `yyyy-MM-dd HH:mm:ssZ`, `ISO8601`の順に配列に文字列を挿入します。
+
+### hash
+* json形式の文字列を入力します。
+
 ## Source
 
 * フローにデータを取り込むエンドポイントを定義するノードタイプです。
@@ -1000,7 +1022,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| Match | - | array of strings | 文字列を取得するためのフィールド名とフォーマットを入力します。 |  |
+| Match | - | array of strings | 文字列を取得するためのフィールド名とフォーマットを入力します。 | 事前定義されたフォーマットは次のとおりです。<br/>ISO8601, UNIX, UNIX_MS, TAI64N |
+| Locale | - | Date文字列を分析するために使用するLocaleを入力します。 | ex) en, en-US, ko-kr |
 | 保存するフィールド | - | string | Date文字列解析結果を保存するフィールド名を入力します。 |  |
 | 失敗タグ | - | array of strings | Date文字列の解析に失敗した場合に定義するタグ名を入力します。 |  |
 | タイムゾーン | - | string | 日付のタイムゾーンを入力します。 |  |
