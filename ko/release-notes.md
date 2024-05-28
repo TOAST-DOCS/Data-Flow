@@ -1,5 +1,22 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2024. 05. 28.
+#### 기능 개선/변경
+* 일부 설정을 삭제했습니다.
+  * 공통 > 측정 항목 활성화
+  * Filter 노드 공통 > 주기적 Flush
+  * (NHN Cloud) Object Storage > ACL
+  * (NHN Cloud) Object Storage > 스토리지 클래스
+  * (NHN Cloud) Object Storage - Parquet > ACL
+  * (NHN Cloud) Object Storage - Parquet > 스토리지 클래스
+* 7일을 초과한 기간에 대한 모니터링 조회 시, 데이터가 더욱 정밀하게 나오도록 수정했습니다.
+
+#### 버그 수정
+* 탈퇴한 사용자의 수정 이력을 공란이 아닌 "UNKNOWN USER"로 노출하도록 수정했습니다.
+* Object Storage, S3 노드의 유효성 검사 시 유효하지 않은 버킷명이 입력된 경우 "ERROR"가 아닌 "S3_NO_SUCH_BUCKET"으로 노출하도록 수정했습니다.
+* 플로우 설정 화면과 모니터링 화면에서의 노드 명칭이 다른 문제를 수정했습니다.
+* 스케줄링을 통해 실행된 플로우에 대해 상태 변경 알림이 전송되지 않는 문제를 수정했습니다.
+
 ### 2024. 04. 23.
 #### 기능 추가
 * 플로우 상태 변경 알림 메일 기능 추가

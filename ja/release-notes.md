@@ -1,5 +1,22 @@
 ## Data & Analytics > DataFlow > リリースノート
 
+### 2024. 05. 28.
+#### 機能改善/変更
+* 一部の設定を削除しました。
+  * 共通 > 測定項目の有効化
+  * Filterノード共通 > 定期的なFlush
+  * (NHN Cloud) Object Storage > ACL
+  * (NHN Cloud) Object Storage > ストレージクラス
+  * (NHN Cloud) Object Storage - Parquet > ACL
+  * (NHN Cloud) Object Storage - Parquet > ストレージクラス
+* 7日を超過した期間に対するモニタリング照会時、データがより正確に表示されるように修正しました。
+
+#### バグ修正
+* 退会したユーザーの修正履歴を空白ではなく"UNKNOWN USER"と表示するように修正しました。
+* Object Storage, S3ノードの有効性検査時に無効なバケット名が入力された場合、"ERROR"ではなく"S3_NO_SUCH_BUCKET"と表示するように修正しました。
+* フロー設定画面とモニタリング画面でのノード名称が異なる問題を修正しました。
+* スケジューリングで実行されたフローに対して状態変更通知が送信されない問題を修正しました。
+
 ### 2024. 04. 23.
 #### 機能追加
 * フロー状態変更通知メール機能を追加

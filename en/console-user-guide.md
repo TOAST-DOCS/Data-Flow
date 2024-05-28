@@ -257,7 +257,7 @@ It is area to display the monitoring chart.
         * The scale is adjusted by 1 time through scaling adjustment.
 * Select Chart Period
     * Adjust Overall Period
-        * The button toggle allows you to synchronize Chart zoom-in/zoom-out actions to all Charts.
+        * Click the toggle button to synchronize Chart zoom-in actions to all Charts.
     * Current Time
         * Set the chart duration to the current time.
     * Select Period
