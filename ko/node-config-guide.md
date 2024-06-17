@@ -4,7 +4,7 @@
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
 * Source, Sink 노드 유형은 반드시 테스트를 수행하여 엔드포인트 정보가 유효한지 확인하기를 권장합니다.
 * 접근 제어가 설정된 데이터 소스 연결 시에는 DataFlow IP 고정 기능을 사용해야 합니다.
-  * DataFlow IP 고정 기능을 사용하려면 고객 센터로 문의하십시오.
+  * DataFlow IP 고정 기능을 사용하려면 고객 센터로 문의하세요.
 
 ## Domain Specific Language(DSL) 정의
 
@@ -133,7 +133,7 @@
 * 노드에 종료 시간을 입력하지 않으면 스트리밍 형식으로 로그를 읽어 옵니다. 종료 시간을 입력하면 종료 시간까지의 로그를 읽어 오고 플로우는 종료됩니다.
 * ```현재 세션 로그와 크래시 로그는 지원하지 않습니다.```
 * Log & Crash Search의 [로그 검색 API](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1)의 토큰에 영향을 받습니다.
-  * 토큰이 부족할 경우 Log & Crash Search로 문의하십시오.
+  * 토큰이 부족할 경우 Log & Crash Search로 문의하세요.
 
 ### 속성 설명
 
@@ -333,7 +333,7 @@
 | Prefix | - | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
 | 제외할 키 패턴 | - | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 | 처리 완료 오브젝트 삭제 | false | boolean | 속성값이 true일 경우 읽기 완료한 오브젝트를 삭제합니다. |  |
-| 추가 설정 | - | hash | S3 서버와 연결할 때 사용할 추가적인 설정을 입력합니다. | 사용 가능한 설정의 전체 목록은 다음 링크를 참조하십시오.<br/>https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html<br/>예)<br/>{<br/>"force\_path\_style": true<br/>} |
+| 추가 설정 | - | hash | S3 서버와 연결할 때 사용할 추가적인 설정을 입력합니다. | 사용 가능한 설정의 전체 목록은 다음 링크를 참조하세요.<br/>https://docs.aws.amazon.com/sdk-for-ruby/v2/api/Aws/S3/Client.html<br/>예)<br/>{<br/>"force\_path\_style": true<br/>} |
 
 ### 메타데이터 필드 사용법
 
@@ -570,7 +570,7 @@
 | 쿼리 | - | string | 메시지를 생성할 쿼리를 작성합니다. |  |
 | 컬럼 소문자화 변환 여부 | true | boolean | 쿼리 결과로 얻는 컬럼명을 소문자화할지를 결정합니다. | |
 | 쿼리 실행 주기 | `* * * * *` | string | 쿼리의 실행 주기를 cron-like 표현으로 입력합니다. |  |
-| 트래킹 컬럼 | - | string | 추적할 컬럼을 선택합니다. | 사전 정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 컬럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고하십시오. |
+| 트래킹 컬럼 | - | string | 추적할 컬럼을 선택합니다. | 사전 정의된 파라미터 `:sql_last_value`로 마지막 쿼리 결과에서 추적할 컬럼에 해당하는 값을 사용할 수 있습니다.<br>아래 쿼리 작성법을 참고하세요. |
 | 트래킹 컬럼 종류 | number | string | 추적할 컬럼의 데이터 종류를 선택합니다. | 예) `numeric` or `timestamp` |
 | 시간대 | - | string | timestamp 타입의 컬럼을 human-readable 문자열로 변환할 때 사용하는 시간대를 정의합니다. | 예) `Asia/Seoul` |
 | 페이징 적용 여부 | false | boolean | 쿼리에 페이징을 적용할지 여부를 결정합니다. | 페이징이 적용되면 쿼리가 여러 개로 쪼개져서 실행되며, 순서는 보장되지 않습니다. |
@@ -705,7 +705,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * 메시지 필드 값을 암복호화하는 노드입니다.
 * 암호화 키는 SKM을 참조합니다.
-    * SKM 키 등록에 대한 자세한 내용은 [SKM 가이드 문서](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하십시오.
+    * SKM 키 등록에 대한 자세한 내용은 [SKM 가이드 문서](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하세요.
     * ```한 플로우에 여러 Cipher 노드가 포함되더라도 모든 Cipher 노드는 반드시 하나의 SKM 키 레퍼런스만 참조할 수 있습니다.```
 
 ### 속성 설명
@@ -790,7 +790,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | Match | - | hash | 파싱할 문자열의 정보를 입력합니다. |  |
-| 패턴 정의 | - | hash | 파싱할 토큰의 규칙의 사용자 정의 패턴을 정규표현식으로 입력합니다. | 시스템 정의 패턴은 아래 링크를 확인하십시오.<br/>http://grokdebug.herokuapp.com/patterns |
+| 패턴 정의 | - | hash | 파싱할 토큰의 규칙의 사용자 정의 패턴을 정규표현식으로 입력합니다. | 시스템 정의 패턴은 아래 링크를 확인하세요.<br/>http://grokdebug.herokuapp.com/patterns |
 | 실패 태그 | - | array of strings | 문자열 파싱에 실패할 경우 정의할 태그명을 입력합니다. |  |
 | 타임아웃 | 30000 | number | 문자열 파싱이 될 때까지 기다리는 시간을 입력합니다. |  |
 | 덮어쓰기 | - | array of strings | 파싱 후 지정된 필드에 값을 쓸 때 해당 필드에 이미 값이 정의되어 있을 경우 덮어쓸 필드명들을 입력합니다. |  |
@@ -976,7 +976,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | Match | - | json | 파싱할 문자열의 정보를 입력합니다. |  |
-| 패턴 정의 | - | json | 파싱할 토큰의 규칙의 사용자 정의 패턴을 정규표현식으로 입력합니다. | 시스템 정의 패턴은 아래 링크를 확인하십시오.<br/>http://grokdebug.herokuapp.com/patterns |
+| 패턴 정의 | - | json | 파싱할 토큰의 규칙의 사용자 정의 패턴을 정규표현식으로 입력합니다. | 시스템 정의 패턴은 아래 링크를 확인하세요.<br/>http://grokdebug.herokuapp.com/patterns |
 | 실패 태그 | - | array of strings | 문자열 파싱에 실패할 경우 정의할 태그명을 입력합니다. |  |
 | 타임아웃 | 30000 | number | 문자열 파싱이 될 때까지 기다리는 시간을 입력합니다. |  |
 | 덮어쓰기 | - | array of strings | 파싱 후 지정된 필드에 값을 쓸 때 해당 필드에 이미 값이 정의되어 있을 경우 덮어쓸 필드명들을 입력합니다. |  |
