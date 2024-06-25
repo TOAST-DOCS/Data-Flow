@@ -1,5 +1,20 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### July 1, 2024
+#### Feature Updates
+* Added the feature to set the instance type when running flows 
+* (Amazon) Changed the endpoint, region settings for the (Amazon) S3 Source, Sink, and (Amazon) S3 - Parquet Sink nodes from required to optional 
+* The nodes will work correctly if only one of the endpoint, region settings is entered.
+
+#### Bug Fixes
+* Fixed an issue where no CloudTrail logs were left when exiting after flow draining, Log & Crash Search logs save settings, enabling and disabling validation.
+* Fixed an issue where the scheduling feature was not working intermittently. 
+* Fixed an issue where the Cipher node was not working intermittently. 
+* Fixed an issue where the (Amazon) S3 Source, Sink, and (Amazon) S3 - Parquet Sink nodes were not able to access the public bucket.
+* Fixed an issue where using an unsupported JDBC driver when saving a flow containing a JDBC node with validation disabled would expose `JDBC_UNSUPPORTED_DRIVER` instead of `ERROR`. 
+* Fixed an issue where saving a flow containing a Cipher node with validation enabled would expose the appropriate error code instead of `ERROR` if the Cipher node information was entered incorrectly. 
+* Fixed an issue where status channge notifications were not sent for flows run by a user who had canceled membership.
+
 ### May 28, 2024
 #### Feature Updates
 * Deleted some settings.

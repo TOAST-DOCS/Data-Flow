@@ -74,6 +74,7 @@ Create metadata to define flows.
 * Create flow metadata by adding name and description to identify a flow.
 * Flow names can overlap with other flows.
 * You can specify Flow Template to easily load flows of features users wants.
+* You can set an instance type to run flows.
 
 ### Change Flow
 
@@ -82,6 +83,8 @@ Modify metadata of flows.
 * Modify the existing flow name and description to reflect it in flow metadata.
 * Flow templates cannot be specified.
 * Changing flows are possible even when the flow is running.
+* You cannot change the instance type to run flows.
+    * However, the changed instance type applies when running the next flow.
 
 ### Copy Flow
 
@@ -134,11 +137,12 @@ You can also adjust the screen proportion to specified percentage by using Resiz
 
 Displays detailed flow metadata.
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_2024_06.png)
 
 * Display the name and description information entered when creating a flow.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
 * Display the total running time at the time of the most recent run.
+* Display the instance type at the time of the most recent run.
 
 ### Basic Information - Recent Logs
 
@@ -154,6 +158,11 @@ Displays detailed flow metadata.
 * Scheduling feature allows you to schedule flow execution.
 * If a flow is already running when the start time registered with Scheduler has arrived, the execution by Scheduler fails.
 * **Currently, only the Scheduled Execution feature is supported. Additional features will be supported in the future.**
+
+### Basic Information - Instance Type
+
+* You can check and change the instance type to run flows.
+    * However, the changed instance type applies when running the next flow.
 
 ### Flow Information
 
@@ -211,11 +220,12 @@ Displays the history of flow modification.
 
 Display history of the request to start/end flow.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2024_06.png)
 
 * Display the date of execution and user information.
-* Displays the requested behavior.
-* Displays the state of flow due to the requested behavior.
+* Display the requested behavior.
+* Display the state of flow due to the requested behavior.
+* Disaply the instance type at the time of running.
 * If it is a running flow, new window allows to view detailed flow status information.
 
 ## Monitoring

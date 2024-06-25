@@ -12,6 +12,7 @@
 | SKM_INVALID_APPKEY      | The appkey information for the Cipher node is invalid.                                                                    |
 | SKM_INVALID_KEY_ID      | The key ID information for the Cipher node is invalid.                                                                    |
 | SKM_INVALID_KEY_VERSION | The key version information for the Cipher node is invalid.                                                               |
+| SKM_ERROR                  | Failed to connect SKM.                                                                          |
 | LNCS_UNAUTHENTICATED    | The appkey, secretkey for the Log & Crash Search node is invalid.                                                         |
 | LNCS_SEARCH_LIMIT       | The Log & Crash Search node has reached its search limit. Please contact the Customer Center.                             |
 | LNCS_SERVICE_UNSTABLE   | The Log & Crash Search service is in an unstable state. Please contact the Customer Center.                               |
@@ -20,6 +21,9 @@
 | S3_ACCESS_DENIED        | Access to the S3, Object Storage store is denied. Check the ACL granted to the access key on the S3, Object Storage node. |
 | S3_NO_SUCH_BUCKET       | The bucket does not exist in the S3, Object Storage store.                                                                |
 | S3_SERVICE_ERROR        | The S3, Object Storage store is in an unstable state. Please contact the store.                                           |
+| S3_INVALID_ENDPOINT        | No endpoint or region for the S3, Object Storage node was entered.                                          |
+| S3_INVALID_CREDENTIAL      | No access key or secret key for the S3, Object Storage node was entered.                            |
+| CLOUDTRAIL_UNAUTHENTICATED | Invalid appkey for the CloudTrail node.                                                        |
 | JDBC_CONNECT_FAILED     | JDBC connection fails.                                                                                                    |
 | JDBC_UNSUPPORTED_DRIVER | Unsupported JDBC driver.                                                                                                  |
 | ERROR                   | Service internal error or undefined error. Please contact the Customer Center.                                            |
