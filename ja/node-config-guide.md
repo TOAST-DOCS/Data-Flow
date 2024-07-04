@@ -1022,7 +1022,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| ソースフィールド | - | strings | 文字列を取得するためのフィールド名を入力します。 |  |
+| ソースフィールド | - | string | 文字列を取得するためのフィールド名を入力します。 |  |
 | 形式 | - | array of strings | 文字列を取得するための形式を入力します。 | 事前定義された形式は次のとおりです。<br/>ISO8601, UNIX, UNIX_MS, TAI64N |
 | Locale | - | Date文字列を分析するために使用するLocaleを入力します。 | ex) en, en-US, ko-kr |
 | 保存するフィールド | - | string | Date文字列解析結果を保存するフィールド名を入力します。 |  |
