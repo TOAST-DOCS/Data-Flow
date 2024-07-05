@@ -1,5 +1,12 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2024. 07. 23.
+#### 기능 개선/변경
+* 노드 설정 화면에서 array of strings 타입의 데이터를 입력할 때 엔터키를 이용하여 데이터를 입력할 수 있도록 개선했습니다.
+* Date 노드의 'Match' 설정을 '소스 필드' 설정과 '형식' 설정으로 분리했습니다.
+* 플로우 중복 시작/종료 시 'ERROR' 오류 코드가 아닌 'FLOW_ALREADY_STARTED'/'FLOW_ALREADY_STOPPED' 오류 코드를 노출하도록 수정했습니다.
+* Log & Crash Search 로그 저장 설정 저장/삭제 시 CloudTrail 로그를 'Log & Crash Search 저장 설정 저장'/'Log & Crash Search 저장 설정 삭제'로 구분하도록 수정했습니다. 
+
 ### 2024. 07. 01.
 #### 기능 개선/변경
 * 플로우 실행 시 인스턴스 타입을 설정할 수 있는 기능을 추가했습니다.
