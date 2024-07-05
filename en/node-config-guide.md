@@ -1023,7 +1023,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Match | - | array of strings | Enter a field name and format to get strings. | The pre-defined formats are as follows.<br/>ISO8601, UNIX, UNIX_MS, TAI64N |
+| Source Field | - | string | Enter a field name to get strings. |  |
+| Formats | - | array of strings | Enter formats to get strings. | The pre-defined formats are as follows.<br/>ISO8601, UNIX, UNIX_MS, TAI64N |
 | Locale | - | Enter a locale to use for string analysis. | ex) en, en-US, ko-kr |
 | Field to be stored | - | string | Enter a field name to store the result of parsing data strings. |  |
 | Failure tag | - | array of strings | Enter the tag name to define if data string parsing fails. |  |
