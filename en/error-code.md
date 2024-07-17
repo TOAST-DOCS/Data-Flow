@@ -26,4 +26,6 @@
 | CLOUDTRAIL_UNAUTHENTICATED | Invalid appkey for the CloudTrail node.                                                        |
 | JDBC_CONNECT_FAILED     | JDBC connection fails.                                                                                                    |
 | JDBC_UNSUPPORTED_DRIVER | Unsupported JDBC driver.                                                                                                  |
+| FLOW_ALREADY_STARTED       | The flow has already started.                                                                      |
+| FLOW_ALREADY_STOPPED       | The flow has already ended.                                                      |
 | ERROR                   | Service internal error or undefined error. Please contact the Customer Center.                                            |

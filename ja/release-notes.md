@@ -1,5 +1,12 @@
 ## Data & Analytics > DataFlow > リリースノート
 
+### 2024. 07. 23.
+#### 機能改善/変更
+* ノード設定画面でarray of stringsタイプのデータを入力する際にEnterキーを利用できるように改善しました。
+* Dateノードの「Match」設定を'ソースフィールド'と'フォーマット'設定に分離しました。
+* フローの重複開始または終了時のエラーコードを「ERROR」ではなく「FLOW_ALREADY_STARTED」/「FLOW_ALREADY_STOPPED」を表示するように修正しました。
+* Log & Crash Searchログ保存設定を保存または削除する際、CloudTrailログを「Log & Crash Search保存設定の保存」または「Log & Crash Search保存設定の削除」で区別するように修正しました。
+
 ### 2024. 07. 01.
 #### 機能改善/変更
 * フロー実行時にインスタンスタイプを設定できる機能を追加しました。

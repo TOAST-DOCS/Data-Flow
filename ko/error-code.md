@@ -26,4 +26,6 @@
 | CLOUDTRAIL_UNAUTHENTICATED | CloudTrail 노드의 앱키가 유효하지 않습니다.                                                        |
 | JDBC_CONNECT_FAILED        | JDBC 연결이 실패했습니다.                                                                         |
 | JDBC_UNSUPPORTED_DRIVER    | 지원하지 않는 JDBC 드라이버입니다.                                                                    |
+| FLOW_ALREADY_STARTED       | 플로우가 이미 시작되었습니다.                                                                      |
+| FLOW_ALREADY_STOPPED       | 플로우가 이미 종료되었습니다.                                                                      |
 | ERROR                      | 서비스 내부 오류 또는 정의되지 않은 오류입니다. 고객 센터로 문의하세요.                                               |
