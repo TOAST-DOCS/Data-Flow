@@ -1,5 +1,12 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### July 23, 2024
+#### Feature Updates
+* Improved to use the enter key to input data when entering data in the array of strings type in the node settings screen.
+* Separated the 'Match' setting for the Date node into a 'Source field' setting and a 'Formats' setting.
+* Made notifications so that, when starting or ending a flow that has already started or ended, 'FLOW_ALREADY_STARTED'/'FLOW_ALREADY_STOPPED' instead of 'ERROR' appears.
+* Made notifications so that, when saving or deleting Log & Crash Search log save settings, 'Save Log & Crash Search save settings' or 'Delete Log & Crash Search save settings' are left in CloudTrail logs.
+
 ### July 1, 2024
 #### Feature Updates
 * Added the feature to set the instance type when running flows 

@@ -26,4 +26,6 @@
 | CLOUDTRAIL_UNAUTHENTICATED | CloudTrailノードのアプリキーが有効ではありません。                                                        |
 | JDBC_CONNECT_FAILED        | JDBC接続が失敗しました。                                                                         |
 | JDBC_UNSUPPORTED_DRIVER    | サポートしないJDBCドライバーです。                                                                    |
+| FLOW_ALREADY_STARTED       | フローがすでに開始されています。                                                                     |
+| FLOW_ALREADY_STOPPED       | フローがすでに終了しました。                                                                      |
 | ERROR                      | サービス内部エラーまたは定義されていないエラーです。サポートにお問い合わせください。                                               |
