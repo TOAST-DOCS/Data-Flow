@@ -1,5 +1,10 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### August 27, 2024 
+#### Feature improvements/changes 
+* Improved how flow recent execution time is calculated. 
+* Made modifications so that, when displaying the node settings, required items are displayed first.
+
 ### July 23, 2024
 #### Feature Updates
 * Improved to use the enter key to input data when entering data in the array of strings type in the node settings screen.
@@ -11,7 +16,7 @@
 #### Feature Updates
 * Added the feature to set the instance type when running flows 
 * (Amazon) Changed the endpoint, region settings for the (Amazon) S3 Source, Sink, and (Amazon) S3 - Parquet Sink nodes from required to optional 
-* The nodes will work correctly if only one of the endpoint, region settings is entered.
+    * The nodes will work correctly if only one of the endpoint, region settings is entered.
 
 #### Bug Fixes
 * Fixed an issue where no CloudTrail logs were left when exiting after flow draining, Log & Crash Search logs save settings, enabling and disabling validation.
@@ -25,12 +30,12 @@
 ### May 28, 2024
 #### Feature Updates
 * Deleted some settings.
-  * Common > Enable Metrics
-  * Filter Node Common > Periodic Flush
-  * (NHN Cloud) Object Storage > ACL
-  * (NHN Cloud) Object Storage > Storage Class
-  * (NHN Cloud) Object Storage - Parquet > ACL
-  * (NHN Cloud) Object Storage - Parquet > Storage Class
+    * Common > Enable Metrics
+    * Filter Node Common > Periodic Flush
+    * (NHN Cloud) Object Storage > ACL
+    * (NHN Cloud) Object Storage > Storage Class
+    * (NHN Cloud) Object Storage - Parquet > ACL
+    * (NHN Cloud) Object Storage - Parquet > Storage Class
 * Made modifications so that, when monitoring for periods longer than 7 days, data would be more precise.
 
 #### Bug Fixes
@@ -115,11 +120,11 @@
 
 #### Feature Updates
 * Added a feature to enable Log & Crash Search
-  * Added a feature to save flow logs in Log & Crash Search.
+    * Added a feature to save flow logs in Log & Crash Search.
 
 #### Bug Fixes
 * Modified the activation timing of the View Log button
-  * Modified the activation timing of the View Log button to the PREPARING stage.
+    * Modified the activation timing of the View Log button to the PREPARING stage.
 
 ### March 28, 2023
 
