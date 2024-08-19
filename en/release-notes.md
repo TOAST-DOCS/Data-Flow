@@ -2,7 +2,7 @@
 
 ### August 27, 2024 
 #### Feature improvements/changes 
-* Improved how flow recent execution time is calculated. 
+* Improved how the Last Executed Time is calculated. 
 * Made modifications so that, when displaying the node settings, required items are displayed first.
 
 ### July 23, 2024
