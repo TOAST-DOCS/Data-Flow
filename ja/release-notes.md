@@ -1,5 +1,10 @@
 ## Data & Analytics > DataFlow > リリースノート
 
+### 2024. 08. 27.
+#### 機能改善/変更
+* フローの最近の実行時間の計算方法を改善しました。
+* ノード設定を表示する時、必須項目が先に表示されるように修正しました。
+
 ### 2024. 07. 23.
 #### 機能改善/変更
 * ノード設定画面でarray of stringsタイプのデータを入力する際にEnterキーを利用できるように改善しました。
@@ -11,7 +16,7 @@
 #### 機能改善/変更
 * フロー実行時にインスタンスタイプを設定できる機能を追加しました。
 * (Amazon) S3 Source, Sink及び(Amazon) S3 - Parquet Sinkノードのエンドポイント、リージョン設定が必須設定から任意設定に変更されました。
-  * エンドポイント、リージョン設定のいずれかを入力してもノードが正常に動作するようになりました。
+    * エンドポイント、リージョン設定のいずれかを入力してもノードが正常に動作するようになりました。
 
 #### バグ修正
 * フロードレイン後に終了、 Log & Crash Searchログ保存設定、有効性検査有効化、有効性検査を無効にするとCloudTrailログが残らない問題を修正しました。
@@ -25,12 +30,12 @@
 ### 2024. 05. 28.
 #### 機能改善/変更
 * 一部の設定を削除しました。
-  * 共通 > 測定項目の有効化
-  * Filterノード共通 > 定期的なFlush
-  * (NHN Cloud) Object Storage > ACL
-  * (NHN Cloud) Object Storage > ストレージクラス
-  * (NHN Cloud) Object Storage - Parquet > ACL
-  * (NHN Cloud) Object Storage - Parquet > ストレージクラス
+    * 共通 > 測定項目の有効化
+    * Filterノード共通 > 定期的なFlush
+    * (NHN Cloud) Object Storage > ACL
+    * (NHN Cloud) Object Storage > ストレージクラス
+    * (NHN Cloud) Object Storage - Parquet > ACL
+    * (NHN Cloud) Object Storage - Parquet > ストレージクラス
 * 7日を超過した期間に対するモニタリング照会時、データがより正確に表示されるように修正しました。
 
 #### バグ修正
@@ -114,10 +119,10 @@
 ### 2023. 06. 27.
 #### 機能追加
 * Log & Crash Search連動機能の追加
-  * フローのログをLog & Crash Searchに保存できる機能を追加しました。
+    * フローのログをLog & Crash Searchに保存できる機能を追加しました。
 #### バグ修正
 * ログ表示ボタンの有効化タイミングを調整
-  * ログ表示ボタンの有効化タイミングをPREPARING段階に修正しました。
+    * ログ表示ボタンの有効化タイミングをPREPARING段階に修正しました。
 
 ### 2023. 03. 28.
 
