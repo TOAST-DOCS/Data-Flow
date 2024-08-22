@@ -1,5 +1,10 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2024. 08. 27.
+#### 기능 개선/변경
+* 플로우 최근 실행 시간 계산 방식을 개선했습니다.
+* 노드 설정 노출 시 필수 항목이 먼저 노출되도록 수정했습니다.
+
 ### 2024. 07. 23.
 #### 기능 개선/변경
 * 노드 설정 화면에서 array of strings 타입의 데이터를 입력할 때 Enter 키를 이용할 수 있도록 개선했습니다.
@@ -11,7 +16,7 @@
 #### 기능 개선/변경
 * 플로우 실행 시 인스턴스 타입을 설정할 수 있는 기능을 추가했습니다.
 * (Amazon) S3 Source, Sink 및 (Amazon) S3 - Parquet Sink 노드의 엔드포인트, 리전 설정이 필수 설정에서 선택 설정으로 변경되었습니다.
-  * 엔드포인트, 리전 설정 중 하나의 설정만 입력해도 노드가 정상 동작합니다.
+    * 엔드포인트, 리전 설정 중 하나의 설정만 입력해도 노드가 정상 동작합니다.
 
 #### 버그 수정
 * 플로우 드레이닝 후 종료, Log & Crash Search 로그 저장 설정, 유효성 검사 활성화, 유효성 검사 비활성화 시 CloudTrail 로그가 남지 않는 문제를 수정했습니다.
@@ -25,13 +30,13 @@
 ### 2024. 05. 28.
 #### 기능 개선/변경
 * 일부 설정을 삭제했습니다.
-  * 공통 > 측정 항목 활성화
-  * Filter 노드 공통 > 주기적 Flush
-  * (NHN Cloud) Object Storage > ACL
-  * (NHN Cloud) Object Storage > 스토리지 클래스
-  * (NHN Cloud) Object Storage - Parquet > ACL
-  * (NHN Cloud) Object Storage - Parquet > 스토리지 클래스
-* 7일을 초과한 기간에 대한 모니터링 조회 시, 데이터가 더욱 정밀하게 나오도록 수정했습니다.
+    * 공통 > 측정 항목 활성화
+    * Filter 노드 공통 > 주기적 Flush
+    * (NHN Cloud) Object Storage > ACL
+    * (NHN Cloud) Object Storage > 스토리지 클래스
+    * (NHN Cloud) Object Storage - Parquet > ACL
+    * (NHN Cloud) Object Storage - Parquet > 스토리지 클래스
+* 7일을 초과한 기간에 대한 모니터링 조회 시 데이터가 더욱 정밀하게 나오도록 수정했습니다.
 
 #### 버그 수정
 * 탈퇴한 사용자의 수정 이력을 공란이 아닌 "UNKNOWN USER"로 노출하도록 수정했습니다.
@@ -114,10 +119,10 @@
 ### 2023. 06. 27.
 #### 기능 추가
 * Log & Crash Search 연동 기능 추가
-  * 플로우의 로그를 Log & Crash Search에 저장할 수 있는 기능을 추가했습니다.
+    * 플로우의 로그를 Log & Crash Search에 저장할 수 있는 기능을 추가했습니다.
 #### 버그 수정
 * 로그 보기 버튼 활성화 시점 조정
-  * 로그 보기 버튼 활성화 시점을 PREPARING 단계로 수정했습니다.
+    * 로그 보기 버튼 활성화 시점을 PREPARING 단계로 수정했습니다.
 
 ### 2023. 03. 28.
 
