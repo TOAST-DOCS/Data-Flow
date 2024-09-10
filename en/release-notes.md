@@ -1,7 +1,11 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### September 25, 2024
+#### Feature Updates
+* Stabilized the flow startup process.
+  
 ### August 27, 2024 
-#### Feature improvements/changes 
+#### Feature Updates
 * Improved how the Last Executed Time is calculated. 
 * Made modifications so that, when displaying the node settings, required items are displayed first.
 
