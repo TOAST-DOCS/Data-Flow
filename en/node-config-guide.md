@@ -1369,7 +1369,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 2022-11-21T07:49:20.000Z f207c24a122e %{message}
 ```
 
-### Parquet codec Property Description
+### Parquet Codec Property Description
 
 | Property name | Default value | Data type | Description | Note |
 | --- | --- | --- | --- | --- |
@@ -1494,7 +1494,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * Same with OBS.
 
-### Parquet codec Property Description
+### Parquet Codec Property Description
 
 | Property name | Default value | Data type | Description | Note |
 | --- | --- | --- | --- | --- |
