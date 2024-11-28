@@ -1369,6 +1369,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 2022-11-21T07:49:20.000Z f207c24a122e %{message}
 ```
 
+### Parquet Codec Property Description
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| parquet compression codec | SNAPPY | enum | Enter the compression codec to use when converting PARQUET files. | [Reference](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+
 ### Prefix Example - Field
 
 #### Condition
@@ -1456,13 +1462,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     * Base time: 60 min
   * Encoding fixed to none
 
-### Property Description
-
-| Property name | Default value | Data type | Description | Note |
-| --- | --- | --- | --- | --- |
-| parquet compression codec | SNAPPY | enum |  
-Enter the compression codec to use when converting PARQUET files. | [Reference](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
-
 ## Sink > (Amazon) S3
 
 ### Node Description
@@ -1495,6 +1494,12 @@ Enter the compression codec to use when converting PARQUET files. | [Reference](
 
 * Same with OBS.
 
+### Parquet Codec Property Description
+
+| Property name | Default value | Data type | Description | Note |
+| --- | --- | --- | --- | --- |
+| parquet compression codec | SNAPPY | enum | Enter the compression codec to use when converting PARQUET files. | [Reference](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+
 ### Additional Settings example
 
 #### follow redirects
@@ -1526,25 +1531,6 @@ Enter the compression codec to use when converting PARQUET files. | [Reference](
     force_path_style → true 
 }
 ```
-
-## Sink > (Amazon) S3 - Parquet
-
-### Node Description
-
-* This node converts data to the parquet type and uploads it to Amazon S3.
-* (Amazon) S3 node, but some values are changed to support the parquet type, as shown below.
-  * Codec fixed to parquet
-* When the object rotation policy is not entered, the default policy is applied as follows.
-    * Object size: 128 MB (134,217,728 bytes)
-    * Base time: 60 min
-  * Encoding fixed to none
-
-### Property Description
-
-| Property name | Default value | Data type | Description | Note |
-| --- | --- | --- | --- | --- |
-| parquet compression codec | SNAPPY | enum |  
-Enter the compression codec to use when converting PARQUET files. | [Reference](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Apache) Kafka
 
