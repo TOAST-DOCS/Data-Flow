@@ -1369,6 +1369,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 2022-11-21T07:49:20.000Z f207c24a122e %{message}
 ```
 
+### Parquet 코덱 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+
 ### Prefix 예시 - 필드
 
 #### 조건
@@ -1442,26 +1448,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 /obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
-## Sink > (NHN Cloud) Object Storage - Parquet
-
-### 노드 설명
-
-* NHN Cloud의 Object Storage에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
-* OBS에 작성되는 오브젝트는 기본적으로 다음 경로 포맷에 맞게 출력됩니다.
-    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
-* (NHN Cloud) Object Storage 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
-  * 코덱이 parquet으로 고정
-  * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 기준 오브젝트 크기: 128MB(134,217,728 byte)
-    * 기준 시각: 60분
-  * 인코딩은 none으로 고정
-
-### 속성 설명
-
-| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
-| --- | --- | --- | --- | --- |
-| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
-
 ## Sink > (Amazon) S3
 
 ### 노드 설명
@@ -1494,6 +1480,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * OBS와 동일합니다.
 
+### Parquet 코덱 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+
 ### 추가 설정 예시
 
 #### follow redirects
@@ -1525,24 +1517,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     force_path_style → true
 }
 ```
-
-## Sink > (Amazon) S3 - Parquet
-
-### 노드 설명
-
-* Amazon S3에 데이터를 parquet 타입으로 변환하여 업로드하는 노드입니다.
-* (Amazon) S3 노드와 동일하나 parquet 타입 지원을 위해 일부 값들이 아래와 같이 변경됩니다.
-  * 코덱이 parquet으로 고정
-  * 오브젝트 로테이션 정책 미입력 시 아래와 같이 기본 정책을 적용합니다.
-    * 기준 오브젝트 크기: 128MB(134,217,728 byte)
-    * 기준 시각: 60분
-  * 인코딩은 none으로 고정
-
-### 속성 설명
-
-| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
-| --- | --- | --- | --- | --- |
-| parquet 압축 코덱 | SNAPPY | enum | parquet 파일 변환 시 사용할 압축 코덱을 입력합니다. | [참조](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Apache) Kafka
 
