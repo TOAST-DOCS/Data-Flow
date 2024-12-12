@@ -2,8 +2,8 @@
 
 ### December 24, 2024
 #### Feature Updates
-* (Amazon) Integrated S3 Sink node and (Amazon) S3 - Parquet Sink node.
-* (NHN Cloud) Integrated Object Storage Sink node and (NHN Cloud) Object Storage - Parquet Sink node.
+* Integrated (Amazon) S3 Sink node and (Amazon) S3 - Parquet Sink node.
+* Integrated (NHN Cloud) Object Storage Sink node and (NHN Cloud) Object Storage - Parquet Sink node.
 
 ### September 25, 2024
 #### Feature Updates
