@@ -1,5 +1,10 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### December 24, 2024
+#### Feature Updates
+* Integrated (Amazon) S3 Sink node and (Amazon) S3 - Parquet Sink node.
+* Integrated (NHN Cloud) Object Storage Sink node and (NHN Cloud) Object Storage - Parquet Sink node.
+
 ### September 25, 2024
 #### Feature Updates
 * Stabilized the flow startup process.
