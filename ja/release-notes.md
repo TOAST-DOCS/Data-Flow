@@ -1,5 +1,10 @@
 ## Data & Analytics > DataFlow > リリースノート
 
+### 2024. 12. 24.
+#### 機能改善/変更
+* (Amazon) S3 Sinkノードと(Amazon) S3 - Parquet Sinkノードを統合しました。
+* (NHN Cloud) Object Storage Sinkノードと(NHN Cloud) Object Storage - Parquet Sinkノードを統合しました。
+
 ### 2024. 09. 25.
 #### 機能改善/変更
 * フロー開始プロセスを安定化させました。
