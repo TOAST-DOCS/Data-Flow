@@ -1354,6 +1354,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 }
 ```
 
+### Parquetコーデック プロパティ説明
+
+| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| parquet圧縮コーデック | SNAPPY | enum | parquetファイル変換時に使用する圧縮コーデックを入力します。 | [参照](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+
 #### 出力値
 
 * パス
@@ -1441,26 +1447,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 /obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
-## Sink > (NHN Cloud) Object Storage - Parquet
-
-### ノード説明
-
-* NHN CloudのObject Storageにデータをparquetタイプに変換してアップロードするノードです。
-* OBSに作成されるオブジェクトは基本的に次のパス形式に合わせて出力されます。
-    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
-* (NHN Cloud) Object Storageノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
-  * コーデックがparquetに固定
-  * オブジェクトローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
-    * オブジェクトサイズ: 128MB(134,217,728 byte)
-    * 基準時刻: 60分
-  * エンコードはnoneに固定
-
-### プロパティ説明
-
-| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
-| --- | --- | --- | --- | --- |
-| parquet圧縮コーデック | SNAPPY | enum | parquetファイル変換時に使用する圧縮コーデックを入力します。 | [参照](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
-
 ## (Amazon) S3
 
 ### ノードの説明
@@ -1493,6 +1479,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * OBSと同じです。
 
+### Parquet コーデック プロパティ説明
+
+| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| parquet圧縮コーデック | SNAPPY | enum | parquetファイル変換時に使用する圧縮コーデックを入力します。 | [参照](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
+
 ### 追加設定の例
 
 #### follow redirects
@@ -1524,24 +1516,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     force_path_style → true
 }
 ```
-
-## Sink > (Amazon) S3 - Parquet
-
-### ノードの説明
-
-* データをparquetタイプに変換してAmazon S3にアップロードするノードです。
-* (Amazon) S3ノードと同じですが、parquetタイプをサポートするため、一部の値が下記のように変更されます。
-  * コーデックがparquetに固定
-  * オブジェクトローテーションポリシーを入力しない場合、下記のように基本ポリシーが適用されます。
-    * 基準オブジェクトサイズ: 128MB(134,217,728 byte)
-    * 基準時刻: 60分
-  * エンコードはnoneに固定
-
-### プロパティの説明
-
-| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
-| --- | --- | --- | --- | --- |
-| parquet圧縮コーデック | SNAPPY | enum | parquetファイル変換時に使用する圧縮コーデックを入力します。 | [参照](https://parquet.apache.org/docs/file-format/data-pages/compression/) |
 
 ## Sink > (Apache) Kafka
 

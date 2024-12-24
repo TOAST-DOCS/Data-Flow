@@ -1,5 +1,10 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2024. 12. 24.
+#### 기능 개선/변경
+* (Amazon) S3 Sink 노드와 (Amazon) S3 - Parquet Sink 노드를 통합했습니다.
+* (NHN Cloud) Object Storage Sink 노드와 (NHN Cloud) Object Storage - Parquet Sink 노드를 통합했습니다.
+
 ### 2024. 09. 25.
 #### 기능 개선/변경
 * 플로우 시작 과정을 안정화했습니다.
