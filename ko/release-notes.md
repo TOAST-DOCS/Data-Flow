@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2025. 03. 04.
+#### 버그 수정
+* 플로우 이벤트 In/Out 그래프가 정상적으로 표시되지 않는 문제를 수정했습니다.
+
 ### 2024. 12. 24.
 #### 기능 개선/변경
 * (Amazon) S3 Sink 노드와 (Amazon) S3 - Parquet Sink 노드를 통합했습니다.
