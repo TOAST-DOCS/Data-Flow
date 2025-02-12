@@ -33,7 +33,7 @@
 
 Cipher 노드를 정의하려면 **Cipher** 노드를 클릭한 뒤 아래와 같이 설정합니다.
 
-① **키 버전**은 사용할 Security Key Manager(SKM) 키 저장소의 대칭 키 버전을 입력합니다. [키 버전 확인하기](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/console-guide/)
+① **키 버전**은 사용할 Security Key Manager(SKM) 키 저장소의 대칭 키 버전을 입력합니다. [키 버전 확인하기](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/)
 ② **앱키**는 SKM의 앱키를 입력합니다.
 ③ **키 ID**는 SKM 키 저장소의 대칭 키 ID를 입력합니다.
 
