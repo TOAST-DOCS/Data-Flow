@@ -1,5 +1,9 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### March 4, 2025
+#### Bug Fixes
+* Fixed an issue where flow event in/out graphs are not displayed correctly.
+
 ### December 24, 2024
 #### Feature Updates
 * Integrated (Amazon) S3 Sink node and (Amazon) S3 - Parquet Sink node.
