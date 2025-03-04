@@ -33,7 +33,7 @@ Click the flow created above and configure the settings as follows.
 
 To define the Cipher node, click **Cipher** and configure the settings as follows.
 
-① For **Key Version**, enter the symmetric key version of the Security Key Manager (SKM) key store that you want to use. [Check Key Version](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/console-guide/)
+① For **Key Version**, enter the symmetric key version of the Security Key Manager (SKM) key store that you want to use. [Check Key Version](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/)
 ② For **AppKey**, enter the appkey of SKM.
 ③ For **Key ID**, entere the symmetric key ID of SKM key store.
 
