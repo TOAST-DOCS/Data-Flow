@@ -33,7 +33,7 @@
 
 Cipherノードを定義するには**Cipher**ノードをクリックし、次のように設定します。
 
-① **キーバージョン**は、使用するSecurity Key Manager(SKM)キーストアの対称鍵バージョンを入力します。[キーバージョンを確認する](https://docs.toast.com/ko/Security/Secure%20Key%20Manager/ko/console-guide/)
+① **キーバージョン**は、使用するSecurity Key Manager(SKM)キーストアの対称鍵バージョンを入力します。[キーバージョンを確認する](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/)
 ② **アプリケーションキー**は、SKMのアプリケーションキーを入力します。
 ③ **キーID**は、SKMキーストアの対称鍵IDを入力します。
 
