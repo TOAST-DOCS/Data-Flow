@@ -3,9 +3,9 @@
 DataFlow can be used in the following order:
 
 * Enable Service
-    1. See [Project management] (https://docs.toast.com/en/TOAST/en/console-guide/# _14) to create a project.
+    1. Create a project.
     2. Select the desired project.
-    3. Refer to the [Project Services Activation Guide] (https://docs.toast.com/en/TOAST/en/console-guide/#_18) to activate DataFlow.
+    3. Activate DataFlow.
 * Execute Flow
     1. Create a flow by entering a name and description.
     2. Add the nodes you need, and enter settings to define how each node behaves.

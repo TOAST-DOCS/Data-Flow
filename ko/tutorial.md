@@ -33,9 +33,12 @@
 
 Cipher 노드를 정의하려면 **Cipher** 노드를 클릭한 뒤 아래와 같이 설정합니다.
 
-① **키 버전**은 사용할 Security Key Manager(SKM) 키 저장소의 대칭 키 버전을 입력합니다. [키 버전 확인하기](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/)
+① **키 버전**은 사용할 Security Key Manager(SKM) 키 저장소의 대칭 키 버전을 입력합니다.
 ② **앱키**는 SKM의 앱키를 입력합니다.
 ③ **키 ID**는 SKM 키 저장소의 대칭 키 ID를 입력합니다.
+
+!!! tip "알아두기"
+대칭 키 버전은 Secure Key Manager 웹 콘솔의 키 상세 정보에서 확인할 수 있습니다.
 
 ### Object Storage 노드 정의와 플로우 저장
 
@@ -44,9 +47,12 @@ Cipher 노드를 정의하려면 **Cipher** 노드를 클릭한 뒤 아래와 �
 Object Storage 노드를 정의하려면 **Object Storage** 노드를 클릭한 뒤 아래와 같이 설정합니다.
 
 ① **버킷**에는 데이터를 저장할 버킷을 입력합니다.
-② **액세스 키**에는 S3 API 자격 증명 액세스 키를 입력합니다. [액세스 키 발급](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api)
-③ **비밀 키**에는 S3 API 자격 증명 비밀 키를 입력합니다. [비밀 키 발급](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api)
+② **액세스 키**에는 S3 API 자격 증명 액세스 키를 입력합니다.
+③ **비밀 키**에는 S3 API 자격 증명 비밀 키를 입력합니다.
 ④ **플로우 저장**을 클릭해 플로우를 저장합니다.
+
+!!! tip "알아두기"
+S3 API 자격 증명 액세스 키 및 비밀 키는 Object Storage 웹 콘솔 또는 Object Storage의 S3 API 자격 증명 발급 API를 통해 발급받을 수 있습니다.
 
 ### 플로우 실행
 
