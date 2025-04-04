@@ -33,7 +33,7 @@
 
 Cipherノードを定義するには**Cipher**ノードをクリックし、次のように設定します。
 
-① **キーバージョン**は、使用するSecurity Key Manager(SKM)キーストアの対称鍵バージョンを入力します。[キーバージョンを確認する](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/)
+① **キーバージョン**は、使用するSecurity Key Manager(SKM)キーストアの対称鍵バージョンを入力します。
 ② **アプリケーションキー**は、SKMのアプリケーションキーを入力します。
 ③ **キーID**は、SKMキーストアの対称鍵IDを入力します。
 
@@ -44,8 +44,8 @@ Cipherノードを定義するには**Cipher**ノードをクリックし、次�
 Object Storageノードを定義するには**Object Storage**ノードをクリックし、次のように設定します。
 
 ① **バケット**にはデータを保存するバケットを入力します。
-② **アクセスキー**にはS3 API認証情報アクセスキーを入力します。[アクセスキーの発行](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api)
-③ **秘密鍵**にはS3 API認証情報秘密鍵を入力します。[秘密鍵の発行](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api)
+② **アクセスキー**にはS3 API認証情報アクセスキーを入力します。
+③ **秘密鍵**にはS3 API認証情報秘密鍵を入力します。
 ④ **フローの保存**をクリックしてフローを保存します。
 
 ### フローの実行

@@ -33,7 +33,7 @@ Click the flow created above and configure the settings as follows.
 
 To define the Cipher node, click **Cipher** and configure the settings as follows.
 
-① For **Key Version**, enter the symmetric key version of the Security Key Manager (SKM) key store that you want to use. [Check Key Version](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/getting-started/)
+① For **Key Version**, enter the symmetric key version of the Security Key Manager (SKM) key store that you want to use.
 ② For **AppKey**, enter the appkey of SKM.
 ③ For **Key ID**, entere the symmetric key ID of SKM key store.
 
@@ -44,8 +44,8 @@ To define the Cipher node, click **Cipher** and configure the settings as follow
 To define the Object Storage noe, click **Object Storage** and configure the settings as follows.
 
 ① For **Bucket**, enter a bucket where you want to store data.
-② For **Access Key**, enter the S3 API Credential access key. [Access Key Issuance](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api)
-③ For **Secret Key**, enter the S3 API Credential secret key. [Secret key Issuance](https://docs.toast.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#s3-api)
+② For **Access Key**, enter the S3 API Credential access key.
+③ For **Secret Key**, enter the S3 API Credential secret key.
 ④ Click **Save Flow** to save the flow.
 
 ### Flow Execution
