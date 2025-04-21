@@ -132,7 +132,7 @@
 * 노드에 로그 조회 시작 시간을 설정할 수 있습니다. 설정하지 않으면 플로우를 시작하는 시점부터 로그를 읽어 옵니다.
 * 노드에 종료 시간을 입력하지 않으면 스트리밍 형식으로 로그를 읽어 옵니다. 종료 시간을 입력하면 종료 시간까지의 로그를 읽어 오고 플로우는 종료됩니다.
 * ```현재 세션 로그와 크래시 로그는 지원하지 않습니다.```
-* Log & Crash Search의 [로그 검색 API](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/#api_1)의 토큰에 영향을 받습니다.
+* Log & Crash Search의 로그 검색 API의 토큰에 영향을 받습니다.
   * 토큰이 부족할 경우 Log & Crash Search로 문의하세요.
 
 ### 속성 설명
@@ -153,7 +153,6 @@
 ### 코덱별 메시지 인입
 
 * Log & Crash Search는 기본적으로 ```JSON``` 형식의 데이터를 다룹니다.
-    * [참고 - Log & Crash Search API 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/Log%20&%20Crash%20Search/ko/api-guide/)
 * 코덱을 선택하지 않거나 plain인 경우 Log & Crash Search 로그에 대한 JSON 문자열을 `message`라는 필드로 포함하게 됩니다.
 * Log & Crash Search 로그의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
@@ -196,7 +195,6 @@
 ### 코덱별 메시지 인입
 
 * CloudTrail은 기본적으로 ```JSON``` 형식의 데이터를 다루고 있습니다.
-    * [참고 - CloudTrail API 가이드](https://docs.nhncloud.com/ko/Governance%20&%20Audit/CloudTrail/ko/api-guide/)
 * 코덱을 선택하지 않거나 plain인 경우 CloudTrail 데이터에 대한 JSON 문자열을 `message`라는 필드로 포함하게 됩니다.
 * CloudTrail 데이터의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
@@ -704,9 +702,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 ### 노드 설명
 
 * 메시지 필드 값을 암복호화하는 노드입니다.
-* 암호화 키는 SKM을 참조합니다.
-    * SKM 키 등록에 대한 자세한 내용은 [SKM 가이드 문서](https://docs.nhncloud.com/ko/Security/Secure%20Key%20Manager/ko/overview/)를 참고하세요.
-    * ```한 플로우에 여러 Cipher 노드가 포함되더라도 모든 Cipher 노드는 반드시 하나의 SKM 키 레퍼런스만 참조할 수 있습니다.```
+* 암호화 키는 Secure Key Manager 대칭 키를 참조합니다.
+  * Secure Key Manager 대칭 키는 Secure Key Manager 웹 콘솔 또는 Secure Key Manager의 키 추가 API를 통해 생성할 수 있습니다.
+  * ```한 플로우에 여러 Cipher 노드가 포함되더라도 모든 Cipher 노드는 반드시 하나의 Secure Key Manager 키 레퍼런스만 참조할 수 있습니다.```
 
 ### 속성 설명
 
@@ -1261,7 +1259,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| 리전 | - | enum | Object Storage 상품의 리전을 입력합니다. | [OBS 리전 상세](https://docs.nhncloud.com/ko/Storage/Object%20Storage/ko/s3-api-guide/#aws-sdk) |
+| 리전 | - | enum | Object Storage 상품의 리전을 입력합니다. |  |
 | 버킷 | - | string | 버킷 이름을 입력합니다. |  |
 | 비밀 키 | - | string | S3 API 자격 증명 비밀 키를 입력합니다. |  |
 | 액세스 키 | - | string | S3 API 자격 증명 액세스 키를 입력합니다. |  |
