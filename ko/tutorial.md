@@ -38,7 +38,7 @@ Cipher 노드를 정의하려면 **Cipher** 노드를 클릭한 뒤 아래와 �
 ③ **키 ID**는 SKM 키 저장소의 대칭 키 ID를 입력합니다.
 
 !!! tip "알아두기"
-대칭 키 버전은 Secure Key Manager 웹 콘솔의 키 상세 정보에서 확인할 수 있습니다.
+    대칭 키 버전은 Secure Key Manager 웹 콘솔의 키 상세 정보에서 확인할 수 있습니다.
 
 ### Object Storage 노드 정의와 플로우 저장
 
@@ -52,7 +52,7 @@ Object Storage 노드를 정의하려면 **Object Storage** 노드를 클릭한 
 ④ **플로우 저장**을 클릭해 플로우를 저장합니다.
 
 !!! tip "알아두기"
-S3 API 자격 증명 액세스 키 및 비밀 키는 Object Storage 웹 콘솔 또는 Object Storage의 S3 API 자격 증명 발급 API를 통해 발급받을 수 있습니다.
+    S3 API 자격 증명 액세스 키 및 비밀 키는 Object Storage 웹 콘솔 또는 Object Storage의 S3 API 자격 증명 발급 API를 통해 발급할 수 있습니다.
 
 ### 플로우 실행
 
