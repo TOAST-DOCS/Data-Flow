@@ -700,9 +700,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 ### ノードの説明
 
 * メッセージフィールドの値を暗号化または復号するノードです。
-* 暗号化キーはSKMを参照します。
-    * SKMキー登録の詳細については[SKMガイド文書](https://docs.nhncloud.com/ja/Security/Secure%20Key%20Manager/ja/overview/)をご覧ください。
-    * ```1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSKMキーリファレンスのみ参照できます。```
+* 暗号化キーはSecure Key Manager対称鍵を参照します。
+  * Secure Key Managerの対称鍵は、Secure Key ManagerのWebコンソールまたはSecure Key Managerのキー追加APIを利用して作成できます。
+  * ```1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSecure Key Managerキーリファレンスのみ参照できます。```
 
 ### プロパティの説明
 
