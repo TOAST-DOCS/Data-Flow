@@ -132,7 +132,7 @@
 * ノードにログ照会開始時間を設定できます。設しない場合は、フローを開始する時点からログを読み込みます。
 * ノードに終了時間を入力しない場合は、ストリーミング形式でログを読み込みます。終了時間を入力すると終了時間までのログを読み込み、フローを終了します。
 * ```現在、セッションログとクラッシュログはサポートしません。```
-* Log & Crash Searchの[ログ検索API](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/api-guide/#api_1)のトークンに影響を受けます。
+* Log & Crash Searchのログ検索APIのトークンに影響を受けます。
   * トークンが足りない場合はLog & Crash Searchにお問い合わせください。
 
 ### プロパティの説明
@@ -153,7 +153,6 @@
 ### コーデック別メッセージ取り込み
 
 * Log & Crash Searchは基本的に```JSON```形式のデータを扱います。
-    * [参考 - Log & Crash Search APIガイド](https://docs.nhncloud.com/ja/Data%20&%20Analytics/Log%20&%20Crash%20Search/ja/api-guide/)
 * コーデックを選択しない場合やplainの場合は、Log & Crash SearchログのJSON文字列を`message`というフィールドに含めます。
 * Log & Crash Searchログの各フィールドを活用したい場合は、jsonコーデックを使用することを推奨します。
 
@@ -196,7 +195,6 @@
 ### コーデック別メッセージ取り込み
 
 * CloudTrailは基本的に```JSON```形式のデータを扱っています。
-    * [参考 -CloudTrail APIガイド](https://docs.nhncloud.com/ja/Governance%20&%20Audit/CloudTrail/ja/api-guide/)
 * コーデックを選択しない場合、またはplainの場合は、CloudTrailデータのJSON文字列を`message`というフィールドに含めます。
 * CloudTrailデータの各フィールドを活用したい場合は、jsonコーデックを使用することを推奨します。
 
@@ -1260,7 +1258,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| リージョン | - | enum | Object Storage商品のリージョンを入力します。 | [OBSリージョンの詳細](https://docs.nhncloud.com/ja/Storage/Object%20Storage/ja/s3-api-guide/#aws-sdk) |
+| リージョン | - | enum | Object Storage商品のリージョンを入力します。 |  |
 | バケット | - | string | バケット名を入力します。 |  |
 | 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
