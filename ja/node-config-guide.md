@@ -4,7 +4,7 @@
 * ノードタイプの種類はSource、Filter、Branch、Sinkです。
 * Source、Sinkノードタイプは、必ずテストを行ってエンドポイント情報が有効であることを確認することを推奨します。
 * アクセス制御が設定されたデータソースに接続する場合は、DataFlow IP固定機能を使用する必要があります。
-  * DataFlow IP固定機能を使用する場合は、サポートにお問い合わせください。
+    * DataFlow IP固定機能を使用する場合は、サポートにお問い合わせください。
 
 ## Domain Specific Language(DSL)の定義
 
@@ -133,7 +133,7 @@
 * ノードに終了時間を入力しない場合は、ストリーミング形式でログを読み込みます。終了時間を入力すると終了時間までのログを読み込み、フローを終了します。
 * ```現在、セッションログとクラッシュログはサポートしません。```
 * Log & Crash Searchのログ検索APIのトークンに影響を受けます。
-  * トークンが足りない場合はLog & Crash Searchにお問い合わせください。
+    * トークンが足りない場合はLog & Crash Searchにお問い合わせください。
 
 ### プロパティの説明
 
@@ -701,8 +701,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * メッセージフィールドの値を暗号化または復号するノードです。
 * 暗号化キーはSecure Key Manager対称鍵を参照します。
-  * Secure Key Managerの対称鍵は、Secure Key ManagerのWebコンソールまたはSecure Key Managerのキー追加APIを利用して作成できます。
-  * ```1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSecure Key Managerキーリファレンスのみ参照できます。```
+    * Secure Key Managerの対称鍵は、Secure Key ManagerのWebコンソールまたはSecure Key Managerのキー追加APIを利用して作成できます。
+    * ```1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSecure Key Managerキーリファレンスのみ参照できます。```
 
 ### プロパティの説明
 

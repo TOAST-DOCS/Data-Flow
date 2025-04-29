@@ -4,7 +4,7 @@
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
 * Source, Sink 노드 유형은 반드시 테스트를 수행하여 엔드포인트 정보가 유효한지 확인하기를 권장합니다.
 * 접근 제어가 설정된 데이터 소스 연결 시에는 DataFlow IP 고정 기능을 사용해야 합니다.
-  * DataFlow IP 고정 기능을 사용하려면 고객 센터로 문의하세요.
+    * DataFlow IP 고정 기능을 사용하려면 고객 센터로 문의하세요.
 
 ## Domain Specific Language(DSL) 정의
 
@@ -133,7 +133,7 @@
 * 노드에 종료 시간을 입력하지 않으면 스트리밍 형식으로 로그를 읽어 옵니다. 종료 시간을 입력하면 종료 시간까지의 로그를 읽어 오고 플로우는 종료됩니다.
 * ```현재 세션 로그와 크래시 로그는 지원하지 않습니다.```
 * Log & Crash Search의 로그 검색 API의 토큰에 영향을 받습니다.
-  * 토큰이 부족할 경우 Log & Crash Search로 문의하세요.
+    * 토큰이 부족할 경우 Log & Crash Search로 문의하세요.
 
 ### 속성 설명
 
@@ -703,8 +703,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * 메시지 필드 값을 암복호화하는 노드입니다.
 * 암호화 키는 Secure Key Manager 대칭 키를 참조합니다.
-  * Secure Key Manager 대칭 키는 Secure Key Manager 웹 콘솔 또는 Secure Key Manager의 키 추가 API를 통해 생성할 수 있습니다.
-  * ```한 플로우에 여러 Cipher 노드가 포함되더라도 모든 Cipher 노드는 반드시 하나의 Secure Key Manager 키 레퍼런스만 참조할 수 있습니다.```
+    * Secure Key Manager 대칭 키는 Secure Key Manager 웹 콘솔 또는 Secure Key Manager의 키 추가 API를 통해 생성할 수 있습니다.
+    * ```한 플로우에 여러 Cipher 노드가 포함되더라도 모든 Cipher 노드는 반드시 하나의 Secure Key Manager 키 레퍼런스만 참조할 수 있습니다.```
 
 ### 속성 설명
 

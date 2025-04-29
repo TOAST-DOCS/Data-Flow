@@ -4,7 +4,7 @@
 * Types of node types are Source, Filter, Branch, and Sink.
 * It is recommended that Source, Sink Node type have to be tested to ensure that Endpoint information is valid.
 * You must use the DataFlow IP fixation feature when connecting to data sources with access control enabled.
-  * To enable the DataFlow IP fixation feature, contact the Customer Center.
+    * To enable the DataFlow IP fixation feature, contact the Customer Center.
 
 ## Domain Specific Language(DSL) Definition 
 
@@ -133,7 +133,7 @@
 * If no end time is entered in the node, logs are read in streaming format. If an end time is entered, logs are read up to the end time and the flow ends.
 * ```Currently, session logs and crash logs are not supported.```
 * Affected by tokens from Log&Crash Search's Log Search API.
-  * If you don't have enough tokens, you need to contact Log&Crash Search.
+    * If you don't have enough tokens, you need to contact Log&Crash Search.
 
 ### Property Description 
 
@@ -1454,11 +1454,11 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * Objects written to OBS are output in the following path format by default.
     * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
 * (NHN Cloud) Same as Object Storage node, but some values are changed as below to support parquet type.
-  * Codec fixed to parquet
-  * When the object rotation policy is not entered, the default policy is applied as follows.
-    * Object size: 128 MB (134,217,728 bytes)
-    * Base time: 60 min
-  * Encoding fixed to none
+    * Codec fixed to parquet
+    * When the object rotation policy is not entered, the default policy is applied as follows.
+        * Object size: 128 MB (134,217,728 bytes)
+        * Base time: 60 min
+    * Encoding fixed to none
 
 ## Sink > (Amazon) S3
 
