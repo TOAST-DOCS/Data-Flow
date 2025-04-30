@@ -629,6 +629,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 필드 변경 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 해당 필드의 값을 주어진 값으로 수정합니다. |  |
 | Coalesce | - | array of strings | 하나의 필드에 뒤이어 오는 필드 중 처음으로 null이 아닌 값을 할당합니다. |  |
 
+### 설정 적용 순서
+
+* 필드 덮어쓰기
+* 필드 변경
+* Coalesce
+
 ### 필드 덮어쓰기 예제
 
 #### 조건
@@ -1262,6 +1268,22 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | 대문자 변환 | - | array | 필드의 문자열을 대문자로 변경합니다. |  |
 | 첫글자 대문자화 | - | array | 필드의 첫 글자를 대문자로 변환하고 나머지는 소문자로 변환합니다. |  |
 | 실패 태그 | _mutate_error | 에러가 발생한 경우 정의할 태그를 입력합니다. |  |
+
+### 설정 적용 순서
+* 기본값 설정
+* 필드명 변경
+* 필드값 갱신
+* 값 대체
+* 타입 변환
+* 문자열 치환
+* 대문자 변환
+* 첫글자 대문자화
+* 소문자 변환
+* 공백 제거
+* 문자열 분할
+* 배열 결합
+* 필드 병합
+* 필드 복사
 
 ### 타입 변환 예제
 
