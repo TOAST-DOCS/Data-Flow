@@ -2062,7 +2062,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 표준 출력으로 메시지를 출력하는 노드입니다.
 * Source, Filter 노드에서 처리된 데이터를 확인할 때 유용하게 사용할 수 있습니다.
 
-### plain 코덱 출력 예제
+### 코덱 별 출력 예제
 
 #### 입력 메시지
 
@@ -2074,43 +2074,20 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 }
 ```
 
-#### 출력 메시지
+#### plain 코덱 출력 메시지
 
 ```
 2022-11-21T07:49:20Z data-flow-01 Hello World!
 ```
 
-### json 코덱 출력 예제
-
-#### 입력 메시지
-
-``` json
-{
-    "host": "data-flow-01",
-    "message": "Hello World!",
-    "@timestamp": "2022-11-21T07:49:20Z"
-}
-```
-
-#### 출력 메시지
+#### json 코덱 출력 예제
 
 ```
 {"host": "data-flow-01", "message": "Hello World!", "@timestamp": "2022-11-21T07:49:20Z"}
 ```
 
-### line 코덱 출력 예제
+#### line 코덱 출력 예제
 
-#### 입력 메시지
-
-``` json
-{
-    "host": "data-flow-01",
-    "message": "Hello World!",
-    "@timestamp": "2022-11-21T07:49:20Z"
-}
-```
-
-#### 출력 메시지
 * format은 다음과 같이 설정
   * `%{message} %{host}`
 
@@ -2118,19 +2095,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 Hello World! data-flow-01
 ```
 
-### debug 코덱 출력 예제
-
-#### 입력 메시지
-
-``` json
-{
-    "host": "data-flow-01",
-    "message": "Hello World!",
-    "@timestamp": "2022-11-21T07:49:20Z"
-}
-```
-
-#### 출력 메시지
+#### debug 코덱 출력 예제
 
 ```
 {
