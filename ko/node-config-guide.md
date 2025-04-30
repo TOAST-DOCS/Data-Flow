@@ -1237,6 +1237,440 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 }
 ```
 
+## Filter > Mutate
+
+### 노드 설명
+
+* 필드의 값을 변형하는 노드입니다.
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 설명 | 비고 |
+| --- | --- | --- | --- | --- |
+| 타입 변환 | - | hash | 필드 값을 다른 타입으로 변환합니다. | 지원하는 타입은 integer, interger_eu, float, float_eu, string, boolean 입니다. |
+| 필드 복사 | - | hash | 기존 필드를 다른 필드로 복사합니다. 필드가 존재한다면 덮어씁니다. |  |
+| 문자열 치환 | - | array | 정규식으로 문자열 일부를 교체합니다. |  |
+| 배열 결합 | - | hash | 구분자를 이용하여 배열의 요소를 하나의 문자열로 합칩니다. |  |
+| 소문자 변환 | - | array | 대상 필드의 문자열을 소문자로 변경합니다. |  |
+| 필드 병합 | - | hash | 두 필드를 합칩니다. |  |
+| 기본값 설정 | - | hash | null 값을 기본값으로 대체합니다. |  |
+| 필드명 변경 | - | hash | 필드 이름을 변경합니다. |  |
+| 값 대체 | - | hash | 필드 값을 새 값으로 교체. 필드가 없다면 새로 생성합니다.  |  |
+| 문자열 분할 | - | hash | 구분자를 이용해 문자열을 배열로 분할합니다. |  |
+| 공백 제거 | - | array | 필드의 문자열 앞뒤 공백을 제거합니다. |  |
+| 필드값 갱신 | - | hash | 필드 값을 새 값으로 교체합니다. 필드가 없다면 아무런 동작도 하지 않습니다. |  |
+| 대문자 변환 | - | array | 필드의 문자열을 대문자로 변경합니다. |  |
+| 첫글자 대문자화 | - | array | 필드의 첫 글자를 대문자로 변환하고 나머지는 소문자로 변환합니다. |  |
+| 실패 태그 | _mutate_error | 에러가 발생한 경우 정의할 태그를 입력합니다. |  |
+
+### 타입 변환 예제
+
+#### 조건
+
+```
+{
+  "message1": "integer",
+  "message2": "boolean"
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "message1": "1000",
+  "message2": "true"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+    "message1": 1000,
+    "message2": true
+}
+```
+
+#### 타입 설명
+
+* integer
+  * 문자열을 정수형으로 변환합니다. 콤마로 구분된 문자열을 지원합니다. 소수점 이하 데이터는 제거됩니다.
+    * 예: "1,000.5" -> `1000`
+  * 실수형 데이터를 정수형으로 변환합니다. 소수점 이하 데이터는 제거됩니다.
+  * boolean 형 데이터를 정수형으로 변환합니다. `true`는 `1`, `false`는 `0`으로 변환됩니다.
+* integer_eu
+  * 데이터를 정수형으로 변환합니다. 점으로 구분된 문자열을 지원합니다. 소수점 이하 데이터는 제거됩니다. 
+    * 예: "1.000,5" -> `1000`
+  * 실수형과 boolean 형 데이터는 integer와 동일합니다.
+* float
+  * 정수형 데이터를 실수형으로 변환합니다.
+  * 문자열을 실수형으로 변환합니다. 콤마로 구분된 문자열을 지원합니다.
+    * 예: "1,000.5" -> `1000.5`
+  * boolean 형 데이터를 정수형으로 변환합니다. `true`는 `1.0`, `false`는 `0.0`으로 변환됩니다.
+* float_eu
+  * 데이터를 실수형으로 변환합니다. 점으로 구분된 문자열을 지원합니다.
+    * 예: "1.000,5" -> `1000.5`
+  * 실수형과 boolean 형 데이터는 float와 동일합니다.
+* string
+  * 데이터를 UTF-8 인코딩의 문자열로 변환합니다.
+* boolean
+  * 정수형 데이터를 boolean 형으로 변환됩니다. `1`은 `true`, `0`은 `false`로 변환됩니다.
+  * 실수형 데이터를 boolean 형으로 변환됩니다. `1.0`은 `true`, `0.0`은 `false`로 변환됩니다.
+  * 문자열을 boolean 형으로 변환됩니다. `"true"`, `"t"`, `"yes"`, `"y"`, `"1"`, `"1.0"`은 `true`, `"false"`, `"f"`, `"no"`, `"n"`, `"0"`, `"0.0"`은 `false`로 변환됩니다. 빈 문자열은 `false`로 변환됩니다.
+* 배열 데이터는 각 요소가 위 설명에 맞게 변환됩니다.
+
+### 필드 복사 예제
+
+#### 조건
+
+```json
+{
+  "source_field": "dest_field"
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "source_field": "Hello World!"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "source_field": "Hello World!",
+  "dest_field": "Hello World!"
+}
+```
+
+### 문자열 치환 예제
+
+#### 조건
+
+```json
+["fieldname", "/", "_", "fieldname2", "[\\?#-]", "."]
+```
+* `fieldname` 필드의 문자열 값에서 `/`를 `_`로, `fieldname2` 필드의 문자열 값에서 `\`, `?`, `#`, `-`를 `.`으로 치환합니다.
+
+#### 입력 메시지
+```json
+{
+  "fieldname": "Hello/World",
+  "fieldname2": "Hello\\?World#Test-123"
+}
+```
+
+#### 출력 메시지
+```json
+{
+  "fieldname": "Hello_World",
+  "fieldname2": "Hello.World.Test.123"
+}
+```
+
+### 배열 결합 예제
+
+#### 조건
+
+```json
+{
+  "fieldname": ","
+}
+```
+
+#### 입력 데이터
+
+```json
+{
+  "fieldname": ["Hello", "World"]
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": "Hello,World"
+}
+```
+
+### 소문자 변환 예제
+#### 조건
+
+```json
+["fieldname"]
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": "HELLO WORLD"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+### 필드 병합 예제
+#### 조건
+
+```json
+{
+  "array_data1": "array_data1",
+  "string_data2": "string_data1",
+  "json_data1": "json_data2"
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "array_data1": ["array_data1"],
+  "array_data2": ["array_data2"],
+  "string_data1": "string_data1",
+  "string_data2": "string_data2",
+  "json_data1": {"json_field1": "json_data1"},
+  "json_data2": {"json_field2": "json_data2"}
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "string_data1": "string_data1",
+  "string_data2": ["string_data2", "string_data1"],
+  "json_data1": {"json_field2" : "json_data2", "json_field1": "json_data1"},
+  "json_data2": {"json_field2": "json_data2"},
+  "array_data": ["array_data1", "string_data1"]
+}
+```
+* array + array = 두 array를 병합
+* array + string = array에 string을 추가
+* string + string = 두 string을 요소로 하는 array로 변환
+* json + json = json 병합
+
+### 기본값 설정 예제
+
+#### 조건
+
+```json
+{
+  "fieldname": "default_value"
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": null
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": "default_value"
+}
+```
+
+### 필드명 변경 예제
+
+#### 조건
+```json
+{
+  "fieldname": "changed_fieldname"
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": "Hello World!"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "changed_fieldname": "Hello World!"
+}
+```
+
+### 값 대체 예제
+
+#### 조건
+
+```json
+{
+  "fieldname": "%{other_fieldname}: %{fieldname}",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": "Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": "DataFlow: Hello World!",
+  "other_fieldname": "DataFlow",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+### 문자열 분할 예제
+
+#### 조건
+
+```json
+{
+  "fieldname": ","
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": "Hello,World"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": ["Hello", "World"]
+}
+```
+
+### 공백 제거 예제
+
+#### 조건
+
+```json
+["field1", "field2"]
+```
+
+#### 입력 메시지
+
+```json
+{
+  "field1": "Hello World!   ",
+  "field2": "   Hello DataFlow!"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "field1": "Hello World!",
+  "field2": "Hello DataFlow!"
+}
+```
+
+### 필드값 갱신 예제
+
+#### 조건
+
+```json
+{
+  "fieldname": "%{other_fieldname}: %{fieldname}",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": "Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": "DataFlow: Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+### 대문자 변환 예제
+
+#### 조건
+
+```json
+["fieldname"]
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": "HELLO WORLD"
+}
+```
+
+### 첫글자 대문자화 예제
+
+#### 조건
+
+```json
+["fieldname"]
+```
+
+#### 입력 메시지
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "fieldname": "Hello world"
+}
+```
+
 ## Sink
 
 * Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 노드 유형입니다.
@@ -1597,6 +2031,91 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```
 2022-11-21T07:49:20.000Z e5ef7ece9bb0 %{message}
+```
+
+## Sink > stdout
+
+### 노드 설명
+
+* 표준 출력으로 메시지를 출력하는 노드입니다.
+* Source, Filter 노드에서 처리된 데이터를 확인할 때 유용하게 사용할 수 있습니다.
+
+### plain 코덱 출력 예제
+
+#### 입력 메시지
+
+``` json
+{
+    "host": "data-flow-01",
+    "message": "Hello World!",
+    "@timestamp": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 출력 메시지
+
+```
+2022-11-21T07:49:20Z data-flow-01 Hello World!
+```
+
+### json 코덱 출력 예제
+
+#### 입력 메시지
+
+``` json
+{
+    "host": "data-flow-01",
+    "message": "Hello World!",
+    "@timestamp": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 출력 메시지
+
+```
+{"host": "data-flow-01", "message": "Hello World!", "@timestamp": "2022-11-21T07:49:20Z"}
+```
+
+### line 코덱 출력 예제
+
+#### 입력 메시지
+
+``` json
+{
+    "host": "data-flow-01",
+    "message": "Hello World!",
+    "@timestamp": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 출력 메시지
+* format은 다음과 같이 설정
+  * `%{message} %{host}`
+
+```
+Hello World! data-flow-01
+```
+
+### debug 코덱 출력 예제
+
+#### 입력 메시지
+
+``` json
+{
+    "host": "data-flow-01",
+    "message": "Hello World!",
+    "@timestamp": "2022-11-21T07:49:20Z"
+}
+```
+
+#### 출력 메시지
+
+```
+{
+        "host" => "data-flow-01",
+     "message" => "Hello World!",
+  "@timestamp" => 2022-11-21T07:49:20Z
+}
 ```
 
 ## Branch
