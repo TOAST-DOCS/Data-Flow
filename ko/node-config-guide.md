@@ -625,13 +625,35 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
-| 필드 덮어쓰기 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 다른 필드의 값을 주어진 값으로 수정합니다. |  |
 | 필드 변경 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 해당 필드의 값을 주어진 값으로 수정합니다. |  |
+| 필드 덮어쓰기 | - | array of strings | 필드 값을 주어진 값과 비교하여 같을 경우 다른 필드의 값을 주어진 값으로 수정합니다. |  |
 | Coalesce | - | array of strings | 하나의 필드에 뒤이어 오는 필드 중 처음으로 null이 아닌 값을 할당합니다. |  |
 
 ### 설정 적용 순서
 
 * 각 설정은 속성 설명에 기재된 순서대로 적용됩니다.
+
+#### 조건
+
+* 필드 변경 → `["logType", "ERROR", "FAIL"]`
+* 필드 덮어쓰기 → `["logType", "FAIL", "isBillingTarget", "false"]`
+
+#### 입력 메시지
+
+```json
+{
+    "logType": "ERROR"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+    "logType": "FAIL",
+    "isBillingTarget": "false"
+}
+```
 
 ### 필드 덮어쓰기 예제
 
@@ -1269,6 +1291,27 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ### 설정 적용 순서
 * 각 설정은 속성 설명에 기재된 순서대로 적용됩니다.
+
+#### 조건
+
+* 필드값 갱신 → `{"fieldname": "new value"}`
+* 대문자 변환 → `["fieldname"]`
+
+#### 입력 메시지
+
+```json
+{
+    "fieldname": "old value"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+    "fieldname": "NEW VALUE"
+}
+```
 
 ### 기본값 설정 예제
 
