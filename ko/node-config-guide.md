@@ -642,7 +642,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```json
 {
-    "logType": "ERROR"
+    "logType": "ERROR",
+    "isBillingTarget": "true"
 }
 ```
 
@@ -663,15 +664,16 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 입력 메시지
 
-```js
+```json
 {
-    "logType": "ERROR"
+    "logType": "ERROR", 
+    "isBillingTarget": "true"
 }
 ```
 
 #### 출력 메시지
 
-```js
+```json
 {
     "logType": "ERROR",
     "isBillingTarget": "false"
