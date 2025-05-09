@@ -1661,7 +1661,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```json
 {
-  "array_data1": "array_data1",
+  "array_data1": "string_data1",
   "string_data2": "string_data1",
   "json_data1": "json_data2"
 }
@@ -1672,7 +1672,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 ```json
 {
   "array_data1": ["array_data1"],
-  "array_data2": ["array_data2"],
   "string_data1": "string_data1",
   "string_data2": "string_data2",
   "json_data1": {"json_field1": "json_data1"},
@@ -1684,11 +1683,11 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```json
 {
+  "array_data1": ["array_data1", "string_data1"],
   "string_data1": "string_data1",
   "string_data2": ["string_data2", "string_data1"],
   "json_data1": {"json_field2" : "json_data2", "json_field1": "json_data1"},
-  "json_data2": {"json_field2": "json_data2"},
-  "array_data": ["array_data1", "string_data1"]
+  "json_data2": {"json_field2": "json_data2"}
 }
 ```
 * array + array = 두 array를 병합
