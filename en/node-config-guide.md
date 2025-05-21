@@ -702,9 +702,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 ### Node Description
 
 * Node for decrypting message field values.
-* Encryption key refers to the SKM.
-    * For more information on registering SKM keys, refer to [SKM Guide Document](https://docs.nhncloud.com/en/Security/Secure%20Key%20Manager/en/overview/).
-    * ```Even if flow contains multiple Cipher Nodes, all Cipher nodes must refer to only one SKM key reference.```
+* For the encryption key, refer to symmetric keys in Secure Key Manager.
+  * Secure Key Manager symmetric keys can be created through the Secure Key Manager web console or Add Key API in Secure Key Manager.
+  * ```Even if a flow contains multiple Cipher nodes, all Cipher nodes can only refer to one Secure Key Manager's key reference.```
 
 ### Property Description 
 
