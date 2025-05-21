@@ -37,6 +37,9 @@ To define the Cipher node, click **Cipher** and configure the settings as follow
 ② For **AppKey**, enter the appkey of SKM.
 ③ For **Key ID**, entere the symmetric key ID of SKM key store.
 
+!!! tip "Tip"
+    The symmetric key version can be found in the Secure Key Manager web console under Key Details.
+
 ### Define Object Storage Node and Save Flow 
 
 ![chapter4.png](http://static.toastoven.net/prod_dataflow/en/tutorial/chapter4_v2.png)
@@ -48,7 +51,10 @@ To define the Object Storage noe, click **Object Storage** and configure the set
 ③ For **Secret Key**, enter the S3 API Credential secret key.
 ④ Click **Save Flow** to save the flow.
 
-### Flow Execution
+!!! tip "Tip"
+    S3 API credentials access key and secret key can be issued through the Object Storage web console or through Object Storage's S3 API credential issuance API.
+
+### Execute Flow
 
 ![chapter5.png](http://static.toastoven.net/prod_dataflow/en/tutorial/chapter5_v2.png)
 
