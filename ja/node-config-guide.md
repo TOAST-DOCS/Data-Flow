@@ -671,7 +671,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 出力メッセージ
 
-```jsjson
+```json
 {
     "logType": "ERROR",
     "isBillingTarget": "false"
