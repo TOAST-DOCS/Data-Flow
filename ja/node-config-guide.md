@@ -4,7 +4,7 @@
 * ノードタイプの種類はSource、Filter、Branch、Sinkです。
 * Source、Sinkノードタイプは、必ずテストを行ってエンドポイント情報が有効であることを確認することを推奨します。
 * アクセス制御が設定されたデータソースに接続する場合は、DataFlow IP固定機能を使用する必要があります。
-  * DataFlow IP固定機能を使用する場合は、サポートにお問い合わせください。
+    * DataFlow IP固定機能を使用する場合は、サポートにお問い合わせください。
 
 ## Domain Specific Language(DSL)の定義
 
@@ -133,7 +133,7 @@
 * ノードに終了時間を入力しない場合は、ストリーミング形式でログを読み込みます。終了時間を入力すると終了時間までのログを読み込み、フローを終了します。
 * ```現在、セッションログとクラッシュログはサポートしません。```
 * Log & Crash Searchのログ検索APIのトークンに影響を受けます。
-  * トークンが足りない場合はLog & Crash Searchにお問い合わせください。
+    * トークンが足りない場合はLog & Crash Searchにお問い合わせください。
 
 ### プロパティの説明
 
@@ -623,9 +623,36 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| フィールドの上書き | - | array of strings | フィールド値を与えられた値と比較して同じ場合、他のフィールドの値を与えられた値に修正します。 |  |
 | フィールドの変更 | - | array of strings | フィールドの値を与えられた値と比較して同じ場合、そのフィールドの値を指定された値に修正します。 |  |
+| フィールドの上書き | - | array of strings | フィールド値を与えられた値と比較して同じ場合、他のフィールドの値を与えられた値に修正します。 |  |
 | Coalesce | - | array of strings | 1つのフィールドに続くフィールドのうち、最初にnullではない値を割り当てます。 |  |
+
+### 設定適用順序
+
+* 各設定はプロパティ説明に記載された順番で適用されます。
+
+#### 条件
+
+* フィールド変更→ `["logType", "ERROR", "FAIL"]`
+* フィールド上書き→ `["logType", "FAIL", "isBillingTarget", "false"]`
+
+#### 入力メッセージ
+
+```json
+{
+    "logType": "ERROR",
+    "isBillingTarget": "true"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+    "logType": "FAIL",
+    "isBillingTarget": "false"
+}
+```
 
 ### フィールドの上書き例
 
@@ -635,15 +662,16 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 入力メッセージ
 
-```js
+```json
 {
-    "logType": "ERROR"
+    "logType": "ERROR", 
+    "isBillingTarget": "true"
 }
 ```
 
 #### 出力メッセージ
 
-```js
+```json
 {
     "logType": "ERROR",
     "isBillingTarget": "false"
@@ -701,8 +729,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * メッセージフィールドの値を暗号化または復号するノードです。
 * 暗号化キーはSecure Key Manager対称鍵を参照します。
-  * Secure Key Managerの対称鍵は、Secure Key ManagerのWebコンソールまたはSecure Key Managerのキー追加APIを利用して作成できます。
-  * ```1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSecure Key Managerキーリファレンスのみ参照できます。```
+    * Secure Key Managerの対称鍵は、Secure Key ManagerのWebコンソールまたはSecure Key Managerのキー追加APIを利用して作成できます。
+    * 1つのフローに複数のCipherノードが含まれていても、すべてのCipherノードは必ず1つのSecure Key Managerキーリファレンスのみ参照できます。
 
 ### プロパティの説明
 
@@ -1235,6 +1263,462 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
     "message": "このメ"
 }
 ```
+## Filter > Mutate
+
+### ノード説明
+
+* フィールドの値を変形するノードです。
+
+### プロパティの説明
+
+| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| デフォルト値設定 | - | hash | null値をデフォルト値に置き換えます。 |  |
+| フィールド名変更 | - | hash | フィールド名を変更します。 |  |
+| フィールド値更新 | - | hash | フィールドの値を新しい値に置き換えます。フィールドが存在しない場合は、何も動作しません。 |  |
+| 値置換 | - | hash | フィールドの値を新しい値に置き換えます。フィールドがない場合は新規に作成します。  |  |
+| 型変換 | - | hash | フィールドの値を他の型に変換します。 | サポートするタイプはinteger, interger_eu, float, float_eu, string, booleanです。 |
+| 文字列置換 | - | array | 正規表現で文字列の一部を置換します。 |  |
+| 大文字変換 | - | array | フィールドの文字列を大文字に変更します。 |  |
+| 最初の文字を大文字化 | - | array | フィールドの最初の文字を大文字に変換し、残りの文字は小文字に変換します。 |  |
+| 小文字変換 | - | array | 対象フィールドの文字列を小文字に変更します。 |  |
+| 空白除去 | - | array | フィールドの文字列の前後の空白を除去します。 |  |
+| 文字列分割 | - | hash | 区切り文字を利用して文字列を配列に分割します。 |  |
+| 配列の結合 | - | hash | 区切り文字を利用して配列の要素を1つの文字列に結合します。 |  |
+| フィールドの結合 | - | hash | 2つのフィールドを結合します。 |  |
+| フィールドコピー | - | hash | 既存のフィールドを別のフィールドにコピーします。フィールドが存在する場合は上書きします。 |  |
+| 失敗タグ | _mutate_error | string | エラーが発生した場合、定義するタグを入力します。 |  |
+
+### 設定適用順序
+* 各設定はプロパティ説明に記載された順番で適用されます。
+
+#### 条件
+
+* フィールド値更新→ `{"fieldname": "new value"}`
+* 大文字変換→ `["fieldname"]`
+
+#### 入力メッセージ
+
+```json
+{
+    "fieldname": "old value"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+    "fieldname": "NEW VALUE"
+}
+```
+
+### デフォルト値設定例
+
+#### 条件
+
+```json
+{
+  "fieldname": "default_value"
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": null
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": "default_value"
+}
+```
+
+### フィールド名変更例
+
+#### 条件
+```json
+{
+  "fieldname": "changed_fieldname"
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": "Hello World!"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "changed_fieldname": "Hello World!"
+}
+```
+
+### フィールド値更新例
+
+#### 条件
+
+```json
+{
+  "fieldname": "%{other_fieldname}: %{fieldname}",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": "Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": "DataFlow: Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+### 値代替例
+
+#### 条件
+
+```json
+{
+  "fieldname": "%{other_fieldname}: %{fieldname}",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": "Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": "DataFlow: Hello World!",
+  "other_fieldname": "DataFlow",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+### 型変換例
+
+#### 条件
+
+```
+{
+  "message1": "integer",
+  "message2": "boolean"
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "message1": "1000",
+  "message2": "true"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+    "message1": 1000,
+    "message2": true
+}
+```
+
+#### タイプ説明
+
+* integer
+  * 文字列を整数型に変換します。コンマで区切られた文字列をサポートします。小数点以下のデータは削除されます。
+    * 例："1,000.5" -> `1000`
+  * 実数型データを整数型に変換します。小数点以下のデータは削除されます。
+  * boolean型のデータを整数型に変換します。true`は`1`, `false`は`0`に変換されます。
+* integer_eu
+  * データを整数型に変換します。ドットで区切られた文字列をサポートします。小数点以下のデータは削除されます。
+    * 例："1.000,5" -> `1000`
+  * 実数型とboolean型データはintegerと同じです。
+* float
+  * 整数型データを実数型に変換します。
+  * 文字列を実数型に変換します。コンマで区切られた文字列をサポートします。
+    * 例："1,000.5" -> `1000.5`
+  * boolean型のデータを整数型に変換します。true`は`1.0`, `false`は`0.0`に変換されます。
+* float_eu
+  * データを実数型に変換します。ドットで区切られた文字列をサポートします。
+    * 例："1.000,5" -> `1000.5`
+  * 実数型とboolean型データはfloatと同じです。
+* string
+  * データをUTF-8エンコードの文字列に変換します。
+* boolean
+  * 整数型データをboolean型に変換します。1`は`true`, `0`は`false`に変換されます。
+  * 実数型データをboolean型に変換します。1.0`は`true`, `0.0`は`false`に変換されます。
+  * 文字列をboolean型に変換します。 `"true"`, `"t"`, `"yes"`, `"y"`, `"1"`, `"1.0"`は`true`, `"false"`, `"f"`, `"no"`, `"n"`, `"0"`, `"0.0"`は`false`に変換されます。空の文字列は`false`に変換されます。
+* 配列データは、各要素が上記の説明に従って変換されます。
+
+### 文字列置換の例
+
+#### 条件
+
+```json
+["fieldname", "/", "_", "fieldname2", "[\\?#-]", "."]
+```
+* `fieldname`フィールドの文字列値の`/`を`_`に、`fieldname2`フィールドの文字列値の`\`, `?`, `#`, `-`を`.`に置換します。
+
+#### 入力メッセージ
+```json
+{
+  "fieldname": "Hello/World",
+  "fieldname2": "Hello\\?World#Test-123"
+}
+```
+
+#### 出力メッセージ
+```json
+{
+  "fieldname": "Hello_World",
+  "fieldname2": "Hello.World.Test.123"
+}
+```
+
+### 大文字変換例
+
+#### 条件
+
+```json
+["fieldname"]
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": "HELLO WORLD"
+}
+```
+
+### 最初の文字を大文字化する例
+
+#### 条件
+
+```json
+["fieldname"]
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": "Hello world"
+}
+```
+
+### 小文字変換例
+#### 条件
+
+```json
+["fieldname"]
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": "HELLO WORLD"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+### 空白を削除する例
+
+#### 条件
+
+```json
+["field1", "field2"]
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "field1": "Hello World!   ",
+  "field2": "   Hello DataFlow!"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "field1": "Hello World!",
+  "field2": "Hello DataFlow!"
+}
+```
+
+### 文字列分割例
+
+#### 条件
+
+```json
+{
+  "fieldname": ","
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "fieldname": "Hello,World"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": ["Hello", "World"]
+}
+```
+
+### 配列結合例
+
+#### 条件
+
+```json
+{
+  "fieldname": ","
+}
+```
+
+#### 入力データ
+
+```json
+{
+  "fieldname": ["Hello", "World"]
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "fieldname": "Hello,World"
+}
+```
+
+### フィールド結合例
+#### 条件
+
+```json
+{
+  "array_data1": "string_data1",
+  "string_data2": "string_data1",
+  "json_data1": "json_data2"
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "array_data1": ["array_data1"],
+  "string_data1": "string_data1",
+  "string_data2": "string_data2",
+  "json_data1": {"json_field1": "json_data1"},
+  "json_data2": {"json_field2": "json_data2"}
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "array_data1": ["array_data1", "string_data1"],
+  "string_data1": "string_data1",
+  "string_data2": ["string_data2", "string_data1"],
+  "json_data1": {"json_field2" : "json_data2", "json_field1": "json_data1"},
+  "json_data2": {"json_field2": "json_data2"}
+}
+```
+* array + array = 2つのarrayを結合
+* array + string = arrayにstringを追加
+* string + string = 2つのstringを要素とするarrayに変換
+* json + json = json結合
+
+### フィールドコピー例
+
+#### 条件
+
+```json
+{
+  "source_field": "dest_field"
+}
+```
+
+#### 入力メッセージ
+
+```json
+{
+  "source_field": "Hello World!"
+}
+```
+
+#### 出力メッセージ
+
+```json
+{
+  "source_field": "Hello World!",
+  "dest_field": "Hello World!"
+}
+```
 
 ## Sink
 
@@ -1596,6 +2080,56 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```
 2022-11-21T07:49:20.000Z e5ef7ece9bb0 %{message}
+```
+
+## Sink > stdout
+
+### ノード説明
+
+* 標準出力でメッセージを出力するノードです。
+* Source、Filterノードで処理されたデータを確認する際に便利です。
+
+### コーデック別出力例
+
+#### 入力メッセージ
+
+``` json
+{
+    "host": "data-flow-01",
+    "message": "Hello World!",
+    "@timestamp": "2022-11-21T07:49:20Z"
+}
+```
+
+#### plainコーデック出力メッセージ
+
+```
+2022-11-21T07:49:20Z data-flow-01 Hello World!
+```
+
+#### jsonコーデック出力例
+
+```
+{"host": "data-flow-01", "message": "Hello World!", "@timestamp": "2022-11-21T07:49:20Z"}
+```
+
+#### lineコーデック出力例
+
+* formatは次のように設定
+  * `%{message} %{host}`
+
+```
+Hello World! data-flow-01
+```
+
+#### debugコーデック出力例
+
+```
+{
+        "host" => "data-flow-01",
+     "message" => "Hello World!",
+  "@timestamp" => 2022-11-21T07:49:20Z
+}
 ```
 
 ## Branch
