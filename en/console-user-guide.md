@@ -5,7 +5,7 @@ DataFlow can be used in the following order:
 * Enable Service
     1. Create a project.
     2. Select the desired project.
-    3. Activate DataFlow.
+    3. Enable the DataFlow service.
 * Execute Flow
     1. Create a flow by entering a name and description.
     2. Add the nodes you need, and enter settings to define how each node behaves.
