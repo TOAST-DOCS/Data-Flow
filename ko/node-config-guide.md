@@ -2084,7 +2084,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 2022-11-21T07:49:20.000Z e5ef7ece9bb0 %{message}
 ```
 
-## Sink > stdout
+## Sink > Stdout
 
 ### 노드 설명
 
