@@ -124,22 +124,22 @@
 }
 ```
 
-## (NHN Cloud) Log&Crash Search
+## (NHN Cloud) Log & Crash Search
 
 ### Node Description
 
-* (NHN Cloud) Log&Crash Search Node is node that reads logs from Log&Crash Search.
+* (NHN Cloud) Log & Crash Search Node is node that reads logs from Log & Crash Search.
 * You can set the log query start time for a node. If not set, the log is read from the start of the flow.
 * If no end time is entered in the node, logs are read in streaming format. If an end time is entered, logs are read up to the end time and the flow ends.
 * ```Currently, session logs and crash logs are not supported.```
-* Affected by tokens from Log&Crash Search's Log Search API.
-    * If you don't have enough tokens, you need to contact Log&Crash Search.
+* Affected by tokens from Log & Crash Search's Log Search API.
+    * If you don't have enough tokens, you need to contact Log & Crash Search.
 
 ### Property Description 
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Appkey | - | string | Enter the app key for Log&Crash Search. |  |
+| Appkey | - | string | Enter the app key for Log & Crash Search. |  |
 | SecretKey | - | string | Enter the secret key for Log & Crash Search. |  |
 | Query Start time | - | string | Enter the start time of log query. | [Note](#dsl) |
 | Query End time | - | string | Enter the end time of log query. |  |
@@ -625,9 +625,36 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | Property name | Default value | Data type | Description | Others |
 | --- | --- | --- | --- | --- |
-| Overwrite Field | - | array of strings | Compare the field value to a given value, if they are equal, modify other field value to the given value.|  |
 | Modify Field | - | array of strings | Compare the field value to a given value, if they are equal, modify the field value to the given value. |  |
+| Overwrite Field | - | array of strings | Compare the field value to a given value, if they are equal, modify other field value to the given value. |  |
 | Coalesce | - | array of strings | Assign a non-null value to the first of the fields that follow one field. |  |
+
+### Order of applying settings
+
+* Each setting is applied in the order listed in the property description.
+
+#### Condition
+
+* Modify Field → `["logType", "ERROR", "FAIL"]`
+* Overwrite Field → `["logType", "FAIL", "isBillingTarget", "false"]`
+
+#### Input message
+
+```json
+{
+    "logType": "ERROR",
+    "isBillingTarget": "true"
+}
+```
+
+#### Output message
+
+```json
+{
+    "logType": "FAIL",
+    "isBillingTarget": "false"
+}
+```
 
 ### Example of Overwrite Field
 
@@ -637,15 +664,16 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### Input message
 
-```js
+```json
 {
-    "logType": "ERROR"
+    "logType": "ERROR",
+    "isBillingTarget": "true"
 }
 ```
 
 #### Output message
 
-```js
+```json
 {
     "logType": "ERROR",
     "isBillingTarget": "false"
@@ -704,7 +732,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * Node for decrypting message field values.
 * For the encryption key, refer to symmetric keys in Secure Key Manager.
   * Secure Key Manager symmetric keys can be created through the Secure Key Manager web console or Add Key API in Secure Key Manager.
-  * ```Even if a flow contains multiple Cipher nodes, all Cipher nodes can only refer to one Secure Key Manager's key reference.```
+  * Even if a flow contains multiple Cipher nodes, all Cipher nodes can only refer to one Secure Key Manager's key reference.
 
 ### Property Description 
 
@@ -1233,8 +1261,465 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```js
 {
-    "message": "This messa"
+    "message": "This message"
     }
+```
+
+## Filter > Mutate
+
+### Node Description
+
+* A node that transforms the value of a field.
+
+### Property Description
+
+| Property name | Default value | Data type | Description | Remarks |
+| --- | --- | --- | --- | --- |
+| Setting defaults | - | Hash | Replace null with defaults. |  |
+| Rename Field | - | Hash | Rename the field. |  |
+| Update field values | - | Hash | Replaces the field value with the new value. If the field does not exist, no action is taken. |  |
+| Replace Value | - | Hash | Replace the field value with a new value. If there is no field, create a new field.  |  |
+| Convert Type | - | Hash | Convert the field value to another type. | The following types are supported: integer, interger_eu, float, float_eu, string, and boolean. |
+| Replace String | - | array | Replace the part of string with regular expression. |  |
+| Uppercase Letter | - | array | Uppercase Letter the string in the target field to uppercase letter. |  |
+| Capitalize First Letter | - | array | Convert the first letter in the target field to uppercase letter, and the rest to lowercase letter. |  |
+| Lowercase Letter | - | array | Lowercase the string in the target field to lowercase letter. |  |
+| Strip Space | - | array | Remove spaces before and after the string in the target field. |  |
+| Split String | - | Hash | Split strings using separators. |  |
+| Join Array | - | Hash | Join array elements to separator. |  |
+| Merge Field | - | Hash | Merge the two fields. |  |
+| Copy Field | - | Hash | Copy the existing field to another field. If the field exists, overwrite field. |  |
+| Failure Tag | \_mutate_error | string | Enter a tag to define if an error occurs. |  |
+
+### Order of applying settings
+* Each setting is applied in the order listed in the property description.
+
+#### Condition
+
+* Update Field Value → `{"fieldname": "new value"}`
+* Uppercase Letter → `["fieldname"]`
+
+#### Input message
+
+```json
+{
+    "fieldname": "old value"
+}
+```
+
+#### Output message
+
+```json
+{
+    "fieldname": "NEW VALUE"
+}
+```
+
+### Example of setting default
+
+#### Condition
+
+```json
+{
+  "fieldname": "default_value"
+}
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": null
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": "default_value"
+}
+```
+
+### Example of renaming a field
+
+#### Condition
+```json
+{
+  "fieldname": "changed_fieldname"
+}
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": "Hello World!"
+}
+```
+
+#### Output message
+
+```json
+{
+  "changed_fieldname": "Hello World!"
+}
+```
+
+### Example of updating field values
+
+#### Condition
+
+```json
+{
+  "fieldname": "%{other_fieldname}: %{fieldname}",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": "Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": "DataFlow: Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+### Example of replacing values
+
+#### Condition
+
+```json
+{
+  "fieldname": "%{other_fieldname}: %{fieldname}",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": "Hello World!",
+  "other_fieldname": "DataFlow"
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": "DataFlow: Hello World!",
+  "other_fieldname": "DataFlow",
+  "not_exist_fieldname": "DataFlow"
+}
+```
+
+### Example of converting types
+
+#### Condition
+
+```
+{
+  "message1": "integer",
+  "message2": "boolean"
+}
+```
+
+#### Input message
+
+```json
+{
+  "message1": "1000",
+  "message2": "true"
+}
+```
+
+#### Output message
+
+```json
+{
+    "message1": 1000,
+    "message2": true
+}
+```
+
+#### Type Description
+
+* integer
+  * Converts strings to integers. Supports comma-separated strings. Fractional parts are discarded.
+    * Example: "1,000.5" -> `1000`
+  * Converts floats to integers. Fractional parts are discarded.
+  * Converts boolean values to integers: `true` is converted to `1`, `false` to `0`.
+* integer_eu
+  * Converts data to integers. Supports dot-separated strings. Fractional parts are discarded. 
+    * Example: "1.000,5" -> `1000`
+  * Float and boolean values are treated the same as integers.
+* float
+  * Converts integers to floats.
+  * Converts strings to floats. Supports comma-separated strings.
+    * Example: "1,000.5" -> `1000.5`
+  * Converts boolean values to integers: `true`is converted to `1.0`, `false` to `0.0`.
+* float_eu
+  * Converts data to floats. Supports dot-delimited strings.
+    * Example: "1.000,5" -> `1000.5`
+  * Float and boolean values are treated the same as floats.
+* string
+  * Converts data to strings with UTF-8 encoding.
+* boolean
+  * Converts integers to boolean values. A `1`is converted to `true` and a `0` to `false`.
+  * Converts floats to boolean values. A `1.0`is converted to `true`, and a `0.0` to `false`.
+  * Converts strings to boolean values: `"true"`, `"t"`, `"yes"`, `"y"`, `"1"`, `"1.0"`are converted to `true`, `"false"`, `"f"`, `"no"`, `"n"`, `“0"`, `“0.0"`are converted to `false`. The empty strings are converted to`false`.
+* Array data elements are converted as described above.
+
+### Example of replacing string
+
+#### Condition
+
+```json
+["fieldname", "/", "_", "fieldname2", "[\\?#-]", "."]
+```
+* Replace `/` with `_` in the string values in the `fieldname` field and `\`, `?`, `#`, and `-`with `.` in the string values in the `fieldname2` field.
+
+#### Input message
+```json
+{
+  "fieldname": "Hello/World",
+  "fieldname2": "Hello\\?World#Test-123"
+}
+```
+
+#### Output message
+```json
+{
+  "fieldname": "Hello_World",
+  "fieldname2": "Hello.World.Test.123"
+}
+```
+
+### Example of uppercase letter
+
+#### Condition
+
+```json
+["fieldname"]
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": "HELLO WORLD"
+}
+```
+
+### Example of capitalizing the first letter
+
+#### Condition
+
+```json
+["fieldname"]
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": "Hello world"
+}
+```
+
+### Example of lowercase letter
+#### Condition
+
+```json
+["fieldname"]
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": "HELLO WORLD"
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": "hello world"
+}
+```
+
+### Example of stripping spaces
+
+#### Condition
+
+```json
+["field1", "field2"]
+```
+
+#### Input message
+
+```json
+{
+  "field1": "Hello World!   ",
+  "field2": "   Hello DataFlow!"
+}
+```
+
+#### Output message
+
+```json
+{
+  "field1": "Hello World!",
+  "field2": "Hello DataFlow!"
+}
+```
+
+### Example of splitting strings
+
+#### Condition
+
+```json
+{
+  "fieldname": ","
+}
+```
+
+#### Input message
+
+```json
+{
+  "fieldname": "Hello,World"
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": ["Hello", "World"]
+}
+```
+
+### Example of joining arrays
+
+#### Condition
+
+```json
+{
+  "fieldname": ","
+}
+```
+
+#### Input Data
+
+```json
+{
+  "fieldname": ["Hello", "World"]
+}
+```
+
+#### Output message
+
+```json
+{
+  "fieldname": "Hello,World"
+}
+```
+
+### Example of merging fields
+#### Condition
+
+```json
+{
+  "array_data1": "string_data1",
+  "string_data2": "string_data1",
+  "json_data1": "json_data2"
+}
+```
+
+#### Input message
+
+```json
+{
+  "array_data1": ["array_data1"],
+  "string_data1": "string_data1",
+  "string_data2": "string_data2",
+  "json_data1": {"json_field1": "json_data1"},
+  "json_data2": {"json_field2": "json_data2"}
+}
+```
+
+#### Output message
+
+```json
+{
+  "array_data1": ["array_data1", "string_data1"],
+  "string_data1": "string_data1",
+  "string_data2": ["string_data2", "string_data1"],
+  "json_data1": {"json_field2" : "json_data2", "json_field1": "json_data1"},
+  "json_data2": {"json_field2": "json_data2"}
+}
+```
+* array + array = merge two arrays
+* array + string = add string to array
+* string + string = convert two strings to an array with two strings as elements
+* json + json = json merge
+
+### Example of copying fields
+
+#### Condition
+
+```json
+{
+  "source_field": "dest_field"
+}
+```
+
+#### Input message
+
+```json
+{
+  "source_field": "Hello World!"
+}
+```
+
+#### Output message
+
+```json
+{
+  "source_field": "Hello World!",
+  "dest_field": "Hello World!"
+}
 ```
 
 ## Sink
@@ -1446,20 +1931,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 /obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
 ```
 
-## Sink > (NHN Cloud) Object Storage - Parquet
-
-### Node Description
-
-* This node converts data to parquet type and uploads it to NHN Cloud's Object Storage.
-* Objects written to OBS are output in the following path format by default.
-    * `/{container_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/ls.s3.{uuid}.{yyyy}-{MM}-{dd}T{HH}.{mm}.part{seq_id}.parquet`
-* (NHN Cloud) Same as Object Storage node, but some values are changed as below to support parquet type.
-    * Codec fixed to parquet
-    * When the object rotation policy is not entered, the default policy is applied as follows.
-        * Object size: 128 MB (134,217,728 bytes)
-        * Base time: 60 min
-    * Encoding fixed to none
-
 ## Sink > (Amazon) S3
 
 ### Node Description
@@ -1611,6 +2082,56 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```
 2022-11-21T07:49:20.000Z e5ef7ece9bb0 %{message}
+```
+
+## Sink > stdout
+
+### Node Description
+
+* Node that outputs messages to standard output.
+* This is useful for checking the data processed by the Source, Filter nodes.
+
+### Example output by codec
+
+#### Input message
+
+``` json
+{
+    "host": "data-flow-01",
+    "message": "Hello World!",
+    "@timestamp": "2022-11-21T07:49:20Z"
+}
+```
+
+#### Plain codec output message
+
+```
+2022-11-21T07:49:20Z data-flow-01 Hello World!
+```
+
+#### JSON codec output example
+
+```
+{"host": "data-flow-01", "message": "Hello World!", "@timestamp": "2022-11-21T07:49:20Z"}
+```
+
+#### LINE codec output example
+
+* format is set to
+  * `%{message} %{host}`
+
+```
+Hello World! data-flow-01
+```
+
+#### Debug codec output example
+
+```
+{
+        "host" => "data-flow-01",
+     "message" => "Hello World!",
+  "@timestamp" => 2022-11-21T07:49:20Z
+}
 ```
 
 ## Branch
