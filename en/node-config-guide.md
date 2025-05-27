@@ -1275,7 +1275,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 | Property name | Default value | Data type | Description | Remarks |
 | --- | --- | --- | --- | --- |
-| Setting defaults | - | Hash | Replace null with defaults. |  |
+| Set Defaults | - | Hash | Replace null with defaults. |  |
 | Rename Field | - | Hash | Rename the field. |  |
 | Update field values | - | Hash | Replaces the field value with the new value. If the field does not exist, no action is taken. |  |
 | Replace Value | - | Hash | Replace the field value with a new value. If there is no field, create a new field.  |  |
