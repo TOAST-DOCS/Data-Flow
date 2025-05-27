@@ -1,5 +1,16 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### May 27, 2025
+#### Feature Updates
+* Added new nodes
+    * Filter
+        * Mutate: A node that can rename fields or transform field values.
+    * Sink
+        * Stdout: A node that outputs flow events to the log. It can be used for debugging purposes.
+
+#### Bug Fixes
+* Fixed an issue where View Logs feature did not function properly when logs accumulated too quickly.
+
 ### March 4, 2025
 #### Bug Fixes
 * Fixed an issue where flow event in/out graphs are not displayed correctly.
