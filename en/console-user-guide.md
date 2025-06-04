@@ -18,7 +18,7 @@ DataFlow can be used in the following order:
 Page that queries and manages the flow metadata information.
 Click **Data & Analytics > DataFlow > Management**.
 
-![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main.png)
+![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main_2025_06.png)
 
 ### Search
 
@@ -137,7 +137,7 @@ You can also adjust the screen proportion to specified percentage by using Resiz
 
 Displays detailed flow metadata.
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_2024_06.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_2025_06.png)
 
 * Display the name and description information entered when creating a flow.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
@@ -150,7 +150,6 @@ Displays detailed flow metadata.
 * You can view logs for the recent 15 minutes.
 
 ### Basic Information - All Logs
-![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_lncs_query.png)
 * When you enable Log & Crash Search, you can copy Lucene Query to view flow logs from Log & Crash Search.
 
 ### Basic Information - Scheduling
@@ -168,7 +167,7 @@ Displays detailed flow metadata.
 
 Define a flow logic.
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail_2025_06.png)
 
 * Define a flow by importing flow components from Node type or Template from flow settings.
     * The Collapse/Expand button allows to zoom-in/zoom-out the flow screen.
@@ -210,7 +209,7 @@ Define a flow logic.
 
 Displays the history of flow modification.
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory_2025_06.png)
 
 * Display the date and user information that has been modified.
 * Display the commit name entered during Save/Temporarily Save.
@@ -220,7 +219,7 @@ Displays the history of flow modification.
 
 Display history of the request to start/end flow.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2024_06.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2025_06.png)
 
 * Display the date of execution and user information.
 * Display the requested behavior.
