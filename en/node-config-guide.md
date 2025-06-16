@@ -107,6 +107,14 @@
 
 * Node type that defines an endpoint that imports data to the flow.
 
+### Execution Mode
+
+* The Source node has two execution modes, BATCH and STREAMING.
+    * STREAMING mode: Processes data in real time without exiting the flow.
+    * BATCH mode: Processes a set amount of data and then terminates the flow.
+* Different Source nodes support different execution modes.
+* In a single flow, all source nodes must be set to the same execution mode.
+
 ## Common Settings on Source Node
 
 | Property name | Default value | Data type | Description | Others |
@@ -135,6 +143,10 @@
 * Affected by tokens from Log & Crash Search's Log Search API.
     * If you don't have enough tokens, you need to contact Log & Crash Search.
 
+### Execution Mode
+* STREAMING: Continues processing data after the `Query Start time`.
+* BATCH: Processes all data that falls between the `Query Start time` and the `Query End time` and ends the flow.
+
 ### Property Description 
 
 | Property name | Default value | Data type | Description | Others |
@@ -145,8 +157,6 @@
 | Query End time | - | string | Enter the end time of log query. |  |
 | Number of retries | - | number | Enter the maximum number of times to retry when a log query fails. |  |
 
-* Set the query start and end time
-    * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
 * Set the number of retries
     * If the number of retries fails, no more log queries are attempted, and the flow ends.
 
@@ -178,6 +188,10 @@
 * You can set the data query start time for a node. If not set, data is read from the start of the flow.
 * If no end time is entered in the node, data is read in streaming format. If an end time is entered, the data up to the end time is read and the flow ends.
 
+### Execution Mode
+* STREAMING: Continues processing data after the `Query Start time`.
+* BATCH: Processes all data that falls between the `Query Start time` and the `Query End time` and ends the flow.
+
 ### Property Description 
 
 | Property name | Default value | Data type | Description | Others |
@@ -187,8 +201,6 @@
 | Log End time | - | string | Enter the end time of data Query. |  |
 | Number of retries | - | number | Enter the maximum number of times to retry when data query fails. |  |
 
-* Set the query start and end time
-    * Even if the query end time is later than the flow execution time, the flow does not wait until the query end time and ends after querying only the currently available data.
 * Set the number of retries
     * If the number of retries fails, no more data queries are attempted, and the flow ends.
 
@@ -218,6 +230,10 @@
 
 * Node that receives data from Object Storage of NHN Cloud.
 * Based on the object creation time, data is read from the object created the earliest.
+
+### Execution Mode
+* STREAMING: Updates the object list on each `list update cycle`and processes data by reading newly added objects.
+* BATCH: Fetches the object list once at the beginning of the flow, reads the objects, processes the data, and ends the flow.
 
 ### Property Description 
 
@@ -315,6 +331,10 @@
 
 * Node for uploading data to Amazon S3.
 * Based on the object creation time, data is read from the object created the earliest.
+
+### Execution Mode
+* STREAMING: Updates the object list on each `list update cycle`and processes data by reading newly added objects.
+* BATCH: Updates the object list once at the start of the flow, then reads the objects, processes the data, and ends the flow.
 
 ### Property Description 
 
@@ -418,6 +438,12 @@
 ### Node Description
 
 * Node that receives data from Kafka.
+
+### Execution Mode
+* STREAMING: Processes data every time a new message arrives in a topic.
+
+!!! danger "Caution"
+    * Kafka nodes do not support BATCH mode.
 
 ### Property Description 
 
@@ -557,6 +583,10 @@
 
 * JDBC is a node that executes queries to the DB at a given interval to retrieve results.
 * Supports MySQL, MS-SQL, PostgreSQL, MariaDB, and Oracle drivers.
+
+### Execution Mode
+* STREAMING: Processes data by executing a query at every `query execute frequency`.
+* BATCH: Executes the query once at the beginning of the flow, processes the data, and ends the flow.
 
 ### Property Description
 

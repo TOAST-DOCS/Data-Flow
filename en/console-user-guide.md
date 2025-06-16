@@ -154,9 +154,8 @@ Displays detailed flow metadata.
 
 ### Basic Information - Scheduling
 
-* Scheduling feature allows you to schedule flow execution.
-* If a flow is already running when the start time registered with Scheduler has arrived, the execution by Scheduler fails.
-* **Currently, only the Scheduled Execution feature is supported. Additional features will be supported in the future.**
+* Cloud Scheduler service allows you to schedule flow execution.
+* Create a schedule by selecting the`Start Flow` and `End Flow` target templates in the Cloud Scheduler service. 
 
 ### Basic Information - Instance Type
 
