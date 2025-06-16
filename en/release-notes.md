@@ -1,5 +1,12 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+## June 24, 2025
+#### Feature Updates
+* Replaced the scheduling functionality to integrate with the Cloud Scheduler service.
+* Added an execution mode setting to the source node.
+    * STREAMING: Processes data in real time without exiting the flow.
+    * BATCH: Processes a set amount of data and then terminates the flow.
+
 ### May 27, 2025
 #### Feature Updates
 * Added new nodes
