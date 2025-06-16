@@ -18,7 +18,7 @@ DataFlowは、次の順序で使用できます。
 フローメタデータ情報を照会、管理するページです。
 **Data & Analytics > DataFlow > 管理**をクリックします。
 
-![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main.png)
+![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main_2025_06.png)
 
 ### 検索
 
@@ -137,7 +137,7 @@ DataFlowは、次の順序で使用できます。
 
 詳細なフローメタデータを表示します。
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_2024_06.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_2025_06.png)
 
 * フロー作成時に入力した名前と説明情報を表示します。
 * フロー作成日とコンストラクタ名をはじめ、最近の修正日/修正者、最近の実行日/実行者情報を表示します。
@@ -150,14 +150,12 @@ DataFlowは、次の順序で使用できます。
 * 過去15分のログを確認できます。
 
 ### 基本情報 - 全体ログ
-![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_lncs_query.png)
 * Log & Crash Searchを連動した場合、Log & Crash Searchでフローログを照会するためのLucene Queryをコピーできます。
 
 ### 基本情報 - スケジューリング
 
-* スケジューリング機能によりフローの実行を予約できます。
-* スケジューラに登録された開始時期になった時にフローが実行中の場合、スケジューラによる実行は失敗します。
-* [通知]現在は予約実行機能のみサポートします。今後機能を追加サポートする予定です。
+* Cloud Schedulerサービスでフローの実行及び終了を予約できます。
+* Cloud Schedulerサービスで`フロー開始`、`フロー終了`対象テンプレートを選択してスケジュールを作成してください。 
 
 ### 基本情報 - インスタンスタイプ
 
@@ -168,7 +166,7 @@ DataFlowは、次の順序で使用できます。
 
 フローロジックを定義します。
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail_2025_06.png)
 
 * フロー設定からノードタイプまたはテンプレートからフローコンポーネントを呼び出してフローを定義します。
     * 折りたたみおよび展開アイコンをクリックしてフロー画面を拡張または縮小できます。
@@ -210,7 +208,7 @@ DataFlowは、次の順序で使用できます。
 
 フローを修正した履歴を表示します。
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory_2025_06.png)
 
 * 修正した日付とユーザー情報を表示します。
 * 保存/一時保存時に入力したコミット名を表示します。
@@ -220,7 +218,7 @@ DataFlowは、次の順序で使用できます。
 
 フロー開始/終了リクエストした履歴を表示します。
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2024_06.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2025_06.png)
 
 * 実行した日付とユーザー情報を表示します。
 * リクエストした動作を表示します。
