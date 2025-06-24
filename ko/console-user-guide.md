@@ -18,7 +18,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 플로우 메타데이터 정보를 조회하고 관리하는 페이지입니다.
 **Data & Analytics > DataFlow > 관리**를 클릭합니다.
 
-![management_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_main.png)
+![management_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_main_2025_06.png)
 
 ### 검색
 
@@ -137,7 +137,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 상세한 플로우 메타데이터를 표시합니다.
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2024_06.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2025_06.png)
 
 * 플로우 생성 시 입력한 이름과 설명 정보를 표시합니다.
 * 플로우 생성 날짜와 생성자 이름을 비롯한 최근 수정일/수정자, 최근 실행일/실행자 정보를 표시합니다.
@@ -150,14 +150,12 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 최근 15분의 로그를 확인할 수 있습니다.
 
 ### 기본 정보 - 전체 로그
-![management_basicinfo_lncs_query.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_lncs_query.png)
 * Log & Crash Search를 연동한 경우 Log & Crash Search에서 플로우 로그를 조회하기 위한 Lucene Query를 복사할 수 있습니다.
 
 ### 기본 정보 - 스케줄링
 
-* 스케줄링 기능을 통해 플로우 실행을 예약할 수 있습니다.
-* 스케줄러에 등록된 시작 시기가 도래했을 때 만약 플로우가 실행 중이라면 스케줄러에 의한 실행은 실패합니다.
-* [알림] 현재는 예약 실행 기능만 지원합니다. 추후 기능을 추가 지원할 예정입니다.
+* Cloud Scheduler 서비스를 통해 플로우의 실행 및 종료를 예약할 수 있습니다.
+* Cloud Scheduler 서비스에서 `플로우 시작`, `플로우 종료` 대상 템플릿을 선택해 일정을 생성하세요. 
 
 ### 기본 정보 - 인스턴스 타입
 
@@ -168,7 +166,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우 로직을 정의합니다.
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_detail.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_detail_2025_06.png)
 
 * 플로우 설정으로부터 노드 유형이나 템플릿으로부터 플로우 구성 요소를 불러와 플로우를 정의합니다.
     * 접기 및 펼치기 아이콘을 클릭해 플로우 화면을 확장하거나 축소할 수 있습니다.
@@ -210,7 +208,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우를 수정한 이력을 표시합니다.
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_flowhistory.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_flowhistory_2025_06.png)
 
 * 수정한 날짜와 사용자 정보를 표시합니다.
 * 저장/임시 저장 시 입력한 커밋명을 표시합니다.
@@ -220,7 +218,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우 시작/종료 요청한 이력을 표시합니다.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2024_06.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_06.png)
 
 * 실행한 날짜와 사용자 정보를 표시합니다.
 * 요청한 동작을 표시합니다.

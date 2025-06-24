@@ -1,5 +1,23 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+## June 24, 2025
+#### Feature Updates
+* Replaced the scheduling functionality to integrate with the Cloud Scheduler service.
+* Added an execution mode setting to the source node.
+    * STREAMING: Processes data in real time without exiting the flow.
+    * BATCH: Processes a set amount of data and then terminates the flow.
+
+### May 27, 2025
+#### Feature Updates
+* Added new nodes
+    * Filter
+        * Mutate: A node that can rename fields or transform field values.
+    * Sink
+        * Stdout: A node that outputs flow events to the log. It can be used for debugging purposes.
+
+#### Bug Fixes
+* Fixed an issue where View Logs feature did not function properly when logs accumulated too quickly.
+
 ### March 4, 2025
 #### Bug Fixes
 * Fixed an issue where flow event in/out graphs are not displayed correctly.
