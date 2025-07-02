@@ -16,6 +16,7 @@
 | LNCS_UNAUTHENTICATED       | Log & Crash Search 노드의 앱키, 비밀 키가 유효하지 않습니다.                                        |
 | LNCS_SEARCH_LIMIT          | Log & Crash Search 노드가 검색 제한에 도달했습니다.    고객 센터로 문의하세요.                             |
 | LNCS_SERVICE_UNSTABLE      | Log & Crash Search 서비스가 불안정한 상태입니다.   고객 센터로 문의하세요.                                |
+| LNCS_INVALID_PROPERTY      | Log & Crash Search 노드의 속성이 올바르지 않습니다.                                              |
 | KAFKA_ENDPOINT_INVALID     | Kafka 엔드포인트에 접근할 수 없습니다.                                                           |
 | S3_UNAUTHENTICATED         | S3, Object Storage 노드의 엑세스 키 또는 비밀 키가 유효하지 않습니다.                                   |
 | S3_ACCESS_DENIED           | S3, Object Storage 저장소에 접근이 거부되었습니다. S3, Object Storage 노드의 액세스 키에 부여된 ACL을 확인하세요. |
