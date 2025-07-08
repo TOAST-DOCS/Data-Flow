@@ -27,7 +27,7 @@
 | S3_INVALID_ENDPOINT         | S3, Object Storage 노드의 엔드포인트 또는 리전이 입력되지 않았습니다.                                    |
 | S3_INVALID_CREDENTIAL       | S3, Object Storage 노드의 액세스 키 또는 비밀키가 입력되지 않았습니다.                                   |
 | CLOUDTRAIL_UNAUTHENTICATED  | CloudTrail 노드의 앱키가 유효하지 않습니다.                                                      |
-| CLOUDTRAIL_INVALID_PROPERTY | CloudTrail 노드의 앱키가 유효하지 않습니다.                                                      |
+| CLOUDTRAIL_INVALID_PROPERTY | CloudTrail 노드의 속성이 올바르지 않습니다.                                                      |
 | JDBC_CONNECT_FAILED         | JDBC 연결이 실패했습니다.                                                                   |
 | JDBC_UNSUPPORTED_DRIVER     | 지원하지 않는 JDBC 드라이버입니다.                                                              |
 | FLOW_ALREADY_STARTED        | 플로우가 이미 시작되었습니다.                                                                   |
