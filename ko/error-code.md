@@ -20,12 +20,12 @@
 | LNCS_SERVICE_UNSTABLE       | Log & Crash Search 서비스가 불안정한 상태입니다.   고객 센터로 문의하세요.                                |
 | LNCS_INVALID_PROPERTY       | Log & Crash Search 노드의 속성이 올바르지 않습니다.                                              |
 | KAFKA_ENDPOINT_INVALID      | Kafka 엔드포인트에 접근할 수 없습니다.                                                           |
-| S3_UNAUTHENTICATED          | S3, Object Storage 노드의 엑세스 키 또는 비밀 키가 유효하지 않습니다.                                   |
+| S3_UNAUTHENTICATED          | S3, Object Storage 노드의 액세스 키 또는 비밀 키가 유효하지 않습니다.                                   |
 | S3_ACCESS_DENIED            | S3, Object Storage 저장소에 접근이 거부되었습니다. S3, Object Storage 노드의 액세스 키에 부여된 ACL을 확인하세요. |
 | S3_NO_SUCH_BUCKET           | S3, Object Storage 저장소에 버킷이 존재하지 않습니다.                                             |
 | S3_SERVICE_ERROR            | S3, Object Storage 저장소가 불안정한 상태입니다. 해당 저장소로 문의하세요.                                 |
 | S3_INVALID_ENDPOINT         | S3, Object Storage 노드의 엔드포인트 또는 리전이 입력되지 않았습니다.                                    |
-| S3_INVALID_CREDENTIAL       | S3, Object Storage 노드의 액세스 키 또는 비밀키가 입력되지 않았습니다.                                   |
+| S3_INVALID_CREDENTIAL       | S3, Object Storage 노드의 액세스 키 또는 비밀 키가 입력되지 않았습니다.                                  |
 | CLOUDTRAIL_UNAUTHENTICATED  | CloudTrail 노드의 앱키가 유효하지 않습니다.                                                      |
 | CLOUDTRAIL_INVALID_PROPERTY | CloudTrail 노드의 속성이 올바르지 않습니다.                                                      |
 | JDBC_CONNECT_FAILED         | JDBC 연결이 실패했습니다.                                                                   |
