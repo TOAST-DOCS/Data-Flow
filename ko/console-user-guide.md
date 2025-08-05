@@ -224,7 +224,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 ### 일정 목록
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
+![management_schedulelist.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
 
 * 좌측 상단의 **Cloud Scheduler로 이동** 버튼을 통해 새 창에서 일정 등록을 할 수 있습니다.
 * Cloud Scheduler를 통해 등록된 플로우의 일정 목록을 표시합니다.
