@@ -226,11 +226,13 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 ![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
 
-
 * 좌측 상단의 **Cloud Scheduler로 이동** 버튼을 통해 새 창에서 일정 등록을 할 수 있습니다.
 * Cloud Scheduler를 통해 등록된 플로우의 일정 목록을 표시합니다.
 * 일정 이름, 대상 템플릿 이름, 실행 유형, 시작 일시, 종료 일시, 활성화 상태 등을 표시합니다.
 * 일정 이름 우측의 버튼을 통해 새 창에서 해당 일정의 상세 정보를 확인할 수 있습니다.
+
+> **주의 사항**: Flow와 동일한 프로젝트 내의 Cloud Scheduler에서 등록한 일정만 표시됩니다. 
+> 다른 프로젝트의 Cloud Scheduler에서 등록한 일정은 표시되지 않습니다.
 
 ## 모니터링
 
