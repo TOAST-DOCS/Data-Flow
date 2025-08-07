@@ -1,5 +1,14 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### July 29, 2025
+#### Feature Updates
+* Updated the execution mode setting to be configured at the flow.
+* Renamed CloudTrail event names to match the terminology used in the DataFlow console.
+
+#### Bug Fixes
+* Fixed an issue where the flow did not terminate properly after draining.
+* Fixed an issue where log retrieval requests were still made when the View Recent Logs window was open and the flow had ended.
+
 ## June 24, 2025
 #### Feature Updates
 * Replaced the scheduling functionality to integrate with the Cloud Scheduler service.

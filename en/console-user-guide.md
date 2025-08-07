@@ -48,14 +48,15 @@ Display query results of flows in a table form.
 | Flow Running Status                                         | Description |
 |---------------------------------------------------| --- |
 | START_FAILED  | Failed to request flow running. |
-| STARTING       | Freeing up resources to run the flow. |
 | QUOTA_EXCEEDED | Failed to run the flow due to insufficient resources. |
+| STARTING       | Freeing up resources to run the flow. |
 | PREPARING      | Ready to run the flow. |
 | RUNNING        | Flow is running. |
 | ERROR              | An error occurred during flow running due to communication failure or authentication failure. If <b>ERROR</b> continues to occur, contact the Customer Center. |
-| UNKNOWN            | An error occurred for unknown reasons during the running of the flow. If UNKNOWN continues to occur, contact the Customer Center. |
 | STOP_FAILED   | Failed to request flow stop. |
 | STOPPED        | Flow is stopped. |
+| DRAINING       | Flow is draining. |
+| UNKNOWN            | An error occurred for unknown reasons during the running of the flow. If UNKNOWN continues to occur, contact the Customer Center. |
 
 #### Flow Status Change Notifications
 * You can be notified via email when the flow status is changed to a status set for notifications
