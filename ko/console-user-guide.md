@@ -138,7 +138,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 상세한 플로우 메타데이터를 표시합니다.
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2025_06.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2025_08.png)
 
 * 플로우 생성 시 입력한 이름과 설명 정보를 표시합니다.
 * 플로우 생성 날짜와 생성자 이름을 비롯한 최근 수정일/수정자, 최근 실행일/실행자 정보를 표시합니다.
@@ -153,11 +153,6 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 ### 기본 정보 - 전체 로그
 * Log & Crash Search를 연동한 경우 Log & Crash Search에서 플로우 로그를 조회하기 위한 Lucene Query를 복사할 수 있습니다.
 
-### 기본 정보 - 스케줄링
-
-* Cloud Scheduler 서비스를 통해 플로우의 실행 및 종료를 예약할 수 있습니다.
-* Cloud Scheduler 서비스에서 `플로우 시작`, `플로우 종료` 대상 템플릿을 선택해 일정을 생성하세요. 
-
 ### 기본 정보 - 인스턴스 타입
 
 * 플로우를 실행하기 위한 인스턴스 타입을 확인하고 변경할 수 있습니다.
@@ -167,7 +162,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우 로직을 정의합니다.
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_detail_2025_06.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_detail_2025_08.png)
 
 * 플로우 설정으로부터 노드 유형이나 템플릿으로부터 플로우 구성 요소를 불러와 플로우를 정의합니다.
     * 접기 및 펼치기 아이콘을 클릭해 플로우 화면을 확장하거나 축소할 수 있습니다.
@@ -209,7 +204,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우를 수정한 이력을 표시합니다.
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_flowhistory_2025_06.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_flowhistory_2025_08.png)
 
 * 수정한 날짜와 사용자 정보를 표시합니다.
 * 저장/임시 저장 시 입력한 커밋명을 표시합니다.
@@ -219,13 +214,26 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 플로우 시작/종료 요청한 이력을 표시합니다.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_06.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
 
 * 실행한 날짜와 사용자 정보를 표시합니다.
 * 요청한 동작을 표시합니다.
 * 요청한 동작으로 인해 플로우가 어떤 상태인지 표시합니다.
 * 실행 당시의 인스턴스 타입을 표시합니다.
 * 실행 중인 플로우일 경우 새 창에서 플로우 상세 상태를 확인할 수 있습니다.
+
+### 일정 목록
+
+![management_schedulelist.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
+
+* 좌측 상단의 **Cloud Scheduler로 이동** 버튼을 통해 새 창에서 일정 등록을 할 수 있습니다.
+* Cloud Scheduler를 통해 등록된 플로우의 일정 목록을 표시합니다.
+* 일정 이름, 대상 템플릿 이름, 실행 유형, 시작 일시, 종료 일시, 활성화 상태를 표시합니다.
+* 일정 이름 우측의 버튼을 통해 새 창에서 해당 일정의 상세 정보를 확인할 수 있습니다.
+
+!!! danger "주의"
+    Flow와 동일한 프로젝트 내의 Cloud Scheduler에서 등록한 일정만 표시됩니다.
+    다른 프로젝트의 Cloud Scheduler에서 등록한 일정은 표시되지 않습니다.
 
 ## 모니터링
 
@@ -234,7 +242,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 플로우 화면 영역과 모니터링 영역 경계를 움직여 화면 비율을 조정할 수 있습니다.
 또한 모니터링 영역의 오른쪽 상단에 위치한 영역 크기 조절 아이콘을 클릭해 지정된 화면 비율로 조정할 수 있습니다.
 
-![monitoring.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/monitoring.png)
+![monitoring.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/monitoring_2025_08.png)
 
 ### 플로우 목록
 
@@ -281,7 +289,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 템플릿 메타데이터 정보를 조회하고 생성 및 수정하는 페이지입니다.
 **Data & Analytics > DataFlow > 템플릿**을 클릭합니다.
 
-![template_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_main.png)
+![template_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_main_2025_08.png)
 
 ### 검색
 
@@ -337,7 +345,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 템플릿 목록 영역과 템플릿 상세 보기 영역 경계를 움직여 화면 비율을 조정할 수 있습니다.
 또한 템플릿 상세 보기 영역의 오른쪽 상단에 위치한 영역 크기 조절 아이콘을 클릭해 지정된 화면 비율로 조정할 수 있습니다.
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail_2025_08.png)
 
 ### 템플릿 정보
 
