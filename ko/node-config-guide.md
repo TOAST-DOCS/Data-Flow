@@ -153,8 +153,8 @@
 | --- | --- | --- | --- | --- |
 | Appkey | - | string | Log & Crash Search의 앱키를 입력합니다. |  |
 | SecretKey | - | string | Log & Crash Search의 시크릿키를 입력합니다. |  |
-| 조회 시작 시간 | - | string | 로그 조회의 시작 시간을 입력합니다. | [참고](#dsl) |
-| 조회 종료 시간 | - | string | 로그 조회의 종료 시간을 입력합니다. |  |
+| 조회 시작 시간 | - | string | 로그 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예) 2025-07-23T11:23:00+09:00, {{ executionTime }} |  |
+| 조회 종료 시간 | - | string | 로그 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예) 2025-07-23T11:23:00+09:00, {{ executionTime }} |  |
 | 재시도 횟수 | - | number | 로그 조회가 실패했을 때 재시도할 최대 횟수를 입력합니다. |  |
 
 * 재시도 횟수 설정
@@ -197,8 +197,8 @@
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | Appkey | - | string | CloudTrail의 앱키를 입력합니다. |  |
-| 조회 시작 시간 | - | string | 데이터 조회의 시작 시간을 입력합니다. | [참고](#dsl) |
-| 조회 종료 시간 | - | string | 데이터 조회의 종료 시간을 입력합니다. |  |
+| 조회 시작 시간 | - | string | 데이터 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예) 2025-07-23T11:23:00+09:00, {{ executionTime }} | |
+| 조회 종료 시간 | - | string | 데이터 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예) 2025-07-23T11:23:00+09:00, {{ executionTime }} |  |
 | 재시도 횟수 | - | number | 데이터 조회가 실패했을 때 재시도할 최대 횟수를 입력합니다. |  |
 
 * 재시도 횟수 설정
