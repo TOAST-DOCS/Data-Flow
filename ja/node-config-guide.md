@@ -119,7 +119,7 @@
 
 | プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| 型 | - | string | 各メッセージに与えられた値で`type`フィールドを作成します。 |  |
+| タイプ | - | string | 各メッセージに与えられた値で`type`フィールドを作成します。 |  |
 | ID | - | string | ノードのIDを設定します。<br/>このプロパティに定義された値でチャートボードにノード名を表記します。 |  |
 | タグ | - | array of strings | 各メッセージに与えられた値のタグを追加します。 |  |
 | フィールド追加 | - | hash | カスタムフィールドを追加できます。<br/>`%{[depth1_field]}`で各フィールドの値を取得してフィールドを追加できます。 |  |
@@ -233,7 +233,7 @@
 * オブジェクト作成時間を基準に最も早く作成されたオブジェクトからデータを読み込みます。
 
 ### 実行モード
-* STREAMING：`リスト更新サイクル`ごとにオブジェクトリストを更新し、新しく追加されたオブジェクトを読み込んでデータを処理します。
+* STREAMING：`リスト更新周期`ごとにオブジェクトリストを更新し、新しく追加されたオブジェクトを読み込んでデータを処理します。
 * BATCH：フロー開始時点でオブジェクトリストを一度取得し、オブジェクトを読み込んでデータを処理し、フローを終了します。
 
 ### プロパティの説明
@@ -242,9 +242,9 @@
 | --- | --- | --- | --- | --- |
 | バケット | - | string | データを読み込むバケット名を入力します。 |  |
 | リージョン | - | string | リポジトリに設定されたリージョン情報を入力します。 |  |
-| 秘密鍵 | - | string | S3が発行した認証情報秘密鍵を入力します。 |  |
+| シークレットキー | - | string | S3が発行した認証情報シークレットキーを入力します。 |  |
 | アクセスキー | - | string | S3が発行した認証情報アクセスキーを入力します。 |  |
-| リスト更新サイクル | - | number | バケットに含まれるオブジェクトリスト更新サイクルを入力します。 |  |
+| リスト更新周期 | - | number | バケットに含まれるオブジェクトリスト更新周期を入力します。 |  |
 | メタデータを含めるかどうか | - | boolean | S3オブジェクトのメタデータをキーとして含めるかどうかを決定します。メタデータフィールドをSinkプラグインに公開するためには、filterノードタイプを組み合わせる必要があります(下のガイドを参照)。 | 作成されるフィールドは次のとおりです。<br/>last_modified:オブジェクトが最後に修正された時間<br/>content_length:オブジェクトサイズ<br/>key:オブジェクト名<br/>content_type:オブジェクト形式<br/>metadata:メタデータ<br/>etag: etag |
 | Prefix | - | string | 読み込むオブジェクトのプレフィックスを入力します。 |  |
 | 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
@@ -334,7 +334,7 @@
 * オブジェクト作成時間を基準に最も早く作成されたオブジェクトからデータを読み込みます。
 
 ### 実行モード
-* STREAMING：`リスト更新サイクル`ごとにオブジェクトリストを更新し、新しく追加されたオブジェクトを読み込んでデータを処理します。
+* STREAMING：`リスト更新周期`ごとにオブジェクトリストを更新し、新しく追加されたオブジェクトを読み込んでデータを処理します。
 * BAT
 
 ### プロパティの説明
@@ -377,7 +377,7 @@
 }
 ```
 
-* 本(Amazon) S3 Sourceプラグインにフィールド追加オプションが存在しますが、データ力と同時にフィールド追加作業ができません。
+* 本(Amazon) S3 Sourceプラグインにフィールド追加オプションが存在しますが、データ入力と同時にフィールド追加作業ができません。
 * 任意のFilterプラグインの共通設定中のフィールド追加オプションで一般フィールドとして追加します。
 * フィールド追加オプション例
 ```js
@@ -780,12 +780,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 #### 条件
 
 * mode → `encrypt`
-* アプリケーションキー→ `SKMアプリケーションキー`
+* アプリケーションキー → `SKMアプリケーションキー`
 * キーID → `SKM対称鍵ID`
-* キーバージョン→ `1`
-* IVランダム長→ `16`
-* ソースフィールド→ message
-* 保存するフィールド→ encrypted\_message
+* キーバージョン → `1`
+* IVランダム長 → `16`
+* ソースフィールド → message
+* 保存するフィールド → encrypted\_message
 
 #### 入力メッセージ
 
@@ -809,12 +809,12 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 #### 条件
 
 * mode → `decrypt`
-* アプリケーションキー→ `SKMアプリケーションキー`
+* アプリケーションキー → `SKMアプリケーションキー`
 * キーID → `SKM対称鍵ID`
-* キーバージョン→ `1`
-* IVランダム長→ `16`
-* ソースフィールド→ message
-* 保存するフィールド→ decrypted\_message
+* キーバージョン → `1`
+* IVランダム長 → `16`
+* ソースフィールド → message
+* 保存するフィールド → decrypted\_message
 
 #### 入力メッセージ
 
@@ -857,7 +857,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 #### 条件
 
 * Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
-* パターン定義→ `{ "HYPHEN": "-*" }`
+* パターン定義 → `{ "HYPHEN": "-*" }`
 
 #### 入力メッセージ
 
@@ -904,8 +904,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド→ `message`
-* カラム→ `["one", "two", "t hree"]`
+* ソースフィールド → `message`
+* カラム → `["one", "two", "t hree"]`
 
 #### 入力メッセージ
 
@@ -930,8 +930,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド→ `message`
-* カラム→ `["one", "two", "t hree"]`
+* ソースフィールド → `message`
+* カラム → `["one", "two", "t hree"]`
 
 #### 入力メッセージ
 
@@ -956,9 +956,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド→ `message`
-* カラム→ `["one", "two", "t hree"]`
-* スキーマ→ `{"two": "integer", "t hree": "boolean"}`
+* ソースフィールド → `message`
+* カラム → `["one", "two", "t hree"]`
+* スキーマ → `{"two": "integer", "t hree": "boolean"}`
 
 #### 入力メッセージ
 
@@ -996,8 +996,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド→ `message`
-* 保存するフィールド→ `json_parsed_messsage`
+* ソースフィールド → `message`
+* 保存するフィールド → `json_parsed_messsage`
 
 #### 入力メッセージ
 
@@ -1043,7 +1043,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 #### 条件
 
 * Match → `{ "message": "%{IP:clientip} %{HYPHEN} %{USER} \[%{HTTPDATE:timestamp}\] \"%{WORD:verb} %{NOTSPACE:request} HTTP/%{NUMBER:httpversion}\" %{NUMBER:response} %{NUMBER:bytes}" }`
-* パターン定義→ `{ "HYPHEN": "-*" }`
+* パターン定義 → `{ "HYPHEN": "-*" }`
 
 #### 入力メッセージ
 
@@ -1090,8 +1090,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 #### 条件
 
 * Match → `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
-* 保存するフィールド→ `time`
-* タイムゾーン→ `Asia/Seoul`
+* 保存するフィールド → `time`
+* タイムゾーン → `Asia/Seoul`
 
 #### 入力メッセージ
 
@@ -1127,7 +1127,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* UUID保存フィールド→ `userId`
+* UUID保存フィールド → `userId`
 
 #### 入力メッセージ
 
@@ -1165,7 +1165,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド→ `message`
+* ソースフィールド → `message`
 
 #### 入力メッセージ
 
@@ -1203,8 +1203,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド→ `message`
-* セパレータ→ `,`
+* ソースフィールド → `message`
+* セパレータ → `,`
 
 #### 入力メッセージ
 
@@ -1231,9 +1231,9 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド→ `message`
-* 保存するフィールド→ `target`
-* セパレータ→ `,`
+* ソースフィールド → `message`
+* 保存するフィールド → `target`
+* セパレータ → `,`
 
 #### 入力メッセージ
 
@@ -1275,8 +1275,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* Byte数→ 10
-* ソースフィールド→ `message`
+* Byte数 → 10
+* ソースフィールド → `message`
 
 #### 入力メッセージ
 
@@ -1774,7 +1774,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | --- | --- | --- | --- | --- |
 | リージョン | - | enum | Object Storage商品のリージョンを入力します。 |  |
 | バケット | - | string | バケット名を入力します。 |  |
-| 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
+| シークレットキー | - | string | S3 API認証情報のシークレットキーを入力します。 |  |
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
 | Prefix | /year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | オブジェクトをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | @timestamp | string | Prefixに適用する時間フィールドを入力します。 |  |
@@ -1790,10 +1790,10 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* リージョン→ `KR1`
-* バケット→ `obs-test-container`
-* アクセスキー→ `******`
-* 秘密鍵→ `******`
+* リージョン → `KR1`
+* バケット → `obs-test-container`
+* アクセスキー → `******`
+* シークレットキー → `******`
 
 #### 入力メッセージ
 
@@ -1819,10 +1819,10 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* リージョン→ `KR1`
-* バケット→ `obs-test-container`
-* アクセスキー→ `******`
-* 秘密鍵→ `******`
+* リージョン → `KR1`
+* バケット → `obs-test-container`
+* アクセスキー → `******`
+* シークレットキー → `******`
 
 #### 入力メッセージ
 
@@ -1852,10 +1852,10 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* リージョン→ `KR1`
-* バケット→ `obs-test-container`
-* アクセスキー→ `******`
-* 秘密鍵→ `******`
+* リージョン → `KR1`
+* バケット → `obs-test-container`
+* アクセスキー → `******`
+* シークレットキー → `******`
 
 #### 入力メッセージ
 
@@ -1971,7 +1971,7 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 | リージョン | - | enum | S3商品のリージョンを入力します。 | [s3 region](https://docs.aws.amazon.com/general/latest/gr/s3.html) |
 | バケット | - | string | バケット名を入力します。 |  |
 | アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
-| 秘密鍵 | - | string | S3 API認証情報の秘密鍵を入力します。 |  |
+| シークレットキー | - | string | S3 API認証情報のシークレットキーを入力します。 |  |
 | 署名バージョン | - | enum | AWSリクエストを署名する時に使用するバージョンを入力します。 |  |
 | セッショントークン | - | string | AWS一時認証情報のためのセッショントークンを入力します。 | [セッショントークンガイド](https://docs.aws.amazon.com/ja_kr/IAM/latest/UserGuide/id_credentials_temp_use-resources.html) |
 | Prefix | - | string | オブジェクトをアップロードする時に名前の前につけるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
@@ -2188,7 +2188,7 @@ Hello World! data-flow-01
 
 #### 条件
 
-* 条件文→ `[logLevel] == "ERROR"`
+* 条件文 → `[logLevel] == "ERROR"`
 
 #### 通過メッセージ
 
@@ -2210,7 +2210,7 @@ Hello World! data-flow-01
 
 #### 条件
 
-* 条件文→ `[response][status] == 200`
+* 条件文 → `[response][status] == 200`
 
 #### 通過メッセージ
 
