@@ -138,7 +138,7 @@ You can also adjust the screen proportion to specified percentage by using Resiz
 
 Displays detailed flow metadata.
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_2025_06.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2025_08.png)
 
 * Display the name and description information entered when creating a flow.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
@@ -153,11 +153,6 @@ Displays detailed flow metadata.
 ### Basic Information - All Logs
 * When you enable Log & Crash Search, you can copy Lucene Query to view flow logs from Log & Crash Search.
 
-### Basic Information - Scheduling
-
-* Cloud Scheduler service allows you to schedule flow execution.
-* Create a schedule by selecting the`Start Flow` and `End Flow` target templates in the Cloud Scheduler service. 
-
 ### Basic Information - Instance Type
 
 * You can check and change the instance type to run flows.
@@ -167,7 +162,7 @@ Displays detailed flow metadata.
 
 Define a flow logic.
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail_2025_06.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail_2025_08.png)
 
 * Define a flow by importing flow components from Node type or Template from flow settings.
     * The Collapse/Expand button allows to zoom-in/zoom-out the flow screen.
@@ -209,7 +204,7 @@ Define a flow logic.
 
 Displays the history of flow modification.
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory_2025_06.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory_2025_08.png)
 
 * Display the date and user information that has been modified.
 * Display the commit name entered during Save/Temporarily Save.
@@ -219,13 +214,26 @@ Displays the history of flow modification.
 
 Display history of the request to start/end flow.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2025_06.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2025_08.png)
 
 * Display the date of execution and user information.
 * Display the requested behavior.
 * Display the state of flow due to the requested behavior.
 * Disaply the instance type at the time of running.
 * If it is a running flow, new window allows to view detailed flow status information.
+
+### Schedule List
+
+![management_schedulelist.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
+
+* You can register schedules on a new window by clicking the **Go to Cloud Scheduler** button in the upper left corner.
+* Display the schedule list of the flows registered through the Cloud Scheduler.
+* Display schedule name, target template name, execution type, start date, end date, and active status.
+* You can check details of the schedule from a new window by clicking the button to the right of the schedule name.
+
+!!! danger "Caution"
+    Only display schedules registered in Cloud Scheduler within the same project as Flow.
+    Schedules registered in Cloud Scheduler of other projects will not be displayed.
 
 ## Monitoring
 
@@ -234,7 +242,7 @@ Click **Data & Analytics > DataFlow > Monitoring**.
 You can adjust the screen ratio by moving boundaries between flow screen area and monitoring area.
 Also you can adjust screen proportion to the specified percentage by using the Resize Area button located in upper right corner of the Monitoring area.
 
-![monitoring.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/monitoring.png)
+![monitoring.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/monitoring_2025_08.png)
 
 ### Flow List
 
@@ -281,7 +289,7 @@ It is area to display the monitoring chart.
 It is a page that queries, creates, and modifies the template metadata information.
 Click **Data & Analytics>DataFlow> Templates**.
 
-![template_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_main.png)
+![template_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_main_2025_08.png)
 
 ### Search
 
@@ -336,7 +344,7 @@ Go to **Data & Analytics > DataFlow > Templates > and Click one of the template*
 You can adjust the screen ratio by moving boundaries between the template list area and See Templates in Details.
 Also you can adjust the screen proportion to the specified percentage by using the Resize Area button located in upper right corner of See Templates in Details.
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_detail_2025_08.png)
 
 ### Template Information
 
