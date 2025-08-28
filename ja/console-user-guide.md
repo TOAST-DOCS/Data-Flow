@@ -138,7 +138,7 @@ DataFlowは、次の順序で使用できます。
 
 詳細なフローメタデータを表示します。
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2025_06.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2025_08.png)
 
 * フロー作成時に入力した名前と説明情報を表示します。
 * フロー作成日とコンストラクタ名をはじめ、最近の修正日/修正者、最近の実行日/実行者情報を表示します。
