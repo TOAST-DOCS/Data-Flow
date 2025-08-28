@@ -1,5 +1,10 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### August 26, 2025
+#### Feature Updates
+* Added a new **Schedule List** tab on the Details screen where you can check the reservation schedule.
+* Moved the **Go to Cloud Scheduler Console** button for scheduling flows from the Basic Info tab to the **Schedule List** tab.
+
 ### July 29, 2025
 #### Feature Updates
 * Updated the execution mode setting to be configured at the flow.
