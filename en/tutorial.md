@@ -19,7 +19,7 @@
 
 ① Click **Flow Information** tab of the generated flow.
 ② Click **(NHN Cloud) Log&Crash Search** node.
-③ Enter **Appkey** and **Secretkey* of (NHN Cloud) Log&Crash Search to be designated as the data source.
+③ Enter **Appkey** and **Secretkey** of (NHN Cloud) Log&Crash Search to be designated as the data source.
 
 ### filter success response Node Definition
 
