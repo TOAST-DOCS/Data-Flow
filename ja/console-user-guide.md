@@ -18,7 +18,7 @@ DataFlowは、次の順序で使用できます。
 フローメタデータ情報を照会、管理するページです。
 **Data & Analytics > DataFlow > 管理**をクリックします。
 
-![management_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_main_2025_06.png)
+![management_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_main_2025_08.png)
 
 ### 検索
 
@@ -45,7 +45,7 @@ DataFlowは、次の順序で使用できます。
 
 #### フロー状態情報
 
-| フロー実行状態                                       | 説明 |
+| フロー実行状態                                      | 説明 |
 |---------------------------------------------------| --- |
 | START\_FAILED  | フロー実行リクエストに失敗しました。 |
 | QUOTA\_EXCEEDED | フロー実行のためのリソースが足りないため実行に失敗しました。 |
@@ -138,7 +138,7 @@ DataFlowは、次の順序で使用できます。
 
 詳細なフローメタデータを表示します。
 
-![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_basicinfo_2025_06.png)
+![management_basicinfo.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_basicinfo_2025_08.png)
 
 * フロー作成時に入力した名前と説明情報を表示します。
 * フロー作成日とコンストラクタ名をはじめ、最近の修正日/修正者、最近の実行日/実行者情報を表示します。
@@ -153,11 +153,6 @@ DataFlowは、次の順序で使用できます。
 ### 基本情報 - 全体ログ
 * Log & Crash Searchを連動した場合、Log & Crash Searchでフローログを照会するためのLucene Queryをコピーできます。
 
-### 基本情報 - スケジューリング
-
-* Cloud Schedulerサービスでフローの実行及び終了を予約できます。
-* Cloud Schedulerサービスで`フロー開始`、`フロー終了`対象テンプレートを選択してスケジュールを作成してください。 
-
 ### 基本情報 - インスタンスタイプ
 
 * フローを実行するためのインスタンスタイプを確認して変更できます。
@@ -167,7 +162,7 @@ DataFlowは、次の順序で使用できます。
 
 フローロジックを定義します。
 
-![management_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_detail_2025_06.png)
+![management_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_detail_2025_08.png)
 
 * フロー設定からノードタイプまたはテンプレートからフローコンポーネントを呼び出してフローを定義します。
     * 折りたたみおよび展開アイコンをクリックしてフロー画面を拡張または縮小できます。
@@ -209,7 +204,7 @@ DataFlowは、次の順序で使用できます。
 
 フローを修正した履歴を表示します。
 
-![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_flowhistory_2025_06.png)
+![management_flowhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_flowhistory_2025_08.png)
 
 * 修正した日付とユーザー情報を表示します。
 * 保存/一時保存時に入力したコミット名を表示します。
@@ -219,7 +214,7 @@ DataFlowは、次の順序で使用できます。
 
 フロー開始/終了リクエストした履歴を表示します。
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/management_actionhistory_2025_06.png)
+![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
 
 * 実行した日付とユーザー情報を表示します。
 * リクエストした動作を表示します。
@@ -227,6 +222,19 @@ DataFlowは、次の順序で使用できます。
 * 実行時のインスタンスタイプを表示します。
 * 実行中のフローの場合、新しいウィンドウでフローの詳細状態を確認できます。
 
+### スケジュール一覧
+
+![management_schedulelist.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
+
+* 左上の**Cloud Schedulerへ移動**ボタンから、新しいウィンドウでスケジュールを登録できます。
+* Cloud Schedulerを通じて登録されたフローのスケジュール一覧を表示します。
+* スケジュール名、対象テンプレート名、実行タイプ、開始日時、終了日時、有効化ステータスを表示します。
+* スケジュール名の右側にあるボタンから、新しいウィンドウで該当スケジュールの詳細情報を確認できます。
+
+!!! danger "注意"
+    Flowと同一プロジェクト内のCloud Schedulerで登録したスケジュールのみが表示されます。
+    他のプロジェクトのCloud Schedulerで登録したスケジュールは表示されません。
+    
 ## モニタリング
 
 実行中のフローまたはノードのモニタリング情報を表示します。
@@ -234,7 +242,7 @@ DataFlowは、次の順序で使用できます。
 フロー画面領域とモニタリング領域の境界を動かして画面比率を調整できます。
 またモニタリング領域の右上にある領域サイズ調節アイコンをクリックして、指定された画面比率に調整できます。
 
-![monitoring.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/monitoring.png)
+![monitoring.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/monitoring_2025_08.png)
 
 ### フローリスト
 
@@ -281,7 +289,7 @@ DataFlowは、次の順序で使用できます。
 テンプレートメタデータ情報を照会、作成および修正するページです。
 **Data & Analytics > DataFlow > テンプレート**をクリックします。
 
-![template_main.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_main.png)
+![template_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_main_2025_08.png)
 
 ### 検索
 
@@ -337,7 +345,7 @@ DataFlowは、次の順序で使用できます。
 テンプレートリスト領域とテンプレート詳細表示領域の境界を動かして画面比率を調整できます。
 またテンプレート詳細表示領域の右上にある領域サイズ調節アイコンをクリックして、指定された画面比率に調整できます。
 
-![template_detail.png](http://static.toastoven.net/prod_dataflow/en/console_user_guide/template_detail.png)
+![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail_2025_08.png)
 
 ### テンプレート情報
 
@@ -382,14 +390,14 @@ Log & Crash Searchサービスにログを保存するには、Log & Crash Searc
 
 * ログフィールド
 
-|           名前 |                            説明 |
+|          名前 |                           説明 |
 |---------------|--------------------------------|
 |       logLevel | ログレベル(INFO, WARN, ERROR, FATAL) |
 |      logSource |                          `Flow` |
 |           host |                      `DataFlow` |
 |         appkey |                 DataFlowサービスアプリケーションキー |
-|         flowId |                        フローid |
-| flowInstanceId |                   フローインスタンスid |
+|         flowId |                       フローid |
+| flowInstanceId |                  フローインスタンスid |
 
 ### 有効性検査設定
 ![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
