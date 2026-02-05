@@ -798,20 +798,21 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 ### 지원 엔진 타입
 
 | 엔진 타입 | 지원 여부 | 비고 |
-| --- | --- | --- |
-| V1 | O |  |
-| V2 | - | 추후 지원 예정 |
+|-------|-------|----|
+| V1    | O     |    |
+| V2    | O     |    |
 
 ### 속성 설명
 
-| 속성명    | 기본값       | 자료형    | 지원 엔진 타입 | 설명                                 | 비고               |
-|--------|-----------|--------|----------|------------------------------------|------------------|
-| 모드     | -         | enum   | V1       | 암호화 모드와 복호화 모드 중 선택합니다.            | 목록 중에 하나를 선택합니다. |
-| 앱키     | -         | string | V1       | 암/복호화에 사용할 키를 저장한 SKM 앱키를 입력합니다.   |                  |
-| 키 ID   | -         | string | V1       | 암/복호화에 사용할 키를 저장한 SKM 키 ID를 입력합니다. |                  |
-| 키 버전   | -         | string | V1       | 암/복호화에 사용할 키를 저장한 SKM 키 버전을 입력합니다. |                  |
-| 소스 필드  | `message` | string | V1       | 암/복호화할 필드명을 입력합니다.                 |                  |
-| 저장할 필드 | `message` | string | V1       | 암/복호화 결과를 저장할 필드명을 입력합니다.          |                  |
+| 속성명    | 기본값                           | 자료형     | 지원 엔진 타입 | 설명                                             | 비고               |
+|--------|-------------------------------|---------|----------|------------------------------------------------|------------------|
+| 모드     | -                             | enum    | V1, V2   | 암호화 모드와 복호화 모드 중 선택합니다.                        | 목록 중에 하나를 선택합니다. |
+| 앱키     | -                             | string  | V1, V2   | 암/복호화에 사용할 키를 저장한 SKM 앱키를 입력합니다.               |                  |
+| 키 ID   | -                             | string  | V1, V2   | 암/복호화에 사용할 키를 저장한 SKM 키 ID를 입력합니다.             |                  |
+| 키 버전   | -                             | string  | V1, V2   | 암/복호화에 사용할 키를 저장한 SKM 키 버전을 입력합니다.             |                  |
+| 소스 필드  | * V1: `message` <br/> * V2: - | string  | V1, V2   | 암/복호화할 필드명을 입력합니다.                             |                  |
+| 저장할 필드 | * V1: `message` <br/> * V2: - | string  | V1, V2   | 암/복호화 결과를 저장할 필드명을 입력합니다.                      |                  |
+| 덮어쓰기   | `false`                       | boolean | V2       | true일 경우 CSV 파싱 결과가 저장할 필드나 기존 필드와 겹치면 덮어씌웁니다. |                  |
 
 ### encrypt 예제
 
@@ -821,7 +822,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 앱키 → `SKM 앱키`
 * 키 ID → `SKM 대칭키 ID`
 * 키 버전 → `1`
-* IV 랜덤 길이 → `16`
 * 소스 필드 → message
 * 저장할 필드 → encrypted\_message
 
@@ -850,7 +850,6 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 * 앱키 → `SKM 앱키`
 * 키 ID → `SKM 대칭키 ID`
 * 키 버전 → `1`
-* IV 랜덤 길이 → `16`
 * 소스 필드 → message
 * 저장할 필드 → decrypted\_message
 
@@ -866,8 +865,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ``` js
 {
-    "decrypted_message": "this is plain message",
     "message": "oZA6CHd4OwjPuS+MW0ydCU9NqbPQHGbPf4rll2ELzB8y5pyhxF6UhWZq5fxrt0/e"
+    "decrypted_message": "this is plain message",
 }
 ```
 
