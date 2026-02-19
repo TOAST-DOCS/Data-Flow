@@ -2014,6 +2014,49 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 ```
 
+## Filter > Remove Fields
+
+### 노드 설명
+
+* 필드를 삭제하는 노드입니다.
+
+### 지원 엔진 타입
+
+| 엔진 타입 | 지원 여부 | 비고 |
+| --- | --- | --- |
+| V1 | X |  |
+| V2 | O |  |
+
+### 속성 설명
+
+| 속성명 | 기본값 | 자료형 | 지원 엔진 타입 | 설명 | 비고 |
+| --- | --- | --- | --- | --- | --- |
+| 삭제할 필드 | - | array of strings | V2 | 삭제할 필드명 목록을 입력합니다. |  |
+
+### 설정 예제
+
+#### 조건
+* 삭제할 필드 → `["field2", "field3"]`
+
+#### 입력 메시지
+
+```json
+{
+    "field1": "value1",
+    "field2": "value2",
+    "field3": "value3",
+    "field4": "value4"
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+    "field1": "value1",
+    "field4": "value4"
+}
+```
 
 ## Sink
 
