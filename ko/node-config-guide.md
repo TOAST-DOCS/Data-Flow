@@ -880,7 +880,7 @@
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
 * 다른 설정 없이 기본 설정만으로 생성하면 오브젝트는 다음 경로 포맷에 맞게 출력됩니다.
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* 제공하는 코덱은 json, line입니다. 추후 plain, parquet 코덱 등을 지원할 예정입니다.
+* 제공하는 코덱은 json, line입니다. 추후 parquet 코덱 등을 지원할 예정입니다.
 
 ### 속성 설명
 
@@ -983,7 +983,7 @@
 ### 노드 설명
 
 * Amazon S3에 데이터를 업로드하는 노드입니다.
-* 제공하는 코덱은 json, line입니다. 추후 plain, parquet 코덱 등을 지원할 예정입니다.
+* 제공하는 코덱은 json, line입니다. 추후 parquet 코덱 등을 지원할 예정입니다.
 
 ### 속성 설명
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
