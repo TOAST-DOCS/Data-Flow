@@ -344,43 +344,6 @@
 }
 ```
 
-* 본 Kafka Source 플러그인에 필드 추가 옵션이 존재하지만 데이터 인입과 동시에 필드 추가 작업을 수행하지 못합니다.
-* 임의의 Filter 플러그인 공통 설정의 필드 추가 옵션으로 일반 필드에 추가합니다.
-* 필드 추가 옵션 예시
-```js
-{
-    "kafka_topic": "%{[@metadata][kafka][topic]}"
-    "kafka_consumer_group": "%{[@metadata][kafka][consumer_group]}"
-    "kafka_partition": "%{[@metadata][kafka][partition]}"
-    "kafka_offset": "%{[@metadata][kafka][offset]}"
-    "kafka_key": "%{[@metadata][kafka][key]}"
-    "kafka_timestamp": "%{[@metadata][kafka][timestamp]}"
-}
-```
-* alter(필드 추가 옵션) 플러그인 이후의 메시지 예시
-```js
-{
-    // 일반 필드
-    "@version": "1",
-    "@timestamp": "2022-04-11T00:01:23Z"
-    "message": "kafka 토픽 메시지..."
-    "kafka_topic": "my-topic"
-    "kafka_consumer_group": "my_consumer_group"
-    "kafka_partition": "1"
-    "kafka_offset": "123"
-    "kafka_key": "my_key"
-    "kafka_timestamp": "-1"
-
-    // 메타데이터 필드
-    // "[@metadata][kafka][topic]": "my-topic"
-    // "[@metadata][kafka][consumer_group]": "my_consumer_group"
-    // "[@metadata][kafka][partition]": "1"
-    // "[@metadata][kafka][offset]": "123"
-    // "[@metadata][kafka][key]": "my_key"
-    // "[@metadata][kafka][timestamp]": "-1"
-}
-```
-
 ### 코덱별 메시지 인입
 
 **지원 코덱:**
