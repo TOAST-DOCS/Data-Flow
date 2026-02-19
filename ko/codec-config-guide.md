@@ -6,25 +6,6 @@
 * Source 노드에서는 데이터 인입 시, Sink 노드에서는 데이터 출력 시 코덱이 적용됩니다.
 * 다양한 코덱 타입을 지원하며, 각 코덱마다 고유한 특성과 사용 예시가 있습니다.
 
-## 노드별 지원 코덱
-
-### Source 노드
-
-| 노드명                            | 지원 코덱       |
-|--------------------------------|-------------|
-| (NHN Cloud) Log & Crash Search | json        |
-| (NHN Cloud) CloudTrail         | json        |
-| (NHN Cloud) Object Storage     | json, plain |
-| (Amazon) S3                    | json, plain |
-
-### Sink 노드
-
-| 노드명                        | 지원 코덱     |
-|----------------------------|-----------|
-| (NHN Cloud) Object Storage | json, line |
-| (Amazon) S3                | json, line |
-| stdout                     | json, line |
-
 ## 지원 코덱 타입
 
 ### JSON 코덱
