@@ -12,7 +12,7 @@
         * Kafka
     * Filter 
         * Cipher
-        * 필드 삭제
+        * Remove Fields
     * Sink
         * Kafka 
 
