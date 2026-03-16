@@ -149,8 +149,8 @@
 * Apache Parquet 형식으로 데이터를 저장합니다.
 * 다양한 압축 옵션을 지원하며, 대용량 데이터 처리에 적합합니다.
 * 제공 스키마 타입: `string`, `integer`, `long`, `float`, `double`, `boolean`, `timestamp`, `date`
-* 제공 압축 형식: `SNAPPY(기본값)`, `GZIP`, `LZ4`, `ZSTD`,
-  `UNCOMPRESSED` [압축 형식 참조](https://parquet.apache.org/docs/file-format/data-pages/compression/)
+* 제공 압축 형식: `SNAPPY(기본값)`, `GZIP`, `LZ4`, `ZSTD`, `UNCOMPRESSED`
+    * [압축 형식 참조](https://parquet.apache.org/docs/file-format/data-pages/compression/)
 
 #### parquet 코덱 예제 - Sink 노드
 
@@ -167,36 +167,6 @@
   ```
 * compression type -> `SNAPPY`
 
-##### 출력 데이터 
+##### 출력 데이터
 
-Parquet는 컬럼 기반 바이너리 형식으로 저장되어 직접 확인이 어렵습니다.
-저장된 Parquet 파일은 parquet-tools, Apache Spark, pandas 등 다양한 도구를 통해 확인할 수 있습니다.
-아래는 parquet-tools CLI를 사용하여 간단하게 파일 내용을 확인하는 방법입니다.
-
-
-###### parquet-tools 설치
-  ```bash
-  # (pip를 사용한 설치)
-  pip install parquet-tools
-  ```
-
-###### 데이터 확인 명령어
-  ```bash
-  # 파일의 스키마 확인
-  parquet-tools schema [file_name]
-
-  # 데이터 내용 확인
-  parquet-tools cat [file_name]
-
-  # 파일의 메타데이터 확인
-  parquet-tools meta [file_name]
-
-  # 행 개수 확인
-  parquet-tools row-count [file_name]
-
-  # 파일 크기 확인
-  parquet-tools size [file_name]
-
-  # 파일 구조 상세 확인
-  parquet-tools inspect [file_name]
-  ```
+Parquet는 컬럼 기반 바이너리 형식으로 저장되므로 parquet-tools, Apache Spark, pandas 등 별도 도구를 통해 확인할 수 있습니다.
