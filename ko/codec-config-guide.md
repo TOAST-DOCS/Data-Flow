@@ -18,9 +18,15 @@
 * 입력 데이터
 
 ```json
-{"name": "DataFlow","type": "pipeline","status": "running","level": "info"}
+{
+  "name": "DataFlow",
+  "type": "pipeline",
+  "status": "running",
+  "level": "info"
+}
 
 ```
+
 * charset → `UTF-8`
 
 #### 처리 결과
@@ -38,7 +44,12 @@
 #### 전달 & 출력 데이터
 
 ```json
-{"name": "DataFlow","type": "pipeline","status": "running","level": "info"}
+{
+  "name": "DataFlow",
+  "type": "pipeline",
+  "status": "running",
+  "level": "info"
+}
 
 ```
 
@@ -49,7 +60,9 @@
 * 원본 형태를 그대로 보존하고자 할 때 사용합니다.
 
 #### plain 코덱 예제 - Source 노드
+
 ##### 조건
+
 * 입력 데이터
   ```json
   {"name": "DataFlow","type": "pipeline","status": "running","level": "info"}
@@ -57,13 +70,17 @@
 * charset → `UTF-8`
 
 ##### 처리 결과
+
 ```text
 {\"name\":\"DataFlow\",\"type\":\"pipeline\",\"status\":\"running\",\"level\":\"info\"}
 ```
 
 ##### 전달 데이터
+
 ```json
-{"message":"{\"name\":\"DataFlow\",\"type\":\"pipeline\",\"status\":\"running\",\"level\":\"info\"}"}
+{
+  "message": "{\"name\":\"DataFlow\",\"type\":\"pipeline\",\"status\":\"running\",\"level\":\"info\"}"
+}
 ```
 
 ### line 코덱
@@ -72,11 +89,12 @@
 * Source 노드에서는 입력된 각 행을 `message` 필드에 문자열로 저장하고, Sink 노드에서는 데이터를 format에 따라 텍스트 행으로 출력합니다.
 * 행 단위 처리가 필요할 때 사용합니다.
 * line 코덱의 경우 delimiter를 통해 출력되는 메시지들의 구분자를 정의할 수 있습니다.
-  * 기본 값은 줄바꿈(`\n`)입니다.
+    * 기본 값은 줄바꿈(`\n`)입니다.
 
 #### line 코덱 예제 - Source 노드
 
 ##### 조건
+
 * 입력 데이터
   ```text
   {"name":"DataFlow","type":"pipeline","status":"running","level":"info"}
@@ -84,18 +102,23 @@
 * charset → `UTF-8`
 
 ##### 처리 결과
+
 ```text
 {\"name\":\"DataFlow\",\"type\":\"pipeline\",\"status\":\"running\",\"level\":\"info\"}
 ```
 
 ##### 전달 데이터
+
 ```json
-{"message":"{\"name\":\"DataFlow\",\"type\":\"pipeline\",\"status\":\"running\",\"level\":\"info\"}"}
+{
+  "message": "{\"name\":\"DataFlow\",\"type\":\"pipeline\",\"status\":\"running\",\"level\":\"info\"}"
+}
 ```
 
 #### line 코덱 예제 - Sink 노드
 
 ##### 조건
+
 * 입력 메시지
   ```json
   {
@@ -110,11 +133,70 @@
 * charset → `UTF-8`
 
 ##### 처리 결과
+
 ```text
 [info] DataFlow running
 ```
 
 ##### 출력 데이터
+
 ```text
 [info] DataFlow running
 ```
+
+### parquet 코덱
+
+* Apache Parquet 형식으로 데이터를 저장합니다.
+* 다양한 압축 옵션을 지원하며, 대용량 데이터 처리에 적합합니다.
+* 제공 스키마 타입: `string`, `integer`, `long`, `float`, `double`, `boolean`, `timestamp`, `date`
+* 제공 압축 형식: `SNAPPY(기본값)`, `GZIP`, `LZ4`, `ZSTD`,
+  `UNCOMPRESSED` [압축 형식 참조](https://parquet.apache.org/docs/file-format/data-pages/compression/)
+
+#### parquet 코덱 예제 - Sink 노드
+
+##### 조건
+
+* schema
+  ```json
+  {
+    "name": "string",
+    "count": "integer", 
+    "changeable": "boolean",
+    "created":"timestamp"
+  }
+  ```
+* compression type -> `SNAPPY`
+
+##### 출력 데이터 
+
+Parquet는 컬럼 기반 바이너리 형식으로 저장되어 직접 확인이 어렵습니다.
+저장된 Parquet 파일은 parquet-tools, Apache Spark, pandas 등 다양한 도구를 통해 확인할 수 있습니다.
+아래는 parquet-tools CLI를 사용하여 간단하게 파일 내용을 확인하는 방법입니다.
+
+
+###### parquet-tools 설치
+  ```bash
+  # (pip를 사용한 설치)
+  pip install parquet-tools
+  ```
+
+###### 데이터 확인 명령어
+  ```bash
+  # 파일의 스키마 확인
+  parquet-tools schema [file_name]
+
+  # 데이터 내용 확인
+  parquet-tools cat [file_name]
+
+  # 파일의 메타데이터 확인
+  parquet-tools meta [file_name]
+
+  # 행 개수 확인
+  parquet-tools row-count [file_name]
+
+  # 파일 크기 확인
+  parquet-tools size [file_name]
+
+  # 파일 구조 상세 확인
+  parquet-tools inspect [file_name]
+  ```

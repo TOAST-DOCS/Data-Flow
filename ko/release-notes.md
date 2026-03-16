@@ -14,7 +14,9 @@
         * Cipher
         * Remove Fields
     * Sink
-        * Kafka 
+        * Kafka
+* S3, Object Storage Sink에 Parquet 코덱 추가
+    * S3 및 Object Storage Sink 노드에서 Parquet 형식으로 데이터를 저장할 수 있는 코덱을 추가했습니다. 
 
 #### 버그 수정
 * 모니터링 화면 좌측 트리 구조의 접기 버튼이 동작하지 않는 현상 수정
