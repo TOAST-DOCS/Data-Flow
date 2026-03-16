@@ -178,7 +178,7 @@
 * Log & Crash Search 로그의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
 **지원 코덱:**
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 파싱
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
 
 ## Source > (NHN Cloud) CloudTrail
 
@@ -209,7 +209,7 @@
 * CloudTrail 데이터의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
 **지원 코덱:**
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 파싱
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
 
 ## Source > (NHN Cloud) Object Storage
 
@@ -237,8 +237,8 @@
 ### 코덱별 메시지 인입
 
 **지원 코덱:**
-* [plain 코덱](./codec-config-guide.md#plain-코덱) - 원본 데이터 문자열 저장
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
 
 ## Source > (Amazon) S3
 
@@ -272,8 +272,8 @@
 ### 코덱별 메시지 인입
 
 **지원 코덱:**
-* [plain 코덱](./codec-config-guide.md#plain-코덱) - 원본 데이터 문자열 저장
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
 
 ## Source > (Apache) Kafka
 
@@ -324,8 +324,8 @@
 ### 코덱별 메시지 인입
 
 **지원 코덱:**
-* [plain 코덱](./codec-config-guide.md#plain-코덱) - 원본 데이터 문자열 저장
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
 
 ## Filter
 
@@ -856,7 +856,7 @@
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
 * 다른 설정 없이 기본 설정만으로 생성하면 오브젝트는 다음 경로 포맷에 맞게 출력됩니다.
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* 제공하는 코덱은 json, line입니다. 추후 parquet 코덱 등을 지원할 예정입니다.
+* 제공 코덱은 json, line, parquet 입니다.
 
 ### 속성 설명
 
@@ -878,8 +878,9 @@
 ### 코덱별 출력 예제
 
 **지원 코덱:**
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 파싱
-* [line 코덱](./codec-config-guide.md#line-코덱) - 행 단위 메시지 처리
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [line 코덱](./codec-config-guide.md#line) - 행 단위 메시지 처리
+* [parquet 코덱](./codec-config-guide.md#parquet) - 데이터를 parquet 형식으로 압축 
 
 ### Prefix 예시 - 필드
 
@@ -900,7 +901,7 @@
 #### 출력 경로
 
 ```
-/obs-test-container/dataflow/production/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+/obs-test-container/dataflow/production/part-378be4d8-2c59-4014-aaeb-a9bc75af2653-0
 ```
 
 ### Prefix 예시 - 시간
@@ -925,7 +926,7 @@
 #### 출력 경로
 
 ```
-/obs-test-container/dataflow/year=2022/month=11/day=21/hour=16/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+/obs-test-container/dataflow/year=2022/month=11/day=21/hour=16/part-378be4d8-2c59-4014-aaeb-a9bc75af2653-0
 ```
 
 ### Prefix 예시 - 시간 적용 실패한 경우
@@ -951,7 +952,7 @@
 #### 출력 경로
 
 ```
-/obs-test-container/_failure/ls.s3.d53c090b-9718-4833-926a-725b20c85974.2022-11-21T00.47.part0.txt
+/obs-test-container/_failure/part-378be4d8-2c59-4014-aaeb-a9bc75af2653-0
 ```
 
 ## Sink > (Amazon) S3
@@ -959,7 +960,7 @@
 ### 노드 설명
 
 * Amazon S3에 데이터를 업로드하는 노드입니다.
-* 제공하는 코덱은 json, line입니다. 추후 parquet 코덱 등을 지원할 예정입니다.
+* 제공 코덱은 json, line, parquet 입니다.
 
 ### 속성 설명
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
@@ -985,8 +986,9 @@
 ### 코덱별 출력 예제
 
 **지원 코덱:**
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 파싱
-* [line 코덱](./codec-config-guide.md#line-코덱) - 행 단위 메시지 처리
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [line 코덱](./codec-config-guide.md#line) - 행 단위 메시지 처리
+* [parquet 코덱](./codec-config-guide.md#parquet) - 데이터를 parquet 형식으로 압축 
 
 ## Sink > (Apache) Kafka
 
@@ -1020,8 +1022,8 @@
 ### 코덱별 출력 예제
 
 **지원 코덱:**
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 출력
-* [line 코덱](./codec-config-guide.md#line-코덱) - 행 단위 메시지 출력
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 출력
+* [line 코덱](./codec-config-guide.md#line) - 행 단위 메시지 출력
 
 ## Sink > Stdout
 
@@ -1033,8 +1035,8 @@
 ### 코덱별 출력 예제
 
 **지원 코덱:**
-* [json 코덱](./codec-config-guide.md#json-코덱) - JSON 형식 데이터 출력
-* [line 코덱](./codec-config-guide.md#line-코덱) - 행 단위 메시지 출력
+* [json 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 출력
+* [line 코덱](./codec-config-guide.md#line) - 행 단위 메시지 출력
 
 ## Branch
 

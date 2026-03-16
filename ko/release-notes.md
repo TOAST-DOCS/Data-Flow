@@ -14,7 +14,8 @@
         * Cipher
         * Remove Fields
     * Sink
-        * Kafka 
+        * Kafka
+* (Amazon) S3, (NHN Cloud) Object Storage Sink 노드에 Parquet 코덱을 추가했습니다.
 
 #### 버그 수정
 * 모니터링 화면 좌측 트리 구조의 접기 버튼이 동작하지 않는 현상 수정
