@@ -149,7 +149,7 @@
 * Apache Parquet 형식으로 데이터를 저장합니다.
 * 다양한 압축 옵션을 지원하며, 대용량 데이터 처리에 적합합니다.
 * 제공 스키마 타입: `string`, `integer`, `long`, `float`, `double`, `boolean`, `timestamp`, `date`
-* 제공 압축 형식: `SNAPPY(기본값)`, `GZIP`, `LZ4`, `ZSTD`, `UNCOMPRESSED`
+* 제공 압축 형식: `SNAPPY(기본값)`, `GZIP`, `LZ4_RAW`, `ZSTD`, `UNCOMPRESSED`
     * [압축 형식 참조](https://parquet.apache.org/docs/file-format/data-pages/compression/)
 
 #### parquet 코덱 예제 - Sink 노드
