@@ -4,7 +4,7 @@
 * 노드 유형의 종류는 Source, Filter, Branch, Sink입니다.
 * Source, Sink 노드 유형은 반드시 테스트를 수행하여 엔드포인트 정보가 유효한지 확인하기를 권장합니다.
 * 접근 제어가 설정된 데이터 소스 연결 시에는 DataFlow IP 고정 기능을 사용해야 합니다.
-    * DataFlow IP 고정 기능을 사용하려면 고객문의로 문의하세요.
+    * DataFlow IP 고정 기능을 사용하려면 **고객지원 > 문의하기**로 문의하세요.
 
 ### Object Storage 연결 시 주의점
 리전 또는 프로젝트가 서로 다른 Object Storage이지만 버킷명은 동일한 경우, 하나의 플로우에서 함께 사용이 불가능합니다.
@@ -116,7 +116,7 @@
 * 입력창 오른쪽의 화살표를 이용해 값을 1씩 조절할 수 있습니다.
 
 ### boolean
-* 드롭다운 메뉴에서 `TRUE` 혹은 `FALSE`를 선택합니다.
+* 드롭다운 메뉴에서 `TRUE` 또는 `FALSE`를 선택합니다.
 
 ### enum
 * 드롭다운 메뉴에서 항목을 선택합니다.
@@ -124,7 +124,7 @@
 ### array of strings
 * 배열에 들어갈 문자열을 하나씩 입력합니다.
 * 문자열 입력 후 `+` 버튼을 클릭하면 배열에 문자열이 삽입됩니다.
-* ex) `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`를 입력하고자 하는 경우 `message`, `yyyy-MM-dd HH:mm:ssZ`, `ISO8601`의 순서로 배열에 문자열을 삽입합니다.
+* 예: `["message" , "yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`를 입력하고자 하는 경우 `message`, `yyyy-MM-dd HH:mm:ssZ`, `ISO8601`의 순서로 배열에 문자열을 삽입합니다.
 
 ### hash
 * json 형식의 문자열을 입력합니다.
@@ -220,7 +220,7 @@
 
 ### 실행 모드
 * STREAMING: `리스트 갱신 주기`마다 오브젝트 리스트를 갱신하며, 새롭게 추가된 오브젝트들을 읽어 데이터를 처리합니다.
-* BATCH: 플로우 시작 시점에 오브젝트 리스트를 한번 불러온 뒤, 오브젝트들을 읽어 데이터를 처리하고 플로우를 종료합니다.
+* BATCH: 플로우 시작 시점에 오브젝트 리스트를 한 번 불러온 뒤, 오브젝트들을 읽어 데이터를 처리하고 플로우를 종료합니다.
 
 ### 속성 설명
 
@@ -249,7 +249,7 @@
 
 ### 실행 모드
 * STREAMING: `리스트 갱신 주기`마다 오브젝트 리스트를 갱신하며, 새롭게 추가된 오브젝트들을 읽어 데이터를 처리합니다.
-* BATCH: 플로우 시작 시점에 오브젝트 리스트를 한번 갱신한 뒤, 오브젝트들을 읽어 데이터를 처리하고 플로우를 종료합니다.
+* BATCH: 플로우 시작 시점에 오브젝트 리스트를 한 번 갱신한 뒤, 오브젝트들을 읽어 데이터를 처리하고 플로우를 종료합니다.
 
 ### 속성 설명
 
@@ -424,13 +424,13 @@
 
 | 속성명       | 기본값                      | 자료형              | 설명                                             | 비고                       |
 |-----------|--------------------------|------------------|------------------------------------------------|--------------------------|
-| 저장할 필드    | -                        | string           | CSV 파싱 결과를 저장할 필드명를 입력합니다.                     |                          |
+| 저장할 필드    | -                        | string           | CSV 파싱 결과를 저장할 필드명을 입력합니다.                     |                          |
 | Quote     | `"`                        | string           | 컬럼 필드를 나누는 문자를 입력합니다.                          |                          |
 | 첫 행 무시 여부 | `false`                    | boolean          | 속성값이 true일 경우 읽은 데이터 중 첫 행에 입력된 컬럼 이름을 무시합니다.  |                          |
 | 구분자       | ,                        | string           | 컬럼을 구분할 문자열을 입력합니다.                            |                          |
 | 소스 필드     | - | string           | CSV 파싱할 필드명을 입력합니다.                            |                          |
 | 스키마       | -                        | hash             | 각 컬럼의 이름과 자료형을 dictionary 형태로 입력합니다.           | `스키마 입력 방법` 참고 |
-| 덮어쓰기      | `false`                    | boolean          | true일 경우 CSV 파싱 결과가 저장할 필드나 기존 필드와 겹치면 덮어씌웁니다. |                          |
+| 덮어쓰기      | `false`                    | boolean          | true일 경우 CSV 파싱 결과가 저장할 필드나 기존 필드와 겹치면 덮어씁니다. |                          |
 | 원본 필드 삭제  | `false`                    | boolean          | CSV 파싱이 완료되면 소스 필드를 삭제합니다. 파싱이 실패한다면 유지합니다.    |                          |
 
 #### 스키마 입력 방법
@@ -504,7 +504,7 @@
 | --- | --- | --- | --- | --- |
 | 소스 필드 | - | string | JSON 문자열을 파싱할 필드명을 입력합니다. |  |
 | 저장할 필드 | - | string | JSON 파싱 결과를 저장할 필드명을 입력합니다.<br/>만약 속성값을 지정하지 않을 경우 root 필드에 결과를 저장합니다. |  |
-| 덮어쓰기 | `false` | boolean | true일 경우 JSON 파싱 결과가 저장할 필드나 기존 필드와 겹치면 덮어씌웁니다.  |  |
+| 덮어쓰기 | `false` | boolean | true일 경우 JSON 파싱 결과가 저장할 필드나 기존 필드와 겹치면 덮어씁니다.  |  |
 | 원본 필드 삭제 | `false` | boolean | JSON 파싱이 완료되면 소스 필드를 삭제합니다. 파싱이 실패한다면 유지합니다. |  |
 
 ### JSON 파싱 예제
@@ -660,13 +660,13 @@
 | 속성명 | 기본값 | 자료형 | 설명 | 비고 |
 | --- | --- | --- | --- | --- |
 | 대상 필드 | - | string | 기본값을 지정할 필드명을 입력합니다. |  |
-| 기본 값 | - | string | 기본값을 입력합니다. |  |
+| 기본값 | - | string | 기본값을 입력합니다. |  |
 
 ### 기본값 설정 예제
 
 #### 조건
 * 대상 필드 → `fieldname`
-* 기본 값 → `default_value`
+* 기본값 → `default_value`
 
 #### 입력 메시지
 
@@ -696,7 +696,7 @@
 | --- | --- | --- | --- | --- |
 | 대상 필드 | - | string | 복사할 소스 필드명을 입력합니다. |  |
 | 저장할 필드 | - | string | 복사한 결과를 저장할 필드명을 입력합니다. |  |
-| 덮어쓰기 | `false` | boolean | true일 경우 저장할 필드가 이미 존재하면 덮어씌웁니다.  |  |
+| 덮어쓰기 | `false` | boolean | true일 경우 저장할 필드가 이미 존재하면 덮어씁니다.  |  |
 
 ### 기본값 설정 예제
 
@@ -734,7 +734,7 @@
 | --- | --- | --- | --- | --- |
 | 소스 필드 |  | string | 이름을 변경할 소스 필드를 입력합니다. |  |
 | 대상 필드 | - | string | 변경할 필드명을 입력합니다. |  |
-| 덮어쓰기 | `false` | boolean | true일 경우 대상 필드가 이미 존재할 경우 덮어씌웁니다.  |  |
+| 덮어쓰기 | `false` | boolean | true일 경우 대상 필드가 이미 존재할 경우 덮어씁니다.  |  |
 
 ### 기본값 설정 예제
 
@@ -1011,7 +1011,7 @@
 | 배치 크기       | `16384`      | number | 배치 요청으로 전송할 크기(byte)를 입력합니다.                       | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `batch.size` 속성 참고                                                                                                                                                                       |
 | 버퍼 메모리      | `33554432`   | number | Kafka 전송에 사용하는 버퍼의 크기(byte)를 입력합니다.                | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `buffer.memory` 속성 참고                                                                                                                                                                    |
 | 수신 버퍼 크기    | `32768`      | number | 데이터를 읽는 데 사용하는 TCP receive 버퍼의 크기(byte)를 입력합니다.    | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `receive.buffer.bytes` 속성 참고                                                                                                                                                             |
-| 전송 지연 시간    | `0`          | number | 메시지 전송을 지연할 시간을 입력합니다. 지연된 메시지는 배치 요청으로 한번에 전송합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `linger.ms` 속성 참고                                                                                                                                                                        |
+| 전송 지연 시간    | `0`          | number | 메시지 전송을 지연할 시간을 입력합니다. 지연된 메시지는 배치 요청으로 한 번에 전송합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `linger.ms` 속성 참고                                                                                                                                                                        |
 | 서버 요청 타임아웃  | `30000`      | number | 전송 요청에 대한 타임아웃(ms)을 입력합니다.                         | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `request.timeout.ms` 속성 참고                                                                                                                                                               |
 | 전송 버퍼 크기    | `131072`     | number | 데이터를 전송하는 데 사용하는 TCP send 버퍼의 크기(byte)를 입력합니다.     | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `send.buffer.bytes` 속성 참고                                                                                                                                                                |
 | ack 속성      | `all`        | enum   | 브로커 서버에서 메시지를 받았는지 확인하는 설정을 입력합니다.                 | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `acks` 속성 참고<br/>0 - 메시지 수신 여부를 확인하지 않습니다.<br/>1 - 토픽의 leader가 follower가 데이터를 복사하는 것을 기다리지 않고 메시지를 수신했다는 응답을 합니다.<br/>all - 토픽의 leader가 follower가 데이터를 복사하는 것을 기다린 뒤 메시지를 수신했다는 응답을 합니다. |
@@ -1092,7 +1092,7 @@
 
 ``` json
 {
-    "resposne": {
+    "response": {
         "status": 200
     }
 }
@@ -1102,7 +1102,7 @@
 
 ``` json
 {
-    "resposne": {
+    "response": {
         "status": 404
     }
 }

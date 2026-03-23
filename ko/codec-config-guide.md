@@ -89,7 +89,7 @@
 * Source 노드에서는 입력된 각 행을 `message` 필드에 문자열로 저장하고, Sink 노드에서는 데이터를 format에 따라 텍스트 행으로 출력합니다.
 * 행 단위 처리가 필요할 때 사용합니다.
 * line 코덱의 경우 delimiter를 통해 출력되는 메시지들의 구분자를 정의할 수 있습니다.
-    * 기본 값은 줄바꿈(`\n`)입니다.
+    * 기본값은 줄바꿈(`\n`)입니다.
 
 #### line 코덱 예제 - Source 노드
 
@@ -165,7 +165,7 @@
     "created":"timestamp"
   }
   ```
-* compression type -> `SNAPPY`
+* compression type → `SNAPPY`
 
 ##### 출력 데이터
 
