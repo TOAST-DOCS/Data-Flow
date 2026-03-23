@@ -920,6 +920,56 @@
 | 비율 | - | number | 메시지를 다음 노드로 전달할 비율을 입력합니다. |  |
 | 초기 시드 값 | - | number | 난수 생성 시 사용할 초기 시드 값을 입력합니다. 초기 시드 값이 같고 입력 메시지가 동일하다면 결과는 동일합니다. |  |
 
+## Filter > Stop Words Remover(불용어 제거)
+
+### 노드 설명
+
+* 문자열 배열 필드에 포함된 Stop Word(불용어)를 제거하는 노드입니다.
+
+### 속성 설명
+
+| 속성명         | 기본값     | 자료형     | 설명                                        | 비고 |
+|-------------|---------|---------|-------------------------------------------|----|
+| 소스 필드       | -       | string  | 불용어를 제거 할 소스 필드명을 입력합니다.                  |    |
+| 저장할 필드      | -       | string  | 불용어 제거 결과를 저장할 필드명을 입력합니다.                |    |
+| 사전 정의 사전 언어 | `none`  | enum    | 불용어 제거에 사용할 사전 정의된 사전의 언어를 입력합니다.         |    |
+| 사전          |         | string  | 불용어 제거에 사용할 사전을 입력합니다. 각 단어는 줄바꿈으로 구분됩니다. |    |
+| 대소문자 구분 여부  | false   | boolean | 대소문자 구분 여부를 입력합니다.                        |    |
+| 덮어쓰기        | `false` | boolean | true일 경우 저장할 필드가 이미 존재하면 덮어씁니다.           |    |
+
+### 사전 정의 사전
+* 언어별 사전 정의 사전은 다음과 같습니다.
+  * [ko](http://static.toastoven.net/prod_dataflow/ko/node-config-guide/stop_word_remover_dict_ko.txt)
+  * [en](http://static.toastoven.net/prod_dataflow/ko/node-config-guide/stop_word_remover_dict_en.txt)
+
+### 설정 예제
+
+#### 조건
+* 소스 필드 → `src_field`
+* 저장할 필드 -> `target_field`
+* 사전
+```
+is
+a
+```
+
+#### 입력 메시지
+
+```json
+{
+    "src_field": ["hello", "world", "this", "is", "a", "test"]
+}
+```
+
+#### 출력 메시지
+
+```json
+{
+  "src_field": ["hello", "world", "this", "is", "a", "test"],
+  "target_field": ["hello", "world", "this", "test"]
+}
+```
+
 ## Sink
 
 * Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 노드 유형입니다.
