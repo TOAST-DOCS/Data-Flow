@@ -89,7 +89,7 @@
         * → 2022-11-04T13:41:28Z
 * `{{ time | format: formatStr }}`
     * 指定された時間を`formatStr`形式で返します。
-        * ios8601
+        * iso8601
         * yyyy
         * yy
         * MM

@@ -111,7 +111,7 @@ For V2, multiple Object Storage instances cannot be used within the same flow if
         * → 2022-11-04T13:41:28Z
 * `{{ time | format: formatStr }}`
     * Returns the given time in the form `formatStr`.
-        * ios8601
+        * iso8601
         * yyyy
         * yy
         * MM
