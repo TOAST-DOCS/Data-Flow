@@ -1,5 +1,32 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### March 25, 2026
+#### Feature Updates
+* End of support for V1 engine type
+    * Support for the V1 engine type has ended, and existing V1 engine type flows can no longer be executed.
+    * All flows are created with the V2 engine type.
+* Improved the recent log feature for the V2 engine type.
+* Improved the monitoring feature for the V2 engine type.
+* Added nodes supported by the V2 engine type.
+    * Source
+        * Kafka
+    * Filter 
+        * Cipher
+        * Remove Fields
+    * Sink
+        * Kafka
+* Added the Parquet codec to the (Amazon) S3 and (NHN Cloud) Object Storage Sink nodes.
+
+#### Bug Fixes
+* Fixed an issue where the collapse button in the left tree structure of the monitoring screen did not work.
+
+### February 10, 2026
+#### Feature Updates
+* End of support for Cipher node in V1 engine
+    * Support for the Cipher node feature in the V1 engine type will be discontinued as of February 10, 2026.
+    * If a Cipher node is included in an existing V1 engine type flow, the flow cannot be executed.
+    * The Cipher node cannot be selected in flows newly created with the V1 engine type.
+
 ### December 23, 2025
 #### Added Features
 * Added engine type
