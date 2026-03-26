@@ -801,18 +801,11 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 
 * A node to delete a field.
 
-### Supported Engine Type
-
-| Engine Type | Supported | Notes |
-| --- | --- | --- |
-| V1 | X |  |
-| V2 | O |  |
-
 ### Property Description
 
-| Property Name | Default Value | Data Type | Supported Engine Type | Description | Notes |
-| --- | --- | --- | --- | --- | --- |
-| Fields to Delete | - | array of strings | V2 | Enter the list of field names to delete. |  |
+| Property Name    | Default Value | Data Type        | Description                              | Notes |
+|------------------|---------------|------------------|------------------------------------------|-------|
+| Fields to Delete | -             | array of strings | Enter the list of field names to delete. |       |
 
 ### Configuration Example
 
@@ -880,7 +873,7 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 **Supported codec:**
 * [json codec](./codec-config-guide.md#json) - JSON data parsing
 * [line codec](./codec-config-guide.md#line) - Line-by-line message processing
-* [parquet codec](./codec-config-guide.md#parquet) - Compressed columnar storage format (Engine V1 only)
+* [parquet codec](./codec-config-guide.md#parquet) - Compressed columnar storage format
 
 ### Prefix Example - Field
 
@@ -988,7 +981,7 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 **Supported codec:**
 * [json codec](./codec-config-guide.md#json) - JSON data parsing
 * [line codec](./codec-config-guide.md#line) - Line-by-line message processing
-* [parquet codec](./codec-config-guide.md#parquet) - Compressed columnar storage format (Engine V1 only)
+* [parquet codec](./codec-config-guide.md#parquet) - Compressed columnar storage format
 
 ## Sink > (Apache) Kafka
 
