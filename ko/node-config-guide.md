@@ -1099,7 +1099,7 @@
 }
 ```
 
-## ML Split
+## Dataset Split
 
 ### 노드 설명
 
