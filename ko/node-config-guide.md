@@ -554,8 +554,8 @@
 
 #### 조건
 
-* 소스 필드 -> `message`
-* 형식 -> `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* 소스 필드 → `message`
+* 형식 → `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
 * 저장할 필드 → `time`
 * 시간대 → `Asia/Seoul`
 
@@ -629,8 +629,8 @@
 
 #### 조건
 
-* 대상 필드 -> `message`
-* 변환 타입 -> `INTEGER`
+* 대상 필드 → `message`
+* 변환 타입 → `INTEGER`
 
 #### 입력 메시지
 
@@ -860,9 +860,9 @@
 
 #### 조건
 * 소스 필드 → `src_field`
-* 저장할 필드 -> `target_field`
-* 정규식 -> `,`
-* 모드 -> `SEPARATOR`
+* 저장할 필드 → `target_field`
+* 정규식 → `,`
+* 모드 → `SEPARATOR`
 
 #### 입력 메시지
 
@@ -885,9 +885,9 @@
 
 #### 조건
 * 소스 필드 → `src_field`
-* 저장할 필드 -> `target_field`
-* 정규식 -> `[^,]+`
-* 모드 -> `MATCH`
+* 저장할 필드 → `target_field`
+* 정규식 → `[^,]+`
+* 모드 → `MATCH`
 
 #### 입력 메시지
 
@@ -946,7 +946,7 @@
 
 #### 조건
 * 소스 필드 → `src_field`
-* 저장할 필드 -> `target_field`
+* 저장할 필드 → `target_field`
 * 사전
 ```
 is
