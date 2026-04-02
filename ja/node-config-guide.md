@@ -1102,8 +1102,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* ソースフィールド -> `message`
-* 形式 -> `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* ソースフィールド → `message`
+* 形式 → `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
 * 保存するフィールド → `time`
 * タイムゾーン → `Asia/Seoul`
 
@@ -1191,8 +1191,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### 条件
 
-* 対象フィールド -> `message`
-* 変換タイプ -> `INTEGER`
+* 対象フィールド → `message`
+* 変換タイプ → `INTEGER`
 
 #### 入力メッセージ
 
@@ -1571,21 +1571,21 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * integer
     * 文字列を整数型に変換します。コンマで区切られた文字列をサポートします。小数点以下のデータは削除されます。
-        * 例："1,000.5" -> `1000`
+        * 例："1,000.5" → `1000`
     * 実数型データを整数型に変換します。小数点以下のデータは削除されます。
     * boolean型のデータを整数型に変換します。true`は`1`, `false`は`0`に変換されます。
 * integer_eu
     * データを整数型に変換します。ドットで区切られた文字列をサポートします。小数点以下のデータは削除されます。
-    * 例："1.000,5" -> `1000`
+    * 例："1.000,5" → `1000`
     * 実数型とboolean型データはintegerと同じです。
 * float
     * 整数型データを実数型に変換します。
     * 文字列を実数型に変換します。コンマで区切られた文字列をサポートします。
-        * 例："1,000.5" -> `1000.5`
+        * 例："1,000.5" → `1000.5`
     * boolean型のデータを整数型に変換します。true`は`1.0`, `false`は`0.0`に変換されます。
 * float_eu
     * データを実数型に変換します。ドットで区切られた文字列をサポートします。
-        * 例："1.000,5" -> `1000.5`
+        * 例："1.000,5" → `1000.5`
     * 実数型とboolean型データはfloatと同じです。
 * string
     * データをUTF-8エンコードの文字列に変換します。

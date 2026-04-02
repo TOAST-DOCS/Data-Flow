@@ -1104,8 +1104,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### Condition
 
-* Source Field -> `message`
-* Formats -> `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* Source Field → `message`
+* Formats → `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
 * Field to be stored → `time`
 * Time zone → `Asia/Seoul`
 
@@ -1193,8 +1193,8 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 #### Condition
 
-* Target field -> `message`
-* Conversion type -> `INTEGER`
+* Target field → `message`
+* Conversion type → `INTEGER`
 
 #### Input Message
 
@@ -1574,21 +1574,21 @@ SELECT * FROM MY_TABLE WHERE id > :sql_last_value and id > custom_value order by
 
 * integer
     * Converts strings to integers. Supports comma-separated strings. Fractional parts are discarded.
-        * Example: "1,000.5" -> `1000`
+        * Example: "1,000.5" → `1000`
     * Converts floats to integers. Fractional parts are discarded.
     * Converts boolean values to integers: `true` is converted to `1`, `false` to `0`.
 * integer_eu
     * Converts data to integers. Supports dot-separated strings. Fractional parts are discarded. 
-        * Example: "1.000,5" -> `1000`
+        * Example: "1.000,5" → `1000`
     * Float and boolean values are treated the same as integers.
 * float
     * Converts integers to floats.
     * Converts strings to floats. Supports comma-separated strings.
-        * Example: "1,000.5" -> `1000.5`
+        * Example: "1,000.5" → `1000.5`
     * Converts boolean values to integers: `true`is converted to `1.0`, `false` to `0.0`.
 * float_eu
     * Converts data to floats. Supports dot-delimited strings.
-        * Example: "1.000,5" -> `1000.5`
+        * Example: "1.000,5" → `1000.5`
     * Float and boolean values are treated the same as floats.
 * string
     * Converts data to strings with UTF-8 encoding.
