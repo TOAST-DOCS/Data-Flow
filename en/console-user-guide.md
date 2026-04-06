@@ -52,11 +52,11 @@ Display query results of flows in a table form.
 | STARTING       | Freeing up resources to run the flow. |
 | PREPARING      | Ready to run the flow. |
 | RUNNING        | Flow is running. |
-| ERROR              | An error occurred during flow running due to communication failure or authentication failure. If <b>ERROR</b> continues to occur, contact the Customer Center. |
+| ERROR              | An error occurred during flow running due to communication failure or authentication failure. If <b>ERROR</b> continues to occur, contact us via **Customer Support > Contact Us**. |
 | STOP_FAILED   | Failed to request flow stop. |
 | STOPPED        | Flow is stopped. |
 | DRAINING       | Flow is draining. |
-| UNKNOWN            | An error occurred for unknown reasons during the running of the flow. If UNKNOWN continues to occur, contact the Customer Center. |
+| UNKNOWN            | An error occurred for unknown reasons during the running of the flow. If <b>UNKNOWN</b> continues to occur, contact us via **Customer Support > Contact Us**. |
 
 #### Flow Status Change Notifications
 * You can be notified via email when the flow status is changed to a status set for notifications
@@ -74,29 +74,15 @@ Create metadata to define flows.
 
 * Create flow metadata by adding name and description to identify a flow.
 * Flow names can overlap with other flows.
-* Select an engine type. The default ls V1, and refer to **Engine Type** section for features by engine.
 * Select the execution mode according to the flow purpose.
 * You can specify Flow Template to easily load flows of features users wants.
 * You can set an instance type to run flows.
-
-#### Engine Type
-
-* Select either V1 or V2 from the **Engine Type** option on the Create Flow screen.
-    * V1: the existing engine supports a variety of nodes.
-    * V2: the latest architecture-based engine provides faster performance than V1.
-* The engine cannot be changed after creating the flow.
-
-
-!!! tip "Notice"
-    The provided node and monitoring information vary by engine type.
-
 
 ### Change Flow
 
 Modify metadata of flows.
 
 * Modify the existing flow name and description to reflect it in flow metadata.
-* Engine type cannot be changed.
 * Flow templates cannot be specified.
 * Changing flows are possible even when the flow is running.
 * You cannot change the instance type to run flows.
@@ -157,7 +143,6 @@ Displays detailed flow metadata.
 
 * Display the name and description information entered when creating a flow.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
-* Display the engine type of the flow.
 * Display the total running time at the time of the most recent run.
 * Display the instance type at the time of the most recent run.
 
@@ -165,6 +150,9 @@ Displays detailed flow metadata.
 
 * You can check Log information for current running flow directly through the Recent Logs.
 * You can view logs for the recent 15 minutes.
+* Logs for the V2 engine type can be viewed by selecting one of the following two options.
+    * V2-JOB: Logs for flow execution scheduling and status management.
+    * V2-TASK: Logs for data processing tasks defined in the flow.
 
 ### Basic Information - All Logs
 * When you enable Log & Crash Search, you can copy Lucene Query to view flow logs from Log & Crash Search.
@@ -182,7 +170,6 @@ Define a flow logic.
 
 * Define a flow by importing flow components from Node type or Template from flow settings.
     * The Collapse/Expand button allows to zoom-in/zoom-out the flow screen.
-    * The available node varies by engine type.
 * Adjust the flow screen to define flows and change the graph configuration.
 
     * Define a node behavior by entering the appropriate settings for each node.
@@ -302,7 +289,12 @@ It is area to display the monitoring chart.
         * The cancel button allows you not to apply the time period you want to change.
     * Chart
         * You can zoom the Chart zoom-in/zoom-out by specifying the chart range.
-* Event in/out charts for flows with engine type V2 will be provided later.
+* Select Type
+    * V2-ALL
+        * Event In/Out and network data transmission and reception are displayed in a single graph.
+        * CPU usage rate and memory usage display the V2-JOB and V2-TASK graphs separately.
+    * V2-JOB, V2-TASK
+        * Event In/Out and network data transmission and reception are not displayed.
 
 ## Template
 
@@ -332,7 +324,6 @@ Display Query result template in a table form.
 Create metadata to define a template.
 
 * Create template metadata by adding name and description to identify a template.
-* Template names can overlap with other Template names.
 * Select an engine type. The default is V1.
 * Flow templates cannot be specified.
 * Created templates can be found in the node type list when defining flows or template logics.
@@ -361,6 +352,7 @@ Delete template metadata
 
 ## See Templates in Details
 
+This is a detail page for viewing detailed information about the selected template.
 Go to **Data & Analytics > DataFlow > Templates > and Click one of the template**
 You can adjust the screen ratio by moving boundaries between the template list area and See Templates in Details.
 Also you can adjust the screen proportion to the specified percentage by using the Resize Area button located in upper right corner of See Templates in Details.
