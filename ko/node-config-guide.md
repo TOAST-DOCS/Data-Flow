@@ -735,7 +735,7 @@
 | 저장할 필드 | - | string | 복사한 결과를 저장할 필드명을 입력합니다. |  |
 | 덮어쓰기 | `false` | boolean | true일 경우 저장할 필드가 이미 존재하면 덮어씁니다.  |  |
 
-### 기본값 설정 예제
+### 예제
 
 #### 조건
 * 대상 필드 → `source_field`
@@ -773,7 +773,7 @@
 | 대상 필드 | - | string | 변경할 필드명을 입력합니다. |  |
 | 덮어쓰기 | `false` | boolean | true일 경우 대상 필드가 이미 존재할 경우 덮어씁니다.  |  |
 
-### 기본값 설정 예제
+### 예제
 
 #### 조건
 * 소스 필드 → `fieldname`
@@ -807,7 +807,7 @@
 | --- | --- | --- | --- | --- |
 | 대상 필드 | - | array of strings | 공백을 제거할 대상 필드들을 입력합니다. | 스키마 정의 시 드롭다운 제공(복수 선택) |
 
-### 기본값 설정 예제
+### 예제
 
 #### 조건
 * 대상 필드 → `["field1", "field2"]`
@@ -997,6 +997,81 @@ a
 {
   "src_field": ["hello", "world", "this", "is", "a", "test"],
   "target_field": ["hello", "world", "this", "test"]
+}
+```
+
+## Filter > Pattern Extractor (Grok)
+
+### 노드 설명
+
+* 텍스트 데이터에서 구조화된 정보를 추출하는 노드입니다.
+* Java Grok 라이브러리 기반으로 동작하며, 정규표현식을 활용한 패턴 매칭을 통해 로그나 텍스트에서 필요한 정보를 추출합니다.
+* Logstash와 호환되는 Grok 패턴 문법을 지원하며, 복잡한 로그 파싱을 간단한 패턴으로 처리할 수 있습니다.
+* 기본 제공 패턴을 활용하거나 사용자 정의 패턴을 생성하여 다양한 형식의 데이터를 파싱할 수 있습니다.
+
+
+### 속성 설명
+
+| 속성명       | 기본값     | 자료형     | 설명                                                              | 비고                                                                |
+|-----------|---------|---------|-----------------------------------------------------------------|-------------------------------------------------------------------|
+| 소스 필드     | -       | string  | 패턴을 추출할 원본 필드명을 입력합니다.                                          |                                                                   |
+| 대상 필드     | -       | string  | 추출 결과를 저장할 필드명을 입력합니다. 입력하지 않으면 결과가 root에 바로 추가됩니다.             |                                                                   |
+| 사용자 정의 패턴 | -       | hash    | 기본 제공 패턴 외에 추가로 사용할 패턴을 정의합니다. 패턴명과 정규표현식을 key-value 형태로 입력합니다. | 동일한 패턴명이 기본 제공 패턴에 존재할 경우, 사용자 정의 패턴이 우선 적용되어 기본 패턴을 재정의할 수 있습니다. |
+| 패턴 표현식    | -       | string  | 데이터에서 추출할 필드와 패턴을 Grok 표현식으로 입력합니다.                             |                                                                   |
+| 덮어쓰기      | `false` | boolean | 대상 필드에 이미 값이 존재하는 경우 추출 결과로 덮어쓸지 여부를 설정합니다.                     |                                                                   |
+
+!!! tip "기본 제공 패턴"
+    Java Grok 라이브러리의 Default Pattern을 기반으로 자주 사용되는 패턴들을 사전 정의하여 제공합니다.
+    날짜/시간, IP 주소, URL, 로그 레벨 등 여러가지 상황에 필요한 다양한 패턴이 포함되어 있습니다.
+    기본 제공 패턴은 내부적으로 다른 패턴들을 참조하는 계층 구조를 가지므로, 지정한 필드명 외에 추가 필드가 생성될 수 있습니다.
+    [기본 제공 패턴 목록](https://static.toastoven.net/prod_dataflow/node-config-guide/predefined_patterns.txt) 참고
+
+
+### 예제
+
+#### 조건
+* 소스 필드 → `log_message`
+* 대상 필드 → `result`
+* 사용자 정의 패턴 → `{"CUSTOM_PHONE_NUMBER": "01[016789]-\\d{3,4}-\\d{4}", "CUSTOM_EMPLOYEE_ID": "EMP-\\d{6}", "CUSTOM_ORDER_ID": "ORD-[A-Z]{3}-\\d{8}"}`
+* 패턴 표현식 → `%{TIMESTAMP_ISO8601:timestamp} %{LOGLEVEL:level} %{CUSTOM_EMPLOYEE_ID:custom_emp_id} %{CUSTOM_PHONE_NUMBER:custom_phone_number} %{CUSTOM_ORDER_ID:custom_order_id} %{GREEDYDATA:message}`
+
+#### 입력 메시지
+
+```json
+{
+  "log_message": "2024-03-15T09:30:00.000Z INFO EMP-123456 010-1234-5678 ORD-ABC-12345678 Order processing started",
+  "created_by": "DataFlow"
+}
+
+```
+
+#### 출력 메시지
+
+```json
+{
+  "log_message": "2024-03-15T09:30:00.000Z INFO EMP-123456 010-1234-5678 ORD-ABC-12345678 Order processing started",
+  "created_by": "DataFlow",
+  "result": {
+    "YEAR": "2024",
+    "MONTHNUM": "03",
+    "ISO8601_TIMEZONE": "Z",
+    "MONTHDAY": "15",
+    "HOUR": [
+      "09",
+      null
+    ],
+    "MINUTE": [
+      "30",
+      null
+    ],
+    "SECOND": "00.000",
+    "timestamp": "2024-03-15T09:30:00.000Z",
+    "level": "INFO",
+    "custom_emp_id": "EMP-123456",
+    "custom_phone_number": "010-1234-5678",
+    "custom_order_id": "ORD-ABC-12345678",
+    "message": "Order processing started"
+  }
 }
 ```
 
