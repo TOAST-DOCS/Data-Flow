@@ -506,6 +506,10 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 | Output Field | - | string | Enter the field name to store the JSON parsing result.<br/>If no property value is specified, the result is stored in the root field. |  |
 | Overwrite | `false` | boolean | If true, overwrites the output field or existing fields if the JSON parsing result conflicts with them. |  |
 | Delete Source Field | `false` | boolean | Deletes the source field when JSON parsing is complete. Retains the field if parsing fails. |  |
+| Schema | - | hash | Enter the name and data type of each column in dictionary format. | Refer to `How to Enter a Schema` |
+
+#### How to Enter a Schema
+* Column types are not supported. All columns and data types are entered as a schema.
 
 ### Example of JSON Parsing
 
