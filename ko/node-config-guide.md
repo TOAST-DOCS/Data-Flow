@@ -1021,7 +1021,7 @@ a
 | 덮어쓰기 | `false` | boolean | 대상 필드에 이미 값이 존재하는 경우 추출 결과로 덮어쓸지 여부를 설정합니다. |   |
 
 !!! tip "기본 제공 패턴"
-    Java Grok 라이브러리의 Default Pattern을 기반으로 자주 사용되는 패턴들을 사전 정의하여 제공합니다.
+    자주 사용되는 패턴들을 사전 정의하여 제공합니다.
     날짜/시간, IP 주소, URL, 로그 레벨 등 여러가지 상황에 필요한 다양한 패턴이 포함되어 있습니다.
     기본 제공 패턴은 내부적으로 다른 패턴들을 참조하는 계층 구조를 가지므로, 지정한 필드명 외에 추가 필드가 생성될 수 있습니다.
     [기본 제공 패턴 목록](https://static.toastoven.net/prod_dataflow/node-config-guide/predefined_patterns.txt) 참고
