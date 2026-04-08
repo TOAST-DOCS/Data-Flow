@@ -554,8 +554,8 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 
 #### Condition
 
-* Source field -> `message`
-* Format -> `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* Source field → `message`
+* Format → `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
 * Output field → `time`
 * Timezone → `Asia/Seoul`
 
@@ -629,8 +629,8 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 
 #### Condition
 
-* Target field -> `message`
-* Conversion type -> `INTEGER`
+* Target field → `message`
+* Conversion type → `INTEGER`
 
 #### Input message
 

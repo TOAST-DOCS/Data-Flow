@@ -552,8 +552,8 @@
 
 #### 条件
 
-* ソースフィールド -> `message`
-* 形式 -> `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* ソースフィールド → `message`
+* 形式 → `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
 * 保存するフィールド → `time`
 * タイムゾーン → `Asia/Seoul`
 
@@ -627,8 +627,8 @@
 
 #### 条件
 
-* 対象フィールド -> `message`
-* 変換タイプ -> `INTEGER`
+* 対象フィールド → `message`
+* 変換タイプ → `INTEGER`
 
 #### 入力メッセージ
 
