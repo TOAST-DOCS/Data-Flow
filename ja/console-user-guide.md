@@ -172,7 +172,7 @@ DataFlowは、次の順序で使用できます。
     * 折りたたみおよび展開アイコンをクリックしてフロー画面を拡張または縮小できます。
 * フロー画面を操作してフローを定義し、グラフの構成を変更します。
     * 各ノードに適切な設定値を入力してノードの動作を定義します。
-        * [ノード詳細ガイドリンク](https://docs.toast.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
+        * [ノード詳細ガイドリンク](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
     * ノード間に接続線を接続してメッセージのフローを定義します。
         * 各フローは必ず1つのDirected Acyclic Graph(DAG)のみ定義できます。
         * ノードのタイプ別カテゴリーに合った接続が漏れなく定義されている時のみ保存できます。

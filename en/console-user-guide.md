@@ -173,7 +173,7 @@ Define a flow logic.
 * Adjust the flow screen to define flows and change the graph configuration.
 
     * Define a node behavior by entering the appropriate settings for each node.
-        * [Detailed Node Guide](https://docs.toast.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
+        * [Detailed Node Guide](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
     * Define the flow of messages by linking connections among nodes.
         * Each flow can define only one Directed Acyclic Graph (DAG).
         * Connection that fits the category by respective type of node must be defined in order to be saved.
