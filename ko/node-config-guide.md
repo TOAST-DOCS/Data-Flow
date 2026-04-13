@@ -149,6 +149,7 @@
 | Double | 64비트 부동 소수점 |
 | Boolean | 참/거짓 |
 | Timestamp | 날짜와 시간 |
+| Array | 배열 |
 
 ### 스키마 정의
 
