@@ -1,5 +1,21 @@
 ## Data & Analytics > DataFlow > 릴리스 노트
 
+### 2026. 04. 28.
+#### 기능 추가
+* 플로우 정보에서 Source 노드의 스키마를 정의하여 사용할 수 있는 기능을 추가했습니다.
+
+#### 기능 개선/변경
+* 신규 노드 추가
+    * Filter
+        * Tokenizer
+        * Sampling
+        * Stop Words Remover
+        * Pattern Extractor (Grok)
+    * Branch
+        * Dataset Split
+* Json 노드에 **스키마** 속성을 추가했습니다.
+
+
 ### 2026. 03. 24.
 #### 기능 개선/변경
 * V1 엔진 타입 지원 종료
