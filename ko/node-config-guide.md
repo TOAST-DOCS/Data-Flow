@@ -1064,7 +1064,7 @@ a
 #### 조건
 * 소스 필드 → `log_message`
 * 대상 필드 → `result`
-* 사용자 정의 패턴 → `{"CUSTOM_PHONE_NUMBER": "01[016789]-\\d{3,4}-\\d{4}", "CUSTOM_EMPLOYEE_ID": "EMP-\\d{6}", "CUSTOM_ORDER_ID": "ORD-[A-Z]{3}-\\d{8}"}`
+* 사용자 정의 패턴 → `{"CUSTOM_PHONE_NUMBER": "01[016789]-\d{3,4}-\d{4}", "CUSTOM_EMPLOYEE_ID": "EMP-\d{6}", "CUSTOM_ORDER_ID": "ORD-[A-Z]{3}-\d{8}"}`
 * 패턴 표현식 → `%{TIMESTAMP_ISO8601:timestamp} %{LOGLEVEL:level} %{CUSTOM_EMPLOYEE_ID:custom_emp_id} %{CUSTOM_PHONE_NUMBER:custom_phone_number} %{CUSTOM_ORDER_ID:custom_order_id} %{GREEDYDATA:message}`
 
 #### 입력 메시지
