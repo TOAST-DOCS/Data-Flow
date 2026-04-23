@@ -450,7 +450,7 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 
 ```js
 {
-    "message": "hey,foo,\\\"bar baz\\\""
+    "message": "hey,foo,\"bar baz\""
 }
 ```
 
@@ -477,7 +477,7 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 
 ```js
 {
-    "message": "\\\"wow hello world!\\\", 2, false"
+    "message": "\"wow hello world!\", 2, false"
 }
 ```
 
@@ -485,7 +485,7 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 
 ```js
 {
-    "message": "\\\"wow hello world!\\\", 2, false",
+    "message": "\"wow hello world!\", 2, false",
     "one": "wow hello world!",
     "t hree": false,
     "two": 2
@@ -522,7 +522,7 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
 
 ```js
 {
-    "message": "{\\\"json\\\": \\\"parse\\\", \\\"example\\\": \\\"string\\\"}"
+    "message": "{\"json\": \"parse\", \"example\": \"string\"}"
 }
 ```
 
@@ -534,7 +534,7 @@ Multiple Object Storage instances cannot be used within the same flow if they sh
         "json": "parse",
         "example": "string"
     },
-    "message": "{\\\"json\\\": \\\"parse\\\", \\\"example\\\": \\\"string\\\"}"
+    "message": "{\"json\": \"parse\", \"example\": \"string\"}"
 }
 ```
 

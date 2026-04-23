@@ -448,7 +448,7 @@
 
 ```js
 {
-    "message": "hey,foo,\\\"bar baz\\\""
+    "message": "hey,foo,\"bar baz\""
 }
 ```
 
@@ -475,7 +475,7 @@
 
 ```js
 {
-    "message": "\\\"wow hello world!\\\", 2, false"
+    "message": "\"wow hello world!\", 2, false"
 }
 ```
 
@@ -483,7 +483,7 @@
 
 ```js
 {
-    "message": "\\\"wow hello world!\\\", 2, false",
+    "message": "\"wow hello world!\", 2, false",
     "one": "wow hello world!",
     "t hree": false,
     "two": 2
@@ -520,7 +520,7 @@
 
 ```js
 {
-    "message": "{\\\"json\\\": \\\"parse\\\", \\\"example\\\": \\\"string\\\"}"
+    "message": "{\"json\": \"parse\", \"example\": \"string\"}"
 }
 ```
 
@@ -532,7 +532,7 @@
         "json": "parse",
         "example": "string"
     },
-    "message": "{\\\"json\\\": \\\"parse\\\", \\\"example\\\": \\\"string\\\"}"
+    "message": "{\"json\": \"parse\", \"example\": \"string\"}"
 }
 ```
 
