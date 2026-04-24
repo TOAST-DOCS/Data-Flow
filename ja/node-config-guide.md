@@ -448,7 +448,7 @@
 
 ```js
 {
-    "message": "hey,foo,\\\"bar baz\\\""
+    "message": "hey,foo,\"bar baz\""
 }
 ```
 
@@ -475,7 +475,7 @@
 
 ```js
 {
-    "message": "\\\"wow hello world!\\\", 2, false"
+    "message": "\"wow hello world!\", 2, false"
 }
 ```
 
@@ -483,7 +483,7 @@
 
 ```js
 {
-    "message": "\\\"wow hello world!\\\", 2, false",
+    "message": "\"wow hello world!\", 2, false",
     "one": "wow hello world!",
     "t hree": false,
     "two": 2
@@ -504,6 +504,10 @@
 | 保存するフィールド | - | string | JSONパース結果を保存するフィールド名を入力します。<br/>もしプロパティ値を指定しない場合、rootフィールドに結果を保存します。 | |
 | 上書き | `false` | boolean | trueの場合、JSONパース結果が保存するフィールドや既存のフィールドと重複すれば上書きします。 | |
 | 元のフィールドを削除 | `false` | boolean | JSONパースが完了するとソースフィールドを削除します。パースに失敗した場合は維持します。 | |
+| スキーマ | - | hash | 各カラムの名前とデータ型をdictionary形式で入力します。 | `スキーマ入力方法`を参照 |
+
+#### スキーマ入力方法
+* カラムタイプはサポートしておらず、全てのカラム及びデータ型をスキーマとして入力として受け取ります。
 
 ### JSONパースの例
 
@@ -516,7 +520,7 @@
 
 ```js
 {
-    "message": "{\\\"json\\\": \\\"parse\\\", \\\"example\\\": \\\"string\\\"}"
+    "message": "{\"json\": \"parse\", \"example\": \"string\"}"
 }
 ```
 
@@ -528,7 +532,7 @@
         "json": "parse",
         "example": "string"
     },
-    "message": "{\\\"json\\\": \\\"parse\\\", \\\"example\\\": \\\"string\\\"}"
+    "message": "{\"json\": \"parse\", \"example\": \"string\"}"
 }
 ```
 
@@ -552,8 +556,8 @@
 
 #### 条件
 
-* ソースフィールド -> `message`
-* 形式 -> `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
+* ソースフィールド → `message`
+* 形式 → `["yyyy-MM-dd HH:mm:ssZ", "ISO8601"]`
 * 保存するフィールド → `time`
 * タイムゾーン → `Asia/Seoul`
 
@@ -627,8 +631,8 @@
 
 #### 条件
 
-* 対象フィールド -> `message`
-* 変換タイプ -> `INTEGER`
+* 対象フィールド → `message`
+* 変換タイプ → `INTEGER`
 
 #### 入力メッセージ
 
