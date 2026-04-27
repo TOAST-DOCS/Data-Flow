@@ -1,5 +1,21 @@
 ## Data & Analytics > DataFlow > Release Notes
 
+### April 28, 2026
+#### Added Features
+* Added a feature to define and use the schema of Source nodes in flow information.
+
+#### Feature Updates
+* Added new nodes
+    * Filter
+        * Tokenizer
+        * Sampling
+        * Stop Words Remover
+        * Pattern Extractor (Grok)
+    * Branch
+        * Dataset Split
+* Added the **Schema** property to the JSON node.
+
+
 ### March 24, 2026
 #### Feature Updates
 * End of support for V1 engine type
@@ -10,7 +26,7 @@
 * Added nodes supported by the V2 engine type.
     * Source
         * Kafka
-    * Filter 
+    * Filter
         * Cipher
         * Remove Fields
     * Sink
@@ -36,7 +52,7 @@
 ### October 28, 2025
 #### Bug Fixes
 * Fixed an issue where CPU, Memory, and Network metrics in the Monitoring tab were only displayed for the most recently executed flow.
-* Fixed an issue where saving a flow or template configured using a template containing sensitive information would fail. 
+* Fixed an issue where saving a flow or template configured using a template containing sensitive information would fail.
 
 ### September 23, 2025
 #### Feature Updates
@@ -58,7 +74,7 @@
 
 ### July 29, 2025
 #### Feature Updates
-* Updated the execution mode setting to be configured at the flow.
+* Updated the execution mode to be configured at the flow.
 * Renamed CloudTrail event names to match the terminology used in the DataFlow console.
 
 #### Bug Fixes
@@ -103,10 +119,10 @@
 
 ### July 23, 2024
 #### Feature Updates
-* Improved to use the enter key to input data when entering data in the array of strings type in the node settings screen.
-* Separated the 'Match' setting for the Date node into a 'Source field' setting and a 'Formats' setting.
-* Made notifications so that, when starting or ending a flow that has already started or ended, 'FLOW_ALREADY_STARTED'/'FLOW_ALREADY_STOPPED' instead of 'ERROR' appears.
-* Made notifications so that, when saving or deleting Log & Crash Search log save settings, 'Save Log & Crash Search save settings' or 'Delete Log & Crash Search save settings' are left in CloudTrail logs.
+* Improved to use the enter key to input data when entering data in the `array of strings` type in the node settings screen.
+* Separated the **Match** setting for the Date node into a **Source Field** setting and a **Formats** setting.
+* Made notifications so that, when starting or ending a flow that has already started or ended, `FLOW_ALREADY_STARTED`/`FLOW_ALREADY_STOPPED` instead of `ERROR` appears.
+* Made notifications so that, when saving or deleting Log & Crash Search log save settings, "Save Log & Crash Search save settings" or "Delete Log & Crash Search save settings" are left in CloudTrail logs.
 
 ### July 1, 2024
 #### Feature Updates
@@ -142,7 +158,7 @@
 
 ### April 23, 2024
 #### Added Features
-* Added the flow status change notifications feature
+* Added the flow status change notifications feature.
 
 #### Bug Fixes
 * Fixed an issue where, when querying flow monitoring with many nodes, the query fails.
@@ -156,16 +172,16 @@
 
 ### February 27, 2024
 #### Feature Updates
-* Changed the words "file" and "object" in the descriptions of S3 and OBS nodes to "object".
+* Changed the words "file" and "object" in the descriptions of S3 and Object Storage nodes to "object".
 * Fixed loading UI to appear on flow save, start, stop, and validation requests.
 * Made the order of node setup more natural.
 
 #### Bug Fixes
-* Fixed an issue where saving flows with S3, OBS Sink nodes would intermittently leave temporary objects for testing during validation.
+* Fixed an issue where saving flows with S3, Object Storage Sink nodes would intermittently leave temporary objects for testing during validation.
 * Fixed an issue where deleting a flow would not delete the scheduling stored in that flow.
 * Fixed an issue where, when creating a flow immediately after activating a project, the flow would fail to run.
 * Fixed an issue where, when looking up monitoring for a long period of time, the lookup would fail.
-* Fixed an issue where the execution state of a validation feature would go from "Activating" to "Active" faster than it should.
+* Fixed an issue where the execution state of a validation feature would go from `Activating` to `Active` faster than it should.
 
 ### January 23, 2024
 #### Feature Updates
@@ -177,8 +193,8 @@
     * Source
         * Added the feature to run queries against the DB to get data.
     * Sink
-        * Added the feature to store data in Object Storage with the parquet type.
-        * Added the feature to store data in S3 with the parquet type.
+        * Added the feature to store data in Object Storage with the Parquet type.
+        * Added the feature to store data in S3 with the Parquet type.
 
 #### Bug Fixes
 * Fixed a bug where validation would not turn on properly after creating a flow.
@@ -199,7 +215,7 @@
 ### September 26, 2023
 #### Feature Updates
 * Modified to support At Least Once when processing data.
-* Added new options for time format in Prefix Settings for S3 and OBS Sink nodes.
+* Added new options for time format in Prefix Settings for S3 and Object Storage Sink nodes.
 
 #### Bug Fixes
 * Fixed a bug where the flow would not terminate if an error occurred during the shutdown of the Log & Crash Search node.
@@ -246,7 +262,7 @@
         * Added a feature to import data through Amazon S3 interface.
         * Added a feature to import data through Apache Kafka.
     * Filter
-        * Added a feature to preprocess data in various ways by adding grok, json, csv nodes.
+        * Added a feature to preprocess data in various ways by adding Grok, JSON, and CSV nodes.
 
 ### January 6, 2023
 
