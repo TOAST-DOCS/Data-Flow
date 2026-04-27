@@ -2,16 +2,16 @@
 
 DataFlow can be used in the following order:
 
-* Enable Service
-    1. Create a project.
-    2. Select the desired project.
-    3. Enable the DataFlow service.
-* Execute Flow
-    1. Create a flow.
-    2. Add the nodes you need, and enter settings to define how each node behaves.
-    3. Node connections determine the order of nodes' actions to complete the flow.
-    4. Execute the file.
-    5. Verify that the flow ran successfully by checking the log information.
+Enable Service
+1. Create a project.
+2. Select the desired project.
+3. Enable the DataFlow service.
+Execute Flow
+1. Create a flow.
+2. Add the nodes you need, and enter settings to define how each node behaves.
+3. Node connections determine the order of nodes' actions to complete the flow.
+4. Execute the file.
+5. Verify that the flow ran successfully by checking the log information.
 
 ## Management
 
@@ -22,15 +22,11 @@ Click **Data & Analytics > DataFlow > Management**.
 
 ### Search
 
-Search for flows with given criteria.
-
-* Searches for flows that contain search items in the name.
+Search for flows with given criteria. Searches for flows that contain search items in the name.
 
 ### Filter
 
-Searches flows with given conditions.
-
-* Provides filtering options based on the flow status values.
+Searches flows with given conditions. Provides filtering options based on the flow status values.
 
 ### Flow List
 
@@ -52,11 +48,11 @@ Display query results of flows in a table form.
 | STARTING       | Freeing up resources to run the flow. |
 | PREPARING      | Ready to run the flow. |
 | RUNNING        | Flow is running. |
-| ERROR              | An error occurred during flow running due to communication failure or authentication failure. If <b>ERROR</b> continues to occur, contact the Customer Center. |
+| ERROR              | An error occurred during flow running due to communication failure or authentication failure. If `ERROR` continues to occur, contact us via **Customer Support > Contact Us**. |
 | STOP_FAILED   | Failed to request flow stop. |
 | STOPPED        | Flow is stopped. |
 | DRAINING       | Flow is draining. |
-| UNKNOWN            | An error occurred for unknown reasons during the running of the flow. If UNKNOWN continues to occur, contact the Customer Center. |
+| UNKNOWN            | An error occurred for unknown reasons during the running of the flow. If `UNKNOWN` continues to occur, contact us via **Customer Support > Contact Us**. |
 
 #### Flow Status Change Notifications
 * You can be notified via email when the flow status is changed to a status set for notifications
@@ -74,33 +70,18 @@ Create metadata to define flows.
 
 * Create flow metadata by adding name and description to identify a flow.
 * Flow names can overlap with other flows.
-* Select an engine type. The default ls V1, and refer to **Engine Type** section for features by engine.
 * Select the execution mode according to the flow purpose.
 * You can specify Flow Template to easily load flows of features users wants.
 * You can set an instance type to run flows.
-
-#### Engine Type
-
-* Select either V1 or V2 from the **Engine Type** option on the Create Flow screen.
-    * V1: the existing engine supports a variety of nodes.
-    * V2: the latest architecture-based engine provides faster performance than V1.
-* The engine cannot be changed after creating the flow.
-
-
-!!! tip "Notice"
-    The provided node and monitoring information vary by engine type.
-
 
 ### Change Flow
 
 Modify metadata of flows.
 
 * Modify the existing flow name and description to reflect it in flow metadata.
-* Engine type cannot be changed.
 * Flow templates cannot be specified.
 * Changing flows are possible even when the flow is running.
-* You cannot change the instance type to run flows.
-    * However, the changed instance type applies when running the next flow.
+* You cannot change the instance type to run flows. However, the changed instance type applies when running the next flow.
 
 ### Copy Flow
 
@@ -123,6 +104,7 @@ Delete flow metadata
 * Running flow cannot be deleted.
 
 ### More - Start a flow
+
 Start a flow that is stopped.
 
 * Each flow can run only one at a time.
@@ -132,10 +114,12 @@ Start a flow that is stopped.
 * A flow cannot be started the same as the flow initiated by the user, even if the flow is already being run by Scheduler.
 
 ### More - End a flow
+
 * You can end flows that are preparing to run, running, or draining.
 * End flows without processing any remaining events.
 
 ### More - End after flow draining
+
 * You can end a running flow after draining it.
 * Draining means processing the remaining events in the flow.
 * If the timeout time is exceeded, the draining will end without finishing.
@@ -157,7 +141,6 @@ Displays detailed flow metadata.
 
 * Display the name and description information entered when creating a flow.
 * Display the flow creation date and creator name, latest modification date/modifier, and latest execution date/runner information.
-* Display the engine type of the flow.
 * Display the total running time at the time of the most recent run.
 * Display the instance type at the time of the most recent run.
 
@@ -165,6 +148,9 @@ Displays detailed flow metadata.
 
 * You can check Log information for current running flow directly through the Recent Logs.
 * You can view logs for the recent 15 minutes.
+* Logs for the V2 engine type can be viewed by selecting one of the following two options.
+    * V2-JOB: Logs for flow execution scheduling and status management.
+    * V2-TASK: Logs for data processing tasks defined in the flow.
 
 ### Basic Information - All Logs
 * When you enable Log & Crash Search, you can copy Lucene Query to view flow logs from Log & Crash Search.
@@ -182,11 +168,10 @@ Define a flow logic.
 
 * Define a flow by importing flow components from Node type or Template from flow settings.
     * The Collapse/Expand button allows to zoom-in/zoom-out the flow screen.
-    * The available node varies by engine type.
 * Adjust the flow screen to define flows and change the graph configuration.
 
     * Define a node behavior by entering the appropriate settings for each node.
-        * [Detailed Node Guide](https://docs.toast.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
+        * [Detailed Node Guide](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
     * Define the flow of messages by linking connections among nodes.
         * Each flow can define only one Directed Acyclic Graph (DAG).
         * Connection that fits the category by respective type of node must be defined in order to be saved.
@@ -198,7 +183,7 @@ Define a flow logic.
         * Scale the screen on which the flow graph is displayed.
         * Support scaling from 0.5 times to 2 times.
     * Initialize
-        * Scale adjusted by 1 time through scaling adjustment.
+        * Scale adjusted by 1x.
     * Adjust Screen
         * Adjust the scale and center the screen so that the flow is visible on one screen.
     * Align Node
@@ -217,6 +202,18 @@ Define a flow logic.
         * If you fail the flow completeness evaluation, the Save request fails and displays the reason why  evaluation failed.
         * Saved flows can be requested to start.
         * When saving, you can enter the commit name to record changes made.
+
+#### Schema
+View the schema information of the flow.
+* If a schema is defined in a Source node, you can view the input/output schema of each node.
+* Schema information is displayed only when a schema is defined for all Source nodes in the flow.
+* You can visually check the schema conversion results using field colors.
+    * Green: Added fields
+    * Blue: Fields with converted types
+    * Yellow: Fields with detected type conflicts
+* A warning is displayed when the same field name is defined with different types across multiple parent nodes.
+* When the properties of a Filter node are changed, you can preview the schema conversion results in real time.
+* For information on how to define schemas and the conversion behavior of each node, refer to the [Node Configuration Guide](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/).
 
 ### Modification History
 
@@ -269,7 +266,7 @@ Display a list of flows that can be monitored.
 * You can select a flow to view detailed monitoring information.
 * You can expand the flow list tree to select each Node belongs to the Flow for Monitoring Details information.
 * By collapsing the list, you can expand the detailed page for monitoring.
-* You can also check Monitoring information of deleted flows through the View button.
+* You can also check Monitoring information of deleted flows by clicking **View Deleted Flow Diagrams** button.
 
 
 ### Flow Screen Area
@@ -288,9 +285,9 @@ It is area to display the monitoring chart.
 * Scaling Adjustment and initializing allow you to adjust a flow so that it is visible on the screen.
     * Adjust Scale
         * Scale the screen on which the flow graph is displayed.
-        * Support the scaling from 0.5 times to 2 times.
+        * Support the scaling from 0.5x to 2x.
     * Initialize
-        * The scale is adjusted by 1 time through scaling adjustment.
+        * The scale is adjusted by 1x through scaling adjustment.
 * Select Chart Period
     * Adjust Overall Period
         * Click the toggle button to synchronize Chart zoom-in actions to all Charts.
@@ -302,7 +299,12 @@ It is area to display the monitoring chart.
         * The cancel button allows you not to apply the time period you want to change.
     * Chart
         * You can zoom the Chart zoom-in/zoom-out by specifying the chart range.
-* Event in/out charts for flows with engine type V2 will be provided later.
+* Select Type
+    * V2-ALL
+        * Event In/Out and network data transmission and reception are displayed in a single graph.
+        * CPU usage rate and memory usage display the V2-JOB and V2-TASK graphs separately.
+    * V2-JOB, V2-TASK
+        * Event In/Out and network data transmission and reception are not displayed.
 
 ## Template
 
@@ -313,9 +315,7 @@ Click **Data & Analytics>DataFlow> Templates**.
 
 ### Search
 
-Searche templates based on the given criteria.
-
-* If Search by template name, it searches for templates that contain search terms in their names.
+Searche templates based on the given criteria. If Search by template name, it searches for templates that contain search terms in their names.
 
 ### Query Templates
 
@@ -332,7 +332,6 @@ Display Query result template in a table form.
 Create metadata to define a template.
 
 * Create template metadata by adding name and description to identify a template.
-* Template names can overlap with other Template names.
 * Select an engine type. The default is V1.
 * Flow templates cannot be specified.
 * Created templates can be found in the node type list when defining flows or template logics.
@@ -361,6 +360,7 @@ Delete template metadata
 
 ## See Templates in Details
 
+This is a detail page for viewing detailed information about the selected template.
 Go to **Data & Analytics > DataFlow > Templates > and Click one of the template**
 You can adjust the screen ratio by moving boundaries between the template list area and See Templates in Details.
 Also you can adjust the screen proportion to the specified percentage by using the Resize Area button located in upper right corner of See Templates in Details.
@@ -378,9 +378,9 @@ Define template logics
 * Scaling adjustment and initializing, screen adjustment, and node alignment allow to adjust a flow so that it is visible on the screen.
     * Adjust Scale
         * Scale the screen on which the flow graph is displayed.
-        * Support scaling from 0.5 times to 2 times.
+        * Support scaling from 0.5x to 2x.
     * Initialize
-        * Scales adjusted by 1 time through scaling adjustment.
+        * Resets the adjusted scale to 1x.
     * Adjust Screen
         * Adjust the scale and center the screen so that the flow is visible on one screen.
     * Align Node
@@ -390,8 +390,9 @@ Define template logics
     * Cancel
         * Returns the edited template definition to the state it was in when it was last saved/saved temporarily.
     * Save
-        * You can save a flow in incomplete form.
+        * Allows you to save a flow in incomplete form.
         * Saved templates can be loaded from the template category in the node type.
+
 ## Settings
 Manage the settings for the service.
 Go to **Data & Analytics > DataFlow > Settings**.
@@ -408,7 +409,7 @@ To store logs in the Log & Crash Search service, you must enable the Log & Crash
 ③ Click **Save** to complete settings.
 ④ If you don't want to use the Log & Crash Search integration feature, click **Delete** to delete the save information.
 
-* Log Field
+Log Field
 
 |             Name |                              Description |
 |---------------|--------------------------------|
