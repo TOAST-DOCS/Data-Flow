@@ -351,12 +351,12 @@ NHN Cloud의 EasyQueue에서 데이터를 수신하는 노드입니다.
 STREAMING: 큐에 새로운 메시지가 도착할 때마다 데이터를 처리합니다.
 
 ### 속성 설명
-| 속성명 | 기본값 | 자료형 | 설명 | 비고                                                                                                  |
-| --- | --- | --- | --- |-----------------------------------------------------------------------------------------------------|
-| 앱키 | - | string | EasyQueue의 앱키를 입력합니다. |                                                                                                     |
-| User Access Key ID | - | string | 사용자 계정의 User Access Key ID를 입력합니다. |                                                                                                     |
-| Secret Access Key | - | string | 사용자 계정의 User Secret Key를 입력합니다. |                                                                                                     |
-| 격리 수준 | read_committed | enum | 컨슈머가 트랜잭션이 커밋되지 않은 메시지까지 읽을지, 커밋된 메시지만 읽을지를 결정합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/consumer-configs/)의 `isolation.level` 속성 참고 |
+| 속성명 | 기본값 | 자료형 | 설명 | 비고                                                                                                       |
+| --- | --- | --- | --- |----------------------------------------------------------------------------------------------------------|
+| 앱키 | - | string | EasyQueue의 앱키를 입력합니다. |                                                                                                          |
+| User Access Key ID | - | string | 사용자 계정의 User Access Key ID를 입력합니다. |                                                                                                          |
+| Secret Access Key | - | string | 사용자 계정의 User Secret Key를 입력합니다. |                                                                                                          |
+| 격리 수준 | read_committed | enum | 컨슈머가 트랜잭션이 커밋되지 않은 메시지까지 읽을지, 커밋된 메시지만 읽을지를 결정합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/consumer-configs/)의 `isolation.level` 속성 참고<br/>read_uncommitted: 모든 메시지를 오프셋 순서대로 읽습니다.<br/>read_committed: 커밋된 트랜잭션의 메시지만 읽습니다. |
 
 ### 코덱별 메시지 인입
 지원 코덱
