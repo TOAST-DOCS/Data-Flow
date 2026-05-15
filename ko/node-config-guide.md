@@ -1440,7 +1440,6 @@ NHN Cloud의 EasyQueue에 데이터를 전송하는 노드입니다.
 | 토픽 | - | string | 메시지를 전송할 Kafka 토픽 이름을 입력합니다. |  |
 | 브로커 서버 목록 | - | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `bootstrap.servers` 속성 참고<br/>예: 10.100.1.1:9092,10.100.1.2:9092 |
 | 클라이언트 아이디 | dataflow | string | Kafka Producer를 식별하는 ID를 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `client.id` 속성 참고 |
-| 전달 보장 방식 | EXACTLY_ONCE | enum | 메시지 전달 보장 방식을 선택합니다. | AT_LEAST_ONCE: 메시지가 최소 한 번은 전달되지만, 장애 상황에서 중복이 발생할 수 있습니다. 중복 처리를 애플리케이션에서 직접 관리할 수 있거나, 중복이 허용되는 경우에 적합합니다.<br/><br/>EXACTLY_ONCE: 메시지가 정확히 한 번만 처리됩니다. 중복이 허용되지 않는 결제·정산 등 핵심 트랜잭션에 적합하지만, 내부적으로 트랜잭션을 사용하므로 처리량이 다소 낮아질 수 있습니다. |
 | 압축 유형 | none | enum | 전송하는 데이터를 압축할 방법을 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/topic-level-configs/)의 `compression.type` 속성 참고<br/>none, gzip, snappy, lz4, zstd 중 선택 |
 | 메시지 키 | - | string | 메시지 키로 사용할 필드를 입력합니다. |  |
 | 메타데이터 갱신 주기 | 300000 | number | 파티션, 브로커 서버 상태 등을 갱신할 주기(ms)를 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `metadata.max.age.ms` 속성 참고 |
@@ -1455,6 +1454,7 @@ NHN Cloud의 EasyQueue에 데이터를 전송하는 노드입니다.
 | ack 속성 | all | enum | 브로커 서버에서 메시지를 받았는지 확인하는 설정을 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `acks` 속성 참고<br/>0 - 메시지 수신 여부를 확인하지 않습니다.<br/>1 - 토픽의 leader가 follower가 데이터를 복사하는 것을 기다리지 않고 메시지를 수신했다는 응답을 합니다.<br/>all - 토픽의 leader가 follower가 데이터를 복사하는 것을 기다린 뒤 메시지를 수신했다는 응답을 합니다. |
 | 재시도 요청 주기 | 100 | number | 전송 요청이 실패했을 때 재시도할 주기(ms)를 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `retry.backoff.ms` 속성 참고 |
 | 재시도 횟수 | 2147483647 | number | 전송 요청이 실패했을 때 재시도할 최대 횟수를 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `retries` 속성 참고<br/>설정값을 초과하여 재시도하는 경우 데이터 유실이 발생할 수 있습니다. |
+| 전달 보장 방식 | EXACTLY_ONCE | enum | 메시지 전달 보장 방식을 선택합니다. | AT_LEAST_ONCE: 메시지가 최소 한 번은 전달되지만, 장애 상황에서 중복이 발생할 수 있습니다. 중복 처리를 애플리케이션에서 직접 관리할 수 있거나, 중복이 허용되는 경우에 적합합니다.<br/><br/>EXACTLY_ONCE: 메시지가 정확히 한 번만 처리됩니다. 중복이 허용되지 않는 결제·정산 등 핵심 트랜잭션에 적합하지만, 내부적으로 트랜잭션을 사용하므로 처리량이 다소 낮아질 수 있습니다. |
 | 추가 설정 | - | hash | Kafka 연결에 사용할 추가 Producer 설정을 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/) 참고 |
 
 ### 코덱별 출력 예제
