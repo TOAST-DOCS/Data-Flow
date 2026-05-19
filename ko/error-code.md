@@ -31,5 +31,9 @@
 | JDBC_CONNECT_FAILED         | JDBC 연결이 실패했습니다.                                                                   |
 | JDBC_UNSUPPORTED_DRIVER     | 지원하지 않는 JDBC 드라이버입니다.                                                              |
 | FLOW_ALREADY_STARTED        | 플로우가 이미 시작되었습니다.                                                                   |
+| EASY_QUEUE_ENDPOINT_INVALID | EasyQueue 엔드포인트에 접근할 수 없습니다.                                                       |
+| EASY_QUEUE_OAUTH_FAILED     | EasyQueue OAuth2 인증에 실패했습니다.                                                         |
+| EASY_QUEUE_TOPIC_NOT_FOUND  | EasyQueue 토픽을 찾을 수 없습니다.                                                             |
+| EASY_QUEUE_INVALID_PROPERTY | EasyQueue 노드의 속성이 올바르지 않습니다.                                                       |
 | FLOW_ALREADY_STOPPED        | 플로우가 이미 종료되었습니다.                                                                   |
 | ERROR                       | 서비스 내부 오류 또는 정의되지 않은 오류입니다. 고객문의로 문의하세요.                                          |
