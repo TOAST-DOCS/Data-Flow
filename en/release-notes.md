@@ -12,6 +12,7 @@
         * (NHN Cloud) Data Lake Storage
 
 ## April 28, 2026
+
 ### Added Features
 * Added a feature to define and use the schema of Source nodes in flow information.
 
@@ -26,8 +27,8 @@
         * Dataset Split
 * Added the **Schema** property to the JSON node.
 
-
 ## March 24, 2026
+
 ### Feature Updates
 * End of support for V1 engine type
     * Support for the V1 engine type has ended, and existing V1 engine type flows can no longer be executed.
@@ -48,6 +49,7 @@
 * Fixed an issue where the collapse button in the left tree structure of the monitoring screen did not work.
 
 ## February 10, 2026
+
 ### Feature Updates
 * End of support for Cipher node in V1 engine
     * Support for the Cipher node feature in the V1 engine type will be discontinued as of February 10, 2026.
@@ -132,11 +134,11 @@
 
 ### Feature Updates
 * Stabilized the flow startup process.
-  
+
 ## August 27, 2024
 
 ### Feature Updates
-* Improved how the Last Executed Time is calculated. 
+* Improved how the Last Executed Time is calculated.
 * Made modifications so that, when displaying the node settings, required items are displayed first.
 
 ## July 23, 2024
@@ -150,17 +152,17 @@
 ## July 1, 2024
 
 ### Feature Updates
-* Added the feature to set the instance type when running flows 
-* (Amazon) Changed the endpoint, region settings for the (Amazon) S3 Source, Sink, and (Amazon) S3 - Parquet Sink nodes from required to optional 
+* Added the feature to set the instance type when running flows
+* (Amazon) Changed the endpoint, region settings for the (Amazon) S3 Source, Sink, and (Amazon) S3 - Parquet Sink nodes from required to optional
     * The nodes will work correctly if only one of the endpoint, region settings is entered.
 
 ### Bug Fixes
 * Fixed an issue where no CloudTrail logs were left when exiting after flow draining, Log & Crash Search logs save settings, enabling and disabling validation.
-* Fixed an issue where the scheduling feature was not working intermittently. 
-* Fixed an issue where the Cipher node was not working intermittently. 
+* Fixed an issue where the scheduling feature was not working intermittently.
+* Fixed an issue where the Cipher node was not working intermittently.
 * Fixed an issue where the (Amazon) S3 Source, Sink, and (Amazon) S3 - Parquet Sink nodes were not able to access the public bucket.
-* Fixed an issue where using an unsupported JDBC driver when saving a flow containing a JDBC node with validation disabled would expose `JDBC_UNSUPPORTED_DRIVER` instead of `ERROR`. 
-* Fixed an issue where saving a flow containing a Cipher node with validation enabled would expose the appropriate error code instead of `ERROR` if the Cipher node information was entered incorrectly. 
+* Fixed an issue where using an unsupported JDBC driver when saving a flow containing a JDBC node with validation disabled would expose `JDBC_UNSUPPORTED_DRIVER` instead of `ERROR`.
+* Fixed an issue where saving a flow containing a Cipher node with validation enabled would expose the appropriate error code instead of `ERROR` if the Cipher node information was entered incorrectly.
 * Fixed an issue where status channge notifications were not sent for flows run by a user who had canceled membership.
 
 ## May 28, 2024
@@ -259,12 +261,11 @@
 ## July 25, 2023
 
 ### Bug Fixes
-
 * Modified so that, when a flow fails abnormally during execution, it can resume execution from the last execution point.
 
 ## June 27, 2023
 
-### Feature Updates
+### Added Features
 * Added a feature to enable Log & Crash Search
     * Added a feature to save flow logs in Log & Crash Search.
 
@@ -274,8 +275,7 @@
 
 ## March 28, 2023
 
-### Feature Updates
-
+### Added Features
 * Added new nodes
     * Filter
         * Added various data processing methods such as Alter, Date, UUID, Split, and Truncate.
@@ -283,32 +283,28 @@
     * Added a feature to check flow usage from the console in real time.
 
 ### Bug Fixes
-
 * Fixed a bug where flow usage begins to appear before entering the PREPARING stage.
 
 ## February 28, 2023
 
-### Feature Updates
-
+### Added Features
 * Added new nodes
     * Source
         * Added a feature to import data from NHN Cloud Object Storage node.
-        * Added a feature to import data through Amazon S3 interface.
-        * Added a feature to import data through Apache Kafka.
+        * Added a feature to import data via Amazon S3 interface.
+        * Added a feature to import data via Apache Kafka.
     * Filter
         * Added a feature to preprocess data in various ways by adding Grok, JSON, and CSV nodes.
 
 ## January 6, 2023
 
 ### Bug Fixes
-
 * Fixed an issue where the first button click after adding a node in the flow edit screen does not work.
 * Fixed an issue where a field is not added when the cipher node is configured to add fields.
 
 ## December 27, 2022
 
 ### Release of a New Service
-
 * DataFlow is a service that creates and run ETL flows.
 * Supports sources listed below.
     * NHN Cloud Log & Crash Search
