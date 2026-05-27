@@ -1,35 +1,35 @@
 ## Data & Analytics > DataFlow > ノード設定ガイド
 
 * ノードタイプは、手軽にフローを作成できるように事前定義されたテンプレートです。
-* ノードタイプの種類には、Source、Filter、Branch、Sinkがあります。
-* Source、Sinkノードタイプは、テストを実行してエンドポイント情報が有効であるか確認することをおすすめします。
-* アクセス制御が設定されたデータソースへの接続時には、DataFlow IP固定機能を使用する必要があります。
-    * DataFlow IP固定機能を使用するには、**カスタマーサポート > お問い合わせ**からお問い合わせください。
+* ノードタイプの種類は、Source、Filter、Branch、Sinkです。
+* Source、Sinkノードタイプは、テストを実行してエンドポイント情報が有効であることを確認することをお勧めします。
+* アクセス制御が設定されたデータソース接続時には、DataFlow IP固定機能を使用する必要があります。
+    * DataFlow IP固定機能を使用するには、**カスタマーサポート > お問い合わせ**でお問い合わせください。
 
-### Object Storage接続時の注意事項
-リージョンまたはプロジェクトが異なるObject Storageでありながら、バケット名が同じ場合、1つのフローで一緒に使用することはできません。
+### Object Storage接続時の注意点
+リージョンまたはプロジェクトが異なるObject Storageですが、バケット名が同じ場合、1つのフローで一緒に使用することはできません。
 
-!!! tip "不可能な接続設定の例"
+!!! tip "接続設定が不可能な例"
     * 例1
-        * 1つ目の接続対象Object Storage情報
+        * 最初の接続対象Object Storage情報
             * リージョン: KR1
             * バケット名: Data
             * プロジェクト: TEST
-        * 2つ目の接続対象Object Storage情報
+        * 2番目の接続対象Object Storage情報
             * リージョン: JP1
             * バケット名: Data
             * プロジェクト: TEST
-        * リージョンが異なるため2つのバケットは別々のバケットですが、DataFlowのフローでは一緒に使用不可
+        * リージョンが異なるため、2つのバケットは別々のバケットですが、DataFlowのフローでは一緒に使用することはできません
     * 例2
-        * 1つ目の接続対象Object Storage情報
+        * 最初の接続対象Object Storage情報
             * リージョン: KR1
             * バケット名: Data
             * プロジェクト: TEST_1
-        * 2つ目の接続対象Object Storage情報
+        * 2番目の接続対象Object Storage情報
             * リージョン: KR1
             * バケット名: Data
             * プロジェクト: TEST_2
-        * プロジェクトが異なるため2つのバケットは別々のバケットですが、DataFlowのフローでは一緒に使用不可
+        * プロジェクトが異なるため、2つのバケットは別々のバケットですが、DataFlowのフローでは一緒に使用することはできません
 
 
 ## Domain Specific Language(DSL)の定義
@@ -255,191 +255,191 @@ JSON形式の文字列を入力します。
 
 ## Source > (NHN Cloud) Object Storage
 
-### ノードの説明
+### ノード説明
 
-* NHN CloudのObject Storageからデータを入力として受け取るノードです。
-* オブジェクトの作成時間を基準に、最も早く作成されたオブジェクトからデータを読み込みます。
+* NHN CloudのObject Storageからデータを受け取るノードです。
+* オブジェクト生成時刻を基準に、最初に生成されたオブジェクトからデータを読み込みます。
 
 ### 実行モード
-* STREAMING: `リストの更新周期`ごとにオブジェクトのリストを更新し、新しく追加されたオブジェクトを読み込んでデータを処理します。
-* BATCH: フローの開始時点でオブジェクトのリストを一度読み込んだ後、オブジェクトを読み込んでデータを処理し、フローを終了します。
+* STREAMING: `リスト更新周期`ごとにオブジェクトリストを更新し、新たに追加されたオブジェクトを読み込んでデータを処理します。
+* BATCH: フロー開始時点にオブジェクトリストを一度読み込み、オブジェクトを読み込んでデータを処理し、フローを終了します。
 
-### プロパティの説明
+### 属性説明
 
-| プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
+| 属性名 | デフォルト値     | データ型 | 説明 | 備考 |
 | --- |---------| --- | --- | --- |
-| バケット | - | string | データを読み込むバケット名を入力します。 |  |
-| リージョン | - | string | ストレージに設定されたリージョン情報を入力します。 |  |
-| シークレットキー | - | string | S3が発行した認証情報のシークレットキーを入力します。 |  |
-| アクセスキー | - | string | S3が発行した認証情報のアクセスキーを入力します。 |  |
-| リストの更新周期 | 60 | number | バケットに含まれるオブジェクトリストの更新周期を入力します。 |  |
-| Prefix | - | string | 読み込むオブジェクトのプレフィックスを入力します。 |  |
-| 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
+| バケット | -       | string | データを読み込むバケット名を入力します。 |  |
+| リージョン | -       | string | ストレージに設定されたリージョン情報を入力します。 |  |
+| 秘密鍵 | -       | string | S3が発行した認証情報の秘密鍵を入力します。 |  |
+| アクセスキー | -       | string | S3が発行した認証情報のアクセスキーを入力します。 |  |
+| リスト更新周期 | 60    | number | バケットに含まれるオブジェクトリストの更新周期を入力します。 |  |
+| Prefix | -       | string | 読み込むオブジェクトのプリフィックスを入力します。 |  |
+| 除外するキーパターン | -       | string | 読み込まないオブジェクトのパターンを入力します。 |  |
 
-### コーデック別のメッセージ取り込み
+### コーデック別メッセージ受信
 
-サポートするコーデック
-* [PLAINコーデック](./codec-config-guide.md#plain) - オリジナルデータの文字列の保存
-* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データのパース
+対応コーデック
+* [PLAINコーデック](./codec-config-guide.md#plain) - 元データ文字列を保存
+* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データを解析
 
 ## Source > (NHN Cloud) Data Lake Storage
 
-### ノードの説明
+### ノード説明
 * NHN CloudのData Lake Storageからデータを入力するノードです。
 
 ### 実行モード
-* STREAMING：`リスト更新サイクル`ごとにオブジェクトリストを更新し、新しく追加されたオブジェクトを読み込んでデータを処理します。
-* BATCH：フロー開始時点にオブジェクトリストを一度読み込んだ後、オブジェクトを読み込んでデータを処理し、フローを終了します。
+* STREAMING: `リスト更新周期`ごとにオブジェクトリストを更新し、新たに追加されたオブジェクトを読み込んでデータを処理します。
+* BATCH: フロー開始時点にオブジェクトリストを一度読み込んだ後、オブジェクトを読み込んでデータを処理し、フローを終了します。
 
-### プロパティの説明
-| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
-| --- |---------| --- | --- | --- |
-| バケット | - | string | データを読み取るバケット名を入力します。 | |
-| リージョン | - | string | リポジトリに設定されたリージョン情報を入力します。 | |
-| シークレットキー | - | string | S3が発行した認証情報のシークレットキーを入力します。 | |
-| アクセスキー | - | string | S3が発行した認証情報のアクセスキーを入力します。 | |
-| リスト更新サイクル | 60 | number | バケットに含まれるオブジェクトリストの更新サイクルを入力します。 | |
-| Prefix | - | string | 読み取るオブジェクトのプレフィックスを入力します。 | |
-| 除外するキーパターン | - | string | 読み取らないオブジェクトのパターンを入力します。 | |
+### 属性説明
+| 属性名 | デフォルト値 | データ型 | 説明 | 備考 |
+| --- | --- | --- | --- | --- |
+| バケット | - | string | データを読み取るバケット名を入力します。 |  |
+| リージョン | - | string | ストレージに設定されたリージョン情報を入力します。 |  |
+| シークレットキー | - | string | S3が発行した認証情報シークレットキーを入力します。 |  |
+| アクセスキー | - | string | S3が発行した認証情報アクセスキーを入力します。 |  |
+| リスト更新周期 | 60 | number | バケットに含まれるオブジェクトリスト更新周期を入力します。 |  |
+| Prefix | - | string | 読み込むオブジェクトのプリフィックスを入力します。 |  |
+| 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
 
-### コーデック別のメッセージ入力
-サポートコーデック
-* [PLAINコーデック](./codec-config-guide.md#plain) - 元データ文字列の保存
-* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データの解析
+### コーデック別メッセージ受信
+サポートされるコーデック
+* [PLAINコーデック](./codec-config-guide.md#plain) - 原本データ文字列保存
+* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データ解析
 
-## Source > (Amazon) S3
+## ソース > (Amazon) S3
 
-### ノードの説明
+### ノード説明
 
-* S3からデータを入力として受け取るノードです。
+* S3からデータを受け取るノードです。
 * オブジェクトの作成時間を基準に、最も早く作成されたオブジェクトからデータを読み込みます。
 
 ### 実行モード
-* STREAMING: `リストの更新周期`ごとにオブジェクトのリストを更新し、新しく追加されたオブジェクトを読み込んでデータを処理します。
-* BATCH: フローの開始時点でオブジェクトリストを一度更新した後、オブジェクトを読み込んでデータを処理し、フローを終了します。
+* STREAMING: `リスト更新周期`ごとにオブジェクトリストを更新し、新しく追加されたオブジェクトを読み、データを処理します。
+* BATCH: フロー開始時にオブジェクトリストを1回更新した後、オブジェクトを読み、データを処理して、フローを終了します。
 
-### プロパティの説明
+### 属性説明
 
-| プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
+| 属性名           | デフォルト値                            | データ型     | 説明                                                                                                   | 備考                                                                                                                                                                                                           |
 |---------------|--------------------------------|---------|------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| エンドポイント | - | string | S3ストレージのエンドポイントを入力します。 | HTTP、HTTPS URLの形式でのみ入力可能です。 |
-| バケット | - | string | データを読み込むバケット名を入力します。 |  |
-| リージョン | - | string | ストレージに設定されたリージョン情報を入力します。 |  |
-| シークレットキー | - | string | S3が発行した認証情報のシークレットキーを入力します。 |  |
-| アクセスキー | - | string | S3が発行した認証情報のアクセスキーを入力します。 |  |
-| リストの更新周期 | 60 | number | バケットに含まれるオブジェクトリストの更新周期を入力します。 |  |
-| Prefix | - | string | 読み込むオブジェクトのプレフィックスを入力します。 |  |
-| 除外するキーパターン | - | string | 読み込まないオブジェクトのパターンを入力します。 |  |
-| パス方式のリクエスト | false | boolean | パス方式のリクエストを使用するかどうかを決定します。 |  |
+| エンドポイント         | -                              | string  | S3ストレージエンドポイントを入力します。                                                                                 | HTTP、HTTPS URL形式のみ入力可能です。                                                                                                                                                                                |
+| バケット            | -                              | string  | データを読み込むバケット名を入力します。                                                                                |                                                                                                                                                                                                              |
+| リージョン            | - | string  | ストレージに設定されたリージョン情報を入力します。                                                                               |                                                                                                                                                                                                              |
+| シークレットキー          | -                              | string  | S3が発行した認証情報シークレットキーを入力します。                                                                           |                                                                                                                                                                                                              |
+| アクセスキー         | -                              | string  | S3が発行した認証情報アクセスキーを入力します。                                                                          |                                                                                                                                                                                                              |
+| リスト更新周期     | 60                           | number  | バケットに含まれるオブジェクトリストの更新周期を入力します。                                                                       |                                                                                                                                                                                                              |
+| Prefix        | -      | string  | 読み込むオブジェクトのプリフィックスを入力します。                                                                               |                                                                                                                                                                                                              |
+| 除外するキーパターン      | -      | string  | 読み込まないオブジェクトのパターンを入力します。                                                                               |                                                                                                                                                                                                              |
+| パス形式リクエスト      | false                        | boolean | パス形式リクエストを使用するかどうかを決定します。                                                                            |                                                                                                                                                                                                              |
 
 !!! danger "注意"
-    * (Amazon) S3ノードを使用してNHN Cloud Object Storageに接続する場合は、**パス方式のリクエスト**を`true`に設定する必要があります。
+    * (Amazon) S3ノードを使用してNHN Cloud Object Storageに接続する場合、**パス形式リクエスト**を`true`に設定する必要があります。
 
 
-### コーデック別のメッセージ取り込み
+### コーデック別メッセージ受信
 
-サポートするコーデック
-* [PLAINコーデック](./codec-config-guide.md#plain) - オリジナルデータの文字列の保存
-* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データのパース
+サポートされているコーデック
+* [PLAINコーデック](./codec-config-guide.md#plain) - 元のデータ文字列を保存
+* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データの解析
 
 ## Source > (NHN Cloud) EasyQueue
 
-### ノードの説明
-NHN CloudのEasyQueueからデータを受信するノードです。
+### ノード説明
+NHN Cloud のEasyQueueからデータを受信するノードです。
 
 ### 実行モード
-STREAMING：キューに新しいメッセージが到着するたびにデータを処理します。
+STREAMING: キューに新しいメッセージが到着するたびにデータを処理します。
 
-### プロパティの説明
-| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+### 属性説明
+| 属性名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| アプリキー | - | string | EasyQueueのアプリキーを入力します。 | |
-| User Access Key ID | - | string | ユーザーアカウントのUser Access Key IDを入力します。 | |
-| Secret Access Key | - | string | ユーザーアカウントのUser Secret Keyを入力します。 | |
-| ブローカーサーバー一覧 | - | string | Kafkaブローカーサーバーを入力します。サーバーが複数ある場合はカンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`bootstrap.servers`プロパティを参照<br/>例：10.100.1.1:9092,10.100.1.2:9092 |
+| アプリキー | - | string | EasyQueueのアプリキーを入力します。 |  |
+| User Access Key ID | - | string | ユーザーアカウントのUser Access Key IDを入力します。 |  |
+| Secret Access Key | - | string | ユーザーアカウントのUserシークレットキーを入力します。 |  |
+| ブローカーサーバーリスト | - | string | Kafkaブローカーサーバーを入力します。サーバーが複数の場合、コンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`bootstrap.servers`プロパティを参照<br/>例: 10.100.1.1:9092,10.100.1.2:9092 |
 | コンシューマーグループID | dataflow | string | Kafka Consumer Groupを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`group.id`プロパティを参照 |
-| トピック一覧 | - | array of strings | メッセージを受信するKafkaトピック一覧を入力します。 | |
-| トピックパターン | - | string | メッセージを受信するKafkaトピックパターンを入力します。 | 例：`*-messages` |
-| 内部トピックの除外有無 | true | boolean | __consumer_offsetsなどの内部トピックを除外します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`exclude.internal.topics`プロパティを参照<br/>受信対象から`__consumer_offsets`などの内部トピックを除外します。 |
+| トピックリスト | - | array of strings | メッセージを受信するKafkaトピックのリストを入力します。 |  |
+| トピックパターン | - | string | メッセージを受信するKafkaトピックパターンを入力します。 | 例: `*-messages` |
+| 内部トピック除外有無 | true | boolean | __consumer_offsetsなどの内部トピックを除外します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`exclude.internal.topics`プロパティを参照<br/>受信対象から`__consumer_offsets`などの内部トピックを除外します。 |
 | クライアントID | dataflow | string | Kafka Consumerを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`client.id`プロパティを参照 |
-| 分離レベル | read_committed | enum | コンシューマーがトランザクションがコミットされていないメッセージまで読み取るか、コミットされたメッセージのみ読み取るかを決定します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`isolation.level`プロパティを参照<br/>read_uncommitted：全てのメッセージをオフセット順に読み取ります。<br/>read_committed：コミットされたトランザクションのメッセージのみ読み取ります。 |
-| パーティション割り当てポリシー | ["RANGE", "COOPERATIVE_STICKY"] | array of strings | Kafkaからメッセージを受信する際、コンシューマーグループにどのようにパーティションを割り当てるかを決定します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`partition.assignment.strategy`プロパティを参照<br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
-| オフセット設定 | latest | enum | コンシューマーグループのオフセットを設定する基準を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`auto.offset.reset`プロパティを参照<br/>以下の設定は全て、コンシューマーグループがすでに存在する場合は既存のオフセットを維持します。<br/>none：コンシューマーグループがなければエラーを返却します。<br/>earliest：コンシューマーグループがなければパーティションの最も古いオフセットで初期化します。<br/>latest：コンシューマーグループがなければパーティションの最も新しいオフセットで初期化します。 |
+| 分離レベル | read_committed | enum | コンシューマーがトランザクションがコミットされていないメッセージまで読むか、コミットされたメッセージのみを読むかを決定します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`isolation.level`プロパティを参照<br/>read_uncommitted: すべてのメッセージをオフセット順に読みます。<br/>read_committed: コミットされたトランザクションのメッセージのみを読みます。 |
+| パーティション割当戦略 | ["RANGE", "COOPERATIVE_STICKY"] | array of strings | Kafkaでメッセージを受信するときに、コンシューマーグループにどのようにパーティションを割り当てるかを決定します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`partition.assignment.strategy`プロパティを参照<br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
+| オフセット設定 | latest | enum | コンシューマーグループのオフセットを設定する基準を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`auto.offset.reset`プロパティを参照<br/>以下の設定すべてコンシューマーグループが既に存在する場合、既存のオフセットを維持します。<br/>none: コンシューマーグループがない場合、エラーを返します。<br/>earliest: コンシューマーグループがない場合、パーティションの最も古いオフセットで初期化します。<br/>latest: コンシューマーグループがない場合、パーティションの最新のオフセットで初期化します。 |
 | キー逆シリアル化タイプ | STRING | enum | 受信するメッセージのキーのタイプを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`key.deserializer`プロパティを参照 |
-| メタデータ生成の有無 | false | boolean | プロパティ値がtrueの場合、メッセージに対するメタデータフィールドを生成します。メタデータは`kafka_metadata`フィールドに生成されます。 | 生成されるフィールドは次のとおりです。<br/>topic：メッセージを受信したトピック<br/>groupId：メッセージを受信するために使用したコンシューマーグループID<br/>partition：メッセージを受信したトピックのパーティション番号<br/>offset：メッセージを受信したパーティションのオフセット<br/>key：メッセージキー |
+| メタデータ生成有無 | false | boolean | 属性値がtrueの場合、メッセージのメタデータフィールドを生成します。メタデータは`kafka_metadata`フィールドに生成されます。 | 生成されるフィールドは次のとおりです。<br/>topic: メッセージを受信したトピック<br/>groupId: メッセージの受信に使用したコンシューマーグループID<br/>partition: メッセージを受信したトピックのパーティション番号<br/>offset: メッセージを受信したパーティションのオフセット<br/>key: メッセージキー |
 | Fetch最小サイズ | 1 | number | 1回のfetchリクエストで取得するデータの最小サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.min.bytes`プロパティを参照 |
-| 送信バッファサイズ | 131072 | number | データを送信するために使用するTCP sendバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`send.buffer.bytes`プロパティを参照 |
-| 再試行リクエストサイクル | 100 | number | 送信リクエストが失敗したときに再試行するサイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`retry.backoff.ms`プロパティを参照 |
-| 巡回冗長検査 | true | boolean | メッセージのCRCを検査します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`check.crcs`プロパティを参照 |
-| サーバー再接続サイクル | 50 | number | ブローカーサーバーへの接続が失敗したときに再試行するサイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`reconnect.backoff.ms`プロパティを参照 |
-| パーティションあたりのFetch最大サイズ | 1048576 | number | パーティションあたり1回のfetchリクエストで取得する最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.partition.fetch.bytes`プロパティを参照 |
-| サーバーリクエストタイムアウト | 30000 | number | 送信リクエストに対するタイムアウト(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`request.timeout.ms`プロパティを参照 |
+| 送信バッファサイズ | 131072 | number | データを転送するために使用するTCP sendバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`send.buffer.bytes`プロパティを参照 |
+| 再試行リクエスト周期 | 100 | number | 送信リクエストが失敗した場合に再試行する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`retry.backoff.ms`プロパティを参照 |
+| 巡回冗長検査 | true | boolean | メッセージのCRCをチェックします。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`check.crcs`プロパティを参照 |
+| サーバー再接続周期 | 50 | number | ブローカーサーバーへの接続が失敗した場合に再試行する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`reconnect.backoff.ms`プロパティを参照 |
+| パーティション当たりFetch最大サイズ | 1048576 | number | パーティション当たり1回のfetchリクエストで取得する最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.partition.fetch.bytes`プロパティを参照 |
+| サーバーリクエストタイムアウト | 30000 | number | 送信リクエストのタイムアウト(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`request.timeout.ms`プロパティを参照 |
 | TCP受信バッファサイズ | 65536 | number | データを読み取るために使用するTCP receiveバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`receive.buffer.bytes`プロパティを参照 |
-| セッションタイムアウト | 45000 | number | コンシューマーのセッションタイムアウト(ms)を入力します。<br/>コンシューマーが該当時間内にheartbeatを送信できない場合、コンシューマーグループから除外します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`session.timeout.ms`プロパティを参照 |
+| セッションタイムアウト | 45000 | number | コンシューマーのセッションタイムアウト(ms)を入力します。<br/>コンシューマーが該当する時間内にheartbeatを送信できない場合、コンシューマーグループから除外されます。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`session.timeout.ms`プロパティを参照 |
 | 最大pollメッセージ数 | 500 | number | 1回のpollリクエストで取得する最大メッセージ数を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.poll.records`プロパティを参照 |
-| 最大pollサイクル | 300000 | number | pollリクエスト間の最大サイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.poll.interval.ms`プロパティを参照 |
+| 最大poll周期 | 300000 | number | pollリクエスト間の最大周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.poll.interval.ms`プロパティを参照 |
 | Fetch最大サイズ | 52428800 | number | 1回のfetchリクエストで取得する最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.max.bytes`プロパティを参照 |
-| Fetch最大待機時間 | 500 | number | `Fetch最小サイズ`の設定分のデータが集まらない場合、fetchリクエストを送信する待機時間(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.max.wait.ms`プロパティを参照 |
-| コンシューマーヘルスチェックサイクル | 3000 | number | コンシューマーがheartbeatを送信するサイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`heartbeat.interval.ms`プロパティを参照 |
-| メタデータ更新サイクル | 300000 | number | パーティション、ブローカーサーバーの状態などを更新するサイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`プロパティを参照 |
-| IDLEタイムアウト | 540000 | number | データ送信がない接続を閉じる待機時間(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`connections.max.idle.ms`プロパティを参照 |
+| Fetch最大待機時間 | 500 | number | `Fetch最小サイズ`設定分のデータが集まらない場合にfetchリクエストを送信する待機時間(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.max.wait.ms`プロパティを参照 |
+| コンシューマーヘルスチェック周期 | 3000 | number | コンシューマーがheartbeatを送信する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`heartbeat.interval.ms`プロパティを参照 |
+| メタデータ更新周期 | 300000 | number | パーティション、ブローカーサーバーのステータスなどを更新する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`プロパティを参照 |
+| IDLEタイムアウト | 540000 | number | データ転送がない接続を閉じる待機時間(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`connections.max.idle.ms`プロパティを参照 |
 | 追加設定 | - | hash | Kafka接続に使用する追加のConsumer設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)を参照 |
 
-### コーデック別のメッセージ入力
-サポートコーデック
-* [PLAINコーデック](./codec-config-guide.md#plain) - 元データ文字列の保存
+### コーデック別メッセージの取り込み
+サポートされているコーデック
+* [PLAINコーデック](./codec-config-guide.md#plain) - 元のデータを文字列として保存
 * [JSONコーデック](./codec-config-guide.md#json) - JSON形式データの解析
 
 ## Source > (Apache) Kafka
 
-### ノードの説明
+### ノード説明
 
-Kafkaからデータを受信するノードです。
+KafkaからデータToReceiveするノードです。
 
 ### 実行モード
-STREAMING: トピックに新しいメッセージが届くたびにデータを処理します。
+STREAMING: トピックに新しいメッセージが到着するたびにデータを処理します。
 
 !!! danger "注意"
-    * KafkaノードはBATCHモードをサポートしていません。
+    * KafkaノードはBATCHモードに対応していません。
 
-### プロパティの説明
+### プロパティ説明
 
-| プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
-|------------------|-----------------------------------|------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ブローカーサーバーの一覧 | - | string | Kafkaブローカーサーバーを入力します。サーバーが複数ある場合はコンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`bootstrap.servers`プロパティを参照 <br/>例: 10.100.1.1:9092,10.100.1.2:9092 |
-| コンシューマーグループID | dataflow | string | Kafka Consumer Groupを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`group.id`プロパティを参照 |
-| トピック一覧 | - | array of strings | メッセージを受信するKafkaトピックの一覧を入力します。 |  |
-| トピックパターン | - | string | メッセージを受信するKafkaトピックのパターンを入力します。 | 例: `*-messages` |
-| 内部トピックの除外 | true | boolean | __consumer_offsetsなどの内部トピックを除外します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`exclude.internal.topics`プロパティを参照 <br/>受信対象から`__consumer_offsets`などの内部トピックを除外します。 |
-| クライアントID | dataflow | string | Kafka Consumerを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`client.id`プロパティを参照 |
-| パーティション割り当てポリシー | ["RANGE", "COOPERATIVE_STICKY"] | array of strings | Kafkaからメッセージを受信する際、コンシューマーグループにパーティションをどのように割り当てるかを決定します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`partition.assignment.strategy`プロパティを参照 <br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
-| オフセット設定 | latest | enum | コンシューマーグループのオフセットを設定する基準を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`auto.offset.reset`プロパティを参照 <br/>以下の設定は全て、コンシューマーグループがすでに存在する場合は既存のオフセットを維持します。<br/>none: コンシューマーグループが存在しない場合はエラーを返します。<br/>earliest: コンシューマーグループが存在しない場合は、パーティションの最も古いオフセットで初期化します。<br/>latest: コンシューマーグループが存在しない場合は、パーティションの最も新しいオフセットで初期化します。 |
-| キーデシリアライズのタイプ | STRING | enum | 受信するメッセージのキーのタイプを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`key.deserializer`プロパティを参照 |
-| メタデータ生成の有無 | false | boolean | プロパティ値がtrueの場合、メッセージに対するメタデータフィールドを生成します。メタデータは`kafka_metadata`フィールドに生成されます。 | 生成されるフィールドは次のとおりです。<br/>topic: メッセージを受信したトピック<br/>groupId: メッセージの受信に使用したコンシューマーグループID<br/>partition: メッセージを受信したトピックのパーティション番号<br/>offset: メッセージを受信したパーティションのオフセット<br/>key: メッセージキー |
-| Fetchの最小サイズ | 1 | number | 1回のfetchリクエストで取得するデータの最小サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.min.bytes`プロパティを参照 |
-| 送信バッファーサイズ | 131072 | number | データの送信に使用するTCP sendバッファーのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`send.buffer.bytes`プロパティを参照 |
-| 再試行リクエスト周期 | 100 | number | 送信リクエストが失敗した場合に再試行する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`retry.backoff.ms`プロパティを参照 |
-| 巡回冗長検査 | true | boolean | メッセージのCRCを検査します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`check.crcs`プロパティを参照 |
-| サーバー再接続周期 | 50 | number | ブローカーサーバーへの接続に失敗した場合に再試行する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`reconnect.backoff.ms`プロパティを参照 |
-| パーティションあたりのFetch最大サイズ | 1048576 | number | パーティションあたり1回のfetchリクエストで取得する最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.partition.fetch.bytes`プロパティを参照 |
-| サーバーリクエストのタイムアウト | 30000 | number | 送信リクエストに対するタイムアウト(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`request.timeout.ms`プロパティを参照 |
-| TCP受信バッファーサイズ | 65536 | number | データの読み込みに使用するTCP receiveバッファーのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`receive.buffer.bytes`プロパティを参照 |
-| セッションタイムアウト | 45000 | number | コンシューマーのセッションタイムアウト(ms)を入力します。<br/>コンシューマーが該当の時間内にheartbeatを送信できない場合、コンシューマーグループから除外されます。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`session.timeout.ms`プロパティを参照 |
-| 最大pollメッセージ数 | 500 | number | 1回のpollリクエストで取得する最大メッセージ数を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.poll.records`プロパティを参照 |
-| 最大poll周期 | 300000 | number | pollリクエスト間の最大周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.poll.interval.ms`プロパティを参照 |
-| Fetch最大サイズ | 52428800 | number | 1回のfetchリクエストで取得する最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.max.bytes`プロパティを参照 |
-| Fetchの最大待機時間 | 500 | number | `Fetchの最小サイズ`設定分のデータが集まらなかった場合、fetchリクエストを送信する待機時間(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.max.wait.ms`プロパティを参照 |
-| コンシューマーヘルスチェック周期 | 3000 | number | コンシューマーがheartbeatを送信する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`heartbeat.interval.ms`プロパティを参照 |
-| メタデータ更新周期 | 300000 | number | パーティション、ブローカーサーバーの状態などを更新する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`プロパティを参照 |
-| IDLEタイムアウト | 540000 | number | データ送信がない接続を閉じる待機時間(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`connections.max.idle.ms`プロパティを参照 |
-| 分離レベル | read_committed | enum | コンシューマーがトランザクションがコミットされていないメッセージまで読み取るか、コミットされたメッセージのみ読み取るかを決定します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`isolation.level`プロパティを参照<br/>read_uncommitted：全てのメッセージをオフセット順に読み取ります。<br/>read_committed：コミットされたトランザクションのメッセージのみ読み取ります。 |
-| 追加設定 | - | hash | Kafka接続に使用する追加のConsumer設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)を参照 |
+| プロパティ名               | デフォルト値                               | データ型              | 説明                                                                              | 備考                                                                                                                                                                                                                                                                                                                                                   |
+|-------------------|-----------------------------------|------------------|---------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ブローカーサーバーリスト         | -                                 | string           | Kafkaブローカーサーバーを入力します。サーバーが複数台の場合、カンマ（`,`）で区切ります。                               | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`bootstrap.servers`プロパティ参考 <br/>例：10.100.1.1:9092,10.100.1.2:9092                                                                                                                                                                                                                        |
+| コンシューマーグループID        | dataflow                        | string           | Kafkaコンシューマーグループを識別するIDを入力します。                                           | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`group.id`プロパティ参考                                                                                                                                                                                                                                                         |
+| トピックリスト             | -                                 | array of strings | メッセージを受信するKafkaトピックリストを入力します。                                                    |                                                                                                                                                                                                                                                                                                                                                      |
+| トピックパターン             | -                                 | string           | メッセージを受信するKafkaトピックパターンを入力します。                                                    | 例：`*-messages`                                                                                                                                                                                                                                                                                                                                      |
+| 内部トピック除外の有無       | true                            | boolean          | __consumer_offsetsなどの内部トピックを除外します。                                            | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`exclude.internal.topics`プロパティ参考 <br/>受信対象から`__consumer_offsets`などの内部トピックを除外します。                                                                                                                                                                                      |
+| クライアントID         | dataflow                        | string           | Kafkaコンシューマーを識別するIDを入力します。                                                 | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`client.id`プロパティ参考                                                                                                                                                                                                                                                        |
+| パーティション割り当てポリシー         | ["RANGE", "COOPERATIVE_STICKY"] | array of strings | Kafkaでメッセージを受信する際にコンシューマーグループにどのようにパーティションを割り当てるかを決定します。                                   | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`partition.assignment.strategy`プロパティ参考 <br/>org.apache.kafka.clients.consumer.RangeAssignor<br/>org.apache.kafka.clients.consumer.RoundRobinAssignor<br/>org.apache.kafka.clients.consumer.StickyAssignor<br/>org.apache.kafka.clients.consumer.CooperativeStickyAssignor |
+| オフセット設定            | latest                          | enum             | コンシューマーグループのオフセットを設定する基準を入力します。                                                    | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`auto.offset.reset`プロパティ参考 <br/>以下の設定すべてで、コンシューマーグループが既に存在する場合、既存のオフセットを保持します。<br/>none：コンシューマーグループがない場合、エラーを返します。<br/>earliest：コンシューマーグループがない場合、パーティションの最も古いオフセットで初期化します。<br/>latest：コンシューマーグループがない場合、パーティションの最新のオフセットで初期化します。                                                          |
+| キー逆シリアライズタイプ         | STRING                          | enum             | 受信するメッセージのキーのタイプを入力します。                                                         | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`key.deserializer`プロパティ参考                                                                                                                                                                                                                                                 |
+| メタデータ生成の有無       | false                           | boolean          | プロパティ値がtrueの場合、メッセージのメタデータフィールドを生成します。メタデータは`kafka_metadata`フィールドに生成されます。       | 生成されるフィールドは次のとおりです。<br/>topic：メッセージを受信したトピック<br/>groupId：メッセージを受信するのに使用したコンシューマーグループID<br/>partition：メッセージを受信したトピックのパーティション番号<br/>offset：メッセージを受信したパーティションのオフセット<br/>key：メッセージキー                                                                                                                                                                                    |
+| Fetch最小サイズ       | 1                               | number           | 1回のfetch要求で取得するデータの最小サイズ（byte）を入力します。                                    | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.min.bytes`プロパティ参考                                                                                                                                                                                                                                                  |
+| 送信バッファサイズ          | 131072                          | number           | データを送信する際に使用するTCPsendバッファのサイズ（byte）を入力します。                                  | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`send.buffer.bytes`プロパティ参考                                                                                                                                                                                                                                                |
+| 再試行要求周期         | 100                             | number           | 送信要求に失敗した場合に再試行する周期（ms）を入力します。                                               | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`retry.backoff.ms`プロパティ参考                                                                                                                                                                                                                                                 |
+| 巡回冗長検査          | true                            | boolean          | メッセージのCRCをチェックします。                                                                | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`check.crcs`プロパティ参考                                                                                                                                                                                                                                                       |
+| サーバー再接続周期         | 50                              | number           | ブローカーサーバーへの接続に失敗した場合に再試行する周期（ms）を入力します。                                          | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`reconnect.backoff.ms`プロパティ参考                                                                                                                                                                                                                                             |
+| パーティション当たりFetch最大サイズ | 1048576                         | number           | パーティション当たり1回のfetch要求で取得する最大サイズ（byte）を入力します。                                   | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.partition.fetch.bytes`プロパティ参考                                                                                                                                                                                                                                        |
+| サーバー要求タイムアウト        | 30000                           | number           | 送信要求のタイムアウト（ms）を入力します。                                                      | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`request.timeout.ms`プロパティ参考                                                                                                                                                                                                                                               |
+| TCP受信バッファサイズ      | 65536                           | number           | データを読み取る際に使用するTCPreceiveバッファのサイズ（byte）を入力します。                                 | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`receive.buffer.bytes`プロパティ参考                                                                                                                                                                                                                                             |
+| セッションタイムアウト           | 45000                           | number           | コンシューマーのセッションタイムアウト（ms）を入力します。<br/>コンシューマーが指定された時間内にheartbeatを送信できない場合、コンシューマーグループから除外されます。 | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`session.timeout.ms`プロパティ参考                                                                                                                                                                                                                                               |
+| 最大poll メッセージ数    | 500                             | number           | 1回のpoll要求で取得する最大メッセージ数を入力します。                                            | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.poll.records`プロパティ参考                                                                                                                                                                                                                                                 |
+| 最大poll周期        | 300000                          | number           | poll要求間の最大周期（ms）を入力します。                                                     | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`max.poll.interval.ms`プロパティ参考                                                                                                                                                                                                                                             |
+| Fetch最大サイズ       | 52428800                        | number           | 1回のfetch要求で取得する最大サイズ（byte）を入力します。                                         | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.max.bytes`プロパティ参考                                                                                                                                                                                                                                                  |
+| Fetch最大待機時間    | 500                             | number           | `Fetch最小サイズ`設定分のデータが集まらない場合にfetch要求を送信する待機時間（ms）を入力します。              | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`fetch.max.wait.ms`プロパティ参考                                                                                                                                                                                                                                                |
+| コンシューマーヘルスチェック周期       | 3000                            | number           | コンシューマーがheartbeatを送信する周期（ms）を入力します。                                              | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`heartbeat.interval.ms`プロパティ参考                                                                                                                                                                                                                                            |
+| メタデータ更新周期       | 300000                          | number           | パーティション、ブローカーサーバーの状態などを更新する周期（ms）を入力します。                                            | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`プロパティ参考                                                                                                                                                                                                                                              |
+| IDLEタイムアウト         | 540000                          | number           | データ送信がない接続を閉じる待機時間（ms）を入力します。                                            | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`connections.max.idle.ms`プロパティ参考                                                                                                                                                                                                                                          |
+| 分離レベル | read_committed | enum | コンシューマーがトランザクションがコミットされていないメッセージまで読むか、コミットされたメッセージのみを読むかを決定します。 | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`isolation.level`プロパティ参考<br/>read_uncommitted：すべてのメッセージをオフセット順に読みます。<br/>read_committed：コミットされたトランザクションのメッセージのみを読みます。 |
+| 追加設定             | -                                 | hash             | Kafka接続に使用する追加のConsumer設定を入力します。                                            | [Kafkaオフィシャルドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)参考                                                                                                                                                                                                                                                                        |
 
-### コーデック別のメッセージ取り込み
+### コーデック別メッセージ受け入れ
 
-サポートするコーデック
-* [PLAINコーデック](./codec-config-guide.md#plain) - オリジナルデータの文字列の保存
-* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データのパース
+対応コーデック
+* [PLAINコーデック](./codec-config-guide.md#plain) - 原本データ文字列を保存
+* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データを解析
 
 ## Filter
 
@@ -1196,33 +1196,33 @@ Filter操作を終えたデータを書き込むエンドポイントを定義�
 ### ノードの説明
 
 * NHN CloudのObject Storageにデータをアップロードするノードです。
-* 他の設定を行わずに基本設定のみで作成すると、オブジェクトは次のパスフォーマットに合わせて出力されます。
+* その他の設定なしに基本設定のみで作成すると、オブジェクトは以下のパスフォーマットに従って出力されます。
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* 提供するコーデックは、JSON、LINE、Parquetです。
+* 提供コーデックはJSON、LINE、Parquetです。
 
-### プロパティの説明
+### 属性説明
 
-| プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
-|-----------------------|------------------------------------------------------|--------|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| リージョン | - | enum | Object Storage商品のリージョンを入力します。 |  |
-| バケット | - | string | バケット名を入力します。 |  |
-| シークレットキー | - | string | S3 API認証情報のシークレットキーを入力します。 |  |
-| アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
-| Prefix | /year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | オブジェクトのアップロード時に名前の前に付けるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
-| Prefix時間フィールド | - | string | Prefixに適用する時間フィールドを入力します。 |  |
-| Prefix時間フィールドのタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 | DATE_FILTER_RESULTタイプのみ可能(今後他のタイプもサポート予定) |
-| Prefix時間帯 | UTC | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
-| Prefix時間適用fallback | _prefix_datetime_parse_failure | string | Prefixの時間の適用に失敗した場合に代替するPrefixを入力します。 |  |
-| 基準時刻 | 1 | number | オブジェクトを分割する基準となる時間を設定します。 |  |
-| 基準オブジェクトサイズ | 5242880 | number | オブジェクトを分割する基準となる大きさ(単位： byte)を設定します。 |  |
-| 非アクティブ間隔 | 1 | number | データ取り込みがない状態が続く場合、オブジェクトを分割する基準時間を設定します。 | 設定した時間の間データの取り込みがないと現在のオブジェクトがアップロードされ、その後新しく取り込まれるデータは新しいオブジェクトに書き込まれます。 |
+| 属性名                   | デフォルト値                                                | データ型    | 説明                                                           | 備考                                                                                                                         |
+|-----------------------|----------------------------------------------------|--------|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
+| リージョン                    | -                                                  | enum   | Object Storage製品のリージョンを入力します。                                |                                                                                                                            |
+| バケット                    | -                                                  | string | バケット名を入力します。                                                |                                                                                                                            |
+| シークレットキー                  | -                                                  | string | S3 API認証情報シークレットキーを入力します。                                    |                                                                                                                            |
+| アクセスキー                 | -                                                  | string | S3 API認証情報アクセスキーを入力します。                                   |                                                                                                                            |
+| Prefix                | /year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | オブジェクトアップロード時に名前の前に付与するプレフィックスを入力します。<br/>フィールドまたは時間フォーマットを入力できます。 | [使用可能な時間フォーマット](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html)                         |
+| Prefix時間フィールド          | -                                                  | string | Prefixに適用する時間フィールドを入力します。                                    |                                                                                                                            |
+| Prefix時間フィールドタイプ       | DATE_FILTER_RESULT                                 | enum   | Prefixに適用する時間フィールドのタイプを入力します。                                | DATE_FILTER_RESULTタイプのみ可能(今後他のタイプをサポート予定)                                                                        |
+| Prefixタイムゾーン            | UTC                                                | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。                              |                                                                                                                            |
+| Prefix時間適用フォールバック | _prefix_datetime_parse_failure                                   | string | Prefix時間適用に失敗した場合に代替するPrefixを入力します。                      |                                                                                                                            |
+| 基準時間                 | 1                                                  | number | オブジェクトを分割する基準となる時間を設定します。                                   |                                                                                                                            |
+| 基準オブジェクトサイズ            | 5242880                                            | number | オブジェクトを分割する基準となるサイズ(単位: byte)を設定します。                         |                                                                                                                            |
+| 非アクティブ間隔                | 1                                                  | number | データ受信がない状態が継続する場合にオブジェクトを分割する基準時間を設定します。                | 設定された時間中にデータ受信がない場合は現在のオブジェクトがアップロードされ、その後新たに受信されるデータは新しいオブジェクトに書き込まれます。                                                     |
 
-### コーデック別の出力例
+### コーデック別出力例
 
-サポートするコーデック
-* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データのパース
-* [LINEコーデック](./codec-config-guide.md#line) - 行単位でのメッセージ処理
-* [Parquetコーデック](./codec-config-guide.md#parquet) - データをParquet形式で圧縮 
+サポートコーデック
+* [JSONコーデック](./codec-config-guide.md#json) - JSON形式データ解析
+* [LINEコーデック](./codec-config-guide.md#line) - 行単位メッセージ処理
+* [Parquetコーデック](./codec-config-guide.md#parquet) - データをParquet形式に圧縮 
 
 ### Prefixの例 - フィールド
 
@@ -1253,8 +1253,8 @@ Filter操作を終えたデータを書き込むエンドポイントを定義�
 * バケット → `obs-test-container`
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
 * Prefix時間フィールド → `logTime`
-* Prefix時間フィールドのタイプ → `ISO8601`
-* Prefix時間帯 → `Asia/Seoul`
+* Prefix時間フィールドタイプ → `ISO8601`
+* Prefixタイムゾーン → `Asia/Seoul`
 
 #### 入力メッセージ
 ``` json
@@ -1271,16 +1271,16 @@ Filter操作を終えたデータを書き込むエンドポイントを定義�
 /obs-test-container/dataflow/year=2022/month=11/day=21/hour=16/part-378be4d8-2c59-4014-aaeb-a9bc75af2653-0
 ```
 
-### Prefixの例 - 時間の適用に失敗した場合
+### Prefixの例 - 時間適用失敗時
 
 #### 条件
 
 * バケット → `obs-test-container`
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
 * Prefix時間フィールド → `logTime`
-* Prefix時間フィールドのタイプ → `TIMESTAMP_SEC`
-* Prefix時間帯 → `Asia/Seoul`
-* Prefix時間適用fallback → `_failure`
+* Prefix時間フィールドタイプ → `TIMESTAMP_SEC`
+* Prefixタイムゾーン → `Asia/Seoul`
+* Prefix時間適用フォールバック → `_failure`
 
 #### 入力メッセージ
 ``` json
@@ -1299,35 +1299,35 @@ Filter操作を終えたデータを書き込むエンドポイントを定義�
 
 ## Sink > (NHN Cloud) Data Lake Storage
 
-### ノードの説明
+### ノード説明
 * NHN CloudのData Lake Storageにデータをアップロードするノードです。
-* 他の設定を行わずにデフォルト設定のみで作成すると、オブジェクトは次のパスフォーマットに合わせて出力されます。
+* 別の設定なしで基本設定のみで作成すると、オブジェクトは次のパスフォーマットに合わせて出力されます。
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* 提供コーデックはJSON、LINE、Parquetです。
+* 提供されるコーデックはJSON、LINE、Parquetです。
 
-### プロパティの説明
-| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+### 属性説明
+| 属性名                   | デフォルト値                                          | データ型    | 説明                                                           | 備考                                                                                                                         |
 |-----------------------|----------------------------------------------------|--------|--------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------|
-| リージョン | - | enum | Data Lake Storage商品のリージョンを入力します。 | |
-| バケット | - | string | バケット名を入力します。 | |
-| シークレットキー | - | string | S3 API認証情報のシークレットキーを入力します。 | |
-| アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 | |
-| Prefix | /year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | オブジェクトアップロード時に名前の前に付けるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
-| Prefix時間フィールド | - | string | Prefixに適用する時間フィールドを入力します。 | |
-| Prefix時間フィールドタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 | DATE_FILTER_RESULTタイプのみ可能(今後他のタイプをサポート予定) |
-| Prefixタイムゾーン | UTC | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 | |
-| Prefix時間適用fallback | _prefix_datetime_parse_failure | string | Prefix時間の適用に失敗した場合に代替するPrefixを入力します。 | |
-| 基準時刻 | 1 | number | オブジェクトを分割する基準となる時間を設定します。 | |
-| 基準オブジェクトサイズ | 5242880 | number | オブジェクトを分割する基準となるサイズ(単位：byte)を設定します。 | |
-| 非アクティブ間隔 | 1 | number | データの入力がない状態が続く場合、オブジェクトを分割する基準時間を設定します。 | 設定された時間内にデータ入力がない場合、現在のオブジェクトがアップロードされ、その後新しく入力されるデータは新しいオブジェクトに書き込まれます。 |
+| リージョン                    | -                                                  | enum   | Data Lake Storageの商品のリージョンを入力します。                                |                                                                                                                            |
+| バケット                    | -                                                  | string | バケット名を入力します。                                                |                                                                                                                            |
+| 秘密鍵                  | -                                                  | string | S3 API認証情報の秘密鍵を入力します。                                    |                                                                                                                            |
+| アクセスキー                 | -                                                  | string | S3 API認証情報のアクセスキーを入力します。                                   |                                                                                                                            |
+| Prefix                | /year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH} | string | オブジェクトアップロード時に名前の前に付加するプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html)                         |
+| Prefix時間フィールド          | -                                                  | string | Prefixに適用する時間フィールドを入力します。                                    |                                                                                                                            |
+| Prefix時間フィールドタイプ       | DATE_FILTER_RESULT                                 | enum   | Prefixに適用する時間フィールドのタイプを入力します。                                | DATE_FILTER_RESULTタイプのみ可能(今後、他のタイプをサポート予定)                                                                        |
+| Prefixタイムゾーン            | UTC                                                | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。                              |                                                                                                                            |
+| Prefix時間適用フォールバック | _prefix_datetime_parse_failure                                   | string | Prefix時間適用に失敗した場合に置き換えるPrefixを入力します。                      |                                                                                                                            |
+| 基準時刻                 | 1                                                  | number | オブジェクトを分割する基準となる時間を設定します。                                   |                                                                                                                            |
+| 基準オブジェクトサイズ            | 5242880                                            | number | オブジェクトを分割する基準となるサイズ(単位: byte)を設定します。                         |                                                                                                                            |
+| 非アクティブ間隔                | 1                                                  | number | データが入力されない状態が続く場合、オブジェクトを分割する基準時間を設定します。                | 設定された時間中にデータが入力されなければ、現在のオブジェクトがアップロードされ、その後、新たに入力されるデータは新しいオブジェクトに書き込まれます。                                                     |
 
-### コーデック別の出力例
-サポートコーデック
+### コーデック別出力例
+対応コーデック
 * [JSONコーデック](./codec-config-guide.md#json) - JSON形式データの解析
-* [LINEコーデック](./codec-config-guide.md#line) - 行単位のメッセージ処理
-* [Parquetコーデック](./codec-config-guide.md#parquet) - データをParquet形式で圧縮
+* [LINEコーデック](./codec-config-guide.md#line) - 行単位でのメッセージ処理
+* [Parquetコーデック](./codec-config-guide.md#parquet) - データをParquet形式で圧縮 
 
-### Prefixの例 - フィールド
+### Prefix例 - フィールド
 #### 条件
 * バケット → `dls-test-container`
 * Prefix → `/dataflow/%{deployment}`
@@ -1346,7 +1346,7 @@ Filter操作を終えたデータを書き込むエンドポイントを定義�
 /dls-test-container/dataflow/production/part-378be4d8-2c59-4014-aaeb-a9bc75af2653-0
 ```
 
-### Prefixの例 - 時間
+### Prefix例 - 時間
 #### 条件
 * バケット → `dls-test-container`
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
@@ -1368,14 +1368,14 @@ Filter操作を終えたデータを書き込むエンドポイントを定義�
 /dls-test-container/dataflow/year=2022/month=11/day=21/hour=16/part-378be4d8-2c59-4014-aaeb-a9bc75af2653-0
 ```
 
-### Prefixの例 - 時間の適用に失敗した場合
+### Prefix例 - 時間適用失敗時
 #### 条件
 * バケット → `dls-test-container`
 * Prefix → `/dataflow/year=%{+YYYY}/month=%{+MM}/day=%{+dd}/hour=%{+HH}`
 * Prefix時間フィールド → `logTime`
 * Prefix時間フィールドタイプ → `ISO8601`
 * Prefixタイムゾーン → `Asia/Seoul`
-* Prefix時間適用fallback → `_failure`
+* Prefix時間適用フォールバック → `_failure`
 
 #### 入力メッセージ
 ``` json
@@ -1393,108 +1393,108 @@ Filter操作を終えたデータを書き込むエンドポイントを定義�
 
 ## Sink > (Amazon) S3
 
-### ノードの説明
+### ノード説明
 
 * Amazon S3にデータをアップロードするノードです。
-* 提供するコーデックは、JSON、LINE、Parquetです。
+* 提供コーデックはJSON、LINE、Parquetです。
 
-### プロパティの説明
-| プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
+### 属性説明
+| 属性名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| リージョン | - | enum | S3商品のリージョンを入力します。 | [s3 region](https://docs.aws.amazon.com/general/latest/gr/s3.html) |
+| リージョン | - | enum | S3製品のリージョンを入力します。 | [s3 region](https://docs.aws.amazon.com/general/latest/gr/s3.html) |
 | バケット | - | string | バケット名を入力します。 |  |
-| アクセスキー | - | string | S3 API認証情報のアクセスキーを入力します。 |  |
-| シークレットキー | - | string | S3 API認証情報のシークレットキーを入力します。 |  |
-| Prefix | - | string | オブジェクトのアップロード時に名前の前に付けるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [使用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
+| アクセスキー | - | string | S3 APIクレデンシャルアクセスキーを入力します。 |  |
+| シークレットキー | - | string | S3 APIクレデンシャルシークレットキーを入力します。 |  |
+| Prefix | - | string | オブジェクトアップロード時に名前の前に付けるプレフィックスを入力します。<br/>フィールドまたは時間形式を入力できます。 | [利用可能な時間形式](https://joda-time.sourceforge.net/apidocs/org/joda/time/format/DateTimeFormat.html) |
 | Prefix時間フィールド | - | string | Prefixに適用する時間フィールドを入力します。 |  |
-| Prefix時間フィールドのタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 | DATE_FILTER_RESULTタイプのみ可能(今後他のタイプもサポート予定) |
-| Prefix時間帯 | UTC | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
-| Prefix時間適用fallback | _prefix_datetime_parse_failure | string | Prefixの時間の適用に失敗した場合に代替するPrefixを入力します。 |  |
+| Prefix時間フィールドタイプ | DATE_FILTER_RESULT | enum | Prefixに適用する時間フィールドのタイプを入力します。 | DATE_FILTER_RESULTタイプのみ可能(今後、他のタイプをサポート予定) |
+| Prefixタイムゾーン | UTC | string | Prefixに適用する時間フィールドのタイムゾーンを入力します。 |  |
+| Prefix時間適用フォールバック | _prefix_datetime_parse_failure | string | Prefix時間適用に失敗した場合に置き換えるPrefixを入力します。 |  |
 | 基準時刻 | 1 | number | オブジェクトを分割する基準となる時間を設定します。 |  |
 | 基準オブジェクトサイズ | 5242880 | number | オブジェクトを分割する基準となるサイズを設定します。 |  |
-| パス方式のリクエスト | false | boolean | パス方式のリクエストを使用するかどうかを決定します。 |  |
-| 非アクティブ間隔 | 1| number | データ取り込みがない状態が続く場合、オブジェクトを分割する基準時間を設定します。 | 設定した時間の間データの取り込みがないと現在のオブジェクトがアップロードされ、その後新しく取り込まれるデータは新しいオブジェクトに書き込まれます。 |
+| パススタイルリクエスト | false | boolean | パススタイルリクエストを使用するかどうかを決定します。 |  |
+| 非アクティブ間隔 | 1 | number | データ入力がない状態が続く場合にオブジェクトを分割する基準時間を設定します。 | 設定された時間の間にデータ入力がない場合、現在のオブジェクトがアップロードされ、その後、新たに入力されるデータは新しいオブジェクトに書き込まれます。 |
 
 !!! danger "注意"
-    * (Amazon) S3ノードを使用してNHN Cloud Object Storageに接続する場合は、**パス方式のリクエスト**を`true`に設定する必要があります。
+    * (Amazon) S3ノードを使用してNHN Cloud Object Storageに接続する場合、**パススタイルリクエスト**を`true`に設定する必要があります。
 
 
-### コーデック別の出力例
+### コーデック別出力例
 
-サポートするコーデック
+サポートされるコーデック
 * [JSONコーデック](./codec-config-guide.md#json) - JSON形式データのパース
-* [LINEコーデック](./codec-config-guide.md#line) - 行単位でのメッセージ処理
-* [Parquetコーデック](./codec-config-guide.md#parquet) - データをParquet形式で圧縮 
+* [LINEコーデック](./codec-config-guide.md#line) - 行単位のメッセージ処理
+* [Parquetコーデック](./codec-config-guide.md#parquet) - データをParquet形式に圧縮
 
 ## Sink > (NHN Cloud) EasyQueue
 
-### ノードの説明
-NHN CloudのEasyQueueにデータを送信するノードです。
+### ノード説明
+NHN CloudのEasyQueueにデータを転送するノードです。
 
-### プロパティの説明
-| プロパティ名 | デフォルト値 | データ型 | 説明 | 備考 |
+### 属性説明
+| 属性名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| アプリキー | - | string | EasyQueueのアプリキーを入力します。 | |
-| User Access Key ID | - | string | ユーザーアカウントのUser Access Key IDを入力します。 | |
-| Secret Access Key | - | string | ユーザーアカウントのUser Secret Keyを入力します。 | |
-| トピック | - | string | メッセージを送信するKafkaトピック名を入力します。 | |
-| ブローカーサーバー一覧 | - | string | Kafkaブローカーサーバーを入力します。サーバーが複数ある場合はカンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`bootstrap.servers`プロパティを参照<br/>例：10.100.1.1:9092,10.100.1.2:9092 |
-| クライアントID | dataflow | string | Kafka Producerを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`client.id`プロパティを参照 |
-| 圧縮タイプ | none | enum | 送信するデータを圧縮する方法を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/topic-level-configs/)の`compression.type`プロパティを参照<br/>none、gzip、snappy、lz4、zstdから選択 |
-| メッセージキー | - | string | メッセージキーとして使用するフィールドを入力します。 | |
-| メタデータ更新サイクル | 300000 | number | パーティション、ブローカーサーバーの状態などを更新するサイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`プロパティを参照 |
-| 最大リクエストサイズ | 1048576 | number | 送信リクエストあたりの最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`max.request.size`プロパティを参照 |
-| サーバー再接続サイクル | 50 | number | ブローカーサーバーへの接続が失敗したときに再試行するサイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`reconnect.backoff.ms`プロパティを参照 |
-| バッチサイズ | 16384 | number | バッチリクエストで送信するサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`batch.size`プロパティを参照 |
-| バッファメモリ | 33554432 | number | Kafkaの送信に使用するバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`buffer.memory`プロパティを参照 |
-| 受信バッファサイズ | 32768 | number | データを読み取るために使用するTCP receiveバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`receive.buffer.bytes`プロパティを参照 |
-| 送信遅延時間 | 0 | number | メッセージの送信を遅延する時間を入力します。遅延されたメッセージはバッチリクエストで一度に送信します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`linger.ms`プロパティを参照 |
-| サーバーリクエストタイムアウト | 30000 | number | 送信リクエストに対するタイムアウト(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`request.timeout.ms`プロパティを参照 |
-| 送信バッファサイズ | 131072 | number | データを送信するために使用するTCP sendバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`send.buffer.bytes`プロパティを参照 |
-| ackプロパティ | all | enum | ブローカーサーバーでメッセージを受信したか確認する設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`acks`プロパティを参照<br/>0 - メッセージの受信有無を確認しません。<br/>1 - トピックのleaderがfollowerによるデータのコピーを待たずに、メッセージを受信したという応答を返します。<br/>all - トピックのleaderがfollowerによるデータのコピーを待った後、メッセージを受信したという応答を返します。 |
-| 再試行リクエストサイクル | 100 | number | 送信リクエストが失敗したときに再試行するサイクル(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retry.backoff.ms`プロパティを参照 |
-| 再試行回数 | 2147483647 | number | 送信リクエストが失敗したときに再試行する最大回数を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retries`プロパティを参照<br/>設定値を超過して再試行する場合、データの消失が発生する可能性があります。 |
-| 配信保証方式 | EXACTLY_ONCE | enum | メッセージの配信保証方式を選択します。 | AT_LEAST_ONCE：メッセージが少なくとも1回は配信されますが、障害発生時に重複が発生する可能性があります。重複処理をアプリケーションで直接管理できる場合や、重複が許容される場合に適しています。<br/><br/>EXACTLY_ONCE：メッセージが正確に1回だけ処理されます。重複が許容されない決済や精算などのコアトランザクションに適していますが、内部的にトランザクションを使用するため、処理量がやや低下する可能性があります。 |
-| 追加設定 | - | hash | Kafka接続に使用する追加のProducer設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)を参照 |
+| アプリキー | - | string | EasyQueueのアプリキーを入力します。 |  |
+| User Access Key ID | - | string | ユーザーアカウントのUser Access Key IDを入力します。 |  |
+| Secret Access Key | - | string | ユーザーアカウントのUser Secret Keyを入力します。 |  |
+| トピック | - | string | メッセージを転送するKafkaトピック名を入力します。 |  |
+| ブローカーサーバーリスト | - | string | Kafkaブローカーサーバーを入力します。サーバーが複数の場合、コンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`bootstrap.servers`属性を参照<br/>例: 10.100.1.1:9092,10.100.1.2:9092 |
+| クライアントID | dataflow | string | Kafka Producerを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`client.id`属性を参照 |
+| 圧縮タイプ | none | enum | 転送するデータを圧縮する方法を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/topic-level-configs/)の`compression.type`属性を参照<br/>none、gzip、snappy、lz4、zstdから選択 |
+| メッセージキー | - | string | メッセージキーとして使用するフィールドを入力します。 |  |
+| メタデータ更新周期 | 300000 | number | パーティション、ブローカーサーバーステータスなどを更新する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`属性を参照 |
+| 最大リクエストサイズ | 1048576 | number | 転送リクエストあたりの最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`max.request.size`属性を参照 |
+| サーバー再接続周期 | 50 | number | ブローカーサーバーへの接続に失敗した場合の再試行周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`reconnect.backoff.ms`属性を参照 |
+| バッチサイズ | 16384 | number | バッチリクエストで転送するサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`batch.size`属性を参照 |
+| バッファメモリ | 33554432 | number | Kafka転送に使用するバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`buffer.memory`属性を参照 |
+| 受信バッファサイズ | 32768 | number | データを読むのに使用するTCP receiveバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`receive.buffer.bytes`属性を参照 |
+| 転送遅延時間 | 0 | number | メッセージ転送を遅延させる時間を入力します。遅延されたメッセージはバッチリクエストで一度に転送します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`linger.ms`属性を参照 |
+| サーバーリクエストタイムアウト | 30000 | number | 転送リクエストに対するタイムアウト(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`request.timeout.ms`属性を参照 |
+| 転送バッファサイズ | 131072 | number | データを転送するのに使用するTCP sendバッファのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`send.buffer.bytes`属性を参照 |
+| ack属性 | all | enum | ブローカーサーバーがメッセージを受け取ったかどうかを確認する設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`acks`属性を参照<br/>0 - メッセージ受信の有無を確認しません。<br/>1 - トピックのleaderがfollowerがデータをコピーするのを待たずに、メッセージを受け取ったという応答をします。<br/>all - トピックのleaderがfollowerがデータをコピーするのを待った後、メッセージを受け取ったという応答をします。 |
+| 再試行リクエスト周期 | 100 | number | 転送リクエストが失敗した場合の再試行周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retry.backoff.ms`属性を参照 |
+| 再試行回数 | 2147483647 | number | 転送リクエストが失敗した場合の最大再試行回数を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retries`属性を参照<br/>設定値を超えて再試行する場合、データ損失が発生する可能性があります。 |
+| 転送保証方式 | EXACTLY_ONCE | enum | メッセージ転送保証方式を選択します。 | AT_LEAST_ONCE: メッセージは最少1回転送されますが、障害状況で重複が発生する可能性があります。重複処理をアプリケーションで直接管理できるか、重複が許容される場合に適しています。<br/><br/>EXACTLY_ONCE: メッセージが正確に1回だけ処理されます。重複が許容されない決済・決算などのコア取引に適していますが、内部的にトランザクションを使用するため、スループットが多少低下する可能性があります。 |
+| 追加設定 | - | hash | Kafka接続に使用する追加Producer設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)を参照 |
 
-### コーデック別の出力例
-サポートコーデック
+### コーデック別出力例
+サポート対象コーデック
 * [JSONコーデック](./codec-config-guide.md#json) - JSON形式データの解析
 * [LINEコーデック](./codec-config-guide.md#line) - 行単位のメッセージ処理
 
 ## Sink > (Apache) Kafka
 
-### ノードの説明
+### ノード説明
 
-Kafkaにデータを送信するノードです。
+Kafkaにデータを転送するノードです。
 
-### プロパティの説明
+### 属性説明
 
-| プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
+| 属性名         | デフォルト値          | データ型    | 説明                                                 | 備考                                                                                                                                                                                                                                                                   |
 |-------------|--------------|--------|----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| トピック | - | string | メッセージを送信するKafkaトピック名を入力します。 |  |
-| ブローカーサーバーの一覧 |  | string | Kafkaブローカーサーバーを入力します。サーバーが複数ある場合はコンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`bootstrap.servers`プロパティを参照<br/>例: 10.100.1.1:9092,10.100.1.2:9092 |
-| クライアントID | dataflow | string | Kafka Producerを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`client.id`プロパティを参照 |
-| 圧縮タイプ | none | enum | 送信するデータを圧縮する方法を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/topic-level-configs/)の`compression.type`プロパティを参照<br/>none、gzip、snappy、lz4、zstdから選択 |
-| メッセージキー | - | string | メッセージキーとして使用するフィールドを入力します。 |  |
-| メタデータ更新周期 | 300000 | number | パーティション、ブローカーサーバーの状態などを更新する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`プロパティを参照 |
-| 最大リクエストサイズ | 1048576 | number | 送信リクエストあたりの最大サイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`max.request.size`プロパティを参照 |
-| サーバー再接続周期 | 50 | number | ブローカーサーバーへの接続に失敗した場合に再試行する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`reconnect.backoff.ms`プロパティを参照 |
-| バッチサイズ | 16384 | number | バッチリクエストで送信するサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`batch.size`プロパティを参照 |
-| バッファーメモリ | 33554432 | number | Kafkaへの送信に使用するバッファーのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`buffer.memory`プロパティを参照 |
-| 受信バッファーサイズ | 32768 | number | データの読み込みに使用するTCP receiveバッファーのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`receive.buffer.bytes`プロパティを参照 |
-| 送信遅延時間 | 0 | number | メッセージの送信を遅延させる時間を入力します。遅延されたメッセージはバッチリクエストで一度に送信されます。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`linger.ms`プロパティを参照 |
-| サーバーリクエストのタイムアウト | 30000 | number | 送信リクエストに対するタイムアウト(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`request.timeout.ms`プロパティを参照 |
-| 送信バッファーサイズ | 131072 | number | データの送信に使用するTCP sendバッファーのサイズ(byte)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`send.buffer.bytes`プロパティを参照 |
-| ackプロパティ | all | enum | ブローカーサーバーでメッセージを受信したか確認する設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`acks`プロパティを参照<br/>0 - メッセージの受信有無を確認しません。<br/>1 - トピックのleaderがfollowerによるデータのコピーを待たずにメッセージを受信したと応答します。<br/>all - トピックのleaderがfollowerによるデータのコピーを待ってからメッセージを受信したと応答します。 |
-| 再試行リクエスト周期 | 100 | number | 送信リクエストが失敗した場合に再試行する周期(ms)を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retry.backoff.ms`プロパティを参照 |
-| 再試行回数 | 2147483647 | number | 送信リクエストが失敗した場合に再試行する最大回数を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retries`プロパティを参照<br/>設定値を超えて再試行した場合、データの消失が発生する可能性があります。 |
-| 配信保証方式 | EXACTLY_ONCE | enum | メッセージの配信保証方式を選択します。 | AT_LEAST_ONCE：メッセージが少なくとも1回は配信されますが、障害発生時に重複が発生する可能性があります。重複処理をアプリケーションで直接管理できる場合や、重複が許容される場合に適しています。<br/>EXACTLY_ONCE：メッセージが正確に1回だけ処理されます。重複が許容されない決済や精算などのコアトランザクションに適していますが、内部的にトランザクションを使用するため、処理量がやや低下する可能性があります。 |
-| 追加設定 | - | hash | Kafka接続に使用する追加のProducer設定を入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)を参照 |
+| トピック          | -            | string | メッセージを送信するKafkaトピック名を入力します。                       |                                                                                                                                                                                                                                                                      |
+| ブローカーサーバーリスト   |              | string | Kafkaブローカーサーバーを入力します。サーバーが複数の場合はコンマ(`,`)で区切ります。  | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`bootstrap.servers`属性を参照<br/>例: 10.100.1.1:9092,10.100.1.2:9092                                                                                                                         |
+| クライアントID   | dataflow   | string | Kafka Producerを識別するIDを入力します。                    | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`client.id`属性を参照                                                                                                                                                                        |
+| 圧縮タイプ       | none       | enum   | 送信するデータを圧縮する方法を入力します。                           | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/topic-level-configs/)の`compression.type`属性を参照<br/>none、gzip、snappy、lz4、zstdから選択                                                                                                                       |
+| メッセージキー       | -            | string | メッセージキーとして使用するフィールドを入力します。                              |                                                                                                                                                                                                                                                                      |
+| メタデータ更新周期 | 300000     | number | パーティション、ブローカーサーバーの状態などを更新する周期(ms)を入力します。               | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`metadata.max.age.ms`属性を参照                                                                                                                                                              |
+| 最大リクエストサイズ    | 1048576    | number | 送信リクエストあたりの最大サイズ(byte)を入力します。                         | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`max.request.size`属性を参照                                                                                                                                                                 |
+| サーバー再接続周期   | 50         | number | ブローカーサーバーへの接続に失敗した場合に再試行する周期(ms)を入力します。             | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`reconnect.backoff.ms`属性を参照                                                                                                                                                             |
+| バッチサイズ       | 16384      | number | バッチリクエストで送信するサイズ(byte)を入力します。                       | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`batch.size`属性を参照                                                                                                                                                                       |
+| バッファメモリ      | 33554432   | number | Kafka送信に使用するバッファのサイズ(byte)を入力します。                | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`buffer.memory`属性を参照                                                                                                                                                                    |
+| 受信バッファサイズ    | 32768      | number | データを読むのに使用するTCP receiveバッファのサイズ(byte)を入力します。    | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`receive.buffer.bytes`属性を参照                                                                                                                                                             |
+| 送信遅延時間    | 0          | number | メッセージ送信を遅延させる時間を入力します。遅延されたメッセージはバッチリクエストで一度に送信します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`linger.ms`属性を参照                                                                                                                                                                        |
+| サーバーリクエストタイムアウト  | 30000      | number | 送信リクエストに対するタイムアウト(ms)を入力します。                         | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`request.timeout.ms`属性を参照                                                                                                                                                               |
+| 送信バッファサイズ    | 131072     | number | データを送信するのに使用するTCP sendバッファのサイズ(byte)を入力します。     | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`send.buffer.bytes`属性を参照                                                                                                                                                                |
+| ack属性      | all        | enum   | ブローカーサーバーでメッセージを受け取ったかどうかを確認する設定を入力します。                 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`acks`属性を参照<br/>0 - メッセージ受信の有無を確認しません。<br/>1 - トピックのleaderはfollowerがデータをコピーするのを待たずにメッセージを受け取ったという応答をします。<br/>all - トピックのleaderはfollowerがデータをコピーするのを待った後、メッセージを受け取ったという応答をします。 |
+| 再試行リクエスト周期   | 100        | number | 送信リクエストが失敗した場合に再試行する周期(ms)を入力します。                  | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retry.backoff.ms`属性を参照                                                                                                                                                                 |
+| 再試行回数      | 2147483647 | number | 送信リクエストが失敗した場合に再試行する最大回数を入力します。                   | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`retries`属性を参照<br/>設定値を超えて再試行する場合、データ損失が発生する可能性があります。                                                                                                                               |
+| 配信保証方式 | EXACTLY_ONCE | enum | メッセージ配信保証方式を選択します。 | AT_LEAST_ONCE: メッセージは最低でも1回は配信されますが、障害時に重複が発生する可能性があります。重複処理をアプリケーションで直接管理できるか、重複が許容される場合に適しています。<br/>EXACTLY_ONCE: メッセージは正確に1回だけ処理されます。重複が許容されない決済・精算などのコアトランザクションに適していますが、内部的にトランザクションを使用するため、スループットが若干低くなる可能性があります。                        |
+| 追加設定       | -            | hash   | Kafka接続に使用する追加Producer設定を入力します。               | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)を参照                                                                                                                                                                                        |
 
-### コーデック別の出力例
+### コーデック別出力例
 
-サポートするコーデック
+サポートされるコーデック
 * [JSONコーデック](./codec-config-guide.md#json) - JSON形式データ出力
 * [LINEコーデック](./codec-config-guide.md#line) - 行単位メッセージ出力
 
@@ -1517,24 +1517,24 @@ Kafkaにデータを送信するノードです。
 
 ## Branch > IF
 
-### ノードの説明
+### ノード説明
 
 条件文でメッセージをフィルタリングするノードです。
 
-### プロパティの説明
+### 属性説明
 
-| プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
+| 属性名 | デフォルト値 | データ型 | 説明 | 備考 |
 | --- | --- | --- | --- | --- |
-| 条件文 | - | string | メッセージをフィルタリングする条件を入力します。 | 以下の例をご参照ください。 |
+| 条件文 | - | string | メッセージをフィルタリングする条件を入力してください。 | 下記の例を参照してください。 |
 
 #### 使用可能な演算子
-* 比較: ==、!=、<、>、<=、>=
+* 比較: ==, !=, <, >, <=, >=
 * 正規表現: =~ (右辺で指定されたパターンで左辺の文字列を検査)
-* 包含: =~、!~、.contains()
-* 論理演算子: &&、||、not
-* 否定演算子: !、not
+* 含む: =~, !~, .contains()
+* 論理演算子: &&, ||, not
+* 否定演算子: !, not
 
-### フィルタリングの例 - first depth field reference
+### フィルタリング例 - first depth field reference
 
 #### 条件
 条件文 → `logLevel == "ERROR"`
@@ -1555,7 +1555,7 @@ Kafkaにデータを送信するノードです。
 }
 ```
 
-### フィルタリングの例 - second depth field reference
+### フィルタリング例 - second depth field reference
 
 #### 条件
 
