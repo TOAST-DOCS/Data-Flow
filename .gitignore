@@ -1,5 +1,2 @@
 .idea
-en/en.iml
-ja/ja.iml
-ko/ko.iml
-Data-Flow.iml
+*.iml
