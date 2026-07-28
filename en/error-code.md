@@ -36,4 +36,5 @@
 | EASY_QUEUE_TOPIC_NOT_FOUND  | The EasyQueue topic could not be found.                                                            |
 | EASY_QUEUE_INVALID_PROPERTY | The property of the EasyQueue node is invalid.                                                        |
 | FLOW_ALREADY_STOPPED        | The flow has already stopped.                                                                    |
+| FLOW_SCHEMA_FIELD_DUPLICATED | The same schema field name exists.                                                                |
 | ERROR                       | An internal service error or undefined error has occurred. Contact customer support.                                            |
