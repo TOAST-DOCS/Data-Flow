@@ -264,7 +264,7 @@
 
 ## June 27, 2023
 
-### Feature Updates
+### Added Features
 * Added a feature to enable Log & Crash Search
     * Added a feature to save flow logs in Log & Crash Search.
 
@@ -274,7 +274,7 @@
 
 ## March 28, 2023
 
-### Feature Updates
+### Added Features
 
 * Added new nodes
     * Filter
@@ -288,7 +288,7 @@
 
 ## February 28, 2023
 
-### Feature Updates
+### Added Features
 
 * Added new nodes
     * Source
