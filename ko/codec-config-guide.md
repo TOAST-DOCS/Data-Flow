@@ -14,7 +14,7 @@
 ## 지원 코덱 타입 { #supported-codec-type }
 
 <a id="json-codec"></a>
-### JSON 코덱 { #json-codec }
+### json 코덱 { #json-codec }
 
 * JSON 형식의 데이터를 파싱하여 각 필드를 개별적으로 처리합니다.
 * Source 및 Sink 노드 모두 JSON의 모든 필드가 그대로 유지되기 때문에 필터링이나 가공에 유리합니다.

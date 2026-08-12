@@ -14,7 +14,7 @@
 ## Supported codec type { #supported-codec-type }
 
 <a id="json-codec"></a>
-### JSON codec { #json-codec }
+### json codec { #json-codec }
 
 * It parses JSON data to process each field individually.
 * Since all JSON fields are preserved intact at both Source and Sink nodes, it is highly effective for data filtering and transformation.
@@ -100,7 +100,7 @@
 * Processes each line as an individual message.
 * The Source node stores each input line as a string in the `message` field, while the Sink node outputs data as text lines according to the specified format.
 * Use this codec when line-by-line processing is required.
-* For the Line codec, you can define a delimiter to separate output messages.
+* For the line codec, you can define a delimiter to separate output messages.
     * The default value is a newline (`\n`).
 
 <a id="line-codec-example---source-node"></a>

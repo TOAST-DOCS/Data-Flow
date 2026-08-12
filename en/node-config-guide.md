@@ -173,8 +173,8 @@ Enter a string in JSON format.
 
 * You can define a schema in the **Codec** tab of the Source node.
 * The schema can be defined in the Source node when using the following codecs:
-    * JSON
-* The PLAIN codec only allows defining the `message` field, as data is fixedly mapped to it.
+    * json
+* The plain codec only allows defining the `message` field, as data is fixedly mapped to it.
 * Configure the schema by adding field names and data types.
 * When a schema is defined, only the defined fields are selectively parsed when the flow runs.
 
@@ -244,10 +244,10 @@ Node type that defines an endpoint that imports data to the flow.
 ### Message imported by codec { #message-imported-by-codec }
 
 * Log & Crash Search is designed to process data in JSON format by default.
-* If you want to use each field in the Log&Crash Search log, we recommend using the JSON codec.
+* If you want to use each field in the Log & Crash Search log, we recommend using the json codec.
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-cloudtrail"></a>
 ## Source > (NHN Cloud) CloudTrail { #source-nhn-cloud-cloudtrail }
@@ -281,10 +281,10 @@ Supported codec:
 ### Message imported by codec { #source-nhn-cloud-cloudtrail-message-imported-by-codec }
 
 * CloudTrail is designed to process data in JSON format by default.
-* If you want to use each field in CloudTrail data, we recommend using json Codec.
+* If you want to use each field in CloudTrail data, we recommend using json codec.
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-object-storage"></a>
 ## Source > (NHN Cloud) Object Storage { #source-nhn-cloud-object-storage }
@@ -317,8 +317,8 @@ Supported codec:
 ### Message imported by codec { #source-nhn-cloud-object-storage-message-imported-by-codec }
 
 Supported codec:
-* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [plain codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-data-lake-storage"></a>
 ## Source > (NHN Cloud) Data Lake Storage { #source-nhn-cloud-data-lake-storage }
@@ -349,8 +349,8 @@ Enter a prefix of an object to read. |  |
 <a id="message-ingestion-by-codec-type"></a>
 ### Message Ingestion by Codec Type { #message-ingestion-by-codec-type }
 Supported codecs
-* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [plain codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-amazon-s3"></a>
 ## Source > (Amazon) S3 { #source-amazon-s3 }
@@ -389,8 +389,8 @@ Supported codecs
 ### Message imported by codec { #source-amazon-s3-message-imported-by-codec }
 
 Supported codec:
-* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [plain codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-easyqueue"></a>
 ## Source > (NHN Cloud) EasyQueue { #source-nhn-cloud-easyqueue }
@@ -442,8 +442,8 @@ STREAMING: Processes data every time a new message arrives in a queue.
 <a id="source-nhn-cloud-easyqueue-message-ingestion-by-codec-type"></a>
 ### Message Ingestion by Codec Type { #source-nhn-cloud-easyqueue-message-ingestion-by-codec-type }
 Supported codecs
-* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [plain codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-apache-kafka"></a>
 ## Source > (Apache) Kafka { #source-apache-kafka }
@@ -499,8 +499,8 @@ STREAMING: Processes data every time a new message arrives in a topic.
 ### Message imported by codec { #source-apache-kafka-message-imported-by-codec }
 
 Supported codec:
-* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON format data parsing
+* [plain codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [json codec](./codec-config-guide.md#json-codec) - JSON format data parsing
 
 <a id="filter-2"></a>
 ## Filter { #filter-2 }
@@ -1383,7 +1383,7 @@ Type of node that defines an endpoint to load data that has completed filter ope
 * Node for uploading data to Object Storage in NHN Cloud.
 * When created using default settings without additional configuration, objects are output according to the following path format.
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* JSON, LINE, and Parquet codecs are provided.
+* json, line, and parquet codecs are provided.
 
 <a id="sink-nhn-cloud-object-storage-property-description"></a>
 ### Property Description { #sink-nhn-cloud-object-storage-property-description }
@@ -1407,9 +1407,9 @@ Type of node that defines an endpoint to load data that has completed filter ope
 ### Output Examples by Codec Type { #output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
-* [Parquet codec](./codec-config-guide.md#parquet-codec) - Compressed into Parquet format
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [line codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
+* [parquet codec](./codec-config-guide.md#parquet-codec) - Compressed into Parquet format
 
 <a id="prefix-example---field"></a>
 ### Prefix Example - Field { #prefix-example---field }
@@ -1503,7 +1503,7 @@ Supported codec:
 * Node that uploads data to Data Lake Storage of NHN Cloud.
 * When created using default settings without additional configuration, objects are output according to the following path format.
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* JSON, LINE, and Parquet codec are provided.
+* json, line, and parquet codec are provided.
 
 <a id="sink-nhn-cloud-data-lake-storage-property-description"></a>
 ### Property Description { #sink-nhn-cloud-data-lake-storage-property-description }
@@ -1526,9 +1526,9 @@ Supported codec:
 ### Output Examples by Codec Type { #sink-nhn-cloud-data-lake-storage-output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
-* [Parquet codec](./codec-config-guide.md#parquet-codec) - Compressed in Parquet format
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [line codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
+* [parquet codec](./codec-config-guide.md#parquet-codec) - Compressed in Parquet format
 
 <a id="sink-nhn-cloud-data-lake-storage-prefix-example---field"></a>
 ### Prefix Example - Field { #sink-nhn-cloud-data-lake-storage-prefix-example---field }
@@ -1613,7 +1613,7 @@ Supported codec:
 ### Node Description { #sink-amazon-s3-node-description }
 
 * Node for uploading data to Amazon S3.
-* JSON, LINE, and Parquet codecs are provided.
+* json, line, and parquet codecs are provided.
 
 <a id="sink-amazon-s3-property-description"></a>
 ### Property Description { #sink-amazon-s3-property-description }
@@ -1641,9 +1641,9 @@ Supported codec:
 ### Output Examples by Codec Type { #sink-amazon-s3-output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
-* [Parquet codec](./codec-config-guide.md#parquet-codec) - Compressed in Parquet format
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [line codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
+* [parquet codec](./codec-config-guide.md#parquet-codec) - Compressed in Parquet format
 
 <a id="sink-nhn-cloud-easyqueue"></a>
 ## Sink > (NHN Cloud) EasyQueue { #sink-nhn-cloud-easyqueue }
@@ -1682,8 +1682,8 @@ Node that transfers data of EasyQueue in NHN Cloud.
 <a id="sink-nhn-cloud-easyqueue-output-examples-by-codec-type"></a>
 ### Output Examples by Codec Type { #sink-nhn-cloud-easyqueue-output-examples-by-codec-type }
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [line codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
 
 <a id="sink-apache-kafka"></a>
 ## Sink > (Apache) Kafka { #sink-apache-kafka }
@@ -1722,8 +1722,8 @@ Node for sending data to Kafka.
 ### Output Examples by Codec Type { #sink-apache-kafka-output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [line codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
 
 <a id="sink-stdout"></a>
 ## Sink > Stdout { #sink-stdout }
@@ -1738,8 +1738,8 @@ Supported codec:
 ### Example output by codec { #example-output-by-codec }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
+* [json codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [line codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
 
 <a id="branch"></a>
 ## Branch { #branch }

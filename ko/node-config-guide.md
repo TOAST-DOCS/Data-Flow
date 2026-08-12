@@ -173,8 +173,8 @@ JSON 형식의 문자열을 입력합니다.
 
 * Source 노드의 **Codec** 탭에서 스키마를 정의할 수 있습니다.
 * 다음 코덱을 사용 시 Source 노드에서 스키마를 정의할 수 있습니다.
-    * JSON
-* PLAIN 코덱은 데이터가 `message` 필드에 고정 매핑되므로 해당 필드만 정의 가능합니다.
+    * json
+* plain 코덱은 데이터가 `message` 필드에 고정 매핑되므로 해당 필드만 정의 가능합니다.
 * 필드명과 데이터 타입을 추가하여 스키마를 구성합니다.
 * 스키마를 정의하면 플로우 실행 시 정의된 필드만 선택적으로 파싱합니다.
 
@@ -244,10 +244,10 @@ JSON 형식의 문자열을 입력합니다.
 ### 코덱별 메시지 인입 { #message-imported-by-codec }
 
 * Log & Crash Search는 기본적으로 JSON 형식의 데이터를 다룹니다.
-* Log & Crash Search 로그의 각 필드를 활용하고 싶다면 JSON 코덱을 사용하는 것이 좋습니다.
+* Log & Crash Search 로그의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-cloudtrail"></a>
 ## Source > (NHN Cloud) CloudTrail { #source-nhn-cloud-cloudtrail }
@@ -281,10 +281,10 @@ JSON 형식의 문자열을 입력합니다.
 ### 코덱별 메시지 인입 { #source-nhn-cloud-cloudtrail-message-imported-by-codec }
 
 * CloudTrail은 기본적으로 JSON 형식의 데이터를 다룹니다.
-* CloudTrail 데이터의 각 필드를 활용하고 싶다면 JSON 코덱을 사용하는 것이 좋습니다.
+* CloudTrail 데이터의 각 필드를 활용하고 싶다면 json 코덱을 사용하는 것이 좋습니다.
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-object-storage"></a>
 ## Source > (NHN Cloud) Object Storage { #source-nhn-cloud-object-storage }
@@ -317,8 +317,8 @@ JSON 형식의 문자열을 입력합니다.
 ### 코덱별 메시지 인입 { #source-nhn-cloud-object-storage-message-imported-by-codec }
 
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-data-lake-storage"></a>
 ## Source > (NHN Cloud) Data Lake Storage { #source-nhn-cloud-data-lake-storage }
@@ -347,8 +347,8 @@ JSON 형식의 문자열을 입력합니다.
 <a id="message-ingestion-by-codec-type"></a>
 ### 코덱별 메시지 인입 { #message-ingestion-by-codec-type }
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-amazon-s3"></a>
 ## Source > (Amazon) S3 { #source-amazon-s3 }
@@ -387,8 +387,8 @@ JSON 형식의 문자열을 입력합니다.
 ### 코덱별 메시지 인입 { #source-amazon-s3-message-imported-by-codec }
 
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-easyqueue"></a>
 ## Source > (NHN Cloud) EasyQueue { #source-nhn-cloud-easyqueue }
@@ -440,8 +440,8 @@ STREAMING: 큐에 새로운 메시지가 도착할 때마다 데이터를 처리
 <a id="source-nhn-cloud-easyqueue-message-ingestion-by-codec-type"></a>
 ### 코덱별 메시지 인입 { #source-nhn-cloud-easyqueue-message-ingestion-by-codec-type }
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-apache-kafka"></a>
 ## Source > (Apache) Kafka { #source-apache-kafka }
@@ -496,8 +496,8 @@ STREAMING: 토픽에 새로운 메시지가 도착할 때마다 데이터를 처
 ### 코덱별 메시지 인입 { #source-apache-kafka-message-imported-by-codec }
 
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [plain 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="filter-2"></a>
 ## Filter { #filter-2 }
@@ -1382,7 +1382,7 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 * NHN Cloud의 Object Storage에 데이터를 업로드하는 노드입니다.
 * 다른 설정 없이 기본 설정만으로 생성하면 오브젝트는 다음 경로 포맷에 맞게 출력됩니다.
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* 제공 코덱은 JSON, LINE, Parquet입니다.
+* 제공 코덱은 json, line, parquet입니다.
 
 <a id="sink-nhn-cloud-object-storage-property-description"></a>
 ### 속성 설명 { #sink-nhn-cloud-object-storage-property-description }
@@ -1406,9 +1406,9 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 ### 코덱별 출력 예제 { #output-examples-by-codec-type }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
-* [Parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [line 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
+* [parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
 
 <a id="prefix-example---field"></a>
 ### Prefix 예시 - 필드 { #prefix-example---field }
@@ -1503,7 +1503,7 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 * NHN Cloud의 Data Lake Storage에 데이터를 업로드하는 노드입니다.
 * 다른 설정 없이 기본 설정만으로 생성하면 오브젝트는 다음 경로 포맷에 맞게 출력됩니다.
     * `/{bucket_name}/year={yyyy}/month={MM}/day={dd}/hour={HH}/part-{uuid}-{file_counter}`   
-* 제공 코덱은 JSON, LINE, Parquet입니다.
+* 제공 코덱은 json, line, parquet입니다.
 
 <a id="sink-nhn-cloud-data-lake-storage-property-description"></a>
 ### 속성 설명 { #sink-nhn-cloud-data-lake-storage-property-description }
@@ -1525,9 +1525,9 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 <a id="sink-nhn-cloud-data-lake-storage-output-examples-by-codec-type"></a>
 ### 코덱별 출력 예제 { #sink-nhn-cloud-data-lake-storage-output-examples-by-codec-type }
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
-* [Parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [line 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
+* [parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
 
 <a id="sink-nhn-cloud-data-lake-storage-prefix-example---field"></a>
 ### Prefix 예시 - 필드 { #sink-nhn-cloud-data-lake-storage-prefix-example---field }
@@ -1612,7 +1612,7 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 ### 노드 설명 { #sink-amazon-s3-node-description }
 
 * Amazon S3에 데이터를 업로드하는 노드입니다.
-* 제공 코덱은 JSON, LINE, Parquet입니다.
+* 제공 코덱은 json, line, parquet입니다.
 
 <a id="sink-amazon-s3-property-description"></a>
 ### 속성 설명 { #sink-amazon-s3-property-description }
@@ -1640,9 +1640,9 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 ### 코덱별 출력 예제 { #sink-amazon-s3-output-examples-by-codec-type }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
-* [Parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [line 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
+* [parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
 
 <a id="sink-nhn-cloud-easyqueue"></a>
 ## Sink > (NHN Cloud) EasyQueue { #sink-nhn-cloud-easyqueue }
@@ -1681,8 +1681,8 @@ NHN Cloud의 EasyQueue에 데이터를 전송하는 노드입니다.
 <a id="sink-nhn-cloud-easyqueue-output-examples-by-codec-type"></a>
 ### 코덱별 출력 예제 { #sink-nhn-cloud-easyqueue-output-examples-by-codec-type }
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [line 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
 
 <a id="sink-apache-kafka"></a>
 ## Sink > (Apache) Kafka { #sink-apache-kafka }
@@ -1721,8 +1721,8 @@ Kafka에 데이터를 전송하는 노드입니다.
 ### 코덱별 출력 예제 { #sink-apache-kafka-output-examples-by-codec-type }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 출력
-* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 출력
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 출력
+* [line 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 출력
 
 <a id="sink-stdout"></a>
 ## Sink > Stdout { #sink-stdout }
@@ -1737,8 +1737,8 @@ Kafka에 데이터를 전송하는 노드입니다.
 ### 코덱별 출력 예제 { #example-output-by-codec }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 출력
-* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 출력
+* [json 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 출력
+* [line 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 출력
 
 <a id="branch"></a>
 ## Branch { #branch }
