@@ -236,8 +236,8 @@ JSON 형식의 문자열을 입력합니다.
 |-----------|---------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey    | -                   | string | Log & Crash Search의 앱키를 입력합니다.                                                                                                                         |    |
 | SecretKey | -                   | string | Log & Crash Search의 시크릿키를 입력합니다.                                                                                                                       |    |
-| 조회 시작 시간  | {{executionTime}} | string | 로그 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
-| 조회 종료 시간  | -                   | string | 로그 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| 조회 시작 시간  | {{executionTime}} | string | 로그 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| 조회 종료 시간  | -                   | string | 로그 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | 검색 쿼리     | *                   | string | Log & Crash Search 조회 요청 시 사용할 검색 쿼리를 입력합니다. 자세한 쿼리 작성 방법은 Log & Crash Search 서비스의 'Lucene 쿼리 가이드'를 참고하세요.                                             |    |
 
 <a id="message-imported-by-codec"></a>
@@ -247,7 +247,7 @@ JSON 형식의 문자열을 입력합니다.
 * Log & Crash Search 로그의 각 필드를 활용하고 싶다면 JSON 코덱을 사용하는 것이 좋습니다.
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-cloudtrail"></a>
 ## Source > (NHN Cloud) CloudTrail { #source-nhn-cloud-cloudtrail }
@@ -273,8 +273,8 @@ JSON 형식의 문자열을 입력합니다.
 | Appkey             | -                   | string | CloudTrail의 앱키를 입력합니다.                                                                                                                                  |    |
 | User Access Key ID | -                   | string | 사용자 계정의 User Access Key ID를 입력합니다.                                                                                                                      |    |
 | Secret Access Key  | -                   | string | 사용자 계정의 User Secret Key를 입력합니다.                                                                                                                         |    |
-| 조회 시작 시간           | {{executionTime}} | string | 데이터 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
-| 조회 종료 시간           | -                   | string | 데이터 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| 조회 시작 시간           | {{executionTime}} | string | 데이터 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| 조회 종료 시간           | -                   | string | 데이터 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | 이벤트 타입             | *                   | string | 조회할 이벤트 ID를 입력합니다.                                                                                                                                      |    |
 
 <a id="source-nhn-cloud-cloudtrail-message-imported-by-codec"></a>
@@ -284,7 +284,7 @@ JSON 형식의 문자열을 입력합니다.
 * CloudTrail 데이터의 각 필드를 활용하고 싶다면 JSON 코덱을 사용하는 것이 좋습니다.
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-object-storage"></a>
 ## Source > (NHN Cloud) Object Storage { #source-nhn-cloud-object-storage }
@@ -317,8 +317,8 @@ JSON 형식의 문자열을 입력합니다.
 ### 코덱별 메시지 인입 { #source-nhn-cloud-object-storage-message-imported-by-codec }
 
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-data-lake-storage"></a>
 ## Source > (NHN Cloud) Data Lake Storage { #source-nhn-cloud-data-lake-storage }
@@ -347,8 +347,8 @@ JSON 형식의 문자열을 입력합니다.
 <a id="message-ingestion-by-codec-type"></a>
 ### 코덱별 메시지 인입 { #message-ingestion-by-codec-type }
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-amazon-s3"></a>
 ## Source > (Amazon) S3 { #source-amazon-s3 }
@@ -387,8 +387,8 @@ JSON 형식의 문자열을 입력합니다.
 ### 코덱별 메시지 인입 { #source-amazon-s3-message-imported-by-codec }
 
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-nhn-cloud-easyqueue"></a>
 ## Source > (NHN Cloud) EasyQueue { #source-nhn-cloud-easyqueue }
@@ -440,8 +440,8 @@ STREAMING: 큐에 새로운 메시지가 도착할 때마다 데이터를 처리
 <a id="source-nhn-cloud-easyqueue-message-ingestion-by-codec-type"></a>
 ### 코덱별 메시지 인입 { #source-nhn-cloud-easyqueue-message-ingestion-by-codec-type }
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="source-apache-kafka"></a>
 ## Source > (Apache) Kafka { #source-apache-kafka }
@@ -496,8 +496,8 @@ STREAMING: 토픽에 새로운 메시지가 도착할 때마다 데이터를 처
 ### 코덱별 메시지 인입 { #source-apache-kafka-message-imported-by-codec }
 
 지원 코덱
-* [PLAIN 코덱](./codec-config-guide.md#plain) - 원본 데이터 문자열 저장
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
+* [PLAIN 코덱](./codec-config-guide.md#plain-codec) - 원본 데이터 문자열 저장
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
 
 <a id="filter-2"></a>
 ## Filter { #filter-2 }
@@ -1406,9 +1406,9 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 ### 코덱별 출력 예제 { #output-examples-by-codec-type }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line) - 행 단위 메시지 처리
-* [Parquet 코덱](./codec-config-guide.md#parquet) - 데이터를 Parquet 형식으로 압축 
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
+* [Parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
 
 <a id="prefix-example---field"></a>
 ### Prefix 예시 - 필드 { #prefix-example---field }
@@ -1525,9 +1525,9 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 <a id="sink-nhn-cloud-data-lake-storage-output-examples-by-codec-type"></a>
 ### 코덱별 출력 예제 { #sink-nhn-cloud-data-lake-storage-output-examples-by-codec-type }
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line) - 행 단위 메시지 처리
-* [Parquet 코덱](./codec-config-guide.md#parquet) - 데이터를 Parquet 형식으로 압축 
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
+* [Parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
 
 <a id="sink-nhn-cloud-data-lake-storage-prefix-example---field"></a>
 ### Prefix 예시 - 필드 { #sink-nhn-cloud-data-lake-storage-prefix-example---field }
@@ -1640,9 +1640,9 @@ Filter 작업을 마친 데이터를 적재할 엔드포인트를 정의하는 �
 ### 코덱별 출력 예제 { #sink-amazon-s3-output-examples-by-codec-type }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line) - 행 단위 메시지 처리
-* [Parquet 코덱](./codec-config-guide.md#parquet) - 데이터를 Parquet 형식으로 압축 
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
+* [Parquet 코덱](./codec-config-guide.md#parquet-codec) - 데이터를 Parquet 형식으로 압축 
 
 <a id="sink-nhn-cloud-easyqueue"></a>
 ## Sink > (NHN Cloud) EasyQueue { #sink-nhn-cloud-easyqueue }
@@ -1681,8 +1681,8 @@ NHN Cloud의 EasyQueue에 데이터를 전송하는 노드입니다.
 <a id="sink-nhn-cloud-easyqueue-output-examples-by-codec-type"></a>
 ### 코덱별 출력 예제 { #sink-nhn-cloud-easyqueue-output-examples-by-codec-type }
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 파싱
-* [LINE 코덱](./codec-config-guide.md#line) - 행 단위 메시지 처리
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 파싱
+* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 처리
 
 <a id="sink-apache-kafka"></a>
 ## Sink > (Apache) Kafka { #sink-apache-kafka }
@@ -1721,8 +1721,8 @@ Kafka에 데이터를 전송하는 노드입니다.
 ### 코덱별 출력 예제 { #sink-apache-kafka-output-examples-by-codec-type }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 출력
-* [LINE 코덱](./codec-config-guide.md#line) - 행 단위 메시지 출력
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 출력
+* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 출력
 
 <a id="sink-stdout"></a>
 ## Sink > Stdout { #sink-stdout }
@@ -1737,8 +1737,8 @@ Kafka에 데이터를 전송하는 노드입니다.
 ### 코덱별 출력 예제 { #example-output-by-codec }
 
 지원 코덱
-* [JSON 코덱](./codec-config-guide.md#json) - JSON 형식 데이터 출력
-* [LINE 코덱](./codec-config-guide.md#line) - 행 단위 메시지 출력
+* [JSON 코덱](./codec-config-guide.md#json-codec) - JSON 형식 데이터 출력
+* [LINE 코덱](./codec-config-guide.md#line-codec) - 행 단위 메시지 출력
 
 <a id="branch"></a>
 ## Branch { #branch }
