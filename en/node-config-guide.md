@@ -236,8 +236,8 @@ Node type that defines an endpoint that imports data to the flow.
 |-----------|---------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey    | -                   | string | Enter the app key for Log & Crash Search.                                                                                                                         |    |
 | SecretKey | -                   | string | Enter the secret key for Log & Crash Search.                                                                                                                       |    |
-| Query Start Time  | {{executionTime}} | string | Enter the start time for the log query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
-| Query End Time    | -                   | string | Enter the end time for the log query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| Query Start Time  | {{executionTime}} | string | Enter the start time for the log query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| Query End Time    | -                   | string | Enter the end time for the log query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | Search Query      | *                   | string | Enter the search query to use when making a query request to Log & Crash Search. For detailed query syntax, refer to the 'Lucene Query Guide' in the Log & Crash Search service.                                             |    |
 
 <a id="message-imported-by-codec"></a>
@@ -247,7 +247,7 @@ Node type that defines an endpoint that imports data to the flow.
 * If you want to use each field in the Log&Crash Search log, we recommend using the JSON codec.
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-cloudtrail"></a>
 ## Source > (NHN Cloud) CloudTrail { #source-nhn-cloud-cloudtrail }
@@ -273,8 +273,8 @@ Supported codec:
 | Appkey             | -                   | string | Enter the app key for CloudTrail.                                                                                                                                  |    |
 | User Access Key ID | -                   | string | Enter the User Access Key ID of the user account.                                                                                                                      |    |
 | Secret Access Key  | -                   | string | Enter the User Secret Key of the user account.                                                                                                                         |    |
-| Query Start Time   | {{executionTime}} | string | Enter the start time for the data query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
-| Query End Time     | -                   | string | Enter the end time for the data query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| Query Start Time   | {{executionTime}} | string | Enter the start time for the data query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
+| Query End Time     | -                   | string | Enter the end time for the data query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | Event Type         | *                 | string | Enter the event ID to query.                                                                                                                                      |    |
 
 <a id="source-nhn-cloud-cloudtrail-message-imported-by-codec"></a>
@@ -284,7 +284,7 @@ Supported codec:
 * If you want to use each field in CloudTrail data, we recommend using json Codec.
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-object-storage"></a>
 ## Source > (NHN Cloud) Object Storage { #source-nhn-cloud-object-storage }
@@ -317,8 +317,8 @@ Supported codec:
 ### Message imported by codec { #source-nhn-cloud-object-storage-message-imported-by-codec }
 
 Supported codec:
-* [PLAIN codec](./codec-config-guide.md#plain) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
+* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-data-lake-storage"></a>
 ## Source > (NHN Cloud) Data Lake Storage { #source-nhn-cloud-data-lake-storage }
@@ -349,8 +349,8 @@ Enter a prefix of an object to read. |  |
 <a id="message-ingestion-by-codec-type"></a>
 ### Message Ingestion by Codec Type { #message-ingestion-by-codec-type }
 Supported codecs
-* [PLAIN codec](./codec-config-guide.md#plain) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
+* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-amazon-s3"></a>
 ## Source > (Amazon) S3 { #source-amazon-s3 }
@@ -389,8 +389,8 @@ Supported codecs
 ### Message imported by codec { #source-amazon-s3-message-imported-by-codec }
 
 Supported codec:
-* [PLAIN codec](./codec-config-guide.md#plain) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
+* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-nhn-cloud-easyqueue"></a>
 ## Source > (NHN Cloud) EasyQueue { #source-nhn-cloud-easyqueue }
@@ -442,8 +442,8 @@ STREAMING: Processes data every time a new message arrives in a queue.
 <a id="source-nhn-cloud-easyqueue-message-ingestion-by-codec-type"></a>
 ### Message Ingestion by Codec Type { #source-nhn-cloud-easyqueue-message-ingestion-by-codec-type }
 Supported codecs
-* [PLAIN codec](./codec-config-guide.md#plain) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
+* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
 
 <a id="source-apache-kafka"></a>
 ## Source > (Apache) Kafka { #source-apache-kafka }
@@ -499,8 +499,8 @@ STREAMING: Processes data every time a new message arrives in a topic.
 ### Message imported by codec { #source-apache-kafka-message-imported-by-codec }
 
 Supported codec:
-* [PLAIN codec](./codec-config-guide.md#plain) - Raw data string storage
-* [JSON codec](./codec-config-guide.md#json) - JSON format data parsing
+* [PLAIN codec](./codec-config-guide.md#plain-codec) - Raw data string storage
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON format data parsing
 
 <a id="filter-2"></a>
 ## Filter { #filter-2 }
@@ -1407,9 +1407,9 @@ Type of node that defines an endpoint to load data that has completed filter ope
 ### Output Examples by Codec Type { #output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line) - Line-by-line message processing
-* [Parquet codec](./codec-config-guide.md#parquet) - Compressed into Parquet format
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
+* [Parquet codec](./codec-config-guide.md#parquet-codec) - Compressed into Parquet format
 
 <a id="prefix-example---field"></a>
 ### Prefix Example - Field { #prefix-example---field }
@@ -1526,9 +1526,9 @@ Supported codec:
 ### Output Examples by Codec Type { #sink-nhn-cloud-data-lake-storage-output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line) - Line-by-line message processing
-* [Parquet codec](./codec-config-guide.md#parquet) - Compressed in Parquet format
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
+* [Parquet codec](./codec-config-guide.md#parquet-codec) - Compressed in Parquet format
 
 <a id="sink-nhn-cloud-data-lake-storage-prefix-example---field"></a>
 ### Prefix Example - Field { #sink-nhn-cloud-data-lake-storage-prefix-example---field }
@@ -1641,9 +1641,9 @@ Supported codec:
 ### Output Examples by Codec Type { #sink-amazon-s3-output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line) - Line-by-line message processing
-* [Parquet codec](./codec-config-guide.md#parquet) - Compressed in Parquet format
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing
+* [Parquet codec](./codec-config-guide.md#parquet-codec) - Compressed in Parquet format
 
 <a id="sink-nhn-cloud-easyqueue"></a>
 ## Sink > (NHN Cloud) EasyQueue { #sink-nhn-cloud-easyqueue }
@@ -1682,8 +1682,8 @@ Node that transfers data of EasyQueue in NHN Cloud.
 <a id="sink-nhn-cloud-easyqueue-output-examples-by-codec-type"></a>
 ### Output Examples by Codec Type { #sink-nhn-cloud-easyqueue-output-examples-by-codec-type }
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line) - Line-by-line message processing  
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
 
 <a id="sink-apache-kafka"></a>
 ## Sink > (Apache) Kafka { #sink-apache-kafka }
@@ -1722,8 +1722,8 @@ Node for sending data to Kafka.
 ### Output Examples by Codec Type { #sink-apache-kafka-output-examples-by-codec-type }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line) - Line-by-line message processing  
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
 
 <a id="sink-stdout"></a>
 ## Sink > Stdout { #sink-stdout }
@@ -1738,8 +1738,8 @@ Supported codec:
 ### Example output by codec { #example-output-by-codec }
 
 Supported codec:
-* [JSON codec](./codec-config-guide.md#json) - JSON data parsing
-* [LINE codec](./codec-config-guide.md#line) - Line-by-line message processing  
+* [JSON codec](./codec-config-guide.md#json-codec) - JSON data parsing
+* [LINE codec](./codec-config-guide.md#line-codec) - Line-by-line message processing  
 
 <a id="branch"></a>
 ## Branch { #branch }
