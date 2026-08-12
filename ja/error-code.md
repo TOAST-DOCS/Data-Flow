@@ -1,4 +1,7 @@
-## Data & Analytics > DataFlow > エラーコードガイド
+<!-- pre-align:aligned sig=18e7b5642ac7 -->
+
+<a id="data-analytics-dataflow-error-code-guide"></a>
+## Data & Analytics > DataFlow > エラーコードガイド { #data-analytics-dataflow-error-code-guide }
 
 | エラーコード | 説明 |
 |-----------------------------|-------------------------------------------------------------------------------------|
@@ -36,4 +39,5 @@
 | EASY_QUEUE_TOPIC_NOT_FOUND | EasyQueueトピックが見つかりません。 |
 | EASY_QUEUE_INVALID_PROPERTY | EasyQueueノードのプロパティが正しくありません。 |
 | FLOW_ALREADY_STOPPED | フローはすでに終了しています。 |
+| FLOW_SCHEMA_FIELD_DUPLICATED | 同一のスキーマフィールド名が存在します。                                                                 |
 | ERROR | サービス内部エラーまたは定義されていないエラーです。カスタマーサポートにお問い合わせください。 |

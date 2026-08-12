@@ -1,4 +1,7 @@
-## Data & Analytics > DataFlow > 오류 코드 가이드
+<!-- pre-align:aligned sig=18e7b5642ac7 -->
+
+<a id="data-analytics-dataflow-error-code-guide"></a>
+## Data & Analytics > DataFlow > 오류 코드 가이드 { #data-analytics-dataflow-error-code-guide }
 
 | 오류 코드                       | 설명                                                                                  |
 |-----------------------------|-------------------------------------------------------------------------------------|
@@ -36,4 +39,5 @@
 | EASY_QUEUE_TOPIC_NOT_FOUND  | EasyQueue 토픽을 찾을 수 없습니다.                                                            |
 | EASY_QUEUE_INVALID_PROPERTY | EasyQueue 노드의 속성이 올바르지 않습니다.                                                        |
 | FLOW_ALREADY_STOPPED        | 플로우가 이미 종료되었습니다.                                                                    |
+| FLOW_SCHEMA_FIELD_DUPLICATED | 동일한 스키마 필드명이 존재합니다.                                                                |
 | ERROR                       | 서비스 내부 오류 또는 정의되지 않은 오류입니다. 고객문의로 문의하세요.                                            |
