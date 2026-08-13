@@ -14,7 +14,7 @@
 ## 対応コーデックタイプ { #supported-codec-type }
 
 <a id="json-codec"></a>
-### JSONコーデック { #json-codec }
+### jsonコーデック { #json-codec }
 
 * JSON形式のデータをパースして各フィールドを個別に処理します。
 * Source及びSinkノードともにJSONの全てのフィールドがそのまま維持されるため、フィルタリングや加工に有利です。
