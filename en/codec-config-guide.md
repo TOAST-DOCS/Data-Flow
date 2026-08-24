@@ -1,18 +1,25 @@
-## Data & Analytics > DataFlow > Codec Configuration Guide
+<!-- pre-align:aligned sig=66678fc2a2b5 -->
 
-## Overview
+<a id="data-analytics-dataflow-codec-configuration-guide"></a>
+## Data & Analytics > DataFlow > Codec Configuration Guide { #data-analytics-dataflow-codec-configuration-guide }
+
+<a id="overview"></a>
+## Overview { #overview }
 
 * A codec is a component that determines the input and output formats of data.
 * Codecs are applied to Source nodes during data ingestion and to Sink nodes during data output.
 * We support various codec types, each with its own unique characteristics and use cases.
 
-## Supported codec type
+<a id="supported-codec-type"></a>
+## Supported codec type { #supported-codec-type }
 
-### JSON codec
+<a id="json-codec"></a>
+### json codec { #json-codec }
 
 * It parses JSON data to process each field individually.
 * Since all JSON fields are preserved intact at both Source and Sink nodes, it is highly effective for data filtering and transformation.
 
+<a id="json-codec-condition"></a>
 #### Condition
 
 * Input data
@@ -29,6 +36,7 @@
 
 * charset → `UTF-8`
 
+<a id="json-codec-process-result"></a>
 #### Process result
 
 ```json
@@ -41,6 +49,7 @@
 
 ```
 
+<a id="json-codec-delivery-output-data"></a>
 #### Delivery & output data
 
 ```json
@@ -53,12 +62,14 @@
 
 ```
 
-### plain codec
+<a id="plain-codec"></a>
+### plain codec { #plain-codec }
 
 * Processes raw data in a string format.
 * The Source node stores input data as a string in the message field.
 * Use this codec when you need to preserve the data in its original form.
 
+<a id="plain-codec-example---source-node"></a>
 #### plain codec example - Source node
 
 ##### Condition
@@ -83,14 +94,16 @@
 }
 ```
 
-### line codec
+<a id="line-codec"></a>
+### line codec { #line-codec }
 
 * Processes each line as an individual message.
 * The Source node stores each input line as a string in the `message` field, while the Sink node outputs data as text lines according to the specified format.
 * Use this codec when line-by-line processing is required.
-* For the Line codec, you can define a delimiter to separate output messages.
+* For the line codec, you can define a delimiter to separate output messages.
     * The default value is a newline (`\n`).
 
+<a id="line-codec-example---source-node"></a>
 #### line codec example - Source node
 
 ##### Condition
@@ -115,6 +128,7 @@
 }
 ```
 
+<a id="line-codec-example---sink-node"></a>
 #### line codec example - Sink node
 
 ##### Condition
@@ -144,7 +158,8 @@
 [info] DataFlow running
 ```
 
-### parquet codec
+<a id="parquet-codec"></a>
+### parquet codec { #parquet-codec }
 
 * Saves data in the Apache Parquet format.
 * Supports various compression options and is optimized for large-scale data processing.
@@ -152,6 +167,7 @@
 * Supported compression formats: `SNAPPY (default)`, `GZIP`, `LZ4_RAW`, `ZSTD`, `UNCOMPRESSED`
     * [Refer to the compression formats](https://parquet.apache.org/docs/file-format/data-pages/compression/)
 
+<a id="parquet-codec-example---sink-node"></a>
 #### parquet Codec Example - Sink Node
 
 ##### Condition
