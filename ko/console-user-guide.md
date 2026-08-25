@@ -1,4 +1,7 @@
-## Data & Analytics > DataFlow > 콘솔 사용 가이드
+<!-- pre-align:aligned sig=005ec20950b3 -->
+
+<a id="data-analytics-dataflow-console-user-guide"></a>
+## Data & Analytics > DataFlow > 콘솔 사용 가이드 { #data-analytics-dataflow-console-user-guide }
 
 DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
@@ -14,22 +17,26 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 4. 플로우를 실행합니다.
 5. 로그 정보를 확인하여 플로우가 정상적으로 실행되었는지 확인합니다.
 
-## 관리
+<a id="management"></a>
+## 관리 { #management }
 
 플로우 메타데이터 정보를 조회하고 관리하는 페이지입니다.
 **Data & Analytics > DataFlow > 관리**를 클릭합니다.
 
 ![management_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_main_2025_06.png)
 
-### 검색
+<a id="search"></a>
+### 검색 { #search }
 
 주어진 기준으로 플로우를 검색합니다. 플로우 이름을 기준으로 검색하면 이름에 검색어가 포함된 플로우를 검색합니다.
 
-### 필터
+<a id="filter"></a>
+### 필터 { #filter }
 
 주어진 조건으로 플로우를 검색합니다. 플로우 상태값에 따른 필터링 옵션을 제공합니다.
 
-### 플로우 목록
+<a id="flow-list"></a>
+### 플로우 목록 { #flow-list }
 
 조회 결과 플로우를 테이블 형태로 표시합니다.
 
@@ -40,6 +47,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 한 번 조회된 플로우는 **새로 고침**을 눌러야 조회 결과를 갱신합니다.
 * 한 페이지당 12개의 플로우를 조회하며, **이전** 및 **다음**을 클릭해 페이지를 이동할 수 있습니다.
 
+<a id="flow-list-flow-status-information"></a>
 #### 플로우 상태 정보
 
 | 플로우 실행 상태                                         | 설명 |
@@ -55,6 +63,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 | DRAINING       | 플로우가 드레이닝 중입니다. |
 | UNKNOWN            | 플로우 실행 과정에서 알 수 없는 원인으로 인해 오류가 발생했습니다. 지속적으로 `UNKNOWN`이 발생할 경우 **고객지원 > 문의하기**로 문의하세요. |
 
+<a id="flow-list-flow-status-change-notifications"></a>
 #### 플로우 상태 변경 알림 메일
 * 알림 대상 플로우 상태로 변경되었을 때 알림 메일을 수신할 수 있습니다.
 * 알림 대상 플로우 상태
@@ -65,7 +74,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     * 사용 중인 DataFlow 서비스가 활성화된 프로젝트의 **DataFlow ADMIN** 역할을 가진 멤버
 
 
-### 플로우 생성
+<a id="create-flow"></a>
+### 플로우 생성 { #create-flow }
 
 플로우를 정의할 메타데이터를 생성합니다.
 
@@ -75,7 +85,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 플로우 템플릿을 지정하여 사용자가 원하는 기능의 플로우를 손쉽게 불러올 수 있습니다.
 * 플로우를 실행하기 위한 인스턴스 타입을 설정할 수 있습니다.
 
-### 플로우 변경
+<a id="change-flow"></a>
+### 플로우 변경 { #change-flow }
 
 플로우의 메타데이터를 수정합니다.
 
@@ -84,7 +95,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 플로우 실행 중에도 플로우 변경이 가능합니다.
 * 플로우를 실행하기 위한 인스턴스 타입을 변경할 수 있습니다. 단, 변경된 인스턴스 타입은 다음 플로우 실행부터 적용됩니다.
 
-### 플로우 복사
+<a id="copy-flow"></a>
+### 플로우 복사 { #copy-flow }
 
 기존의 플로우 정의를 가지고 새로운 메타데이터를 생성합니다.
 
@@ -96,7 +108,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 스케줄러가 등록된 플로우를 복사하더라도 복사한 플로우는 스케줄러가 등록되지 않습니다.
 * 복사한 플로우는 기존 플로우와 완전히 별개의 플로우입니다.
 
-### 플로우 삭제
+<a id="delete-flow"></a>
+### 플로우 삭제 { #delete-flow }
 
 플로우 메타데이터를 삭제합니다.
 
@@ -104,7 +117,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 삭제한 플로우는 복구할 수 없습니다.
 * 실행 중인 플로우는 삭제할 수 없습니다.
 
-### 더 보기 - 플로우 시작
+<a id="more---start-a-flow"></a>
+### 더 보기 - 플로우 시작 { #more---start-a-flow }
 
 정지 상태의 플로우를 시작합니다.
 
@@ -114,12 +128,14 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 플로우는 반드시 1회 이상 저장해야 시작할 수 있습니다.
 * 플로우가 스케줄러에 의해 실행 중이더라도 사용자가 시작한 플로우와 동일하게 플로우를 시작할 수 없습니다.
 
-### 더 보기 - 플로우 종료
+<a id="more---end-a-flow"></a>
+### 더 보기 - 플로우 종료 { #more---end-a-flow }
 
 * 실행 준비 중이거나 실행 중, 드레이닝 중인 플로우를 종료할 수 있습니다.
 * 잔여 이벤트는 처리하지 않고 종료합니다.
 
-### 더 보기 - 플로우 드레이닝 후 종료
+<a id="more---end-after-flow-draining"></a>
+### 더 보기 - 플로우 드레이닝 후 종료 { #more---end-after-flow-draining }
 
 * 실행 중인 플로우를 드레이닝 후 종료할 수 있습니다.
 * 드레이닝은 플로우의 잔여 이벤트를 처리하는 것을 의미합니다.
@@ -127,14 +143,16 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 타임아웃 시간이 남아 있는 상태에서 드레이닝이 끝날 경우 바로 종료합니다.
 * 드레이닝 중인 플로우는 플로우 종료를 통해서 바로 종료할 수 있습니다.
 
-## 플로우 상세 보기
+<a id="see-flow-in-details"></a>
+## 플로우 상세 보기 { #see-flow-in-details }
 
 선택한 플로우의 상세 정보를 확인하는 세부 페이지입니다.
 **Data & Analytics > DataFlow > 관리 > 플로우 목록 중 하나**를 클릭합니다.
 플로우 목록 영역과 플로우 상세보기 영역 경계를 움직여 화면 비율을 조정할 수 있습니다.
 또한 플로우 상세 보기 영역의 오른쪽 상단에 위치한 영역 크기 조절 아이콘을 클릭해 지정된 화면 비율로 조정할 수 있습니다.
 
-### 기본 정보
+<a id="basic-information"></a>
+### 기본 정보 { #basic-information }
 
 상세한 플로우 메타데이터를 표시합니다.
 
@@ -145,7 +163,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 가장 최근에 실행한 시점의 총 실행 시간을 표시합니다.
 * 가장 최근에 실행한 시점의 인스턴스 타입을 표시합니다.
 
-### 기본 정보 - 최근 로그
+<a id="basic-information---recent-logs"></a>
+### 기본 정보 - 최근 로그 { #basic-information---recent-logs }
 
 * 최근 로그에서 현재 실행 중인 플로우의 로그 정보를 직접 확인할 수 있습니다.
 * 최근 15분의 로그를 확인할 수 있습니다.
@@ -153,15 +172,18 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     * V2-JOB: 플로우의 실행 스케줄링 및 상태 관리에 대한 로그입니다.
     * V2-TASK: 플로우에서 정의한 데이터 처리 작업에 대한 로그입니다.
 
-### 기본 정보 - 전체 로그
+<a id="basic-information---all-logs"></a>
+### 기본 정보 - 전체 로그 { #basic-information---all-logs }
 * Log & Crash Search를 연동한 경우 Log & Crash Search에서 플로우 로그를 조회하기 위한 Lucene Query를 복사할 수 있습니다.
 
-### 기본 정보 - 인스턴스 타입
+<a id="basic-information---instance-type"></a>
+### 기본 정보 - 인스턴스 타입 { #basic-information---instance-type }
 
 * 플로우를 실행하기 위한 인스턴스 타입을 확인하고 변경할 수 있습니다.
     * 단, 변경된 인스턴스 타입은 다음 플로우 실행부터 반영됩니다.
 
-### 플로우 정보
+<a id="flow-information"></a>
+### 플로우 정보 { #flow-information }
 
 플로우 로직을 정의합니다.
 
@@ -203,6 +225,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
         * 저장한 플로우는 시작 요청이 가능합니다.
         * 저장 시 커밋명을 입력하여 어떤 변경이 있었는지 기록할 수 있습니다.
 
+<a id="flow-information-schema"></a>
 #### 스키마
 
 플로우의 스키마 정보를 확인합니다.
@@ -217,7 +240,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * Filter 노드의 속성을 변경하면 스키마 변환 결과를 실시간으로 미리 확인할 수 있습니다.
 * 스키마의 정의 방법과 각 노드별 변환 동작은 [노드 설정 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)를 참고합니다.
 
-### 수정 이력
+<a id="modification-history"></a>
+### 수정 이력 { #modification-history }
 
 플로우를 수정한 이력을 표시합니다.
 
@@ -227,7 +251,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 저장/임시 저장 시 입력한 커밋명을 표시합니다.
 * 당시 저장된 방식이 저장/임시 저장 중 어떤 방식이었는지 표시합니다.
 
-### 실행 이력
+<a id="execution-history"></a>
+### 실행 이력 { #execution-history }
 
 플로우 시작/종료 요청한 이력을 표시합니다.
 
@@ -239,7 +264,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 실행 당시의 인스턴스 타입을 표시합니다.
 * 실행 중인 플로우일 경우 새 창에서 플로우 상세 상태를 확인할 수 있습니다.
 
-### 일정 목록
+<a id="schedule-list"></a>
+### 일정 목록 { #schedule-list }
 
 ![management_schedulelist.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
 
@@ -252,7 +278,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     플로우와 동일한 프로젝트 내의 Cloud Scheduler에서 등록한 일정만 표시됩니다.
     다른 프로젝트의 Cloud Scheduler에서 등록한 일정은 표시되지 않습니다.
 
-## 모니터링
+<a id="monitoring"></a>
+## 모니터링 { #monitoring }
 
 실행 중인 플로우나 노드의 모니터링 정보를 표시합니다.
 **Data & Analytics > DataFlow > 모니터링**을 클릭합니다.
@@ -261,7 +288,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 ![monitoring.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/monitoring_2025_08.png)
 
-### 플로우 목록
+<a id="monitoring-flow-list"></a>
+### 플로우 목록 { #monitoring-flow-list }
 
 모니터링 가능한 플로우 목록을 표시합니다.
 
@@ -271,7 +299,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * **삭제된 플로우도 보기**를 클릭하면 삭제된 플로우의 모니터링 정보도 확인할 수 있습니다.
 
 
-### 플로우 화면 영역
+<a id="flow-screen-area"></a>
+### 플로우 화면 영역 { #flow-screen-area }
 
 플로우의 모양을 표시하는 영역입니다.
 
@@ -279,7 +308,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 노드를 선택하여 노드에 특화된 모니터링 정보를 확인할 수 있습니다.
 * 전체적인 그래프가 원하는 위치로 오도록 플로우 화면을 조정할 수 있습니다.
 
-### 모니터링 영역
+<a id="monitoring-area"></a>
+### 모니터링 영역 { #monitoring-area }
 
 모니터링 차트를 표시하는 영역입니다.
 
@@ -308,18 +338,21 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     * V2-JOB, V2-TASK
         * 이벤트 In/Out, 네트워크 데이터 송수신은 노출하지 않습니다.
 
-## 템플릿
+<a id="template"></a>
+## 템플릿 { #template }
 
 템플릿 메타데이터 정보를 조회하고 생성 및 수정하는 페이지입니다.
 **Data & Analytics > DataFlow > 템플릿**을 클릭합니다.
 
 ![template_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_main_2025_08.png)
 
-### 검색
+<a id="template-search"></a>
+### 검색 { #template-search }
 
 주어진 기준으로 템플릿을 검색합니다. 템플릿 이름을 기준으로 검색하면 이름에 검색어가 포함된 템플릿을 검색합니다.
 
-### 템플릿 조회
+<a id="query-templates"></a>
+### 템플릿 조회 { #query-templates }
 
 조회 결과 템플릿을 테이블 형태로 표시합니다.
 
@@ -329,7 +362,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 한 번 조회된 템플릿은 새로 고침을 눌러야 조회 결과를 갱신합니다.
 * 한 페이지당 12개의 템플릿을 조회하고 **이전** 또는 **다음**을 클릭해 페이지를 이동할 수 있습니다.
 
-### 템플릿 생성
+<a id="create-templates"></a>
+### 템플릿 생성 { #create-templates }
 
 템플릿을 정의할 메타데이터를 생성합니다.
 
@@ -338,14 +372,16 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 플로우 템플릿은 지정할 수 없습니다.
 * 생성된 템플릿은 플로우 또는 템플릿 로직 정의 시 노드 유형 목록에서 확인할 수 있습니다.
 
-### 템플릿 변경
+<a id="change-templates"></a>
+### 템플릿 변경 { #change-templates }
 
 템플릿의 메타데이터를 수정합니다.
 
 * 기존의 템플릿 이름과 설명을 수정하여 템플릿 메타데이터에 반영합니다.
 * 플로우 템플릿은 지정할 수 없습니다.
 
-### 템플릿 복사
+<a id="copy-templates"></a>
+### 템플릿 복사 { #copy-templates }
 
 기존의 템플릿 정의를 가지고 새로운 메타데이터를 생성합니다.
 
@@ -353,14 +389,16 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 기존 템플릿이 가진 플로우 로직을 그대로 복사해 옵니다.
 * 복사한 템플릿은 기존 템플릿과 완전히 별개의 템플릿입니다.
 
-### 템플릿 삭제
+<a id="delete-templates"></a>
+### 템플릿 삭제 { #delete-templates }
 
 템플릿 메타데이터를 삭제합니다.
 
 * 템플릿 메타데이터를 완전히 삭제합니다.
 * 삭제한 템플릿은 복구할 수 없습니다.
 
-## 템플릿 상세 보기
+<a id="see-templates-in-details"></a>
+## 템플릿 상세 보기 { #see-templates-in-details }
 
 선택한 템플릿의 상세 정보를 확인하는 세부 페이지입니다.
 **Data & Analytics > DataFlow > 템플릿 > 템플릿 목록 중 하나**를 클릭합니다.
@@ -369,7 +407,8 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 ![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail_2025_08.png)
 
-### 템플릿 정보
+<a id="template-information"></a>
+### 템플릿 정보 { #template-information }
 
 템플릿 로직을 정의합니다.
 
@@ -395,11 +434,13 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
         * 플로우를 미완성 형태로 저장할 수 있습니다.
         * 저장한 템플릿은 노드 유형의 템플릿 카테고리에서 불러올 수 있습니다.
 
-## 설정
+<a id="settings"></a>
+## 설정 { #settings }
 서비스에 필요한 설정을 관리하기 위한 페이지입니다.
 **Data & Analytics > DataFlow > 설정**을 클릭합니다.
 
-### Log & Crash Search 설정
+<a id="log-crash-search-settings"></a>
+### Log & Crash Search 설정 { #log-crash-search-settings }
 사용자의 플로우 로그를 사용자가 설정한 Log & Crash Search로 연동하는 기능입니다.
 Log & Crash Search 서비스에 로그를 저장하려면 Log & Crash Search 서비스를 활성화해야 하며 별도 이용 요금이 부과됩니다.
 
@@ -422,7 +463,8 @@ Log & Crash Search 서비스에 로그를 저장하려면 Log & Crash Search 서
 |         flowId |                          플로우 ID |
 | flowInstanceId |                     플로우 인스턴스 ID |
 
-### 유효성 검사 설정
+<a id="validation-settings"></a>
+### 유효성 검사 설정 { #validation-settings }
 ![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
 
 플로우와 노드의 유효성 검사 사용 여부를 설정할 수 있습니다.

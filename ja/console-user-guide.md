@@ -1,4 +1,7 @@
-## Data & Analytics > DataFlow > コンソール使用ガイド
+<!-- pre-align:aligned sig=005ec20950b3 -->
+
+<a id="data-analytics-dataflow-console-user-guide"></a>
+## Data & Analytics > DataFlow > コンソール使用ガイド { #data-analytics-dataflow-console-user-guide }
 
 DataFlowは、次の順序で使用できます。
 
@@ -14,22 +17,26 @@ DataFlowは、次の順序で使用できます。
 4. フローを実行します。
 5. ログ情報を確認してフローが正常に実行されたことを確認します。
 
-## 管理
+<a id="management"></a>
+## 管理 { #management }
 
 フローメタデータ情報を照会、管理するページです。
 **Data & Analytics > DataFlow > 管理**をクリックします。
 
 ![management_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_main_2025_06.png)
 
-### 検索
+<a id="search"></a>
+### 検索 { #search }
 
 与えられた基準でフローを検索します。フロー名を基準に検索すると、名前に検索ワードが含まれたフローを検索します。
 
-### フィルタ
+<a id="filter"></a>
+### フィルタ { #filter }
 
 与えられた条件でフローを検索します。フロー状態値に基づいたフィルタリングオプションを提供します.
 
-### フローリスト
+<a id="flow-list"></a>
+### フローリスト { #flow-list }
 
 照会結果フローをテーブル形式で表示します。
 
@@ -40,6 +47,7 @@ DataFlowは、次の順序で使用できます。
 * 一度照会したフローは**更新**を押すと照会結果を更新します。
 * 1ページ当り12個のフローを照会し、**前へ**および**次へ**をクリックしてページを移動できます。
 
+<a id="flow-list-flow-status-information"></a>
 #### フロー状態情報
 
 | フロー実行状態                                      | 説明 |
@@ -55,6 +63,7 @@ DataFlowは、次の順序で使用できます。
 | DRAINING       | フローがドレイン中です。 |
 | UNKNOWN            | フロー実行プロセスで原因不明のエラーが発生しました。継続的に`UNKNOWN`が発生する場合は **カスタマーサポート > お問い合わせ**よりお問い合わせください。 |
 
+<a id="flow-list-flow-status-change-notifications"></a>
 #### フロー状態変更通知メール
 * 通知対象のフロー状態が変更されたときに、通知メールを受信できます。
 * 通知対象フロー状態
@@ -65,7 +74,8 @@ DataFlowは、次の順序で使用できます。
     * 使用中のDataFlowサービスが有効になっているプロジェクトの**DataFlow ADMIN**ロールを持つメンバー
 
 
-### フローの作成
+<a id="create-flow"></a>
+### フローの作成 { #create-flow }
 
 フローを定義するメタデータを作成します。
 
@@ -75,7 +85,8 @@ DataFlowは、次の順序で使用できます。
 * フローテンプレートを指定してユーザーが必要な機能のフローを簡単に呼び出せます。
 * フローを実行するためのインスタンスタイプを設定できます。
 
-### フローの変更
+<a id="change-flow"></a>
+### フローの変更 { #change-flow }
 
 フローのメタデータを修正します。
 
@@ -84,7 +95,8 @@ DataFlowは、次の順序で使用できます。
 * フローの実行中にもフローの変更が可能です。
     * フローを実行するためのインスタンスタイプを変更できます。ただし、変更されたインスタンスタイプは次のフロー実行から適用されます。
 
-### フローのコピー
+<a id="copy-flow"></a>
+### フローのコピー { #copy-flow }
 
 既存のフロー定義から新しいメタデータを作成します。
 
@@ -96,7 +108,8 @@ DataFlowは、次の順序で使用できます。
 * スケジューラが登録されたフローをコピーしても、コピーしたフローはスケジューラが登録されません。
 * コピーしたフローは既存フローと完全に別のフローです。
 
-### フローの削除
+<a id="delete-flow"></a>
+### フローの削除 { #delete-flow }
 
 フローメタデータを削除します。
 
@@ -104,7 +117,8 @@ DataFlowは、次の順序で使用できます。
 * 削除したフローは復元できません。
 * 実行中のフローは削除できません。
 
-### さらに表示 - フロー開始
+<a id="more---start-a-flow"></a>
+### さらに表示 - フロー開始 { #more---start-a-flow }
 
 停止状態のフローを開始します。
 
@@ -114,12 +128,14 @@ DataFlowは、次の順序で使用できます。
 * フローを開始するには、必ず1回以上保存する必要があります。
 * フローがスケジューラにより実行中であっても、ユーザーが開始したフローと同じようにフローを開始できません。
 
-### さらに表示 - フローの終了
+<a id="more---end-a-flow"></a>
+### さらに表示 - フローの終了 { #more---end-a-flow }
 
 * 実行準備中、実行中、ドレイン中のフローを終了できます。
 * 残留イベントは処理せずに終了します。
 
-### さらに表示 - フロードレイン後に終了
+<a id="more---end-after-flow-draining"></a>
+### さらに表示 - フロードレイン後に終了 { #more---end-after-flow-draining }
 
 * 実行中のフローをドレイン後に終了できます。
 * ドレインはフローの残余イベントを処理することを意味します。
@@ -127,14 +143,16 @@ DataFlowは、次の順序で使用できます。
 * タイムアウト時間が残っている状態でドレインが終了した場合、すぐに終了します。
 * ドレイン中のフローはフロー終了ですぐに終了できます。
 
-## フロー詳細表示
+<a id="see-flow-in-details"></a>
+## フロー詳細表示 { #see-flow-in-details }
 
 選択したフローの詳細情報を確認する詳細ページです。
 **Data & Analytics > DataFlow > 管理 > フローリストの中から1つ**をクリックします。
 フローリスト領域とフロー詳細表示領域の境界を動かして画面比率を調整できます。
 またフロー詳細表示領域の右上にある領域サイズ調節アイコンをクリックして指定された画面比率に調整できます。
 
-### 基本情報
+<a id="basic-information"></a>
+### 基本情報 { #basic-information }
 
 詳細なフローメタデータを表示します。
 
@@ -145,7 +163,8 @@ DataFlowは、次の順序で使用できます。
 * 直近に実行した時点の総実行時間を表示します。
 * 直近に実行した時点のインスタンスタイプを表示します。
 
-### 基本情報 - 最近のログ
+<a id="basic-information---recent-logs"></a>
+### 基本情報 - 最近のログ { #basic-information---recent-logs }
 
 * 最近のログから現在実行中のフローのログ情報を直接確認できます。
 * 過去15分のログを確認できます。
@@ -153,15 +172,18 @@ DataFlowは、次の順序で使用できます。
     * V2-JOB: フローの実行スケジューリング及び状態管理に関するログです。
     * V2-TASK: フローで定義したデータ処理作業に関するログです。
     
-### 基本情報 - 全体ログ
+<a id="basic-information---all-logs"></a>
+### 基本情報 - 全体ログ { #basic-information---all-logs }
 * Log & Crash Searchを連動した場合、Log & Crash Searchでフローログを照会するためのLucene Queryをコピーできます。
 
-### 基本情報 - インスタンスタイプ
+<a id="basic-information---instance-type"></a>
+### 基本情報 - インスタンスタイプ { #basic-information---instance-type }
 
 * フローを実行するためのインスタンスタイプを確認して変更できます。
     * ただし、変更されたインスタンスタイプは次のフロー実行から反映されます。
 
-### フロー情報
+<a id="flow-information"></a>
+### フロー情報 { #flow-information }
 
 フローロジックを定義します。
 
@@ -203,6 +225,7 @@ DataFlowは、次の順序で使用できます。
         * 保存したフローは開始リクエストが可能です。
         * 保存時にコミット名を入力して、どのような変更があったのかを記録できます。
 
+<a id="flow-information-schema"></a>
 #### スキーマ
 
 フローのスキーマ情報を確認します。
@@ -217,7 +240,8 @@ DataFlowは、次の順序で使用できます。
 * Filterノードのプロパティを変更すると、スキーマの変換結果をリアルタイムでプレビューできます。
 * スキーマの定義方法と各ノード別の変換の動作については、[ノード設定ガイド](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)をご参照ください。
 
-### 修正履歴
+<a id="modification-history"></a>
+### 修正履歴 { #modification-history }
 
 フローを修正した履歴を表示します。
 
@@ -227,7 +251,8 @@ DataFlowは、次の順序で使用できます。
 * 保存/一時保存時に入力したコミット名を表示します。
 * 当時保存された方式が保存/一時保存のうち、どのような方式だったのかを表示します。
 
-### 実行履歴
+<a id="execution-history"></a>
+### 実行履歴 { #execution-history }
 
 フロー開始/終了リクエストした履歴を表示します。
 
@@ -239,7 +264,8 @@ DataFlowは、次の順序で使用できます。
 * 実行時のインスタンスタイプを表示します。
 * 実行中のフローの場合、新しいウィンドウでフローの詳細状態を確認できます。
 
-### スケジュール一覧
+<a id="schedule-list"></a>
+### スケジュール一覧 { #schedule-list }
 
 ![management_schedulelist.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_schedulelist_2025_08.png)
 
@@ -252,7 +278,8 @@ DataFlowは、次の順序で使用できます。
     フローと同一プロジェクト内のCloud Schedulerで登録したスケジュールのみが表示されます。
     他のプロジェクトのCloud Schedulerで登録したスケジュールは表示されません。
     
-## モニタリング
+<a id="monitoring"></a>
+## モニタリング { #monitoring }
 
 実行中のフローまたはノードのモニタリング情報を表示します。
 **Data & Analytics > DataFlow > モニタリング**をクリックします。
@@ -261,7 +288,8 @@ DataFlowは、次の順序で使用できます。
 
 ![monitoring.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/monitoring_2025_08.png)
 
-### フローリスト
+<a id="monitoring-flow-list"></a>
+### フローリスト { #monitoring-flow-list }
 
 モニタリング可能なフローリストを表示します。
 
@@ -271,7 +299,8 @@ DataFlowは、次の順序で使用できます。
 * **削除されたフローも表示**をクリックすると、削除されたフローのモニタリング情報も確認できます。
 
 
-### フロー画面領域
+<a id="flow-screen-area"></a>
+### フロー画面領域 { #flow-screen-area }
 
 フローの外観を表示する領域です。
 
@@ -279,7 +308,8 @@ DataFlowは、次の順序で使用できます。
 * ノードを選択してノードに特化したモニタリング情報を確認できます。
 * 全体的なグラフが好みの位置に来るようにフロー画面を調整できます。
 
-### モニタリング領域
+<a id="monitoring-area"></a>
+### モニタリング領域 { #monitoring-area }
 
 モニタリングチャートを表示する領域です。
 
@@ -308,18 +338,21 @@ DataFlowは、次の順序で使用できます。
     * V2-JOB, V2-TASK
         * イベントIn/Out、ネットワークデータ送受信は表示しません。
         
-## テンプレート
+<a id="template"></a>
+## テンプレート { #template }
 
 テンプレートメタデータ情報を照会、作成および修正するページです。
 **Data & Analytics > DataFlow > テンプレート**をクリックします。
 
 ![template_main.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_main_2025_08.png)
 
-### 検索
+<a id="template-search"></a>
+### 検索 { #template-search }
 
 * 指定された基準でテンプレートを検索します。テンプレート名で検索すると、名前に検索ワードが含まれるテンプレートを検索します。
 
-### テンプレートの照会
+<a id="query-templates"></a>
+### テンプレートの照会 { #query-templates }
 
 照会結果テンプレートをテーブル形式で表示します。
 
@@ -329,7 +362,8 @@ DataFlowは、次の順序で使用できます。
 * 一度照会されたテンプレートは、更新を押すと照会結果が更新されます。
 * 1ページあたり12個のテンプレートを照会し、**前へ**または**次へ**をクリックしてページを移動できます。
 
-### テンプレートの作成
+<a id="create-templates"></a>
+### テンプレートの作成 { #create-templates }
 
 テンプレートを定義するメタデータを作成します。
 
@@ -339,14 +373,16 @@ DataFlowは、次の順序で使用できます。
 * フローテンプレートは指定できません。
 * 作成されたテンプレートは、フローまたはテンプレートロジック定義時にノードタイプリストで確認できます。
 
-### テンプレートの変更
+<a id="change-templates"></a>
+### テンプレートの変更 { #change-templates }
 
 テンプレートのメタデータを修正します。
 
 * 既存のテンプレート名と説明を修正してテンプレートメタデータに反映します。
 * フローテンプレートは指定できません。
 
-### テンプレートのコピー
+<a id="copy-templates"></a>
+### テンプレートのコピー { #copy-templates }
 
 既存のテンプレート定義を利用して新しいメタデータを作成します。
 
@@ -354,14 +390,16 @@ DataFlowは、次の順序で使用できます。
 * 既存テンプレートが持つフローロジックをそのままコピーします。
 * コピーしたテンプレートは既存テンプレートと完全に別のテンプレートです。
 
-### テンプレートの削除
+<a id="delete-templates"></a>
+### テンプレートの削除 { #delete-templates }
 
 テンプレートメタデータを削除します。
 
 * テンプレートメタデータを完全に削除します。
 * 削除したテンプレートは復旧できません。
 
-## テンプレートの詳細表示
+<a id="see-templates-in-details"></a>
+## テンプレートの詳細表示 { #see-templates-in-details }
 
 選択したテンプレートの詳細情報を確認する詳細ページです。
 **Data & Analytics > DataFlow > テンプレート > テンプレートリストの中から1つ**をクリックします。
@@ -370,7 +408,8 @@ DataFlowは、次の順序で使用できます。
 
 ![template_detail.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/template_detail_2025_08.png)
 
-### テンプレート情報
+<a id="template-information"></a>
+### テンプレート情報 { #template-information }
 
 テンプレートロジックを定義します。
 
@@ -396,11 +435,13 @@ DataFlowは、次の順序で使用できます。
         * フローを未完成の形で保存できます。
         * 保存したテンプレートはノードタイプのテンプレートカテゴリーから読み込むことができます。
 
-## 設定
+<a id="settings"></a>
+## 設定 { #settings }
 サービスに必要な設定を管理するためのページです。
 **Data & Analytics > DataFlow > 設定**をクリックします。
 
-### Log & Crash Search設定
+<a id="log-crash-search-settings"></a>
+### Log & Crash Search設定 { #log-crash-search-settings }
 ユーザーのフローログをユーザーが設定したLog & Crash Searchと連動する機能です。
 Log & Crash Searchサービスにログを保存するには、Log & Crash Searchサービスを有効にする必要があり、別途利用料金が発生します。
 
@@ -423,7 +464,8 @@ Log & Crash Searchサービスにログを保存するには、Log & Crash Searc
 |         flowId |                       フローID |
 | flowInstanceId |                  フローインスタンスID |
 
-### 有効性検査設定
+<a id="validation-settings"></a>
+### 有効性検査設定 { #validation-settings }
 ![settings_acc.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/settings_acc.png)
 
 フローとノードの有効性検査を使用するかどうかを設定できます。
