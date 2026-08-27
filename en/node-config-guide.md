@@ -311,7 +311,6 @@ Supported codec:
 | Access Key | -       | string | Enter the access key of the credentials issued by S3. |  |
 | List Refresh Interval | 60    | number | Enter the refresh interval for the list of objects in the bucket. |  |
 | Prefix | -       | string | Enter the prefix of the objects to read. |  |
-| Exclude Key Pattern | -       | string | Enter the pattern of objects to exclude from reading. |  |
 
 <a id="source-nhn-cloud-object-storage-message-imported-by-codec"></a>
 ### Message imported by codec { #source-nhn-cloud-object-storage-message-imported-by-codec }
@@ -344,7 +343,6 @@ Enter region information configured in the storage. |  |
 | list refresh interval | 60    | number | Enter the object list refresh interval included in the bucket. |  |
 | Prefix | -       | string | 	
 Enter a prefix of an object to read. |  |
-| Exclude key pattern | -       | string | Enter a pattern of an object not to read. |  |
 
 <a id="message-ingestion-by-codec-type"></a>
 ### Message Ingestion by Codec Type { #message-ingestion-by-codec-type }
@@ -378,7 +376,6 @@ Supported codecs
 | Access Key    | -                              | string  | Enter the access key of the credentials issued by S3.                                                 |                                                                                                                                                                                                              |
 | List Refresh Interval | 60                   | number  | Enter the refresh interval for the list of objects in the bucket.                                     |                                                                                                                                                                                                              |
 | Prefix        | -                              | string  | Enter the prefix of the objects to read.                                                              |                                                                                                                                                                                                              |
-| Exclude Key Pattern | -                        | string  | Enter the pattern of objects to exclude from reading.                                                 |                                                                                                                                                                                                              |
 | Path-style Request | false                   | boolean | Determine whether to use path-style requests.                                                        |                                                                                                                                                                                                              |
 
 !!! danger "Caution"
