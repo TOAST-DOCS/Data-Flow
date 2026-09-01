@@ -193,7 +193,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     * 접기 및 펼치기 아이콘을 클릭해 플로우 화면을 확장하거나 축소할 수 있습니다.
 * 플로우 화면을 조작하여 플로우를 정의하고 그래프의 구성을 변경합니다.
     * 각 노드에 적절한 설정값을 입력하여 노드의 동작을 정의합니다.
-        * [노드 상세 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
+        * [노드 상세 가이드](./node-config-guide/)
     * 노드 간에 연결선을 연결하여 메시지의 흐름을 정의합니다.
         * 각 플로우는 반드시 하나의 Directed Acyclic Graph(DAG)만 정의할 수 있습니다.
         * 노드의 유형별 카테고리에 맞는 연결이 빠짐없이 정의되어야 저장 가능합니다.
@@ -238,7 +238,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
     * 노란색: 타입 충돌이 감지된 필드
 * 여러 부모 노드에서 동일한 필드명이 서로 다른 타입으로 정의된 경우 경고가 표시됩니다.
 * Filter 노드의 속성을 변경하면 스키마 변환 결과를 실시간으로 미리 확인할 수 있습니다.
-* 스키마의 정의 방법과 각 노드별 변환 동작은 [노드 설정 가이드](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)를 참고합니다.
+* 스키마의 정의 방법과 각 노드별 변환 동작은 [노드 설정 가이드](./node-config-guide/)를 참고합니다.
 
 <a id="modification-history"></a>
 ### 수정 이력 { #modification-history }
