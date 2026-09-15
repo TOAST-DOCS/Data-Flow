@@ -311,7 +311,6 @@ JSON 형식의 문자열을 입력합니다.
 | 액세스 키 | -       | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | 60    | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
 | Prefix | -       | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
-| 제외할 키 패턴 | -       | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 
 <a id="source-nhn-cloud-object-storage-message-imported-by-codec"></a>
 ### 코덱별 메시지 인입 { #source-nhn-cloud-object-storage-message-imported-by-codec }
@@ -342,7 +341,6 @@ JSON 형식의 문자열을 입력합니다.
 | 액세스 키 | -       | string | S3가 발급한 자격 증명 액세스 키를 입력합니다. |  |
 | 리스트 갱신 주기 | 60    | number | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다. |  |
 | Prefix | -       | string | 읽어 올 오브젝트의 접두사를 입력합니다. |  |
-| 제외할 키 패턴 | -       | string | 읽지 않을 오브젝트의 패턴을 입력합니다. |  |
 
 <a id="message-ingestion-by-codec-type"></a>
 ### 코덱별 메시지 인입 { #message-ingestion-by-codec-type }
@@ -376,7 +374,6 @@ JSON 형식의 문자열을 입력합니다.
 | 액세스 키         | -                              | string  | S3가 발급한 자격 증명 액세스 키를 입력합니다.                                                                          |                                                                                                                                                                                                              |
 | 리스트 갱신 주기     | 60                           | number  | 버킷에 포함된 오브젝트 리스트 갱신 주기를 입력합니다.                                                                       |                                                                                                                                                                                                              |
 | Prefix        | -      | string  | 읽어 올 오브젝트의 접두사를 입력합니다.                                                                               |                                                                                                                                                                                                              |
-| 제외할 키 패턴      | -      | string  | 읽지 않을 오브젝트의 패턴을 입력합니다.                                                                               |                                                                                                                                                                                                              |
 | 경로 방식 요청      | false                        | boolean | 경로 방식 요청을 사용할지 여부를 결정합니다.                                                                            |                                                                                                                                                                                                              |
 
 !!! danger "주의"
