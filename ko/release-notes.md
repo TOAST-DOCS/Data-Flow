@@ -3,11 +3,20 @@
 <a id="data-analytics-dataflow-release-notes"></a>
 ## Data & Analytics > DataFlow > 릴리스 노트 { #data-analytics-dataflow-release-notes }
 
-<a id="may-27-2026"></a>
-## 2026. 05. 27. { #may-27-2026 }
+<a id="october-27-2026"></a>
+## 2026. 10. 27. { #october-27-2026 }
 
 <a id="feature-updates"></a>
 ### 기능 개선/변경 { #feature-updates }
+* 신규 노드 추가
+    * Filter
+        * Aggregate
+
+<a id="may-27-2026"></a>
+## 2026. 05. 27. { #may-27-2026 }
+
+<a id="may-27-2026-feature-updates"></a>
+### 기능 개선/변경 { #may-27-2026-feature-updates }
 * 신규 노드 추가
     * Source
         * (NHN Cloud) EasyQueue
