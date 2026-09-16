@@ -1,6 +1,6 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=1d41682f4f26 -->
+<!-- pre-align:aligned sig=5ea3e3d6ced3 -->
 
 <a id="data-analytics-dataflow-node-type-guide"></a>
 ## Data & Analytics > DataFlow > Node Type Guide { #data-analytics-dataflow-node-type-guide }
