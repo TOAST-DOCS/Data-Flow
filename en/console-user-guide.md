@@ -193,7 +193,7 @@ Define a flow logic.
 * Adjust the flow screen to define flows and change the graph configuration.
 
     * Define a node behavior by entering the appropriate settings for each node.
-        * [Detailed Node Guide](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
+        * [Detailed Node Guide](./node-config-guide/)
     * Define the flow of messages by linking connections among nodes.
         * Each flow can define only one Directed Acyclic Graph (DAG).
         * Connection that fits the category by respective type of node must be defined in order to be saved.
@@ -236,7 +236,7 @@ View the schema information of the flow.
     * Yellow: Fields with detected type conflicts
 * A warning is displayed when the same field name is defined with different types across multiple parent nodes.
 * When the properties of a Filter node are changed, you can preview the schema conversion results in real time.
-* For information on how to define schemas and the conversion behavior of each node, refer to the [Node Configuration Guide](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/).
+* For information on how to define schemas and the conversion behavior of each node, refer to the [Node Configuration Guide](./node-config-guide/).
 
 <a id="modification-history"></a>
 ### Modification History { #modification-history }
