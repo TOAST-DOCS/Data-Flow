@@ -336,13 +336,11 @@ Supported codec:
 | Property name | Default value | Data type | Description | Others |
 | --- |---------| --- | --- | --- |
 | Bucket | -       | string | Enter a bucket name to read data. |  |
-| Region | -       | string | 	
-Enter region information configured in the storage. |  |
+| Region | -       | string | Enter region information configured in the storage. |  |
 | Secret key | -       | string | Enter your S3 credentials secret key. |  |
 | Access key | -       | string | Enter your S3 credentials access key. |  |
 | list refresh interval | 60    | number | Enter the object list refresh interval included in the bucket. |  |
-| Prefix | -       | string | 	
-Enter a prefix of an object to read. |  |
+| Prefix | -       | string | Enter a prefix of an object to read. |  |
 
 <a id="message-ingestion-by-codec-type"></a>
 ### Message Ingestion by Codec Type { #message-ingestion-by-codec-type }
