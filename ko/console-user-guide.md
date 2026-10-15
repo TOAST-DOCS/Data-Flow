@@ -259,6 +259,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 
 ![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
 
+<a id="execution-history-execution-list"></a>
 #### 실행 목록
 
 * 실행 아이디, 상태, 시작 시각, 종료 시각, 소요 시간, 실행자, 인스턴스 타입, 실패 사유를 표시합니다.
@@ -290,6 +291,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * 진행 중인 실행이 있으면 목록을 주기적으로 자동 갱신해 상태 변화를 반영합니다.
 * 행을 클릭하면 실행 상세로 이동합니다.
 
+<a id="execution-history-execution-details"></a>
 #### 실행 상세
 
 선택한 실행 한 건의 정보를 표시합니다. **목록으로**를 클릭하면 실행 목록으로 돌아갑니다.
@@ -307,6 +309,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 * **메트릭 자세히 보기**를 클릭하면 이 실행의 메트릭을 모달 창에서 확인할 수 있습니다.
     * 시작하지 못한 실행은 메트릭이 없으므로 버튼이 비활성화됩니다.
 
+<a id="execution-history-execution-metrics"></a>
 #### 실행 메트릭
 
 선택한 실행의 그래프와 메트릭 차트를 모달 창에 표시합니다.
