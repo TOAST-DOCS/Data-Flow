@@ -259,6 +259,7 @@ Executions that failed to start are also displayed along with the reason for fai
 
 ![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
 
+<a id="execution-history-execution-list"></a>
 #### Execution List
 
 * Displays the execution ID, status, start time, end time, elapsed time, executor, Instance Type, and failure reason.
@@ -290,6 +291,7 @@ Executions that failed to start are also displayed along with the reason for fai
 * If there are in-progress executions, the list is automatically refreshed periodically to reflect status changes.
 * Click a row to navigate to the execution details.
 
+<a id="execution-history-execution-details"></a>
 #### Execution Details
 
 Displays information for the selected execution. Click **Back to List** to return to the execution list.
@@ -307,6 +309,7 @@ Displays information for the selected execution. Click **Back to List** to retur
 * Click **View Metric Details** to view the metrics for this execution in a modal window.
     * Executions that did not start have no metrics, so the button is disabled.
 
+<a id="execution-history-execution-metrics"></a>
 #### Execution Metrics
 
 Displays the graph and metric charts for the selected execution in a modal window.
