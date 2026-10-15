@@ -261,6 +261,7 @@ DataFlowは、次の順序で使用できます。
 
 ![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
 
+<a id="execution-history-execution-list"></a>
 #### 実行一覧
 
 * 実行ID、状態、開始時刻、終了時刻、所要時間、実行者、インスタンスタイプ、失敗理由を表示します。
@@ -292,6 +293,7 @@ DataFlowは、次の順序で使用できます。
 * 進行中の実行がある場合、一覧を定期的に自動更新して状態の変化を反映します。
 * 行をクリックすると実行詳細に移動します。
 
+<a id="execution-history-execution-details"></a>
 #### 実行詳細
 
 選択した実行1件の情報を表示します。**一覧へ**をクリックすると、実行一覧に戻ります。
@@ -309,6 +311,7 @@ DataFlowは、次の順序で使用できます。
 * **メトリクスの詳細表示**をクリックすると、この実行のメトリクスをモーダルウィンドウで確認できます。
     * 開始できなかった実行はメトリクスがないため、ボタンが無効になります。
 
+<a id="execution-history-execution-metrics"></a>
 #### 実行メトリクス
 
 選択した実行のグラフとメトリクスチャートをモーダルウィンドウに表示します。
