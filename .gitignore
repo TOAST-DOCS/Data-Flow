@@ -1,3 +1,4 @@
 .idea
 *.iml
 CLAUDE.local.md
+config.toml
