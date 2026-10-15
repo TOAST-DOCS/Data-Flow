@@ -220,8 +220,8 @@ JSON 형식의 문자열을 입력합니다.
 * 노드에 로그 조회 시작 시간을 설정할 수 있습니다. 설정하지 않으면 플로우를 시작하는 시점부터 로그를 읽어 옵니다.
 * 노드에 종료 시간을 입력하지 않으면 스트리밍 형식으로 로그를 읽어 옵니다. 종료 시간을 입력하면 종료 시간까지의 로그를 읽어 오고 플로우는 종료됩니다.
 * 현재 세션 로그와 크래시 로그는 지원하지 않습니다.
-* Log & Crash Search의 로그 검색 API의 토큰에 영향을 받습니다.
-    * 토큰이 부족할 경우 Log & Crash Search 서비스에 문의하세요.
+* NHN Cloud 사용자 계정의 User Access Key ID와 Secret Access Key로 인증합니다. Appkey가 속한 프로젝트에 권한이 있는 사용자 계정의 액세스 키를 입력해야 합니다.
+* User Access Key ID, Secret Access Key가 유효하지 않거나 Appkey에 접근 권한이 없으면 플로우가 재시도 없이 중지되고, [실행 이력](./console-user-guide.md#execution-history)에 실패 사유가 표시됩니다. 실행 중에 액세스 키가 삭제되거나 비활성화된 경우에도 같습니다.
 
 <a id="source-nhn-cloud-log-crash-search-execution-mode"></a>
 ### 실행 모드 { #source-nhn-cloud-log-crash-search-execution-mode }
@@ -235,7 +235,8 @@ JSON 형식의 문자열을 입력합니다.
 | 속성명       | 기본값                 | 자료형    | 설명                                                                                                                                                     | 비고 |
 |-----------|---------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey    | -                   | string | Log & Crash Search의 앱키를 입력합니다.                                                                                                                         |    |
-| SecretKey | -                   | string | Log & Crash Search의 시크릿키를 입력합니다.                                                                                                                       |    |
+| User Access Key ID | -                   | string | 사용자 계정의 User Access Key ID를 입력합니다.                                                                                                                      |    |
+| Secret Access Key  | -                   | string | 사용자 계정의 Secret Access Key를 입력합니다.                                                                                                                       |    |
 | 조회 시작 시간  | {{executionTime}} | string | 로그 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | 조회 종료 시간  | -                   | string | 로그 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | 검색 쿼리     | *                   | string | Log & Crash Search 조회 요청 시 사용할 검색 쿼리를 입력합니다. 자세한 쿼리 작성 방법은 Log & Crash Search 서비스의 'Lucene 쿼리 가이드'를 참고하세요.                                             |    |
@@ -272,7 +273,7 @@ JSON 형식의 문자열을 입력합니다.
 |--------------------|---------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey             | -                   | string | CloudTrail의 앱키를 입력합니다.                                                                                                                                  |    |
 | User Access Key ID | -                   | string | 사용자 계정의 User Access Key ID를 입력합니다.                                                                                                                      |    |
-| Secret Access Key  | -                   | string | 사용자 계정의 User Secret Key를 입력합니다.                                                                                                                         |    |
+| Secret Access Key  | -                   | string | 사용자 계정의 Secret Access Key를 입력합니다.                                                                                                                         |    |
 | 조회 시작 시간           | {{executionTime}} | string | 데이터 조회의 시작 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | 조회 종료 시간           | -                   | string | 데이터 조회의 종료 시간을 입력합니다. 오프셋이 포함된 ISO 8601 형식 또는 [DSL](#domain-specific-languagedsl-definition) 형식으로 입력해야 합니다. <br/>예: 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | 이벤트 타입             | *                   | string | 조회할 이벤트 ID를 입력합니다.                                                                                                                                      |    |
@@ -404,7 +405,7 @@ STREAMING: 큐에 새로운 메시지가 도착할 때마다 데이터를 처리
 | --- | --- | --- | --- | --- |
 | 앱키 | - | string | EasyQueue의 앱키를 입력합니다. |  |
 | User Access Key ID | - | string | 사용자 계정의 User Access Key ID를 입력합니다. |  |
-| Secret Access Key | - | string | 사용자 계정의 User Secret Key를 입력합니다. |  |
+| Secret Access Key | - | string | 사용자 계정의 Secret Access Key를 입력합니다. |  |
 | 브로커 서버 목록 | - | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/consumer-configs/)의 `bootstrap.servers` 속성 참고 <br/>예: 10.100.1.1:9092,10.100.1.2:9092 |
 | 컨슈머 그룹 아이디 | dataflow | string | Kafka Consumer Group을 식별하는 ID를 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/consumer-configs/)의 `group.id` 속성 참고 |
 | 토픽 목록 | - | array of strings | 메시지를 수신할 Kafka 토픽 목록을 입력합니다. |  |
@@ -1901,7 +1902,7 @@ NHN Cloud의 EasyQueue에 데이터를 전송하는 노드입니다.
 | --- | --- | --- | --- | --- |
 | 앱키 | - | string | EasyQueue의 앱키를 입력합니다. |  |
 | User Access Key ID | - | string | 사용자 계정의 User Access Key ID를 입력합니다. |  |
-| Secret Access Key | - | string | 사용자 계정의 User Secret Key를 입력합니다. |  |
+| Secret Access Key | - | string | 사용자 계정의 Secret Access Key를 입력합니다. |  |
 | 토픽 | - | string | 메시지를 전송할 Kafka 토픽 이름을 입력합니다. |  |
 | 브로커 서버 목록 | - | string | Kafka 브로커 서버를 입력합니다. 서버가 여러 대일 경우 콤마(`,`)로 구분합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `bootstrap.servers` 속성 참고<br/>예: 10.100.1.1:9092,10.100.1.2:9092 |
 | 클라이언트 아이디 | dataflow | string | Kafka Producer를 식별하는 ID를 입력합니다. | [Kafka 공식 문서](https://kafka.apache.org/39/configuration/producer-configs/)의 `client.id` 속성 참고 |
