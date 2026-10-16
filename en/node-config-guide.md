@@ -356,12 +356,6 @@ Supported codec:
 | Access key | -       | string | Enter the credential access key issued by S3. |  |
 | List Update Cycle | 60    | number | Enter the object list update cycle included in the bucket. |  |
 | Prefix | -       | string | Enter a prefix of an object to read. |  |
-Enter region information configured in the storage. |  |
-| Secret key | -       | string | Enter your S3 credentials secret key. |  |
-| Access key | -       | string | Enter your S3 credentials access key. |  |
-| list refresh interval | 60    | number | Enter the object list refresh interval included in the bucket. |  |
-| Prefix | -       | string | 	
-Enter a prefix of an object to read. |  |
 
 <a id="message-ingestion-by-codec-type"></a>
 ### Message Ingestion by Codec Type { #message-ingestion-by-codec-type }
@@ -1415,9 +1409,9 @@ Before configuring the node, review the following concepts.
 * **Window**: A time interval that groups the targets for aggregation. When it is determined that all messages for the interval have arrived, the window closes and the results are output. A closed window does not reopen.
 * **Out-of-order arrival**: There is no guarantee that messages arrive in the order of their data time field values. Messages created later can arrive first due to various reasons, such as transmission delays on the producer side, sources with multiple partitions, and parallel processing.
 * **Watermark delay**: For this reason, the window is not closed immediately when the interval ends, but waits a bit longer. This value determines how long to wait.
-* **Allowed lateness**: Set this value to include messages that arrive after the window has closed.
+* **Allowed latency**: Set this value to include messages that arrive after the window has closed.
 
-The difference between the two delay values is explained in [Watermark Delay and Allowed Lateness](#filter-aggregate-watermark).
+The difference between the two delay values is explained in [Watermark Delay and Allowed Latency](#filter-aggregate-watermark).
 
 <a id="filter-aggregate-property-description"></a>
 ### Property Description { #filter-aggregate-property-description }
@@ -1425,10 +1419,10 @@ The difference between the two delay values is explained in [Watermark Delay and
 | Property name | Default value | Data type | Description | Others |
 |---|---|---|---|---|
 | Group Key | - | array of strings | Enter the field names to group by.<br/>If not specified, all messages are aggregated into a single group. | A dropdown is provided when a schema is defined. |
-| Data Timestamp Field | - | string | Enter the name of the time field to use as the basis for dividing window intervals.<br/>Messages whose values cannot be interpreted as a timestamp are excluded from aggregation. | A dropdown is provided when a schema is defined. |
+| Data Time Field | - | string | Enter the name of the time field to use as the basis for dividing window intervals.<br/>Messages whose values cannot be interpreted as a timestamp are excluded from aggregation. | A dropdown is provided when a schema is defined. |
 | Window Size | 60 | number | Enter the length of a single window in seconds. |  |
 | Watermark Delay | 0 | number | Enter the amount of time in seconds to wait for late-arriving messages after a window interval has ended.<br/>A larger value includes more late-arriving messages, but delays the output accordingly. |  |
-| Allowed Lateness | 0 | number | Enter the amount of time in seconds to retain the aggregation state after a window has closed. |  |
+| Allowed Latency | 0 | number | Enter the amount of time in seconds to retain the aggregation state after a window has closed. |  |
 | Aggregation Items | - | hash | Enter at least one row of aggregations to calculate per window. | See `How to Enter Aggregation Items`. |
 
 <a id="filter-aggregate-property-description-how-to-enter-aggregations"></a>
@@ -1472,7 +1466,7 @@ The value of the field specified in the data time field supports the following f
 * If the value cannot be used as-is, connect a [Date](#filter-date) node upstream to convert the format.
 
 <a id="filter-aggregate-watermark"></a>
-### Watermark delay and allowed latency { #filter-aggregate-watermark }
+### Watermark Delay and Allowed Latency { #filter-aggregate-watermark }
 
 Both properties handle late-arriving messages, but they differ in when they take effect and what results they produce.
 
@@ -1536,7 +1530,7 @@ The output message consists of only the following fields. All input fields that 
 Small epoch millisecond values are used for `event_ts` to make the calculation process easier to follow. In actual data, 13-digit values such as `1785730001000` are used, and `window_start` and `window_end` are also output with the same number of digits.
 
 <a id="filter-aggregate-example-input-message"></a>
-#### Output message
+#### Input message
 
 Messages are listed in the order that they arrived.
 
@@ -1576,7 +1570,7 @@ When the message with an `event_ts` of 15000 arrives, 15000 - 5000 = 10000, whic
 }
 ```
 
-The last message to arrive, with an `event_ts` of 7000, belongs to a window that is already closed, so it is discarded. If the allowed lateness had been set to 5, the result with a `window_start` of 0 reflecting this message would be output one more time.
+The last message to arrive, with an `event_ts` of 7000, belongs to a window that is already closed, so it is discarded. If the allowed latency had been set to 5, the result with a `window_start` of 0 reflecting this message would be output one more time.
 
 The window from 10000 (inclusive) to 20000 (exclusive), which contains the messages with an `event_ts` of 12000 and 15000, has not yet closed. This window closes only when a message with an `event_ts` of 25000 or greater arrives, and if no further messages arrive, no results are output.
 
