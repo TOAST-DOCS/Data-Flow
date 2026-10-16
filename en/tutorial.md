@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=0a5db28a937a -->
 
 <a id="data-analytics-dataflow-tutorial"></a>
@@ -24,7 +26,7 @@
 
 ① Click **Flow Information** tab of the generated flow.
 ② Click **(NHN Cloud) Log&Crash Search** node.
-③ Enter **Appkey** and **Secretkey** of (NHN Cloud) Log&Crash Search to be designated as the data source.
+③ Enter **Appkey** of (NHN Cloud) Log&Crash Search to be designated as the data source, and **User Access Key ID** and **Secret Access Key** of the user account.
 
 <a id="filter-success-response-node-definition"></a>
 ### filter success response Node Definition { #filter-success-response-node-definition }

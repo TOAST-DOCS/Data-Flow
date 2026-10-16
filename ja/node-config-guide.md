@@ -230,8 +230,8 @@ JSON形式の文字列を入力します。
 * ノードにログの照会開始時間を設定できます。設定しない場合は、フローを開始した時点からログを読み込みます。
 * ノードに終了時間を入力しない場合は、ストリーミング形式でログを読み込みます。終了時間を入力した場合は、終了時間までのログを読み込み、フローを終了します。
 * 現在、セッションログとクラッシュログはサポートしていません。
-* Log & Crash Searchのログ検索APIのトークンに影響を受けます。
-    * トークンが不足している場合は、Log & Crash Searchサービスにお問い合わせください。
+* NHN CloudユーザーアカウントのUser Access Key IDとSecret Access Keyで認証します。Appkeyが属するプロジェクトに権限があるユーザーアカウントのアクセスキーを入力する必要があります。
+* User Access Key ID、Secret Access Keyが有効でない場合、またはAppkeyにアクセス権限がない場合、フローが再試行なしに停止し、[実行履歴](./console-user-guide.md#execution-history)に失敗の理由が表示されます。実行中にアクセスキーが削除または無効化された場合も同様です。
 
 <a id="source-nhn-cloud-log-crash-search-execution-mode"></a>
 ### 実行モード { #source-nhn-cloud-log-crash-search-execution-mode }
@@ -246,7 +246,8 @@ JSON形式の文字列を入力します。
 | プロパティ名 | デフォルト値 | データタイプ | 説明 | 備考 |
 |-----------|---------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey | - | string | Log & Crash Searchのアプリキーを入力します。 |  |
-| SecretKey | - | string | Log & Crash Searchのシークレットキーを入力します。 |  |
+| User Access Key ID | -                   | string | ユーザーアカウントのUser Access Key IDを入力します。                                                                                                                      |    |
+| Secret Access Key  | -                   | string | ユーザーアカウントのSecret Access Keyを入力します。                                                                                                                       |    |
 | 照会開始時間 | {{executionTime}} | string | ログ照会の開始時間を入力します。オフセットが含まれたISO 8601形式、または[DSL](#domain-specific-languagedsl-definition)形式で入力する必要があります。<br/>例: 2025-07-23T11:23:00+09:00、{{ executionTime }} |  |
 | 照会終了時間 | - | string | ログ照会の終了時間を入力します。オフセットが含まれたISO 8601形式、または[DSL](#domain-specific-languagedsl-definition)形式で入力する必要があります。<br/>例: 2025-07-23T11:23:00+09:00、{{ executionTime }} |  |
 | 検索クエリ | * | string | Log & Crash Searchの照会リクエスト時に使用する検索クエリを入力します。詳細なクエリの作成方法については、Log & Crash Searchサービスの「Luceneクエリガイド」をご参照ください。 |  |
@@ -283,7 +284,7 @@ JSON形式の文字列を入力します。
 |--------------------|---------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey | - | string | CloudTrailのアプリキーを入力します。 |  |
 | User Access Key ID | - | string | ユーザーアカウントのUser Access Key IDを入力します。 |  |
-| Secret Access Key | - | string | ユーザーアカウントのUser Secret Keyを入力します。 |  |
+| Secret Access Key | - | string | ユーザーアカウントのSecret Access Keyを入力します。 |  |
 | 照会開始時間 | {{executionTime}} | string | データ照会の開始時間を入力します。オフセットが含まれたISO 8601形式、または[DSL](#domain-specific-languagedsl-definition)形式で入力する必要があります。<br/>例: 2025-07-23T11:23:00+09:00、{{ executionTime }} |  |
 | 照会終了時間 | - | string | データ照会の終了時間を入力します。オフセットが含まれたISO 8601形式、または[DSL](#domain-specific-languagedsl-definition)形式で入力する必要があります。<br/>例: 2025-07-23T11:23:00+09:00、{{ executionTime }} |  |
 | イベントタイプ | * | string | 照会するイベントIDを入力します。 |  |
@@ -424,7 +425,7 @@ STREAMING：キューに新しいメッセージが到着するたびにデー�
 | --- | --- | --- | --- | --- |
 | アプリキー | - | string | EasyQueueのアプリキーを入力します。 | |
 | User Access Key ID | - | string | ユーザーアカウントのUser Access Key IDを入力します。 | |
-| Secret Access Key | - | string | ユーザーアカウントのUser Secret Keyを入力します。 | |
+| Secret Access Key | - | string | ユーザーアカウントのSecret Access Keyを入力します。 | |
 | ブローカーサーバー一覧 | - | string | Kafkaブローカーサーバーを入力します。サーバーが複数ある場合はカンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`bootstrap.servers`プロパティを参照<br/>例：10.100.1.1:9092,10.100.1.2:9092 |
 | コンシューマーグループID | dataflow | string | Kafka Consumer Groupを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/consumer-configs/)の`group.id`プロパティを参照 |
 | トピック一覧 | - | array of strings | メッセージを受信するKafkaトピック一覧を入力します。 | |
@@ -1957,7 +1958,7 @@ NHN CloudのEasyQueueにデータを送信するノードです。
 | --- | --- | --- | --- | --- |
 | アプリキー | - | string | EasyQueueのアプリキーを入力します。 | |
 | User Access Key ID | - | string | ユーザーアカウントのUser Access Key IDを入力します。 | |
-| Secret Access Key | - | string | ユーザーアカウントのUser Secret Keyを入力します。 | |
+| Secret Access Key | - | string | ユーザーアカウントのSecret Access Keyを入力します。 |  |
 | トピック | - | string | メッセージを送信するKafkaトピック名を入力します。 | |
 | ブローカーサーバー一覧 | - | string | Kafkaブローカーサーバーを入力します。サーバーが複数ある場合はカンマ(`,`)で区切ります。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`bootstrap.servers`プロパティを参照<br/>例：10.100.1.1:9092,10.100.1.2:9092 |
 | クライアントID | dataflow | string | Kafka Producerを識別するIDを入力します。 | [Kafka公式ドキュメント](https://kafka.apache.org/39/configuration/producer-configs/)の`client.id`プロパティを参照 |

@@ -1,6 +1,6 @@
 <!-- machine_translated: true -->
 
-<!-- pre-align:aligned sig=4724acc7a960 -->
+<!-- pre-align:aligned sig=5f4a4fb25208 -->
 
 <a id="data-analytics-dataflow-console-user-guide"></a>
 ## Data & Analytics > DataFlow > Console User Guide { #data-analytics-dataflow-console-user-guide }
@@ -259,74 +259,73 @@ Executions that failed to start are also displayed along with the reason for fai
 
 ![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
 
-<a id="execution-history-execution-list"></a>
 #### Execution List
 
-* Displays the execution ID, status, start time, end time, elapsed time, executor, Instance Type, and failure reason.
+* Displays the execution ID, status, start time, end time, duration, executor, Instance Type, and failure reason.
 * Status
     * Completed executions are displayed as **Success** or **Failure**.
-    * In-progress executions display their current status (Starting, Preparing, Running, Draining, etc.).
-    * Executions with a status of start failure, quota exceeded, error, or stop failure are displayed as **Failure**. Executions whose previous status was an error are also displayed as **Failure**.
-    * Executions in an error status have not yet ended, so the end time is displayed as **In Progress**.
-* Start Time, End Time, and Elapsed Time
-    * For in-progress executions, the end time is displayed as **In Progress**, and the elapsed time is calculated based on the current time.
-    * Executions that have been requested but have no result yet display the end time as **Preparing**.
-    * Executions that failed to start have no execution interval, so the start time and elapsed time are displayed as `-`, and the end time shows the time at which the failure was processed.
+    * Ongoing executions display the current status (Starting, Preparing, Running, Draining, etc.).
+    * Executions in the Start Failed, Quota Exceeded, Error, or Stop Failed status are displayed as **Failure**. Executions whose previous status was Error are also displayed as **Failure**.
+    * Executions in the Error status have not yet ended, so the end time is displayed as **In Progress**.
+* Start Time, End Time, and Duration
+    * For ongoing executions, the end time is displayed as **In Progress**, and the duration is calculated based on the current time.
+    * Executions that have just been requested to start and do not yet have results display the end time as **Preparing**.
+    * Executions that failed to start have no execution period, so the start time and duration are displayed as `-`, and the end time shows the time the failure was processed.
 * Executor
-    * Displays the email address of the user who requested the execution, with part of it masked.
-    * If the execution was triggered by the system rather than a user, it is displayed as **System (Schedule)**.
+    * Displays the email of the user who requested the execution with partial masking.
+    * If the execution was performed by the system rather than a user, it is displayed as **System (Schedule)**.
 * Instance Type
     * Displays the Instance Type at the time of execution.
 * Failure Reason
-    * Displays the failure reason for failed executions. The failure reason is one of the following three:
-        * The flow's engine type cannot be executed. Contact the Customer Center.
+    * Displays the failure reason for failed executions. The failure reason is one of the following four:
+        * The Engine Type of the flow cannot be executed. Contact the Customer Center.
         * The executable flow resources have been exceeded. Stop the running flow and try again.
         * Failed to execute the flow. If it continues to fail, contact the Customer Center.
-    * Successful executions and executions prior to the introduction of this feature are displayed as `-`.
-    * The cause of errors that occur during execution is not displayed in the failure reason. Check the infrastructure events and logs in the execution details.
+        * The flow was stopped because Log & Crash Search authentication failed. Check the User Access Key ID, Secret Access Key, and appkey of the Source Node, then run the flow again.
+    * Successful executions and executions before this feature was introduced are displayed as `-`.
+    * Except for Log & Crash Search authentication failure, the cause of errors that occur during execution is not displayed in the failure reason. Check the infrastructure events and logs in the execution details.
 * Filter
-    * You can narrow the list by selecting one of All, Success, or Failure using the status filter.
-    * You can select one of Last 1 day, Last 7 days, Last 30 days, or All using the period filter. The default is All, and the period is based on the time the execution was requested.
+    * You can narrow the list by selecting one of the following from the Status Filter: All, Success, or Failure.
+    * You can select one of the following from the Period Filter: Last 1 Day, Last 7 Days, Last 30 Days, or All. The default is All, and the period is based on the time the execution was requested.
     * If no executions match the conditions, click **Reset Filter** to return to the full list.
-* If there are in-progress executions, the list is automatically refreshed periodically to reflect status changes.
-* Click a row to navigate to the execution details.
+* If there are ongoing executions, the list is automatically refreshed periodically to reflect status changes.
+* Click a row to go to the execution details.
 
-<a id="execution-history-execution-details"></a>
 #### Execution Details
 
 Displays information for the selected execution. Click **Back to List** to return to the execution list.
 
 * Overview
-    * Displays the execution ID, execution status, start time, end time, elapsed time, executor, stop requester, Instance Type, and failure reason.
-    * The execution status displays the current state of the execution, not success or failure.
+    * Displays the execution ID, execution status, start time, end time, duration, executor, stop requester, Instance Type, and failure reason.
+    * The execution status displays the current state of that execution, not success or failure.
+    * For executions stopped by the system due to a Log & Crash Search authentication failure, the stop requester is displayed as **System (Schedule)**.
 * Infrastructure Events
-    * Displays infrastructure events that occurred during this execution (such as image pull failures and out-of-memory terminations).
+    * Displays infrastructure events that occurred during this execution (such as image pull failure, out-of-memory termination, etc.).
     * Displays the message, count, first occurrence time, and last occurrence time.
     * Click a row to expand and view the full message.
 * Logs
-    * **View Real-Time Logs**: Displayed only when the selected execution is still in progress. The error, Draining, and stop failure statuses are also considered in progress. You can view logs for the recent 15 minutes, and select either V2-JOB or V2-TASK to query.
-    * **Copy Log Query**: Displayed when Log & Crash Search is enabled. Copies the Lucene Query that allows you to view only the logs of this execution in Log & Crash Search. View logs of completed executions in Log & Crash Search.
+    * **View Real-Time Logs**: Displayed only when the selected execution is still in progress. The error, Draining, and stop-failed states are also considered as in-progress. You can view logs for the recent 15 minutes. Select either V2-JOB or V2-TASK to query logs.
+    * **Copy Log Query**: Displayed when Log & Crash Search is enabled. Copies the Lucene Query that allows you to view only the logs for this execution in Log & Crash Search. For completed executions, view the logs in Log & Crash Search.
 * Click **View Metric Details** to view the metrics for this execution in a modal window.
-    * Executions that did not start have no metrics, so the button is disabled.
+    * Executions that failed to start have no metrics, so the button is disabled.
 
-<a id="execution-history-execution-metrics"></a>
 #### Execution Metrics
 
-Displays the graph and metric charts for the selected execution in a modal window.
+Displays a graph and metric charts for the selected execution in a modal window.
 
 * Flow Graph
-    * Displays the graph based on the flow definition saved at the time of execution. The graph from the execution time is displayed even if the flow was modified afterward.
-    * When you click a node, the Event In/Out chart changes to the metrics for that node. Deselecting a node returns the view to the overall flow metrics.
-    * If the graph from the time of execution cannot be found, a notice is displayed, and per-node metrics cannot be viewed.
+    * Displays the graph based on the flow definition saved at the time of execution. Even if the flow was modified afterward, the graph from the time of execution is displayed.
+    * Clicking a node changes the Event In/Out chart to the metrics for that node. Deselecting a node returns the view to the overall flow metrics.
+    * If the graph from the time of execution cannot be found, a message is displayed and per-node metrics cannot be viewed.
 * Chart
-    * Displays charts for Event In/Out, CPU utilization, memory usage, and network data send/receive.
-    * Data from other executions of the same flow is excluded; only data from the selected execution is displayed.
-    * CPU utilization and memory usage display the V2-JOB and V2-TASK graphs together.
-* Period
+    * Displays charts for Event In/Out, CPU usage, memory usage, and network data transmission and reception.
+    * Excludes data from other executions of the same flow and displays only the data for the selected execution.
+    * CPU usage and memory usage display both V2-JOB and V2-TASK graphs.
+* Duration
     * Select one of the following: Full Execution, Last 1 Hour, Last 6 Hours, or Last 24 Hours. Periods longer than the execution time are not displayed.
-    * For ongoing executions, metrics up to the current time are displayed.
-    * Metrics are retained for up to the last 16 days. If an execution ran for more than 16 days, only the metrics from the last 16 days are displayed even if you select **Full Execution**.
-* If the execution time is less than 5 minutes, the aggregation interval may be insufficient, and trends may not be displayed in the charts.
+    * For an ongoing execution, metrics up to the current time are displayed.
+    * Metrics are retained for up to the last 16 days. If an execution lasted more than 16 days, selecting **Full Execution** displays only the metrics from the last 16 days.
+* If the execution time is less than 5 minutes, the chart may not display trends due to insufficient aggregation intervals.
 
 <a id="schedule-list"></a>
 ### Schedule List { #schedule-list }
