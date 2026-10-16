@@ -24,7 +24,7 @@
 
 ① 생성한 플로우의 **플로우 정보** 탭을 클릭합니다.
 ② **(NHN Cloud) Log&Crash Search** 노드를 클릭합니다.
-③ 데이터 소스로 지정할 (NHN Cloud) Log&Crash Search의 **Appkey**와 **Secretkey**를 입력합니다.
+③ 데이터 소스로 지정할 (NHN Cloud) Log&Crash Search의 **Appkey**와 사용자 계정의 **User Access Key ID**, **Secret Access Key**를 입력합니다.
 
 <a id="filter-success-response-node-definition"></a>
 ### filter success response 노드 정의 { #filter-success-response-node-definition }
