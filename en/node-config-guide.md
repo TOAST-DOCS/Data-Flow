@@ -230,8 +230,8 @@ Node type that defines an endpoint that imports data to the flow.
 * You can set the log query start time for a node. If not set, the log is read from the start of the flow.
 * If no end time is entered in the node, logs are read in streaming format. If an end time is entered, logs are read up to the end time and the flow ends.
 * Currently, session logs and crash logs are not supported.
-* Affected by tokens from Log & Crash Search's Log Search API.
-    * If you don't have enough tokens, you need to contact Log & Crash Search service.
+* Authenticates with the User Access Key ID and Secret Access Key of your NHN Cloud user account. You must enter the access key of a user account that has permissions for the project to which the Appkey belongs.
+* If the User Access Key ID or Secret Access Key is invalid, or if the account does not have access to the Appkey, the Flow stops without retrying and the reason for the failure is displayed in [Execution History](./console-user-guide.md#execution-history). The same applies if the access key is deleted or disabled while the Flow is running.
 
 <a id="source-nhn-cloud-log-crash-search-execution-mode"></a>
 ### Execution Mode { #source-nhn-cloud-log-crash-search-execution-mode }
@@ -246,7 +246,8 @@ Node type that defines an endpoint that imports data to the flow.
 | Property Name     | Default Value       | Data Type | Description                                                                                                                                                                                              | Notes |
 |-----------|---------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey    | -                   | string | Enter the app key for Log & Crash Search.                                                                                                                         |    |
-| SecretKey | -                   | string | Enter the secret key for Log & Crash Search.                                                                                                                       |    |
+| User Access Key ID | -                   | string | Enter the User Access Key ID for your user account.                                                                                                                      |    |
+| Secret Access Key  | -                   | string | Enter the Secret Access Key for your user account.                                                                                                                       |    |
 | Query Start Time  | {{executionTime}} | string | Enter the start time for the log query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | Query End Time    | -                   | string | Enter the end time for the log query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | Search Query      | *                   | string | Enter the search query to use when making a query request to Log & Crash Search. For detailed query syntax, refer to the 'Lucene Query Guide' in the Log & Crash Search service.                                             |    |
@@ -283,7 +284,7 @@ Supported codec:
 |--------------------|---------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------|----|
 | Appkey             | -                   | string | Enter the app key for CloudTrail.                                                                                                                                  |    |
 | User Access Key ID | -                   | string | Enter the User Access Key ID of the user account.                                                                                                                      |    |
-| Secret Access Key  | -                   | string | Enter the User Secret Key of the user account.                                                                                                                         |    |
+| Secret Access Key  | -                   | string | Enter the Secret Access Key of the user account.                                                                                                                         |    |
 | Query Start Time   | {{executionTime}} | string | Enter the start time for the data query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | Query End Time     | -                   | string | Enter the end time for the data query. Must be entered in ISO 8601 format with offset or [DSL](#domain-specific-languagedsl-definition) format. <br/>e.g., 2025-07-23T11:23:00+09:00, {{ executionTime }} |    |
 | Event Type         | *                 | string | Enter the event ID to query.                                                                                                                                      |    |
@@ -356,6 +357,7 @@ Supported codec:
 | Access key | -       | string | Enter the credential access key issued by S3. |  |
 | List Update Cycle | 60    | number | Enter the object list update cycle included in the bucket. |  |
 | Prefix | -       | string | Enter a prefix of an object to read. |  |
+
 Enter region information configured in the storage. |  |
 | Secret key | -       | string | Enter your S3 credentials secret key. |  |
 | Access key | -       | string | Enter your S3 credentials access key. |  |
@@ -430,7 +432,7 @@ STREAMING: Processes data every time a new message arrives in a queue.
 | --- | --- | --- | --- | --- |
 | Appkey | - | string | Enter the appkey for EasyQueue. |  |
 | User Access Key ID | - | string | Enter the User Access Key ID for the user account. |  |
-| Secret Access Key | - | string | Enter the User Secret Key for the user account. |  |
+| Secret Access Key | - | string | Enter the Secret Access Key for the user account. |  |
 | Broker server list | - | string | Enter the Kafka broker servers. If there are multiple servers, separate them with a comma (`,`). | See `bootstrap.servers` in the [Kafka official documentation](https://kafka.apache.org/39/configuration/consumer-configs/) <br/>Example: 10.100.1.1:9092,10.100.1.2:9092 |
 | Consumer group ID | dataflow | string | Enter the ID that identifies the Kafka Consumer Group. | See `group.id` in the [Kafka official documentation](https://kafka.apache.org/39/configuration/consumer-configs/) |
 | Topic list | - | array of strings | Enter the list of Kafka topics to receive messages from. |  |
@@ -1960,7 +1962,7 @@ Node that transfers data of EasyQueue in NHN Cloud.
 | --- | --- | --- | --- | --- |
 | Appkey | - | string | Enter an appkey of EasyQueue. |  |
 | User Access Key ID | - | string | Enter a User Access Key ID of user account. |  |
-| Secret Access Key | - | string | Enter a User Secret Key of user account. |  |
+| Secret Access Key | - | string | Enter the Secret Access Key of the user account. |  |
 | Topic | - | string | Enter the name of the Kafka topic to send messages to. |  |
 | Broker server list | - | string | Enter the Kafka broker servers. If there are multiple servers, separate them with a comma (`,`). | See `bootstrap.servers` in the [Kafka official documentation](https://kafka.apache.org/39/configuration/producer-configs/)<br/>Example: 10.100.1.1:9092,10.100.1.2:9092 |
 | Client ID | dataflow | string | Enter the ID that identifies the Kafka Producer. | See `client.id` in the [Kafka official documentation](https://kafka.apache.org/39/configuration/producer-configs/) |
