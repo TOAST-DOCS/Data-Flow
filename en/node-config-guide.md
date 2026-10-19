@@ -1409,9 +1409,9 @@ Before configuring the node, review the following concepts.
 * **Window**: A time interval that groups the targets for aggregation. When it is determined that all messages for the interval have arrived, the window closes and the results are output. A closed window does not reopen.
 * **Out-of-order arrival**: There is no guarantee that messages arrive in the order of their data time field values. Messages created later can arrive first due to various reasons, such as transmission delays on the producer side, sources with multiple partitions, and parallel processing.
 * **Watermark delay**: For this reason, the window is not closed immediately when the interval ends, but waits a bit longer. This value determines how long to wait.
-* **Allowed latency**: Set this value to include messages that arrive after the window has closed.
+* **Allowed lateness**: Set this value to include messages that arrive after the window has closed.
 
-The difference between the two delay values is explained in [Watermark Delay and Allowed Latency](#filter-aggregate-watermark).
+The difference between the two delay values is explained in [Watermark Delay and Allowed Lateness](#filter-aggregate-watermark).
 
 <a id="filter-aggregate-property-description"></a>
 ### Property Description { #filter-aggregate-property-description }
@@ -1422,7 +1422,7 @@ The difference between the two delay values is explained in [Watermark Delay and
 | Data Time Field | - | string | Enter the name of the time field to use as the basis for dividing window intervals.<br/>Messages whose values cannot be interpreted as a timestamp are excluded from aggregation. | A dropdown is provided when a schema is defined. |
 | Window Size | 60 | number | Enter the length of a single window in seconds. |  |
 | Watermark Delay | 0 | number | Enter the amount of time in seconds to wait for late-arriving messages after a window interval has ended.<br/>A larger value includes more late-arriving messages, but delays the output accordingly. |  |
-| Allowed Latency | 0 | number | Enter the amount of time in seconds to retain the aggregation state after a window has closed. |  |
+| Allowed Lateness | 0 | number | Enter the amount of time in seconds to retain the aggregation state after a window has closed. |  |
 | Aggregation Items | - | hash | Enter at least one row of aggregations to calculate per window. | See `How to Enter Aggregation Items`. |
 
 <a id="filter-aggregate-property-description-how-to-enter-aggregations"></a>
@@ -1466,18 +1466,18 @@ The value of the field specified in the data time field supports the following f
 * If the value cannot be used as-is, connect a [Date](#filter-date) node upstream to convert the format.
 
 <a id="filter-aggregate-watermark"></a>
-### Watermark Delay and Allowed Latency { #filter-aggregate-watermark }
+### Watermark Delay and Allowed Lateness { #filter-aggregate-watermark }
 
 Both properties handle late-arriving messages, but they differ in when they take effect and what results they produce.
 
-| Item | Watermark Delay | Allowed Latency |
+| Item | Watermark Delay | Allowed Lateness |
 |---|---|---|
 | When it takes effect | Before the window closes | After the window closes |
 | Result output | One output per window | One additional output each time a late message arrives |
 | When results are produced | Delayed by the configured amount | Not delayed |
 | Memory | No impact | Increases, as closed windows are retained |
 
-If you want to receive results only once, set the allowed latency to 0 and adjust only the watermark delay. If you want to receive results quickly, don't want to miss late-arriving data, and can handle duplicate results downstream, use the allowed latency.
+If you want to receive results only once, set the allowed lateness to 0 and adjust only the watermark delay. If you want to receive results quickly, don't want to miss late-arriving data, and can handle duplicate results downstream, use the allowed lateness.
 
 Both properties measure time based on the value of the data time field, not the actual clock time.
 
@@ -1491,10 +1491,10 @@ For example, if the window size is 10 seconds and the watermark delay is 5 secon
 
 * A larger watermark delay accommodates more out-of-order messages, but also delays result output by the same amount.
 * (Apache) Kafka and (NHN Cloud) EasyQueue store data across multiple partitions. Because each partition is read at a different rate, messages created later often arrive first. If you use these sources, set the watermark delay to a generous value.
-* Messages that arrive after a window has closed are discarded. Setting the allowed latency retains the aggregation state for that duration, allowing late-arriving messages to be included.
-* However, if the allowed latency is set to greater than 0, the result for that window is output again for each late-arriving message. This means multiple result messages with the same `window_start` value are produced, and the last one output is the final aggregated value.
+* Messages that arrive after a window has closed are discarded. Setting the allowed lateness retains the aggregation state for that duration, allowing late-arriving messages to be included.
+* However, if the allowed lateness is set to greater than 0, the result for that window is output again for each late-arriving message. This means multiple result messages with the same `window_start` value are produced, and the last one output is the final aggregated value.
     * The previously output results are not updated. Be careful not to re-aggregate or store duplicates in downstream nodes or Sinks.
-    * If you do not want duplicate outputs, set the allowed latency to 0 and increase the watermark delay to capture late-arriving messages before the window closes.
+    * If you do not want duplicate outputs, set the allowed lateness to 0 and increase the watermark delay to capture late-arriving messages before the window closes.
 
 <a id="filter-aggregate-output-event"></a>
 ### Output Message Structure { #filter-aggregate-output-event }
@@ -1518,7 +1518,7 @@ The output message consists of only the following fields. All input fields that 
 * Data time field → `event_ts`
 * Window size → `10`
 * Watermark delay → `5`
-* Allowed latency → `0`
+* Allowed lateness → `0`
 * Aggregation items
 
 | Operation | Field to aggregate | Output field name |
@@ -1570,7 +1570,7 @@ When the message with an `event_ts` of 15000 arrives, 15000 - 5000 = 10000, whic
 }
 ```
 
-The last message to arrive, with an `event_ts` of 7000, belongs to a window that is already closed, so it is discarded. If the allowed latency had been set to 5, the result with a `window_start` of 0 reflecting this message would be output one more time.
+The last message to arrive, with an `event_ts` of 7000, belongs to a window that is already closed, so it is discarded. If the allowed lateness had been set to 5, the result with a `window_start` of 0 reflecting this message would be output one more time.
 
 The window from 10000 (inclusive) to 20000 (exclusive), which contains the messages with an `event_ts` of 12000 and 15000, has not yet closed. This window closes only when a message with an `event_ts` of 25000 or greater arrives, and if no further messages arrive, no results are output.
 
@@ -1598,7 +1598,7 @@ Larger instance types allocate more memory to the Flow, and the memory that has 
 * If the number of distinct group key values exceeds the limit, the Flow enters an error state due to insufficient memory and does not recover automatically. Stop the Flow, adjust the group keys, and restart it.
 * Specify fields with a limited number of distinct values as group keys. If you specify fields that continuously generate new values over time — such as user IDs, session IDs, request IDs, or IP addresses — as group keys, there is no upper bound on the number of distinct values, which will eventually lead to insufficient memory.
 * If you need a larger number of distinct group key values, consider upgrading the instance type.
-* If the allowed latency is set to a value greater than 0, the state of closed windows is maintained for the duration of the allowed latency, which can increase memory usage by up to (1 + allowed latency ÷ window size) times. Reduce the number of distinct group key values by the same factor.
+* If the allowed lateness is set to a value greater than 0, the state of closed windows is maintained for the duration of the allowed lateness, which can increase memory usage by up to (1 + allowed lateness ÷ window size) times. Reduce the number of distinct group key values by the same factor.
 
 <a id="filter-aggregate-notes-behavior"></a>
 #### Known behavior
@@ -1607,7 +1607,7 @@ Larger instance types allocate more memory to the Flow, and the memory that has 
 * When you stop a flow, the aggregation state of any windows in progress is not retained. When the flow runs again, those windows start aggregating from an empty state.
 * Windows that contain no messages do not output results.
 * While a flow is running, the last window closes only when messages from the next window arrive. If no more messages come in, the results of the last window are not output.
-* If you set the allowed latency to a value greater than 0, the results of the same window are output multiple times. For Sink nodes that do not update already-loaded data — such as Object Storage or Kafka — multiple results for the same window accumulate, so the consumer must use only the last result among those with the same `window_start` value.
+* If you set the allowed lateness to a value greater than 0, the results of the same window are output multiple times. For Sink nodes that do not update already-loaded data — such as Object Storage or Kafka — multiple results for the same window accumulate, so the consumer must use only the last result among those with the same `window_start` value.
 * Messages that arrive after a window has closed and could not be aggregated, and messages that were excluded because the data time field could not be interpreted, are not output separately.
 * SUM and AVG are calculated using floating-point arithmetic, so aggregating values with a large number of digits may produce rounding errors.
 
