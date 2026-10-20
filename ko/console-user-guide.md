@@ -257,7 +257,7 @@ DataFlow는 다음과 같은 순서로 사용할 수 있습니다.
 플로우를 실행한 이력을 실행 단위로 표시합니다. 플로우를 시작할 때마다 실행 한 건이 만들어지며, 목록의 한 행이 실행 한 건입니다.
 시작하지 못한 실행도 실패 사유와 함께 표시됩니다.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
+![management_actionhistory.png](../static/images/ko/management_actionhistory_2026_10.png)
 
 <a id="execution-history-execution-list"></a>
 #### 실행 목록

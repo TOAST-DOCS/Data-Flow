@@ -257,7 +257,7 @@ Displays the history of flow modification.
 Displays the history of flow execution in execution units. Each time a flow is started, one execution entry is created, and each row in the list represents one execution entry.
 Executions that failed to start are also displayed along with the reason for failure.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
+![management_actionhistory.png](../static/images/ko/management_actionhistory_2026_10.png)
 
 #### Execution List
 

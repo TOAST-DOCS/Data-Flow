@@ -259,7 +259,7 @@ DataFlowは、次の順序で使用できます。
 フローを実行した履歴を実行単位で表示します。フローを開始するたびに実行が1件作成され、一覧の1行が実行1件に対応します。
 開始できなかった実行も、失敗理由とともに表示されます。
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
+![management_actionhistory.png](../static/images/ko/management_actionhistory_2026_10.png)
 
 #### 実行一覧
 
