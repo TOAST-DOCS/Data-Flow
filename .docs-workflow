@@ -1,0 +1,12 @@
+# .docs-workflow — 문서 파이프라인 설정
+# 설명: https://content-agent.cloud.toastoven.net/?tab=help&help=docs-workflow
+
+# 콘솔 용어집 — ko 문서가 굵게(**…**) 쓴 콘솔 UI 라벨을 콘솔 화면의 실제 문자열로 번역한다.
+# Data Flow 콘솔 문자열은 서비스 리포(TOASTCloud/epsilon)의 언어별 파일에 있다 — 화면 공통(*_lang.ts)과 노드 플러그인(*_plugin.ts).
+console_glossary:
+  - ko: https://github.nhnent.com/TOASTCloud/epsilon/blob/develop/epsilon-web/frontend/src/lang/ko_lang.ts
+    en: https://github.nhnent.com/TOASTCloud/epsilon/blob/develop/epsilon-web/frontend/src/lang/en_lang.ts
+    ja: https://github.nhnent.com/TOASTCloud/epsilon/blob/develop/epsilon-web/frontend/src/lang/ja_lang.ts
+  - ko: https://github.nhnent.com/TOASTCloud/epsilon/blob/develop/epsilon-web/frontend/src/lang/ko_plugin.ts
+    en: https://github.nhnent.com/TOASTCloud/epsilon/blob/develop/epsilon-web/frontend/src/lang/en_plugin.ts
+    ja: https://github.nhnent.com/TOASTCloud/epsilon/blob/develop/epsilon-web/frontend/src/lang/ja_plugin.ts
