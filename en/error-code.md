@@ -20,7 +20,7 @@
 | SKM_INVALID_KEY_ID          | The key ID information for the Cipher node is invalid.                                                      |
 | SKM_INVALID_KEY_VERSION     | The key version information for the Cipher node is invalid.                                                      |
 | SKM_ERROR                   | Failed to connect to SKM.                                                                     |
-| LNCS_UNAUTHENTICATED        | The User Access Key ID or Secret Access Key for the Log & Crash Search node is invalid, or the appkey does not have access permission.                                         |
+| LNCS_UNAUTHENTICATED        | The User Access Key ID or Secret Access Key for the Log & Crash Search node is invalid, or the account does not have access to the appkey.                                         |
 | LNCS_SEARCH_LIMIT           | The Log & Crash Search node has reached the search limit. Contact customer support.                               |
 | LNCS_SERVICE_UNSTABLE       | The Log & Crash Search service is unstable. Contact customer support.                                  |
 | LNCS_INVALID_PROPERTY       | The property of the Log & Crash Search node is invalid.                                               |
