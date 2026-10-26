@@ -18,7 +18,7 @@
 | SKM_INVALID_KEY_ID          | Cipher 노드의 키 ID 정보가 유효하지 않습니다.                                                      |
 | SKM_INVALID_KEY_VERSION     | Cipher 노드의 키 버전 정보가 유효하지 않습니다.                                                      |
 | SKM_ERROR                   | SKM 연결이 실패했습니다.                                                                     |
-| LNCS_UNAUTHENTICATED        | Log & Crash Search 노드의 앱키, 비밀 키가 유효하지 않습니다.                                         |
+| LNCS_UNAUTHENTICATED        | Log & Crash Search 노드의 User Access Key ID, Secret Access Key가 유효하지 않거나 앱키에 접근 권한이 없습니다. |
 | LNCS_SEARCH_LIMIT           | Log & Crash Search 노드가 검색 제한에 도달했습니다. 고객문의로 문의하세요.                               |
 | LNCS_SERVICE_UNSTABLE       | Log & Crash Search 서비스가 불안정한 상태입니다. 고객문의로 문의하세요.                                  |
 | LNCS_INVALID_PROPERTY       | Log & Crash Search 노드의 속성이 올바르지 않습니다.                                               |

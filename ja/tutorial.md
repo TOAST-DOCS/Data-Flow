@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=0a5db28a937a -->
 
 <a id="data-analytics-dataflow-tutorial"></a>
@@ -24,7 +26,7 @@
 
 ① 作成したフローの**フロー情報**タブをクリックします。
 ② **(NHN Cloud) Log&Crash Search**ノードをクリックします。
-③ データソースとして指定する(NHN Cloud) Log&Crash Searchの**AppKey**と**SecretKey**を入力します。
+③ データソースとして指定する(NHN Cloud) Log&Crash Searchの**Appkey**とユーザーアカウントの**User Access Key ID**、**Secret Access Key**を入力します。
 
 <a id="filter-success-response-node-definition"></a>
 ### filter success responseノードの定義 { #filter-success-response-node-definition }
