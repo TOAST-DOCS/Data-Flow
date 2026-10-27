@@ -1,3 +1,5 @@
+<!-- machine_translated: true -->
+
 <!-- pre-align:aligned sig=18e7b5642ac7 -->
 
 <a id="data-analytics-dataflow-error-code-guide"></a>
@@ -18,7 +20,7 @@
 | SKM_INVALID_KEY_ID | CipherノードのキーID情報が有効ではありません。 |
 | SKM_INVALID_KEY_VERSION | Cipherノードのキーバージョン情報が有効ではありません。 |
 | SKM_ERROR | SKMの接続に失敗しました。 |
-| LNCS_UNAUTHENTICATED | Log & Crash Searchノードのアプリキー、シークレットキーが有効ではありません。 |
+| LNCS_UNAUTHENTICATED | Log & Crash SearchノードのUser Access Key ID、Secret Access Keyが有効ではないか、アプリキーへのアクセス権限がありません。 |
 | LNCS_SEARCH_LIMIT | Log & Crash Searchノードが検索制限に達しました。カスタマーサポートにお問い合わせください。 |
 | LNCS_SERVICE_UNSTABLE | Log & Crash Searchサービスが不安定な状態です。カスタマーサポートにお問い合わせください。 |
 | LNCS_INVALID_PROPERTY | Log & Crash Searchノードのプロパティが正しくありません。 |

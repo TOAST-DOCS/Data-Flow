@@ -1,4 +1,6 @@
-<!-- pre-align:aligned sig=005ec20950b3 -->
+<!-- machine_translated: true -->
+
+<!-- pre-align:aligned sig=4724acc7a960 -->
 
 <a id="data-analytics-dataflow-console-user-guide"></a>
 ## Data & Analytics > DataFlow > Console User Guide { #data-analytics-dataflow-console-user-guide }
@@ -193,7 +195,7 @@ Define a flow logic.
 * Adjust the flow screen to define flows and change the graph configuration.
 
     * Define a node behavior by entering the appropriate settings for each node.
-        * [Detailed Node Guide](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/)
+        * [Detailed Node Guide](./node-config-guide/)
     * Define the flow of messages by linking connections among nodes.
         * Each flow can define only one Directed Acyclic Graph (DAG).
         * Connection that fits the category by respective type of node must be defined in order to be saved.
@@ -236,7 +238,7 @@ View the schema information of the flow.
     * Yellow: Fields with detected type conflicts
 * A warning is displayed when the same field name is defined with different types across multiple parent nodes.
 * When the properties of a Filter node are changed, you can preview the schema conversion results in real time.
-* For information on how to define schemas and the conversion behavior of each node, refer to the [Node Configuration Guide](https://docs.nhncloud.com/ko/Data%20&%20Analytics/DataFlow/ko/node-config-guide/).
+* For information on how to define schemas and the conversion behavior of each node, refer to the [Node Configuration Guide](./node-config-guide/).
 
 <a id="modification-history"></a>
 ### Modification History { #modification-history }
@@ -252,15 +254,81 @@ Displays the history of flow modification.
 <a id="execution-history"></a>
 ### Execution History { #execution-history }
 
-Display history of the request to start/end flow.
+Displays the history of flow execution in execution units. Each time a flow is started, one execution entry is created, and each row in the list represents one execution entry.
+Executions that failed to start are also displayed along with the reason for failure.
 
-![management_actionhistory.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/management_actionhistory_2025_08.png)
+![management_actionhistory.png](../static/images/ko/management_actionhistory_2026_10.png)
 
-* Display the date of execution and user information.
-* Display the requested behavior.
-* Display the state of flow due to the requested behavior.
-* Disaply the instance type at the time of running.
-* If it is a running flow, new window allows to view detailed flow status information.
+<a id="execution-history-execution-list"></a>
+#### Execution List
+
+* Displays the execution ID, status, start time, end time, elapsed time, executor, Instance Type, and failure reason.
+* Status
+    * Completed executions are displayed as **Success** or **Failure**.
+    * In-progress executions display their current status (Starting, Preparing, Running, Draining, etc.).
+    * Executions with a status of start failure, quota exceeded, error, or stop failure are displayed as **Failure**. Executions whose previous status was an error are also displayed as **Failure**.
+    * Executions in an error status have not yet ended, so the end time is displayed as **In Progress**.
+* Start Time, End Time, and Elapsed Time
+    * For in-progress executions, the end time is displayed as **In Progress**, and the elapsed time is calculated based on the current time.
+    * Executions that have been requested but have no result yet display the end time as **Preparing**.
+    * Executions that failed to start have no execution interval, so the start time and elapsed time are displayed as `-`, and the end time shows the time at which the failure was processed.
+* Executor
+    * Displays the email address of the user who requested the execution, with part of it masked.
+    * If the execution was triggered by the system rather than a user, it is displayed as **System (Schedule)**.
+* Instance Type
+    * Displays the Instance Type at the time of execution.
+* Failure Reason
+    * Displays the failure reason for failed executions. The failure reason is one of the following four:
+        * The flow's engine type cannot be executed. Contact the Customer Center.
+        * The executable flow resources have been exceeded. Stop the running flow and try again.
+        * Failed to execute the flow. If it continues to fail, contact the Customer Center.
+        * The flow was stopped because Log & Crash Search authentication failed. Check the User Access Key ID, Secret Access Key, and appkey of the Source Node, then run the flow again.
+    * Successful executions and executions prior to the introduction of this feature are displayed as `-`.
+    * Except for Log & Crash Search authentication failure, the cause of errors that occur during execution is not displayed in the failure reason. Check the infrastructure events and logs in the execution details.
+* Filter
+    * You can narrow the list by selecting one of All, Success, or Failure using the status filter.
+    * You can select one of Last 1 day, Last 7 days, Last 30 days, or All using the period filter. The default is All, and the period is based on the time the execution was requested.
+    * If no executions match the conditions, click **Reset Filter** to return to the full list.
+* If there are in-progress executions, the list is automatically refreshed periodically to reflect status changes.
+* Click a row to navigate to the execution details.
+
+<a id="execution-history-execution-details"></a>
+#### Execution Details
+
+Displays information for the selected execution. Click **Back to List** to return to the execution list.
+
+* Overview
+    * Displays the execution ID, execution status, start time, end time, elapsed time, executor, stop requester, Instance Type, and failure reason.
+    * The execution status displays the current state of the execution, not success or failure.
+    * For executions stopped by the system due to a Log & Crash Search authentication failure, the stop requester is displayed as **System (Schedule)**.
+* Infrastructure Events
+    * Displays infrastructure events that occurred during this execution (such as image pull failures and out-of-memory terminations).
+    * Displays the message, count, first occurrence time, and last occurrence time.
+    * Click a row to expand and view the full message.
+* Logs
+    * **View Real-Time Logs**: Displayed only when the selected execution is still in progress. The error, Draining, and stop failure statuses are also considered in progress. You can view logs for the recent 15 minutes, and select either V2-JOB or V2-TASK to query.
+    * **Copy Log Query**: Displayed when Log & Crash Search is enabled. Copies the Lucene Query that allows you to view only the logs of this execution in Log & Crash Search. View logs of completed executions in Log & Crash Search.
+* Click **View Metric Details** to view the metrics for this execution in a modal window.
+    * Executions that did not start have no metrics, so the button is disabled.
+
+<a id="execution-history-execution-metrics"></a>
+#### Execution Metrics
+
+Displays the graph and metric charts for the selected execution in a modal window.
+
+* Flow Graph
+    * Displays the graph based on the flow definition saved at the time of execution. The graph from the execution time is displayed even if the flow was modified afterward.
+    * When you click a node, the Event In/Out chart changes to the metrics for that node. Deselecting a node returns the view to the overall flow metrics.
+    * If the graph from the time of execution cannot be found, a notice is displayed, and per-node metrics cannot be viewed.
+* Chart
+    * Displays charts for Event In/Out, CPU utilization, memory usage, and network data send/receive.
+    * Data from other executions of the same flow is excluded; only data from the selected execution is displayed.
+    * CPU utilization and memory usage display the V2-JOB and V2-TASK graphs together.
+* Period
+    * Select one of the following: Full Execution, Last 1 Hour, Last 6 Hours, or Last 24 Hours. Periods longer than the execution time are not displayed.
+    * For ongoing executions, metrics up to the current time are displayed.
+    * Metrics are retained for up to the last 16 days. If an execution ran for more than 16 days, only the metrics from the last 16 days are displayed even if you select **Full Execution**.
+* If the execution time is less than 5 minutes, the aggregation interval may be insufficient, and trends may not be displayed in the charts.
 
 <a id="schedule-list"></a>
 ### Schedule List { #schedule-list }
@@ -285,6 +353,11 @@ You can adjust the screen ratio by moving boundaries between flow screen area an
 Also you can adjust screen proportion to the specified percentage by using the Resize Area button located in upper right corner of the Monitoring area.
 
 ![monitoring.png](http://static.toastoven.net/prod_dataflow/ko/console_user_guide/monitoring_2025_08.png)
+
+!!! tip "Note"
+    The Flow Graph on the Monitoring tab always reflects the latest flow definition.
+    If you view metrics from a past execution after modifying a flow, the graph and metrics may appear misaligned.
+    To view the metrics of a specific execution against the graph at the time of that execution, use **View Metric Details** for that execution in **Management > Execution History**.
 
 <a id="monitoring-flow-list"></a>
 ### Flow List { #monitoring-flow-list }
