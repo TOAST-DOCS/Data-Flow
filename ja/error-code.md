@@ -18,7 +18,7 @@
 | FLOW_INVALID_EXECUTION_MODE | Sourceノードの実行モードが設定された実行モードと一致しません。 |
 | FLOW_ALREADY_STOPPED        | フローはすでに終了しています。                                                                    |
 | FLOW_SCHEMA_FIELD_DUPLICATED | 同一のスキーマフィールド名が存在します。                                                                |
-| FLOW_NODE_MULTIPLE_PARENT   | AggregateノードはInput接続線を1つのみ持つことができます。Input接続線が2つ以上の場合、フローを保存できません。              |
+| FLOW_NODE_MULTIPLE_PARENT   | Aggregateノードは入力接続を1つのみ持つことができます。入力接続が2つ以上の場合、フローを保存できません。              |
 | FLOW_TEMPORARY_SAVED        | 一時保存したフローは実行できません。 |
 | SKM_INVALID_APPKEY | Cipherノードのアプリキー情報が有効ではありません。 |
 | SKM_INVALID_KEY_ID | CipherノードのキーID情報が有効ではありません。 |
