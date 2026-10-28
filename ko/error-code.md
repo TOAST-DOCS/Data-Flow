@@ -14,10 +14,6 @@
 | FLOW_INVALID_DSL            | 노드의 DSL이 올바르지 않습니다.                                                                 |
 | FLOW_LOG_RETRIEVAL_ERROR    | 플로우 로그를 조회할 수 없습니다.                                                                 |
 | FLOW_INVALID_EXECUTION_MODE | Source 노드의 실행 모드가 설정된 실행 모드와 일치하지 않습니다.                                             |
-| FLOW_ALREADY_STOPPED        | 플로우가 이미 종료되었습니다.                                                                    |
-| FLOW_SCHEMA_FIELD_DUPLICATED | 동일한 스키마 필드명이 존재합니다.                                                                |
-| FLOW_NODE_MULTIPLE_PARENT   | Aggregate 노드는 입력 연결을 하나만 가질 수 있습니다. 입력 연결이 2개 이상이면 플로우를 저장할 수 없습니다.              |
-| FLOW_TEMPORARY_SAVED        | 임시 저장한 플로우는 실행할 수 없습니다. |
 | SKM_INVALID_APPKEY          | Cipher 노드의 앱키 정보가 유효하지 않습니다.                                                        |
 | SKM_INVALID_KEY_ID          | Cipher 노드의 키 ID 정보가 유효하지 않습니다.                                                      |
 | SKM_INVALID_KEY_VERSION     | Cipher 노드의 키 버전 정보가 유효하지 않습니다.                                                      |
@@ -42,5 +38,6 @@
 | EASY_QUEUE_OAUTH_FAILED     | EasyQueue OAuth2 인증에 실패했습니다.                                                        |
 | EASY_QUEUE_TOPIC_NOT_FOUND  | EasyQueue 토픽을 찾을 수 없습니다.                                                            |
 | EASY_QUEUE_INVALID_PROPERTY | EasyQueue 노드의 속성이 올바르지 않습니다.                                                        |
-| UNAUTHORIZED                | 요청의 인증에 실패했거나 앱키가 속한 프로젝트에 접근 권한이 없습니다. 인증 정보와 앱키를 확인하세요.                        |
+| FLOW_ALREADY_STOPPED        | 플로우가 이미 종료되었습니다.                                                                    |
+| FLOW_SCHEMA_FIELD_DUPLICATED | 동일한 스키마 필드명이 존재합니다.                                                                |
 | ERROR                       | 서비스 내부 오류 또는 정의되지 않은 오류입니다. 고객문의로 문의하세요.                                            |
