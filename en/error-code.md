@@ -16,6 +16,10 @@
 | FLOW_INVALID_DSL            | The node DSL is invalid.                                                                 |
 | FLOW_LOG_RETRIEVAL_ERROR    | Failed to retrieve the flow log.                                                                 |
 | FLOW_INVALID_EXECUTION_MODE | The execution mode of the Source node does not match the configured execution mode.                                             |
+| FLOW_ALREADY_STOPPED        | The flow has already stopped.                                                                    |
+| FLOW_SCHEMA_FIELD_DUPLICATED | A duplicate Schema field name exists.                                                                |
+| FLOW_NODE_MULTIPLE_PARENT   | An Aggregate Node can have only one input connection. A flow cannot be saved if it has two or more input connections.              |
+| FLOW_TEMPORARY_SAVED        | Temporarily saved flows cannot be started. |
 | SKM_INVALID_APPKEY          | The appkey information for the Cipher node is invalid.                                                        |
 | SKM_INVALID_KEY_ID          | The key ID information for the Cipher node is invalid.                                                      |
 | SKM_INVALID_KEY_VERSION     | The key version information for the Cipher node is invalid.                                                      |
@@ -40,6 +44,5 @@
 | EASY_QUEUE_OAUTH_FAILED     | Failed to authenticate with EasyQueue OAuth2.                                                        |
 | EASY_QUEUE_TOPIC_NOT_FOUND  | The EasyQueue topic could not be found.                                                            |
 | EASY_QUEUE_INVALID_PROPERTY | The property of the EasyQueue node is invalid.                                                        |
-| FLOW_ALREADY_STOPPED        | The flow has already stopped.                                                                    |
-| FLOW_SCHEMA_FIELD_DUPLICATED | The same schema field name exists.                                                                |
+| UNAUTHORIZED                | Authentication for the request failed, or you do not have permission to access the project that the app key belongs to. Check the authentication information and app key.                        |
 | ERROR                       | An internal service error or undefined error has occurred. Contact customer support.                                            |

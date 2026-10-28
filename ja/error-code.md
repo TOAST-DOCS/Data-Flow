@@ -16,6 +16,10 @@
 | FLOW_INVALID_DSL | ノードのDSLが正しくありません。 |
 | FLOW_LOG_RETRIEVAL_ERROR | フローログを照会できません。 |
 | FLOW_INVALID_EXECUTION_MODE | Sourceノードの実行モードが設定された実行モードと一致しません。 |
+| FLOW_ALREADY_STOPPED        | フローはすでに終了しています。                                                                    |
+| FLOW_SCHEMA_FIELD_DUPLICATED | 同一のスキーマフィールド名が存在します。                                                                |
+| FLOW_NODE_MULTIPLE_PARENT   | AggregateノードはInput接続線を1つのみ持つことができます。Input接続線が2つ以上の場合、フローを保存できません。              |
+| FLOW_TEMPORARY_SAVED        | 一時保存したフローは実行できません。 |
 | SKM_INVALID_APPKEY | Cipherノードのアプリキー情報が有効ではありません。 |
 | SKM_INVALID_KEY_ID | CipherノードのキーID情報が有効ではありません。 |
 | SKM_INVALID_KEY_VERSION | Cipherノードのキーバージョン情報が有効ではありません。 |
@@ -40,6 +44,5 @@
 | EASY_QUEUE_OAUTH_FAILED | EasyQueue OAuth2認証に失敗しました。 |
 | EASY_QUEUE_TOPIC_NOT_FOUND | EasyQueueトピックが見つかりません。 |
 | EASY_QUEUE_INVALID_PROPERTY | EasyQueueノードのプロパティが正しくありません。 |
-| FLOW_ALREADY_STOPPED | フローはすでに終了しています。 |
-| FLOW_SCHEMA_FIELD_DUPLICATED | 同一のスキーマフィールド名が存在します。                                                                 |
+| UNAUTHORIZED                | リクエストの認証に失敗したか、アプリキーが属するプロジェクトへのアクセス権限がありません。認証情報とアプリキーを確認してください。                        |
 | ERROR | サービス内部エラーまたは定義されていないエラーです。カスタマーサポートにお問い合わせください。 |
